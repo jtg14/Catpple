@@ -2,6 +2,8 @@ package com.portfolio.project;
 
 import java.io.File;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,5 +43,13 @@ public class GoodsController {
 		}
 		mv.setViewName("index");
 		return mv;
+	}
+	@RequestMapping(value="/gSResult")
+	public ModelAndView goodsSearchResult(ModelAndView model,GoodsVO vo,HttpServletRequest request) {
+		String searchWord = request.getParameter("search");
+			model.addObject("searchResult",service.goodsSearch(searchWord));
+			model.addObject("searchWord",searchWord);
+			model.setViewName("goods/goodsSearch");
+		return model;
 	}
 }
