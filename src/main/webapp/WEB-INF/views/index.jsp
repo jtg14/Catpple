@@ -78,7 +78,7 @@
     <div class="thumbnail text-center">
       <img src="resources/images/item${vs.index}.jpg">
       <div class="caption">
-        <h3><a href="#">에코 필라인 퓨어 9.08kg</a></h3>
+        <h3><a href="#">민석 필라인 퓨어 9.08kg</a></h3>
         <div class="rating">
 		  <i class="glyphicon glyphicon-star"></i>
 		  <i class="glyphicon glyphicon-star"></i>
