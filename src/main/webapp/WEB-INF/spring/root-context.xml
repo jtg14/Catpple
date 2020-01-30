@@ -15,8 +15,13 @@
 		class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="org.mariadb.jdbc.Driver" />
 		<property name="url" value="jdbc:mariadb://localhost/CatppleDB" />
+<<<<<<< HEAD
 		<property name="username" value="root" />
 		<property name="password" value="1111" />
+=======
+		<property name="username" value="root"/>
+		<property name="password" value="1111"/>
+>>>>>>> e34d329ffefbae6f8654fb9b3d31abc57727a06f
 	</bean>
 
 	<!-- MyBatis(Maria DB)와 Spring 연결 -->

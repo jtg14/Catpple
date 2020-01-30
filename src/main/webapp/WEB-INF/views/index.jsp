@@ -73,14 +73,14 @@
 <div class="col-md-10 col-md-offset-1 col-xs-12">
 <div class="row">
 
-<div class="col-md-12 col-xs-12"><h2>옴석 추천상품</h2></div>
+<div class="col-md-12 col-xs-12"><h2>옴석 추천상품 옴석</h2></div>
 
 <c:forEach begin="1" end="12" varStatus="vs">
   <div class="col-xs-6 col-md-3">
     <div class="thumbnail text-center">
       <img src="resources/images/item${vs.index}.jpg">
       <div class="caption">
-        <h3><a href="#">에코 필라인 퓨어 9.08kg</a></h3>
+        <h3><a href="#">민석 필라인 퓨어 9.08kg</a></h3>
         <div class="rating">
 		  <i class="glyphicon glyphicon-star"></i>
 		  <i class="glyphicon glyphicon-star"></i>

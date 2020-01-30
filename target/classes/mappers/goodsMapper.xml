@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "portfolio.mapper.GoodsMapper">
+	
+	<!-- goodsInsert -->
+	<insert id="goodsInsert">
+		insert into 
+		goods(gnum, gstock, gprice, gname, gimg1, gimg2, gpoint, gcategory) 
+		values((select ifnull(max(gnum),0)+1 from goods as gnum), #{gstock}, #{gprice}, #{gname},#{gimg1},#{gimg2}, 0, #{gcategory})
+	</insert>
+	
+</mapper>
