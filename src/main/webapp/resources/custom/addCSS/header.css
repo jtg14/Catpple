@@ -1,0 +1,128 @@
+.navbar-nav li>span {
+	position: relative;
+	display: block;
+	padding: 10px 15px;
+	font-weight: bold;
+}
+
+/* adds some margin below the link sets  */
+.navbar .dropdown-menu div[class*="col"] {
+	margin-bottom: 1rem;
+}
+
+/* breakpoint and up - mega dropdown styles */
+@media screen and (min-width: 767px) {
+	/* remove the padding from the navbar so the dropdown hover state is not broken */
+	.navbar {
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+
+	/* remove the padding from the nav-item and add some margin to give some breathing room on hovers */
+	.navbar .nav-item {
+		padding: .5rem .5rem;
+		margin: 0 .25rem;
+	}
+
+	/* makes the dropdown full width  */
+	.navbar .dropdown {
+		position: static;
+	}
+	.navbar .dropdown-menu {
+		width: 100%;
+		left: 0;
+		right: 0;
+		/*  height of nav-item  */
+		top: 80px;
+		display: block;
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility 0s, opacity 0.3s linear;
+	}
+
+	/* shows the dropdown menu on hover */
+	.navbar .dropdown:hover .dropdown-menu, .navbar .dropdown .dropdown-menu:hover
+		{
+		display: block;
+		visibility: visible;
+		opacity: 1;
+		transition: visibility 0s, opacity 0.3s linear;
+	}
+	.navbar .dropdown-menu {
+		border: 1px solid rgba(0, 0, 0, .15);
+		background-color: #fff;
+	}
+	.navbar-nav.navbar-center {
+	position:absolute;
+		left: 50%;
+		transform: translatex(-50%);
+	}
+}
+.btn-lg .input-lg{
+	height:200;
+}
+.custom {
+  min-height: 80px;
+}
+.custom-brand {
+  padding: 0 15px;
+  height: 80px;
+  line-height: 80px;
+}
+
+.custom-toggle {
+  /* (80px - button height 34px) / 2 = 23px */
+  margin-top: 23px;
+  padding: 9px 10px !important;
+}
+
+@media (min-width: 768px) {
+  .custom-nav > li > a {
+    /* (80px - line-height of 27px) / 2 = 26.5px */
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+  }
+}
+/* 드롭다운 메뉴 글씨 크기 */
+	.first-class {
+		font-size: 1.5em;
+		color: darkgrey;
+	}
+	.second-class {
+		font-size: 1.2em;
+	}
+/* 로고 사이즈 */
+.logo-area {
+	margin-bottom: 0;
+}
+
+.logo {
+	font-size: 2em;
+	color: black;
+}
+
+.sign-area {
+	display: inline-block;
+	text-align: center;
+}
+.main-menu{
+	font-size:2em;
+}
+.user-status{
+	color: chartreuse;
+}
+
+.font-Jua {
+	font-family: Jua;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.catpple-container{
+	
+	border: 5px solid crimson;
+	border-radius:10px;
+}

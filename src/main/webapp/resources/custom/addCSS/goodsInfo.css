@@ -1,0 +1,61 @@
+		.container {
+	  padding-right: 15px;
+	  padding-left: 15px;
+	  margin-right: auto;
+	  margin-left: auto;
+	}
+	/* Extra small devices (phones, less than 768px) */
+	/* No media query since this is the default in Bootstrap */
+	
+	/* Small devices (tablets, 768px and up) */
+	@media (min-width: 768px) {
+	  .container {
+	    width: 750px;
+	  }
+	}
+	/* Medium devices (desktops, 992px and up) */
+	@media (min-width: 992px) {
+	  .container {
+	    width: 970px;
+	  }
+	}
+	/* Large devices (large desktops, 1200px and up) */
+	@media (min-width: 1200px) {
+	  .container {
+	    width: 1170px;
+	  }
+	}
+	.goods_image{
+		width:300;
+		height:300;
+		display:inline-block;
+	}
+	.amount_bar{
+		text-align:center;
+		padding : 5 3;
+	}
+	input[type="number"]::-webkit-outer-spin-button,
+	input[type="number"]::-webkit-inner-spin-button {
+	    -webkit-appearance: none;
+	    margin: 0;
+	}
+	.amount-area{
+		display:inline-block;
+		width:200;
+	}
+	.amount_text{
+		display:inline-block;
+	}
+	.discount-persentage{
+	font-style:italic;
+	color:red;
+	font-size:2em;
+	}
+	.before-price{
+		font-size:12;
+		color:darkgrey;
+	}
+	.font-Jua{
+		font-family:Jua;
+		
+	}

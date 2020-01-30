@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "portfolio.mapper.MemberMapper">
+
+	<!-- memberJoin() -->
+	<insert id="join" >
+		insert into member (mid,mpw,memail,mphone,mname,maddr1,maddr2,maddr3,mpoint,mgrade,mstatus) values (#{mId},#{mPw},#{mEmail},#{mPhone},#{mName},0,null,null,0,#{mGrade},default)
+	</insert>
+	<select id="idcheck" resultType="vo.MemberVO">
+	select * from Member where mid=#{mId}
+	</select>
+	<select id="phoneCheck" resultType="vo.MemberVO">
+	select * from Member where mPhone=#{mPhone}
+	</select>
+	<select id="logIn" resultType="vo.MemberVO">
+	select * from Member where mId = #{mId} and mPw = #{mPw}
+	</select>
+</mapper>
