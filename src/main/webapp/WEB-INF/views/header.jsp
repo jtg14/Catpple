@@ -153,10 +153,10 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-center custom-nav">
-					<form class="navbar-form" action="gsearch" style="margin-top: 0px; margin-left: 0px; margin-right: 0px;">
+					<form class="navbar-form" method="post" action="gSResult" style="margin-top: 0px; margin-left: 0px; margin-right: 0px;">
 						<div class="form-group">
-							<input type="text" class="form-control input-lg"
-								placeholder="원하시는 상품명"
+							<input type="text" name="search" class="form-control input-lg"
+								placeholder="원하시는 상품명 또는 가격대 검색  예) 0~0"
 								style="border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-color: crimson;">
 						</div>
 						<div class="form-group">
