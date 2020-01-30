@@ -16,7 +16,7 @@ input[type=number]::-webkit-outer-spin-button {
 
    <div class="col-md-8 col-md-offset-1 col-xs-12" style="border:5px solid crimson;border-radius:10px;">
          <h2 style="margin-top: 5%;text-align:center">상품 등록</h2>
-         <form>
+         <form action="goodsInsert" method="post" enctype="multipart/form-data">
             <div style="margin: 10px 30px;">
                <!-- Row1 아이디/이름-->
                <div class="row">
@@ -27,7 +27,7 @@ input[type=number]::-webkit-outer-spin-button {
                      <div class="form-group">
                         <label for="memberID">ID</label> <input type="text"
                            class="form-control" id="memberID" placeholder="ID"
-                           readonly="readonly">
+                           name="mId" value="${logInUser.mId}" readonly="readonly">
                      </div>
                   </div>
                   <!-- Grid column  -->
@@ -38,7 +38,7 @@ input[type=number]::-webkit-outer-spin-button {
                      <div class=" form-group">
                         <label for="memberName">회사명</label> <input type="text"
                            class="form-control" id="memberName" placeholder="이름"
-                           readonly="readonly">
+                           name="mName" value="${logInUser.mName}" readonly="readonly">
                      </div>
                   </div>
                   <!-- Grid column -->
@@ -58,11 +58,11 @@ input[type=number]::-webkit-outer-spin-button {
                      <!-- Material input -->
                      <div class=" form-group">
                         <label for="goodsCategory">상품 카테고리</label>
-                        <select class="form-control" id="goodsCategory">
-                           <option value="">분류1</option>
-                           <option value="">분류2</option>
-                           <option value="">분류3</option>
-                           <option value="">분류4</option>
+                        <select class="form-control" id="goodsCategory" name="gcategory">
+                           <option value="사료">사료</option>
+                           <option value="캔/간식">캔/간식</option>
+                           <option value="장난감">장난감</option>
+                           <option value="화장실/매트">화장실/매트</option>
                         </select>
                      </div>
                   </div>
@@ -78,7 +78,7 @@ input[type=number]::-webkit-outer-spin-button {
                      <!-- Material input -->
                      <div class="form-group">
                         <label for="goodsName">상품 이름</label> <input type="text"
-                           class="form-control" id="goodsName" placeholder="상품이름">
+                           class="form-control" id="goodsName" name="gname" placeholder="상품이름">
 
                      </div>
                   </div>
@@ -95,7 +95,7 @@ input[type=number]::-webkit-outer-spin-button {
                      <!-- Material input -->
                      <div class="form-group ">
                         <div class="input-group">
-                           <input type="number" class="form-control" id="goodsPrice"
+                           <input type="number" class="form-control" id="gprice" name="gPrice"
                               placeholder="0"> <span class="input-group-addon">원</span>
                         </div>
                      </div>
@@ -107,7 +107,7 @@ input[type=number]::-webkit-outer-spin-button {
                      <div class="form-group">
                         <div class="input-group">
                            <input type="number" class="form-control" id="goodsAmount"
-                              placeholder="0"> <span class="input-group-addon">개</span>
+                              name="gstock" placeholder="0"> <span class="input-group-addon">개</span>
                         </div>
                      </div>
                   </div>
@@ -120,7 +120,7 @@ input[type=number]::-webkit-outer-spin-button {
                      <label for="goodsInfo">상품 정보</label>
                      <div class="form-group">
                         <textarea rows="5" cols="50" class="form-control" id="goodsInfo"
-                           placeholder="상품 내용을 입력하세요."></textarea>
+                         name="ginfo"  placeholder="상품 내용을 입력하세요."></textarea>
                      </div>
                   </div>
                </div>
@@ -132,7 +132,7 @@ input[type=number]::-webkit-outer-spin-button {
                      <label for="goodsInfo">상품 이미지1</label>
                      <div class="form-group">
                         <input class="form-control" type="file" id="uploadfilef"
-                           name="uploadfilef">
+                           name="gimgf1">
                      </div>
                   </div>
 
@@ -140,7 +140,7 @@ input[type=number]::-webkit-outer-spin-button {
                      <label for="goodsInfo">상품 이미지2</label>
                      <div class="form-group">
                         <input class="form-control" type="file" id="uploadfilef"
-                           name="uploadfilef">
+                           name="gimgf2">
                      </div>
                   </div>
                </div>
