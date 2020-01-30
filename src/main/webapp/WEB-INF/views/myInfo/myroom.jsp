@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>My Room | The CatHouse</title>
+<title>${logInUser.mName}님 My Room | The CatHouse</title>
 <!-- Latest compiled and minified CSS -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
