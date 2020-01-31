@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import dao.MemberDAO;
 import vo.MemberVO;
+
 @Service
 public class MServiceImpl implements MService {
 	
@@ -30,5 +31,9 @@ public class MServiceImpl implements MService {
 	@Override
 	public int mChange(MemberVO vo) {
 		return dao.mChange(vo);
+	}
+	@Override
+	public int mdelete(MemberVO vo) {
+		return dao.mdelete(vo);
 	}
 }
