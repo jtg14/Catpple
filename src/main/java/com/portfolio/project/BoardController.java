@@ -43,14 +43,16 @@ public class BoardController {
 		if(service.inquiryInsert(vo1)>0) {
 			ArrayList<BoardVO> list = service.inquirySelectList(vo1);
 			model.addObject("list",list);
-			System.out.println(list);
-			model.setViewName("blist");
+			System.out.println("list1=>"+list);
+			model.setViewName("myInfo/myInfoCustomerInquiry");
+			return model;
 		}else {
 			ArrayList<BoardVO> list = service.inquirySelectList(vo1);
 			model.addObject("list",list);
-			model.setViewName("blist");
+			model.setViewName("myInfo/myInfoCustomerInquiry");
+			return model;
 		}	
-		return model;
+		
 	}//binsert
 	
 	

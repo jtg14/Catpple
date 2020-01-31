@@ -37,4 +37,76 @@ public class HomeController {
 		return "index";
 	}
 	
+	
+	
+	@RequestMapping(value= "myInfoBoardDetail")
+	public String myInfoBoardDetail() {
+		return "myInfo/myInfoBoardDetail";
+	}
+	
+	@RequestMapping(value= "myInfoCart")
+	public String myInfoCart() {
+		return "myInfo/myInfoCart";
+	}
+	
+	@RequestMapping(value= "myInfoChange2")//UserController에 매핑중복
+	public String myInfoChange2() {
+		return "myInfo/myInfoChange";
+	}
+	
+	@RequestMapping(value= "myInfoCustomerInquiry")
+	public String myInfoCustomerInquiry() {
+		return "myInfo/myInfoCustomerInquiry";
+	}
+
+	@RequestMapping(value= "myInfoExpectedPoints")
+	public String myInfoExpectedPoints() {
+		return "myInfo/myInfoExpectedPoints";
+	}
+	
+	@RequestMapping(value= "myInfoFAQ")
+	public String myInfoFAQ() {
+		return "myInfo/myInfoFAQ";
+	}
+	
+	@RequestMapping(value= "myInfoMain")
+	public String myInfoMain() {
+		return "myInfo/myInfoMain";
+	}
+	
+	@RequestMapping(value= "myInfoOrderCancel")
+	public String myInfoOrderCancel() {
+		return "myInfo/myInfoOrderCancel";
+	}
+
+	@RequestMapping(value= "myInfoOrderDelivery")
+	public String myInfoOrderDelivery() {
+		return "myInfo/myInfoOrderDelivery";
+	}
+
+	@RequestMapping(value= "myInfoPoint")
+	public String myInfoPoint() {
+		return "myInfo/myInfoPoint";
+	}
+
+	@RequestMapping(value= "myInfoReturnExchange")
+	public String myInfoReturnExchange() {
+		return "myInfo/myInfoReturnExchange";
+	}
+	
+	@RequestMapping(value= "myInfoSuggestions")
+	public String myInfoSuggestions() {
+		return "myInfo/myInfoSuggestions";
+	}
+	
+	@RequestMapping(value= "myInfoWithdrawal")
+	public String myInfoWithdrawal() {
+		return "myInfo/myInfoWithdrawal";
+	}
+	
+	@RequestMapping(value= "myInfoWriting")
+	public String myInfoWriting() {
+		return "myInfo/myInfoWriting";
+	}
+	
 }
