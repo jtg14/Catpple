@@ -31,7 +31,7 @@ th, td {
 		<table class="table">
 			<thead>
 				<tr>
-					<th>구분</th>
+					<th>구분1</th>
 					<th class="board-content"
 						style="padding-right: 0px; padding-left: 0px;">제목</th>
 					<th>작성일</th>

@@ -35,14 +35,15 @@ public class BoardController {
 	
 	@RequestMapping(value = "/binsert")
 	public ModelAndView binsert(ModelAndView model, BoardVO vo1, MemberVO vo2, HttpServletRequest request) {
-//		HttpSession session = request.getSession();
-//		vo2 = (MemberVO)session.getAttribute("logInUser");
+		HttpSession session = request.getSession();
+		vo2 = (MemberVO)session.getAttribute("logInUser");
 		vo1.setmName(vo2.getmName());
 		vo1.setMember_mId(vo2.getmId());
 		
 		if(service.inquiryInsert(vo1)>0) {
 			ArrayList<BoardVO> list = service.inquirySelectList(vo1);
 			model.addObject("list",list);
+			System.out.println(list);
 			model.setViewName("blist");
 		}else {
 			ArrayList<BoardVO> list = service.inquirySelectList(vo1);
