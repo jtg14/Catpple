@@ -23,6 +23,7 @@ public class GoodsController {
 	@RequestMapping(value = "goodsInsert", method = RequestMethod.POST)
 	public ModelAndView goodsInsert(ModelAndView mv, GoodsVO vo) {
 		String uploadPath = "C:\\Users\\arsyu\\eclipse-workspace\\Catpple\\src\\main\\webapp\\resources\\images";
+		String uploadPath = "C:\\Catpple\\src\\main\\webapp\\resources\\images\\"+vo.getMid();
 		MultipartFile multipartFile1 = vo.getGimgf1();
 		MultipartFile multipartFile2 = vo.getGimgf2();
 		File file1 = new File(uploadPath, multipartFile1.getOriginalFilename());
@@ -30,6 +31,8 @@ public class GoodsController {
 		
 		vo.setGimg1("resources/images/"+multipartFile1.getOriginalFilename());
 		vo.setGimg2("resources/images/"+multipartFile2.getOriginalFilename());
+		vo.setGimg1("resources/images/"+vo.getMid()+"/"+multipartFile1.getOriginalFilename());
+		vo.setGimg2("resources/images/"+vo.getMid()+"/"+multipartFile2.getOriginalFilename());
 		int cnt = service.goodsInsert(vo);
 		if(cnt>0) {
 			if(!multipartFile1.isEmpty() && !multipartFile2.isEmpty()) {
