@@ -70,7 +70,7 @@ $(function(){
     $('#menu7').click(function(){
     	$.ajax({
 			type:'Get',
-			url:'mCInquiry',
+			url:'blist',
 			success:function(result){
 				$('#main').html();
 				$('#main').html(result);
@@ -167,6 +167,24 @@ $(function(){
 			}
 		}); //주문요청 목록
     });
+    
+    $('#binsert').click(function(){
+		$.ajax({
+			type:'Post',
+			url:'binsert',
+			data:{
+				bTitle:$('#bTitle').val(),
+				bContent:$('#bContent').val()
+				
+			},
+			success:function(result){
+				$('#main').html();
+				$('#main').html(result);
+			}	
+		});//ajax
+	});
+    
+    
 });/*end of ready*/    
 function BDetail() {
 	$.ajax({

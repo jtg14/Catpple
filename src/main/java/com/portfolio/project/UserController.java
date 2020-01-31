@@ -58,11 +58,7 @@ public class UserController {
 		model.setViewName("myInfo/myInfoCart");
 		return model;
 	}
-	@RequestMapping(value ="/mCInquiry")//1:1문의
-	public ModelAndView myInfoCustomerInquiry(ModelAndView model,HttpServletRequest request) {
-		model.setViewName("myInfo/myInfoCustomerInquiry");
-		return model;
-	}
+	
 	@RequestMapping(value ="/mFAQ")//FAQ
 	public ModelAndView myInfoFAQ(ModelAndView model,HttpServletRequest request) {
 		model.setViewName("myInfo/myInfoFAQ");
