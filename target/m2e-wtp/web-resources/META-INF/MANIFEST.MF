@@ -1,5 +1,4 @@
 Manifest-Version: 1.0
-Built-By: arsyu
 Build-Jdk: 1.8.0_241
 Built-By: jtg14
 Build-Jdk: 1.8.0_231
