@@ -25,7 +25,7 @@
          <label for="customCheck" style="display:inline;">회원탈퇴 시 유의사항 안내를 확인하였으며 이에 동의합니다.</label>
       </div>
       <form action="#" method="post" style="text-align:center;">
-         <button class="btn btn-dark">회원 탈퇴</button>
+         <button class="btn btn-dark">회원 탈퇴임</button>
       </form>
       </div>
    </div>
