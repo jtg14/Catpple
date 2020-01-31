@@ -39,4 +39,7 @@ public class MemberDAO {
 	public int mChange(MemberVO vo) {
 		return dao.update(NS+"mChange", vo);
 	}
+	public int mdelete(MemberVO vo) {
+		return dao.update(NS+"mdelete", vo);
+	}
 }

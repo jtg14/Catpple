@@ -8,6 +8,8 @@ public interface MService {
 	
 	int mChange(MemberVO vo);
 	
+	int mdelete(MemberVO vo);
+	
 	MemberVO idCheck(MemberVO vo);
 	
 	MemberVO phoneCheck(MemberVO vo);
