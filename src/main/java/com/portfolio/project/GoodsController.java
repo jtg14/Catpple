@@ -22,7 +22,7 @@ public class GoodsController {
 	
 	@RequestMapping(value = "goodsInsert", method = RequestMethod.POST)
 	public ModelAndView goodsInsert(ModelAndView mv, GoodsVO vo) {
-		String uploadPath = "C:\\Users\\arsyu\\eclipse-workspace\\Catpple\\src\\main\\webapp\\resources\\images";
+		String uploadPath = "C:\\Catpple\\src\\main\\webapp\\resources\\images";
 		MultipartFile multipartFile1 = vo.getGimgf1();
 		MultipartFile multipartFile2 = vo.getGimgf2();
 		File file1 = new File(uploadPath, multipartFile1.getOriginalFilename());
