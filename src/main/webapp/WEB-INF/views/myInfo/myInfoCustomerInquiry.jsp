@@ -38,12 +38,12 @@ th, td {
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach begin="1" end="12">
+				<c:forEach var="list" items="${list}" varStatus="">
 					<tr>
 						<td style="padding-left:0px;">[구매관련]</td>
 						<td class="board-content"style="padding-right: 0px; padding-left: 0px;text-align: left;"><a href="javascript:;" onclick="BDetail()"><span class="label label-success"
-							style="margin-right: 10px;">답변완료</span>물건을 받았는데 파손 되어 있습니다.</a></td>
-						<td style="padding-right:0px;">2020-01-26</td>
+							style="margin-right: 10px;">답변완료</span>${list.bTitle}</a></td>
+						<td style="padding-right:0px;">${list.bDate}</td>
 					</tr>
 				</c:forEach>
 			</tbody>

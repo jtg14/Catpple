@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="resources/custom/addCSS/star-rating.css">
+<script src="resources/custom/addJS/myroom.js"></script>
 <title>myInfoExpectedPoints</title>
 <style>
 .item-size {
@@ -38,6 +39,7 @@ th, td {
 	}
 }
 </style>
+
 </head>
 <body>
 	<div class="tabs-container-style-1">
@@ -56,9 +58,9 @@ th, td {
 					<h4 style="color: darkgray;">문의 해주시면 친절히 답변해 드리 겠습니다.</h4>
 				</div>
 				<div class="container">
-					<form id="form-CustomerInquiry">
+					<form  action="#" method="post">
 						<div class="col-md-12 col-xs-12">
-							<h3>작성자<span class="h5" style="margin-left:20px;">전태구</span></h3>
+							<h3>작성자<span>${logInUser.mName}</span></h3>
 						</div>
 						<div class="col-md-1 col-xs-4">
 						<h3>분류</h3>
@@ -77,17 +79,17 @@ th, td {
 							<h3>제목</h3>
 						</div>
 						<div class="col-md-12 col-xs-12">
-							<input class="form-control input-sm" name="title" id="title">
+							<input class="form-control input-sm" name="bTitle" id="bTitle">
 						</div>
 						<div class="col-md-12 col-xs-12">
 							<h3>내용</h3>
 						</div>
 						<div class="col-md-12 col-xs-12">
-							<textarea class="form-control noresize" name="content"
-								id="content" style="height: 140px;"></textarea>
+							<textarea class="form-control noresize" name="bContent"
+								id="bContent" style="height: 140px;"></textarea>
 						</div>
 						<div class="col-md-12 col-xs-12" style="margin-top: 20px;">
-							<button class="btn btn-primary btn-lg pull-right">문의하기</button>
+							<input id="binsert" class="btn btn-primary btn-lg pull-right" type="submit" value="문의하기">
 						</div>
 						
 					</form>
@@ -103,19 +105,19 @@ th, td {
 					<h4 style="color: darkgray;">고객님의 의견을 적극 반영 하겠습니다!</h4>
 				</div>
 				<div class="container">
-					<form id="form-CustomerInquiry">
+					<form id="form-customerSuggestion" action="" method="post">
 						<div class="col-md-12 col-xs-12">
 							<h3>제목</h3>
 						</div>
 						<div class="col-md-12 col-xs-12">
-							<input class="form-control input-sm" name="title" id="title">
+							<input class="form-control input-sm" name="bTitle" id="bTitle">
 						</div>
 						<div class="col-md-12 col-xs-12">
 							<h3>내용</h3>
 						</div>
 						<div class="col-md-12 col-xs-12">
-							<textarea class="form-control noresize" name="content"
-								id="content" style="height: 140px;"></textarea>
+							<textarea class="form-control noresize" name="bContent"
+								id="bContent" style="height: 140px;"></textarea>
 						</div>
 						<div class="col-md-12 col-xs-12" style="margin-top: 20px;">
 							<button class="btn btn-primary btn-lg pull-right">문의하기</button>
@@ -126,5 +128,8 @@ th, td {
 			<!-- end of change -->
 		</div>
 	</div>
+	
+	
+	
 </body>
 </html>
