@@ -97,7 +97,7 @@
 				<dd></dd>
 				<dt style="font-size: large;">고객센터</dt>
 				<dd></dd>
-				<dd><a href="myInfoCustomerInquiry" class="myInfo-sub-menu">1:1문의</a></dd>
+				<dd><a href="blist" class="myInfo-sub-menu">1:1문의</a></dd>
 				<dd><a href="myInfoFAQ" class="myInfo-sub-menu">FAQ</a></dd>
 				<dd><a href="myInfoNotice" class="myInfo-sub-menu">공지사항</a></dd>
 			</dl>
