@@ -1,5 +1,7 @@
 package com.portfolio.project;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +18,8 @@ public class UserController {
 	@Autowired
 	MService service;
 
+	
+	
 	@RequestMapping(value ="/signupf")//회원가입
 	public ModelAndView SignUpForm(ModelAndView model,HttpServletRequest request) {
 		model.setViewName("logIn/signUpForm");
@@ -56,11 +60,13 @@ public class UserController {
 		model.setViewName("myInfo/myInfoCart");
 		return model;
 	}
-	@RequestMapping(value ="/mCInquiry")//1:1문의
-	public ModelAndView myInfoCustomerInquiry(ModelAndView model,HttpServletRequest request) {
-		model.setViewName("myInfo/myInfoCustomerInquiry");
-		return model;
-	}
+	
+//	@RequestMapping(value="mCustomerIquiry")//1:1 문의
+//	public ModelAndView myInfoCustomerInquiry(ModelAndView model,HttpServletRequest request) {
+//		model.setViewName("myInfo/myInfoCustomerInquiry");
+//		return model;
+//	}
+	
 	@RequestMapping(value ="/mFAQ")//FAQ
 	public ModelAndView myInfoFAQ(ModelAndView model,HttpServletRequest request) {
 		model.setViewName("myInfo/myInfoFAQ");
@@ -71,7 +77,7 @@ public class UserController {
 		model.setViewName("myInfo/myInfoSuggestions");
 		return model;
 	}
-	@RequestMapping(value ="/mChange")//내정보변경
+	@RequestMapping(value ="/mChangef")//내정보변경
 	public ModelAndView myInfoChange(ModelAndView model,HttpServletRequest request) {
 		model.setViewName("myInfo/myInfoChange");
 		return model;
@@ -127,6 +133,11 @@ public class UserController {
 		request.getParameter("options")
 		);
 		if(service.join(vo)>0) {//회원가입성공
+			File sellerPersonalFolder = new File("C:\\Jason\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getmId());
+			if (!sellerPersonalFolder.exists()) {  // ff의 존재여부 확인
+				sellerPersonalFolder.mkdir();		// 없으면 생성	
+				System.out.println("판매자로 회원가입이 완료되어 디렉토리 생성");
+			}
 			model.setViewName("logIn/logInForm");
 		}else {//회원가입실패
 			model.setViewName("logIn/signUpForm");
@@ -162,6 +173,32 @@ public class UserController {
 	@RequestMapping(value="logOut")
 	public ModelAndView logOut(ModelAndView model,HttpServletRequest request) {
 		request.getSession().invalidate();
+		model.setViewName("index");
+		return model;
+	}
+	@RequestMapping(value="mchange")
+	public ModelAndView myInfoChange(ModelAndView model,HttpServletRequest request, MemberVO vo) {
+		int cnt = service.mChange(vo);
+		if(cnt>0) {
+			System.out.println("정보 변경 성공");
+			request.getSession().invalidate();
+		} else {
+			System.out.println("정보 변경 실패");
+		}
+		model.setViewName("index");
+		return model;
+	}
+	@RequestMapping(value = "mdelete")
+	public ModelAndView mdelete(ModelAndView model, HttpServletRequest request, MemberVO vo) {
+		vo = (MemberVO) request.getSession().getAttribute("logInUser");
+		int cnt = service.mdelete(vo);
+		if(cnt>0) {
+			System.out.println("회원탈퇴 완료");
+			request.getSession().invalidate();
+		} else {
+			System.out.println("회원 탈퇴 오류");
+		}
+		
 		model.setViewName("index");
 		return model;
 	}

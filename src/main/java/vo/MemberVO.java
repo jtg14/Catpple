@@ -8,7 +8,7 @@ public class MemberVO {
 	private String mName;
 	private int mAddr1;
 	private String mAddr2;
-	private String mAdr3;
+	private String mAddr3;
 	private int mPoint;
 	private String mGrade;
 	private String mStatus;
@@ -58,11 +58,11 @@ public class MemberVO {
 	public void setmAddr2(String mAddr2) {
 		this.mAddr2 = mAddr2;
 	}
-	public String getmAdr3() {
-		return mAdr3;
+	public String getmAddr3() {
+		return mAddr3;
 	}
-	public void setmAdr3(String mAdr3) {
-		this.mAdr3 = mAdr3;
+	public void setmAdr3(String mAddr3) {
+		this.mAddr3 = mAddr3;
 	}
 	public int getmPoint() {
 		return mPoint;
@@ -92,7 +92,7 @@ public class MemberVO {
 		this.mName = mName;
 		this.mAddr1 = mAddr1;
 		this.mAddr2 = mAddr2;
-		this.mAdr3 = mAdr3;
+		this.mAddr3 = mAdr3;
 		this.mPoint = mPoint;
 		this.mGrade = mGrade;
 		this.mStatus = mStatus;
@@ -111,7 +111,7 @@ public class MemberVO {
 	@Override
 	public String toString() {
 		return "[mId=" + mId + ", mPw=" + mPw + ", mEmail=" + mEmail + ", mPhone=" + mPhone + ", mName="
-				+ mName + ", mAddr1=" + mAddr1 + ", mAddr2=" + mAddr2 + ", mAdr3=" + mAdr3 + ", mPoint=" + mPoint
+				+ mName + ", mAddr1=" + mAddr1 + ", mAddr2=" + mAddr2 + ", mAdr3=" + mAddr3 + ", mPoint=" + mPoint
 				+ ", mGrade=" + mGrade + ", mStatus=" + mStatus + "]";
 	}
 	

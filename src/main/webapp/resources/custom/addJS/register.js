@@ -6,7 +6,7 @@ $(function()
 	       return this.optional( element ) || idregex.test( value );
 	 }); 
    // 이름 
-   var nameregex = /^[가-힇]*$/;
+   var nameregex = /^[가-힣]*$/;
    $.validator.addMethod("validname", function( value, element ) {
        return this.optional( element ) || nameregex.test( value );
    });
@@ -175,7 +175,7 @@ $(function()
  });// end of ready
 function signUpGo(){
 	if($('input:checkbox[id="defaultUnchecked"]').is(":checked") == false){
-		   alert('정보제공동의 및 이용동의에 동의 해주셔야 가입이 가능합니다');
+		   alert('정보제공동의 및 이용동의에 동의 해주셔야 가입이 가능합니다.');
 		   return false;
 	   }else if($('input:radio[name=options]').is(':checked') == false){
 		   alert('구매자 및 판매자 항목을 선택해주셔야합니다.');

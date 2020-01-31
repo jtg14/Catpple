@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page session="false"%>
 <html>
 <head>
@@ -63,17 +64,16 @@ height:100px;
 <body class="font-Jua">
 <jsp:include page="../header.jsp"></jsp:include>
 	<div class="container" style=" text-align:center;">
-	<h2 class="text-left">"오민석"에 대한 검색 결과 입니다.</h2>
       <div class="row">
-         <c:forEach begin="1" end="24">
+      <c:if test="${searchResult ne null}">
+		<h2 class="text-left">"${searchWord}"에 대한 검색 결과가 총 ${fn:length(searchResult)}건 검색 되었습니다.</h2>
+         <c:forEach var="list" items="${searchResult}">
             <div class="col-md-3 col-xs-6">
                <div class="card" >
-                  <a href="#"> <img class="img" src="resources/images/item4.jpg"
-                     ></a>
-                  <div class="goods-title">[쉬바 멜티 증정] 뉴트로 내추럴 초이스 캣 키튼 닭고기와 현미
-                     2.27kgdddaaaaaaaaaaaaaaaaaaaaaad</div>
+                  <a href="#"> <img class="img" src="resources/images/item4.jpg"></a>
+                  <div class="goods-title">${list.gname}</div>
                   <div>
-                     <font style="color: crimson; font-weight: bold; font-size: large;">10,000원</font><br>
+                     <font style="color: crimson; font-weight: bold; font-size: large;">${list.gprice}원</font><br>
                      <span>(할인여부등)<br></span> <span
                         style="width: 87.5%; overflow: hidden; color: gold;"><i class="fas fa-star"></i>
                         <i class="glyphicon glyphicon-star"></i>
@@ -86,6 +86,10 @@ height:100px;
                </div>
             </div>
          </c:forEach>
+         </c:if>
+         <c:if test="${searchResult eq null}">
+         		<h2>"${searchWord}"에 대한 검색 결과가 없습니다.</h2>
+         </c:if>
       </div>
       <div align="center" style="margin-top: 3%;">
          <ul class="pagination justify-content-center">
