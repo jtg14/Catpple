@@ -89,13 +89,17 @@
 									<div class="col col-xs-6 col-md-3">
 										<ul class="nav flex-column">
 											<li class="nav-item"><span
-												class="nav-link text-bold first-class">대분류 1</span></li>
+												class="nav-link text-bold first-class">사료</span></li>
 											<li class="nav-item"><a
-												class="nav-link active second-class" href="#">소분류 1-1</a></li>
+												class="nav-link active second-class" href="#">고양이처방식</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">소분류 1-2</a></li>
+												href="#">노묘용</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">소분류 1-3</a></li>
+												href="#">성묘용</a></li>
+											<li class="nav-item"><a class="nav-link second-class"
+												href="#">자묘용</a></li>
+											<li class="nav-item"><a class="nav-link second-class"
+												href="#">전연령용</a></li>
 										</ul>
 									</div>
 									<!-- /.col  -->
@@ -103,13 +107,17 @@
 									<div class="col col-xs-6 col-md-3">
 										<ul class="nav flex-column">
 											<li class="nav-item"><span
-												class="nav-link text-bold first-class">대분류 2</span></li>
+												class="nav-link text-bold first-class">캔,간식</span></li>
 											<li class="nav-item"><a
-												class="nav-link active second-class" href="#">소분류 2-1</a></li>
+												class="nav-link active second-class" href="#">간식캔</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">소분류 2-2</a></li>
+												href="#">주식캔</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">소분류 2-3</a></li>
+												href="#">스낵</a></li>
+											<li class="nav-item"><a class="nav-link second-class"
+												href="#">건조간식</a></li>
+											<li class="nav-item"><a class="nav-link second-class"
+												href="#">통살</a></li>
 										</ul>
 									</div>
 									<!-- /.col  -->
@@ -117,13 +125,17 @@
 									<div class="col col-xs-6 col-md-3">
 										<ul class="nav flex-column">
 											<li class="nav-item"><span
-												class="nav-link text-bold first-class">대분류 3</span></li>
+												class="nav-link text-bold first-class">장난감</span></li>
 											<li class="nav-item"><a
-												class="nav-link active second-class" href="#">소분류 3-1</a></li>
+												class="nav-link active second-class" href="#">낙싯대</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">소분류 3-2</a></li>
+												href="#">막대</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">소분류 3-3</a></li>
+												href="#">인형/쿠션</a></li>
+											<li class="nav-item"><a class="nav-link second-class"
+												href="#">공</a></li>
+											<li class="nav-item"><a class="nav-link second-class"
+												href="#">박스/하우스</a></li>
 										</ul>
 									</div>
 									<!-- /.col  -->
@@ -132,13 +144,17 @@
 									<div class="col col-xs-6 col-md-3">
 										<ul class="nav flex-column">
 											<li class="nav-item"><span
-												class="nav-link text-bold first-class">대분류 4</span></li>
+												class="nav-link text-bold first-class">화장실/매트</span></li>
 											<li class="nav-item"><a
-												class="nav-link active second-class" href="#">소분류 4-1</a></li>
+												class="nav-link active second-class" href="#">하우스화장실</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">소분류 4-2</a></li>
+												href="#">평판화장실</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">소분류 4-3</a></li>
+												href="#">화장실매트</a></li>
+											<li class="nav-item"><a class="nav-link second-class"
+												href="#">거름망</a></li>
+											<li class="nav-item"><a class="nav-link second-class"
+												href="#">배변패드</a></li>
 										</ul>
 									</div>
 									<!-- /.col  -->
