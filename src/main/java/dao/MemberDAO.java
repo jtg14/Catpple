@@ -36,4 +36,7 @@ public class MemberDAO {
 		return vo; 
 		
 	}
+	public int mChange(MemberVO vo) {
+		return dao.update(NS+"mChange", vo);
+	}
 }

@@ -17,4 +17,9 @@
 	<select id="logIn" resultType="vo.MemberVO">
 	select * from Member where mId = #{mId} and mPw = #{mPw}
 	</select>
+	
+	<!-- mChange -->
+	<update id="mChange">
+		update member set mPw=#{mPw},mEmail=#{mEmail},mPhone=#{mPhone},mAddr1=#{mAddr1},mAddr2=#{mAddr2},mAddr3=#{mAddr3} where mId=#{mId}
+	</update>
 </mapper>

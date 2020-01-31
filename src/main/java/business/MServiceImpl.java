@@ -27,4 +27,8 @@ public class MServiceImpl implements MService {
 	public MemberVO login(MemberVO vo) {
 		return dao.login(vo);
 	}
+	@Override
+	public int mChange(MemberVO vo) {
+		return dao.mChange(vo);
+	}
 }

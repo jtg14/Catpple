@@ -14,15 +14,27 @@ public class GoodsVO {
 	private MultipartFile gimgf2;
 	private int gpoint;
 	private String gcategory;
+	private String gcategory2;
+	
 	private String ginfo;
 
+	
 	@Override
 	public String toString() {
 		return "GoodsVO [gnum=" + gnum + ", gstock=" + gstock + ", gprice=" + gprice + ", gname=" + gname + ", gdate="
 				+ gdate + ", gimg1=" + gimg1 + ", gimg2=" + gimg2 + ", gimgf1=" + gimgf1 + ", gimgf2=" + gimgf2
-				+ ", gpoint=" + gpoint + ", gcategory=" + gcategory + ", ginfo=" + ginfo + "]";
+				+ ", gpoint=" + gpoint + ", gcategory=" + gcategory + ", gcategory2=" + gcategory2 + ", ginfo=" + ginfo
+				+ "]";
 	}
 
+	public String getGcategory2() {
+		return gcategory2;
+	}
+	
+	public void setGcategory2(String gcategory2) {
+		this.gcategory2 = gcategory2;
+	}
+	
 	public int getGnum() {
 		return gnum;
 	}
