@@ -168,4 +168,19 @@ public class UserController {
 		model.setViewName("index");
 		return model;
 	}
+	@RequestMapping(value="myInfoChange")
+	public ModelAndView myInfoChange(ModelAndView model,HttpServletRequest request, MemberVO vo) {
+		MemberVO vo2 = (MemberVO)request.getSession().getAttribute("logInUser");
+		System.out.println("값넣기 전 : "+vo.toString());
+		int cnt = service.mChange(vo);
+		System.out.println("값넣은 후"+vo.toString());
+		if(cnt>0) {
+			System.out.println("정보 변경 성공");
+			request.getSession().invalidate();
+		} else {
+			System.out.println("정보 변경 실패");
+		}
+		model.setViewName("index");
+		return model;
+	}
 }
