@@ -21,7 +21,7 @@ public class BoardController {
 	
 	
 	
-	@RequestMapping(value = "/blist")
+	@RequestMapping(value = "/mCustomerIquiry")
 	public ModelAndView blist(ModelAndView model, HttpServletRequest request, BoardVO vo1, MemberVO vo2) {
 		HttpSession session = request.getSession();
 		vo2 = (MemberVO)session.getAttribute("logInUser");
@@ -41,16 +41,15 @@ public class BoardController {
 		vo1.setMember_mId(vo2.getmId());
 		
 		if(service.inquiryInsert(vo1)>0) {
-			ArrayList<BoardVO> list = service.inquirySelectList(vo1);
-			model.addObject("list",list);
-			System.out.println(list);
+	
 			model.setViewName("blist");
+			return model;
 		}else {
-			ArrayList<BoardVO> list = service.inquirySelectList(vo1);
-			model.addObject("list",list);
+
 			model.setViewName("blist");
+			return model;
 		}	
-		return model;
+		
 	}//binsert
 	
 	

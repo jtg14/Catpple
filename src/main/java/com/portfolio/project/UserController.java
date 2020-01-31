@@ -18,6 +18,8 @@ public class UserController {
 	@Autowired
 	MService service;
 
+	
+	
 	@RequestMapping(value ="/signupf")//회원가입
 	public ModelAndView SignUpForm(ModelAndView model,HttpServletRequest request) {
 		model.setViewName("logIn/signUpForm");
@@ -59,6 +61,12 @@ public class UserController {
 		return model;
 	}
 	
+//	@RequestMapping(value="mCustomerIquiry")//1:1 문의
+//	public ModelAndView myInfoCustomerInquiry(ModelAndView model,HttpServletRequest request) {
+//		model.setViewName("myInfo/myInfoCustomerInquiry");
+//		return model;
+//	}
+	
 	@RequestMapping(value ="/mFAQ")//FAQ
 	public ModelAndView myInfoFAQ(ModelAndView model,HttpServletRequest request) {
 		model.setViewName("myInfo/myInfoFAQ");
@@ -69,7 +77,7 @@ public class UserController {
 		model.setViewName("myInfo/myInfoSuggestions");
 		return model;
 	}
-	@RequestMapping(value ="/mChange")//내정보변경
+	@RequestMapping(value ="/mChangef")//내정보변경
 	public ModelAndView myInfoChange(ModelAndView model,HttpServletRequest request) {
 		model.setViewName("myInfo/myInfoChange");
 		return model;
@@ -168,7 +176,7 @@ public class UserController {
 		model.setViewName("index");
 		return model;
 	}
-	@RequestMapping(value="myInfoChange")
+	@RequestMapping(value="mchange")
 	public ModelAndView myInfoChange(ModelAndView model,HttpServletRequest request, MemberVO vo) {
 		int cnt = service.mChange(vo);
 		if(cnt>0) {
