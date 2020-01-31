@@ -1,5 +1,7 @@
 package com.portfolio.project;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -127,6 +129,11 @@ public class UserController {
 		request.getParameter("options")
 		);
 		if(service.join(vo)>0) {//회원가입성공
+			File sellerPersonalFolder = new File("C:\\Jason\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getmId());
+			if (!sellerPersonalFolder.exists()) {  // ff의 존재여부 확인
+				sellerPersonalFolder.mkdir();		// 없으면 생성	
+				System.out.println("판매자로 회원가입이 완료되어 디렉토리 생성");
+			}
 			model.setViewName("logIn/logInForm");
 		}else {//회원가입실패
 			model.setViewName("logIn/signUpForm");
