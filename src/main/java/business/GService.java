@@ -9,6 +9,4 @@ public interface GService {
 	int goodsInsert(GoodsVO vo);
 	
 	ArrayList<GoodsVO> goodsSearch(String keyword);
-
-
 }
