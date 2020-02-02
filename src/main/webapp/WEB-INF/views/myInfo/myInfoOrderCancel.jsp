@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>주문 취소 | Catpple</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="resources/custom/addCSS/myroom.css">
@@ -131,7 +132,7 @@ th, td {
 				<!-- Page Heading -->
 				<div class="row" id="main"
 					style="min-height: 1000px; margin-top: 120px;">
-					<div class="col-sm-12 col-md-12 well" id="content">
+					<div class="col-sm-12 col-md-12" id="content" style="background-color:white;">
 						<!-- 메인공간 -->
 
 						<div class="col-md-10 col-xs-12 text-center">
@@ -139,7 +140,7 @@ th, td {
 								<span class="h1" style="color: crimson">주문취소</span>
 							</div>
 							<div class="col-md-4  col-xs-12 " style="padding: 0px;">
-								<span class="h4" style="color: darkgray">(주문번호를 클릭하면 주문서를
+								<span class="h4" style="color: darkgray">(주문번호 클릭시 주문서를
 									볼수있어요 !)</span>
 							</div>
 							<div class="col-md-12 col-xs-12" style="padding: 0;">
