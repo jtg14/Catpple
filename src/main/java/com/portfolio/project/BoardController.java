@@ -34,10 +34,26 @@ public class BoardController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/mCustomerInquiry")
-	public ModelAndView blist(ModelAndView model, HttpServletRequest request, BoardVO vo1, MemberVO vo2) {
+	@RequestMapping(value = "/mCustomerInquiry")//1대1문의
+	public ModelAndView mCustomerInquiry(ModelAndView model, HttpServletRequest request, BoardVO vo1, MemberVO vo2) {
 		HttpSession session = request.getSession();
 		vo2 = (MemberVO)session.getAttribute("logInUser");
+		if("C".equals(vo2.getmGrade())) {//member가 customer인 경우
+			vo1.setMember_mId(vo2.getmId());
+			ArrayList<BoardVO> list = service.inquirySelectList(vo1);
+			System.out.println(list);
+			model.addObject("list", list);
+			model.setViewName("myInfo/myInfoCustomerInquiry");
+			return model;
+		}else if("a".equals(vo2.getmGrade())) {//member가 관리자인 경우
+			ArrayList<BoardVO> listForManager = service.inquirySelectListForManager();
+			model.addObject("listForManager", listForManager);
+			model.setViewName("myInfo/myInfoCustomerInquiry");
+			return model;
+		}else {//예외처리
+			
+		}
+		
 		vo1.setMember_mId(vo2.getmId());
 		ArrayList<BoardVO> list = service.inquirySelectList(vo1);
 		model.addObject("list", list);

@@ -153,42 +153,87 @@ th, td {
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="list" items="${list}" varStatus="">
-										<tr>
-											<td style="padding-left: 0px;">
-												<c:choose>
-													<c:when test="${list.separation=='1'}">
+									<c:choose>
+										
+										<c:when test="${logInUser.mGrade=='C'}">
+											<c:forEach var="list" items="${list}" varStatus="">
+												<tr>
+													<td style="padding-left: 0px;"><c:choose>
+															<c:when test="${list.separation=='1'}">
 														[구매 관련]
 													</c:when>
-													<c:when test="${list.separation=='2'}">
+															<c:when test="${list.separation=='2'}">
 														[배송 관련]
 													</c:when>
-													<c:when test="${list.separation=='3'}">
+															<c:when test="${list.separation=='3'}">
 														[결제 문의]
 													</c:when>
-													<c:when test="${list.separation=='4'}">
+															<c:when test="${list.separation=='4'}">
 														[기타]
 													</c:when>
-													<c:otherwise>
+															<c:otherwise>
 														[건의사항]
 													</c:otherwise>
-												</c:choose>
-											</td>
-											<td class="board-content"
-												style="padding-right: 0px; padding-left: 0px; text-align: left;"><a
-												href="mBDetail?bNum=${list.bNum}">
-												<c:choose>
-													<c:when test="${list.bReply!='0'and list.bReply!='1'}">
-														<span class="label label-danger" style="margin-right: 10px;">답변완료</span>
+														</c:choose></td>
+													<td class="board-content"
+														style="padding-right: 0px; padding-left: 0px; text-align: left;"><a
+														href="mBDetail?bNum=${list.bNum}"> <c:choose>
+																<c:when test="${list.bReply!='0'and list.bReply!='1'}">
+																	<span class="label label-danger"
+																		style="margin-right: 10px;">답변완료</span>
+																</c:when>
+																<c:otherwise>
+																	<span class="label label-success"
+																		style="margin-right: 10px;">답변대기중</span>
+																</c:otherwise>
+															</c:choose> ${list.bTitle}
+													</a></td>
+													<td style="padding-right: 0px;">${list.bDate}</td>
+												</tr>
+											</c:forEach>
+										</c:when>
+										 
+										<c:when test="${logInUser.mGrade=='a'}">
+											<c:forEach var="listForManager" items="${listForManager}"
+												varStatus="">
+												<tr>
+													<td style="padding-left: 0px;"><c:choose>
+															<c:when test="${listForManager.separation=='1'}">
+														[구매 관련]
 													</c:when>
-													<c:otherwise>
-														<span class="label label-success" style="margin-right: 10px;">답변대기중</span>
+															<c:when test="${listForManager.separation=='2'}">
+														[배송 관련]
+													</c:when>
+															<c:when test="${listForManager.separation=='3'}">
+														[결제 문의]
+													</c:when>
+															<c:when test="${listForManager.separation=='4'}">
+														[기타]
+													</c:when>
+															<c:otherwise>
+														[건의사항]
 													</c:otherwise>
-												</c:choose>
-													${list.bTitle}</a></td>
-											<td style="padding-right: 0px;">${list.bDate}</td>
-										</tr>
-									</c:forEach>
+														</c:choose></td>
+													<td class="board-content"
+														style="padding-right: 0px; padding-left: 0px; text-align: left;"><a
+														href="mBDetail?bNum=${listForManager.bNum}"> <c:choose>
+																<c:when
+																	test="${listForManager.bReply!='0'and listForManager.bReply!='1'}">
+																	<span class="label label-danger"
+																		style="margin-right: 10px;">답변완료</span>
+																</c:when>
+																<c:otherwise>
+																	<span class="label label-success"
+																		style="margin-right: 10px;">답변대기중</span>
+																</c:otherwise>
+															</c:choose> ${listForManager.bTitle}
+													</a></td>
+													<td style="padding-right: 0px;">${listForManager.bDate}</td>
+												</tr>
+											</c:forEach>
+
+										</c:when>
+									</c:choose>
 								</tbody>
 							</table>
 						</div>

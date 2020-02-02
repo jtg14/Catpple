@@ -35,4 +35,13 @@ public class BoardDAO {
 	public BoardVO selectOne(BoardVO vo) {
 		return dao.selectOne(NS+"selectOne",vo);
 	}
+	
+	public ArrayList<BoardVO> inquirySelectListForManager(){
+		return (ArrayList)dao.selectList(NS+"inquirySelectListForManager");
+	}
+	
+	public ArrayList<BoardVO> suggestionSelectListForManager(){
+		return (ArrayList)dao.selectList(NS+"suggestionSelectListForManager");
+	}
+	
 }//class

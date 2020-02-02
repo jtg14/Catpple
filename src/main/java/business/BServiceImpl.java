@@ -36,5 +36,17 @@ public class BServiceImpl implements BService {
 	public BoardVO selectOne(BoardVO vo) {
 		return dao.selectOne(vo);
 	}
+
+	@Override
+	public ArrayList<BoardVO> inquirySelectListForManager() {
+		return dao.inquirySelectListForManager();
+	}
+
+	@Override
+	public ArrayList<BoardVO> suggestionSelectListForManager() {
+		return dao.suggestionSelectListForManager();
+	}
+
+	
 	
 }

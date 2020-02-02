@@ -47,7 +47,30 @@ th, td {
 .detail{
 	border-top:2px solid lightgray;
 }
+.detail:last-child {
+	border-bottom:2px solid lightgray;
+}
+@media(max-width:576px){
+.content{
+	text-align:center;
+	}
+.title{
+	display:none;
+}
+}
 </style>
+
+<script>
+function replyArea(){
+	if($('#replyArea').css('display')=="none"){
+		$('#replyArea').show();
+	}else{
+		$('#replyArea').hide();
+	}
+	
+}//replyArea()
+
+</script>
 
 </head>
 <body class="font-Jua">
@@ -153,50 +176,85 @@ th, td {
 				<!-- Page Heading -->
 				<div class="row" id="main"
 					style="min-height: 1000px; margin-top: 120px;">
-					<div class="col-sm-12 col-md-12 well" id="content">
+					<div class="col-sm-12 col-md-12" id="content">
 					<!-- 메인내용 들어갈 공간 -->
 						<div class="container">
 							<h2>1:1 문의</h2>
 							<form id="form-CustomerInquiry">
-								<div class="col-md-12 col-xs-12 detail">
+							<div class="col-md-12 col-xs-12 detail">
+								<div class="col-md-2 col-xs-2 title">
+									<h4 style="color:crimson;">제목</h4>
+								</div>
+								<div class="col-md-10 col-xs-10">
 									<h4 style="line-height: 1.5;">
 										<span class="label label-success" style="margin-right: 10px;">답변완료</span>물건을
 										받았는데 파손 되어 있습니다.
 									</h4>
 								</div>
-								<div class="col-md-1 col-xs-3">
-									<h3 style="margin-top: 0px;">분류</h3>
+								<div class="col-md-2 col-xs-6">
+									<h4 style="color:crimson;">작성자 ID</h4>
 								</div>
-								<div class="col-md-4 col-xs-4">
+								<div class="col-md-10 col-xs-6">
+									<h4>${logInUser.mId}</h4>
+								</div>
+								<div class="col-md-2 col-xs-6">
+									<h4 style="margin-top: 0px; color:crimson;">분류</h4>
+								</div>
+								<div class="col-md-10 col-xs-6">
 									
 									<c:choose>
 										<c:when test="${one.separation=='0'}">
-											<h3 style="margin-top: 0px;">[건의 사항]</h3>
+											<h4 style="margin-top: 0px;">[건의 사항]</h4>
 										</c:when>
 										<c:when test="${one.separation=='1'}">
-											<h3 style="margin-top: 0px;">[구매 관련]</h3>
+											<h4 style="margin-top: 0px;">[구매 관련]</h4>
 										</c:when>
 										<c:when test="${one.separation=='2'}">
-											<h3 style="margin-top: 0px;">[배송 관련]</h3>
+											<h4 style="margin-top: 0px;">[배송 관련]</h4>
 										</c:when>
 										<c:when test="${one.separation=='3'}">
-											<h3 style="margin-top: 0px;">[결제 문의]</h3>
+											<h4 style="margin-top: 0px;">[결제 문의]</h4>
 										</c:when>
 										<c:when test="${one.separation=='4'}">
-											<h3 style="margin-top: 0px;">[기타]</h3>
+											<h4 style="margin-top: 0px;">[기타]</h4>
 										</c:when>
 									</c:choose>
 								</div>
+								</div>
 								<div class="col-md-12 col-xs-12 detail"
 									style="min-height: 250px; font-size: 1.2em; max-height: 400px; overflow: auto; padding-top: 15px;">
-										${one.bContent}
+									<div class="col-md-2 col-xs-12 text-left content" style="color:crimson;"><h4>문의내용</h4>
+									</div>
+									<div class="col-md-8 col-xs-12">
+											${one.bContent}
+									</div>
 								</div>
-								<div class="col-md-12 col-xs-12 text-center detail"
+								<div class="col-md-12 col-xs-12 text-left detail"
 									style="margin-top: 20px; max-height: 350px; overflow: auto;">
-									${one.bReply}
+									<div class="col-md-2 col-xs-12 text-left content" style="color:crimson;"><h4>답변내용</h4></div>
+									<div class="col-md-10 col-xs-12" style="margin-top:10px;">
+									<c:choose>
+										<c:when test="${one.bReply!='0' and one.bReply!='1'}">
+											${one.bReply}
+										</c:when>
+										<c:when test="">
+											<div>
+												<input class="" type="text" id="replyArea" name="replyArea" style="display:none;" >
+											</div>
+										</c:when>
+										<c:otherwise>
+											등록된 답변이 없습니다.
+										</c:otherwise>
+									</c:choose>
+									</div> 
+									
 								</div>
-								<!-- fffff -->
+								
+								<!-- fffff --> 	
 							</form>
+							<c:if test="${logInUser.mGrade=='a'}">
+										<button class="btn btn-primary pull-right" style="margin-top:10px;" onclick="replyArea()" >답변하기</button>
+								</c:if>
 						</div>
 					</div>
 				</div>
