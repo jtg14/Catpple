@@ -11,7 +11,7 @@
 		values((select ifnull(max(gnum),0)+1 from goods as gnum), #{gstock}, #{gprice}, #{gname},#{gimg1},#{gimg2}, 0, #{gcategory})
 	</insert>
 	<select id="goodsSearch" parameterType="String" resultType="vo.GoodsVO">
-	select * from goods where gname like '${value}%' or gname like '%${value}%' or gname like '%${value}' or gcategory like '${value}%' or gcategory like '%${value}%' or gcategory like '%${value}'
+	select * from goods where gname like '${value}%' or gname like '%${value}%' or gname like '%${value}' or gcategory like '${value}%' or gcategory like '%${value}%' or gcategory like '%${value}' or gcategory2 like '${value}%' or gcategory2 like '%${value}%' or gcategory2 like '%${value}'
 	
 	</select>
 </mapper>
