@@ -154,12 +154,18 @@ padding-right: 0px;
 				<!-- Page Heading -->
 				<div class="row" id="main"
 					style="min-height: 1000px; margin-top: 120px;">
-					<div class="col-sm-12 col-md-12 well" id="content">
+					<div class="col-sm-12 col-md-12" id="content">
 						<!-- 메인 공간 -->
 
 
 						<div class="col-md-10 col-xs-12">
 							<h2 style="color: crimson">받은 주문 목록</h2>
+							<c:choose>
+								<c:when test="${goodsInsertInfo!=null}">
+									<div class="col-md-12 col-xs-12"><h1>${goodsInsertInfo}</h1></div>
+								</c:when>
+								<c:otherwise></c:otherwise>
+							</c:choose>
 							<c:forEach begin="1" end="5">
 								<div class="container text-center"
 									style="border-top: 2px solid lightgray; padding-top: 10px; padding-bottom: 10px;">
