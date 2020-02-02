@@ -22,7 +22,6 @@ public class GoodsController {
 	
 	@RequestMapping(value = "goodsInsert", method = RequestMethod.POST)
 	public ModelAndView goodsInsert(ModelAndView mv, GoodsVO vo) {
-		String uploadPath = "C:\\Users\\arsyu\\eclipse-workspace\\Catpple\\src\\main\\webapp\\resources\\images";
 		String uploadPath = "C:\\Catpple\\src\\main\\webapp\\resources\\images\\"+vo.getMid();
 		MultipartFile multipartFile1 = vo.getGimgf1();
 		MultipartFile multipartFile2 = vo.getGimgf2();
@@ -40,7 +39,7 @@ public class GoodsController {
 					multipartFile1.transferTo(file1);
 					multipartFile2.transferTo(file2);
 				}catch(Exception e) {
-					System.out.println("파일업로드 실패 : "+e.toString());
+					System.out.println("입력실패 : "+e.toString());
 				}
 			}
 		}

@@ -91,7 +91,7 @@
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-lock"></span>
 									</div>
-									<input name="cpassword" type="password" class="form-control"
+									<input id="cpassword" name="cpassword" type="password" class="form-control"
 										placeholder="비밀번호 확인" maxlength="18">
 								</div>
 								<span class="help-block" id="error"></span>
@@ -101,7 +101,7 @@
 							<input type="checkbox" class="custom-control-input"
 								id="defaultUnchecked"> <label
 								class="custom-control-label" for="defaultUnchecked"><a
-								href="">이용 동의</a> 및 <a href="">정보 수집</a> 동의</label>
+								href="javascript:;">이용 동의</a> 및 <a href="javascript:;">정보 수집</a> 동의</label>
 						</div>
 						
 						<div class="btn-group col-md-6 col-md-offset-3 col-xs-12"
