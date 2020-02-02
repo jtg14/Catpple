@@ -141,6 +141,7 @@ th, td {
 							</div>
 							<div class="col-md-4  col-xs-12 " style="padding: 0px;">
 								<span class="h4" style="color: darkgray">(주문번호를 클릭하면 주문서를
+								<span class="h4" style="color: darkgray">(주문번호를 클릭시 주문서를
 									볼수있어요 !)</span>
 							</div>
 							<div class="col-md-12 col-xs-12" style="padding: 0;">
