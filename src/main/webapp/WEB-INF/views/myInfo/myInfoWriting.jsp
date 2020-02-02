@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
 <script src="resources/custom/addJS/myroom.js"></script>
-<title>myInfoExpectedPoints</title>
+<title>글쓰기 | Catpple</title>
 <style>
 .item-size {
 	border: 3px solid lightgray;
@@ -152,7 +152,7 @@ th, td {
 				<!-- Page Heading -->
 				<div class="row" id="main"
 					style="min-height: 1000px; margin-top: 120px;">
-					<div class="col-sm-12 col-md-12 well" id="content">
+					<div class="col-sm-12 col-md-12" id="content">
 						<!-- 메인 공간 -->
 
 						<div class="tabs-container-style-1">
