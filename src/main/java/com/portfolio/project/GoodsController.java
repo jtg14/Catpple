@@ -24,6 +24,7 @@ public class GoodsController {
 	
 	@RequestMapping(value = "goodsInsert", method = RequestMethod.POST)
 	public ModelAndView goodsInsert(HttpServletRequest request, ModelAndView mv, GoodsVO vo) {
+		System.out.println("체크1");
 		MemberVO mvo = new MemberVO();
 		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 		vo.setMember_mid(mvo.getmId());
@@ -48,6 +49,7 @@ public class GoodsController {
 			}
 		}
 		mv.setViewName("order/sellerOrderList");
+		System.out.println("체크2");
 		return mv;
 	}
 	@RequestMapping(value="/gSResult")
