@@ -70,7 +70,7 @@ height:100px;
          <c:forEach var="list" items="${searchResult}">
             <div class="col-md-3 col-xs-6">
                <div class="card" >
-                  <a href="#"> <img class="img" src="resources/images/item4.jpg"></a>
+                  <a href="#"> <img class="img" src="resources/sellerInfo/${logInUser.mId}/${list.gimg1}"></a>
                   <div class="goods-title">${list.gname}</div>
                   <div>
                      <font style="color: crimson; font-weight: bold; font-size: large;">${list.gprice}원</font><br>
