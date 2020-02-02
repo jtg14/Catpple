@@ -25,8 +25,8 @@ public class GoodsController {
 	public ModelAndView goodsInsert(HttpServletRequest request, ModelAndView mv, GoodsVO vo) {
 		MemberVO mvo = new MemberVO();
 		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
-		vo.setMid(mvo.getmId());
-		String uploadPath = "C:\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getMid();
+		vo.setMember_mid(mvo.getmId());
+		String uploadPath = "C:\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getMember_mid();
 		MultipartFile multipartFile1 = vo.getGimgf1();
 		MultipartFile multipartFile2 = vo.getGimgf2();
 		File file1 = new File(uploadPath, multipartFile1.getOriginalFilename());
