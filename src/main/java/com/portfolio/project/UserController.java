@@ -193,6 +193,7 @@ public class UserController {
 		vo = (MemberVO) request.getSession().getAttribute("logInUser");
 		int cnt = service.mdelete(vo);
 		if(cnt>0) { 
+		if(cnt>0) {
 			System.out.println("회원탈퇴 완료");
 			request.getSession().invalidate();
 		} else {
