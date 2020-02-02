@@ -68,8 +68,6 @@
 						<ul id="submenu-1" class="collapse">
 							<li><a href="mpoint"><i
 									class="fa fa-angle-double-right"></i> 포인트</a></li>
-							<li><a href="mEPoint"><i
-									class="fa fa-angle-double-right"></i> 적립 예정 포인트</a></li>
 						</ul></li>
 					<li><h3><a href="#" data-toggle="collapse"
 						data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>
