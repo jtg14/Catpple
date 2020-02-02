@@ -14,7 +14,9 @@
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
-</head>
+<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
+<script src="resources/bootstrap/js/bootstrap.js"></script>
+<script src="resources/custom/addJS/myroom.js"></script>
 <style>
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
@@ -112,9 +114,125 @@ function secondSelectFill(idx){
   
 v_secondSelect.style.display = ""; // 중분류 태그 출력
   
-
 }
 </script>
+<script type="text/javascript">
+$(function(){
+	//유효성검사
+	//변수선언
+	var c_firstSelect = false;
+	var c_goodsName = false;
+	var c_gprice = false;
+	var c_goodsAmount = false;
+	var c_goodsInfo = false;
+	var c_uploadfilef = false;
+	var c_uploadfilef2 = false;
+	
+	//포커스아웃설정
+	$('#firstSelect').focus();
+	$('#firstSelect').focusout(function(){
+		c_firstSelect = cf_firstSelect();
+	});
+	$('#secondSelect').focusout(function(){
+		$('#goodsName').focus();
+	});
+	$('#goodsName').focusout(function(){
+		c_goodsName = cf_goodsName();
+	});
+	$('#gprice').focusout(function(){
+		c_gprice = cf_gprice();
+	});
+	$('#goodsAmount').focusout(function(){
+		c_goodsAmount = cf_goodsAmount();
+	});
+	$('#goodsInfo').focusout(function(){
+		c_goodsInfo = cf_goodsInfo();
+	});
+	$('#uploadfilef').focusout(function(){
+		c_uploadfilef = cf_uploadfilef();
+	});
+	$('#uploadfilef2').focusout(function(){
+		c_uploadfilef2 = cf_uploadfilef2();
+		inCheck();
+	});
+	
+	//함수들
+	function cf_firstSelect(){
+		if($('#firstSelect').val()!==''){
+			$('#secondSelect').focus();
+			return true;
+		} else {
+			alert('대분류를 지정해주세요.');
+			return false;
+		}
+	}
+	function cf_goodsName(){
+		if($('#goodsName').val()!==''){
+			$('#gprice').focus();
+			return true;
+		} else {
+			alert('상품이름을 입력해주세요.');
+			return false;
+		}
+	}
+	function cf_gprice(){
+		if($('#gprice').val()!==''){
+			$('#goodsAmount').focus();
+			return true;
+		} else {
+			alert('상품가격을 입력해주세요.');
+			return false;
+		}
+	}
+	function cf_goodsAmount(){
+		if($('#goodsAmount').val()!==''){
+			$('#goodsInfo').focus();
+			return true;
+		} else {
+			alert('상품수량을 입력해주세요.');
+			return false;
+		}
+	}
+	function cf_goodsInfo(){
+		if($('#goodsInfo').val()!==''){
+			$('#uploadfilef').focus();
+			return true;
+		} else {
+			alert('상품내용을 입력해주세요.');
+			return false;
+		}
+	}
+	function cf_uploadfilef(){
+		if($('#uploadfilef').val()!==''){
+			$('#upfMessage').html('');
+			$('#uploadfilef2').focus();
+			return true;
+		} else {
+			$('#upfMessage').html('상품의 이미지를 올려주세요.');
+			return false;
+		}
+	}
+	function cf_uploadfilef2(){
+		if($('#uploadfilef2').val()!==''){
+			$('#upfMessage2').html('');
+			return true;
+		} else {
+			$('#upfMessage2').html('상품의 내용에 대한 이미지를 올려주세요.');
+			return false;
+		}
+	}
+	function inCheck(){
+		if(c_firstSelect == true && c_goodsName == true && c_gprice == true && c_goodsAmount == true
+		&& c_goodsInfo == true && c_uploadfilef == true && c_uploadfilef2 == true) {
+			$('#upfMessage2').html('상품을 등록합니다.');
+			$('#gis').attr('disabled', false);
+		} else {
+			$('#upfMessage2').html('입력사항을 확인해주세요.');
+		}
+	}
+});
+</script>
+</head>
 <body class="font-Jua">
 
 	<div id="throbber" style="display: none; min-height: 120px;"></div>
@@ -347,21 +465,21 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 											<label for="goodsInfo">상품 이미지1</label>
 											<div class="form-group">
 												<input class="form-control" type="file" id="uploadfilef"
-													name="gimgf1">
+													name="gimgf1"><span id="upfMessage" style="color: red;"></span>
 											</div>
 										</div>
 
 										<div class="col-md-12">
 											<label for="goodsInfo">상품 이미지2</label>
 											<div class="form-group">
-												<input class="form-control" type="file" id="uploadfilef"
-													name="gimgf2">
+												<input class="form-control" type="file" id="uploadfilef2"
+													name="gimgf2"><span id="upfMessage2" style="color: red;"></span>
 											</div>
 										</div>
 									</div>
 									<!-- /row6 -->
 
-									<button type="submit" class="btn btn-primary btn-md">상품
+									<button type="submit" class="btn btn-primary btn-md" id="gis" disabled="disabled">상품
 										등록</button>
 								</div>
 							</form>
@@ -378,11 +496,6 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 		<!-- /#page-wrapper -->
 	</div>
 	<!-- /#wrapper -->
-
-
-	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
-	<script src="resources/bootstrap/js/bootstrap.js"></script>
-	<script src="resources/custom/addJS/myroom.js"></script>
 </body>
 <footer>
 	<div class="article">
