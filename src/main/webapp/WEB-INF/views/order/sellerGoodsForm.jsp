@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>상품등록/캣플</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="resources/custom/addCSS/myroom.css">
@@ -21,6 +22,64 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }	
 </style>
+<script type="text/javascript">
+	var firstList = new Array("사료","캔/간식","장난감","화장실/매트");
+	var secondList1 = new Array("고양이처방식","노묘용","성묘용","자묘용","전연령용");
+	var secondList2 = new Array("간식캔","주식캔","스낵","건조간식","통살");
+	
+window.onload = function(){
+	//Select Tag
+	var v_sidoSelect = document.getElementById("sidoSelect");
+	
+	for(i=0; i<firstList.length; i++0){
+		//새로운 <option value=''>값</option> 태그 생성
+		var optionEl = document.createElement("option");
+		
+		//option태그에 value 속성값으로 저장
+		optionEl.value = firstList[i];
+		//text 문자열을 새로 생성한 <option>태그의 값으로 추가
+		optionEl.appendChild(document.createTextNode(firstLists[i]));
+		
+		//만들어진 option태그를 <select>태그에 추가
+		v_sidoSelect.appendChild(optionEl);
+	}
+	
+	//Select Tag
+	var v_gugunSelect = document.getElementById("gugunSelect");
+	//태그감추기
+	v_gugunSelect.style.display="none";
+	//Select Tag
+	var v_gugunSelect = document.getElementById("lastSelect");
+	//태그 감추기
+	v_gugunSelect.style.display="none";
+}
+//대분류 선택시
+function changeSidoSelect(){
+	//Select Tag
+	var v_sidoSelect = document.getElementById("sidoSelect");
+	var idx = v_sidoSelect.options.selectedIndex;
+	
+	if(idx<1 && idx>4){
+		return;
+	}
+	//소분류 생성
+	gugunSelectFill(idx);
+}
+
+function gugunSelectFill(idx){
+	//Select Tag
+	var v_gugunSelect = document.getElementById("gugunSelect");
+	
+	var data = null;
+	
+	if(idx == 0){
+		//중분류 태그감추기
+		v_gugunSelect.style.display = "none";
+		return;
+	}
+	
+}
+</script>
 <body class="font-Jua">
 
 	<div id="throbber" style="display: none; min-height: 120px;"></div>
@@ -127,7 +186,7 @@ input[type=number]::-webkit-outer-spin-button {
 				<!-- Page Heading -->
 				<div class="row" id="main"
 					style="min-height: 1000px; margin-top: 120px;">
-					<div class="col-sm-12 col-md-12 well" id="content">
+					<div class="col-sm-12 col-md-12" id="content">
 						<!-- 메인 공간 -->
 
 
@@ -173,11 +232,11 @@ input[type=number]::-webkit-outer-spin-button {
 											<h3>상품 정보</h3>
 										</div>
 										<!-- Grid column -->
-										<div class="col-md-2 col-xs-12">
+										<div class="col-md-3 col-xs-12">
 											<!-- Material input -->
 											<div class=" form-group">
-												<label for="goodsCategory">상품 카테고리</label> <select
-													class="form-control" id="goodsCategory" name="gcategory">
+												<label for="goodsCategory">대분류</label>
+												<select class="form-control" id="goodsCategory" name="gcategory">
 													<option value="사료">사료</option>
 													<option value="캔/간식">캔/간식</option>
 													<option value="장난감">장난감</option>
@@ -185,6 +244,32 @@ input[type=number]::-webkit-outer-spin-button {
 												</select>
 											</div>
 										</div>
+										
+										<c:choose>
+											<c:when test="${cate1=='사료'}">
+												<div class="col-md-3 col-xs-12">
+												<!-- Material input -->
+													<div class=" form-group">
+														<label for="goodsCategory">중분류</label> <select
+															class="form-control" id="goodsCategory" name="gcategory">
+															<option value="">대분류선택</option>
+													</select>
+													</div>
+												</div>
+											</c:when>
+											<c:otherwise>
+												<!-- Grid column -->
+												<div class="col-md-3 col-xs-12">
+												<!-- Material input -->
+													<div class=" form-group">
+														<label for="goodsCategory">소분류</label> <select
+															class="form-control" id="goodsCategory" name="gcategory">
+															<option value="">대분류선택</option>
+													</select>
+													</div>
+												</div>
+											</c:otherwise>
+										</c:choose>
 										<!-- Grid column -->
 									</div>
 									<!-- /row2  -->
