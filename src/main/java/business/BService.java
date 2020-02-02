@@ -14,5 +14,9 @@ public interface BService {
     public ArrayList<BoardVO> suggestionSelectList(BoardVO vo);
     
     public BoardVO selectOne(BoardVO vo);
+    
+    public ArrayList<BoardVO> inquirySelectListForManager();
+    
+    public ArrayList<BoardVO> suggestionSelectListForManager();
 	
 }

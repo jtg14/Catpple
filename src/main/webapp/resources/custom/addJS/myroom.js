@@ -11,13 +11,3 @@ $(function(){
     
     
 });/*end of ready*/    
-/*function BDetail() {
-	$.ajax({
-		type:'Get',
-		url:'mBDetail',
-		success:function(result){
-			$('#main').html(result);
-		} // success
-	}); // ajax	
-} // axBDetail    
-*/

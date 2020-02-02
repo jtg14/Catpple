@@ -29,4 +29,13 @@
 		select * from board where bnum=#{bNum}
 	</select>
 	
+	<!-- inquirySelectListForManager -->
+	<select id="inquirySelectListForManager" resultType="vo.BoardVO">
+		select * from board where bReply=1
+	</select>
+	
+	<!-- suggestionSelectListForManager -->
+	<select id="suggestionSelectListForManager" resultType="vo.BoardVO">
+		select * from board where bReply=0
+	</select>
 </mapper>
