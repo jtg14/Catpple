@@ -26,15 +26,6 @@ public class GoodsVO {
 		this.mid = mid;
 	}
 	
-
-	@Override
-	public String toString() {
-		return "GoodsVO [gnum=" + gnum + ", gstock=" + gstock + ", gprice=" + gprice + ", gname=" + gname + ", gdate="
-				+ gdate + ", gimg1=" + gimg1 + ", gimg2=" + gimg2 + ", gimgf1=" + gimgf1 + ", gimgf2=" + gimgf2
-				+ ", gpoint=" + gpoint + ", gcategory=" + gcategory + ", gcategory2=" + gcategory2 + ", ginfo=" + ginfo
-				+ ", mid=" + mid + "]";
-	}
-
 	public String getGcategory2() {
 		return gcategory2;
 	}
@@ -138,5 +129,11 @@ public class GoodsVO {
 	public void setGinfo(String ginfo) {
 		this.ginfo = ginfo;
 	}
-
+	@Override
+	public String toString() {
+		return "GoodsVO [gnum=" + gnum + ", gstock=" + gstock + ", gprice=" + gprice + ", gname=" + gname + ", gdate="
+				+ gdate + ", gimg1=" + gimg1 + ", gimg2=" + gimg2 + ", gimgf1=" + gimgf1 + ", gimgf2=" + gimgf2
+				+ ", gpoint=" + gpoint + ", gcategory=" + gcategory + ", gcategory2=" + gcategory2 + ", ginfo=" + ginfo
+				+ ", mid=" + mid + "]";
+	}
 }
