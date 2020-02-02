@@ -9,12 +9,11 @@ public class BoardVO {
 	private String bDate;
 	private String bReply;
 	private String member_mId;
+	private int separation;
 	public int getbNum() {
 		return bNum;
 	}
-	public void setBnum(int bnum) {
-		this.bNum = bnum;
-	}
+	
 	public String getmName() {
 		return mName;
 	}
@@ -26,6 +25,15 @@ public class BoardVO {
 	}
 	public void setbTitle(String bTitle) {
 		this.bTitle = bTitle;
+	}
+	public int getSeparation() {
+		return separation;
+	}
+	public void setSeparation(int separation) {
+		this.separation = separation;
+	}
+	public void setbNum(int bNum) {
+		this.bNum = bNum;
 	}
 	public String getbContent() {
 		return bContent;
@@ -54,8 +62,10 @@ public class BoardVO {
 	@Override
 	public String toString() {
 		return "BoardVO [bNum=" + bNum + ", mName=" + mName + ", bTitle=" + bTitle + ", bContent=" + bContent
-				+ ", bDate=" + bDate + ", bReply=" + bReply + ", member_mId=" + member_mId + "]";
+				+ ", bDate=" + bDate + ", bReply=" + bReply + ", member_mId=" + member_mId + ", separation="
+				+ separation + "]";
 	}
+	
 	
 	
 	

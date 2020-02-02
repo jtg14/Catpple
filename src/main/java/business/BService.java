@@ -12,5 +12,7 @@ public interface BService {
     ArrayList<BoardVO> inquirySelectList(BoardVO vo);
     
     public ArrayList<BoardVO> suggestionSelectList(BoardVO vo);
+    
+    public BoardVO selectOne(BoardVO vo);
 	
 }
