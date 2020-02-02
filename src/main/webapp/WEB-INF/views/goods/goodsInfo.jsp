@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="resources/custom/addCSS/goodsInfo.css">
 <link rel="stylesheet" href="resources/custom/addCSS/header.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
+
 </head>
 <body class="font-Jua">
 <jsp:include page="../header.jsp"></jsp:include>
@@ -40,49 +41,19 @@
 							<span><s class="before-price">${goods.gprice}<span>원</span></s></span> <strong>${goods.gprice }<span>원</span></strong>
 						</div>
 					</div>
-					
-				<div class="col-lg-9">
-					<div class="form-group">
-							<label for="exampleFormControlSelect1">옵션선택 select</label>
-							 <select class="form-control" id="exampleFormControlSelect1" value="옵션명">
-								<option>옵션명</option>
-								<option>${goods.gname}</option>
-							</select>
-						</div>	
+				
+				<div class="col-md-3 col-xs-6">
+					<div class="input-group">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button" id="btn-minus">-</button>
+						</span> <input type="text" class="form-control amount_bar"
+							maxlength="4" value="1" numberOnly id="amount1" >
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button" id="btn-plus">+</button>
+						</span>
 					</div>
 				</div>
-				<script>
-				function Choose(){
-				var name = ${goods.gname};
-					if($('#exampleFormControlSelect1').val() == name){
-						return true;
-					}
-				}
-				</script>
-				<c:if test="return Choose()">
-			<div class="col-md-10 col-md-offset-1 m-auto">
-                <div class="containter">
-                    <div class="panel panel-primary">
-                      <div class="panel-heading">${goods.gname}
-                      <span class="btn pull-right" role="button" onClick="" style="
-								    height: 22px;
-								    padding-top: 0px;
-								    padding-bottom: 0px;">x</span></div>
-                     	 <div class="panel-body">
-                      		 <div class="input-group col-md-2">
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button" id="btn-minus">-</button>
-								</span> <input type="text" class="form-control amount_bar"
-									maxlength="4" value="1" numberOnly id="amount1" >
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button" id="btn-plus">+</button>
-								</span>
-								</div>
-                     	 </div>
-                    </div>
-                </div>
-            </div>
-            </c:if>
+			
             
 			</div> <!-- end of row -->
 			
