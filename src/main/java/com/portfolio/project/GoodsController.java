@@ -1,6 +1,7 @@
 package com.portfolio.project;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -51,7 +52,11 @@ public class GoodsController {
 	@RequestMapping(value="/gSResult")
 	public ModelAndView goodsSearchResult(ModelAndView model,GoodsVO vo,HttpServletRequest request) {
 		String searchWord = request.getParameter("search");
-			model.addObject("searchResult",service.goodsSearch(searchWord));
+		ArrayList<GoodsVO> list = service.goodsSearch(searchWord);
+		for(GoodsVO test : list) {
+			System.out.println(test);
+		}
+			model.addObject("searchResult",list);
 			model.addObject("searchWord",searchWord);
 			model.setViewName("goods/goodsSearch");
 		return model;
