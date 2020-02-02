@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
+	<title>FAQ | Catpple</title>
 </head>
 
 <body class="font-Jua">
@@ -119,13 +120,11 @@
 				<!-- Page Heading -->
 				<div class="row" id="main"
 					style="min-height: 1000px; margin-top: 120px;">
-					<div class="col-sm-12 col-md-12 well" id="content">
+					<div class="col-sm-12 col-md-12">
 						<!-- 메인공간 -->
 
-						<div class="container">
-							<h4 style="text-align: center;">FAQ</h4>
-							<div
-								style="border: 2px solid crimson; border-radius: 10px; padding: 20px 10px;">
+						<div class="col-md-10 col-xs-12">
+							<h2>FAQ</h2>
 								<ul class="nav nav-tabs" role="tablist">
 									<li class="active"><a data-toggle="tab" href="#all"">전체</a></li>
 									<li><a data-toggle="tab" href="#menu1">주문/결제/배송</a></li>
@@ -260,7 +259,6 @@
 									</div>
 
 								</div>
-							</div>
 						</div>
 
 
