@@ -116,7 +116,7 @@ img{
 						data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>
 							고객센터 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
 						<ul id="submenu-3" class="collapse">
-							<li><a href="mCustomerIquiry"><i
+							<li><a href="mCustomerInquiry"><i
 									class="fa fa-angle-double-right"></i> 1:1문의</a></li>
 							<li><a href="mFAQ"><i
 									class="fa fa-angle-double-right"></i> FAQ</a></li>

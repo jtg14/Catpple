@@ -1,6 +1,7 @@
 package com.portfolio.project;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -25,8 +26,8 @@ public class GoodsController {
 	public ModelAndView goodsInsert(HttpServletRequest request, ModelAndView mv, GoodsVO vo) {
 		MemberVO mvo = new MemberVO();
 		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
-		vo.setMid(mvo.getmId());
-		String uploadPath = "C:\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getMid();
+		vo.setMember_mid(mvo.getmId());
+		String uploadPath = "C:\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getMember_mid();
 		MultipartFile multipartFile1 = vo.getGimgf1();
 		MultipartFile multipartFile2 = vo.getGimgf2();
 		File file1 = new File(uploadPath, multipartFile1.getOriginalFilename());
@@ -52,7 +53,11 @@ public class GoodsController {
 	@RequestMapping(value="/gSResult")
 	public ModelAndView goodsSearchResult(ModelAndView model,GoodsVO vo,HttpServletRequest request) {
 		String searchWord = request.getParameter("search");
-			model.addObject("searchResult",service.goodsSearch(searchWord));
+		ArrayList<GoodsVO> list = service.goodsSearch(searchWord);
+		for(GoodsVO test : list) {
+			System.out.println(test);
+		}
+			model.addObject("searchResult",list);
 			model.addObject("searchWord",searchWord);
 			model.setViewName("goods/goodsSearch");
 		return model;

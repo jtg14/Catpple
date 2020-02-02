@@ -4,20 +4,29 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "portfolio.mapper.BoardMapper">
 
-	<!-- boardInsert() -->
+	<!-- inquiryInsert() -->
 	<insert id="bInquiryInsert">
-		insert into board (bnum, mname, btitle, bcontent, bdate, breply, member_mid) values((select ifnull(max(bnum),0)+1 from board as bNum),#{mName},#{bTitle},#{bContent},default,1,#{member_mId})
+		insert into board (bnum, mname, btitle, bcontent, bdate, breply, member_mid, separation) values((select ifnull(max(bnum),0)+1 from board as bNum),#{mName},#{bTitle},#{bContent},default,1,#{member_mId},#{separation})
 	</insert>
 	
+	<!-- suggestionInsert -->
 	<insert id="bSuggestionInsert">
-		insert into board (bnum, mname, btitle, bcontent, bdate, breply, member_mid) values((select ifnull(max(bnum),0)+1 from board as bNum),#{mName},#{bTitle},#{bContent},default,0,#{member_mId})
+		insert into board (bnum, mname, btitle, bcontent, bdate, breply, member_mid, separation) values((select ifnull(max(bnum),0)+1 from board as bNum),#{mName},#{bTitle},#{bContent},default,0,#{member_mId},#{separation})
 	</insert>
 	
+	<!-- inquirySelectList -->
 	<select id="inquirySelectList" resultType="vo.BoardVO">
 		select * from board where member_mId=#{member_mId} and (breply=1 or breply is not null) order by bNum desc
 	</select>
 	
+	<!-- suggestionSelectList -->
 	<select id="suggestionSelectList" resultType="vo.BoardVO">
 		select * from board where member_mId=#{member_mId} and breply=0 order by bNum desc
 	</select>
+	
+	<!-- selectOne -->
+	<select id="selectOne" resultType="vo.BoardVO">
+		select * from board where bnum=#{bNum}
+	</select>
+	
 </mapper>

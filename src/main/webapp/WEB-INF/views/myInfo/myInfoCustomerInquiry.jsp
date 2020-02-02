@@ -95,7 +95,7 @@ th, td {
 						data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>
 							고객센터 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
 						<ul id="submenu-3" class="collapse">
-							<li><a href="mCustomerIquiry"><i
+							<li><a href="mCustomerInquiry"><i
 									class="fa fa-angle-double-right"></i> 1:1문의</a></li>
 							<li><a href="mFAQ"><i
 									class="fa fa-angle-double-right"></i> FAQ</a></li>
@@ -155,11 +155,37 @@ th, td {
 								<tbody>
 									<c:forEach var="list" items="${list}" varStatus="">
 										<tr>
-											<td style="padding-left: 0px;">[구매관련]</td>
+											<td style="padding-left: 0px;">
+												<c:choose>
+													<c:when test="${list.separation=='1'}">
+														[구매 관련]
+													</c:when>
+													<c:when test="${list.separation=='2'}">
+														[배송 관련]
+													</c:when>
+													<c:when test="${list.separation=='3'}">
+														[결제 문의]
+													</c:when>
+													<c:when test="${list.separation=='4'}">
+														[기타]
+													</c:when>
+													<c:otherwise>
+														[건의사항]
+													</c:otherwise>
+												</c:choose>
+											</td>
 											<td class="board-content"
 												style="padding-right: 0px; padding-left: 0px; text-align: left;"><a
-												href="javascript:;" onclick="BDetail()"><span
-													class="label label-success" style="margin-right: 10px;">답변완료</span>${list.bTitle}</a></td>
+												href="mBDetail?bNum=${list.bNum}">
+												<c:choose>
+													<c:when test="${list.bReply!='0'and list.bReply!='1'}">
+														<span class="label label-danger" style="margin-right: 10px;">답변완료</span>
+													</c:when>
+													<c:otherwise>
+														<span class="label label-success" style="margin-right: 10px;">답변대기중</span>
+													</c:otherwise>
+												</c:choose>
+													${list.bTitle}</a></td>
 											<td style="padding-right: 0px;">${list.bDate}</td>
 										</tr>
 									</c:forEach>

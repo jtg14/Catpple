@@ -11,7 +11,7 @@ $(function(){
     
     
 });/*end of ready*/    
-function BDetail() {
+/*function BDetail() {
 	$.ajax({
 		type:'Get',
 		url:'mBDetail',
@@ -20,3 +20,4 @@ function BDetail() {
 		} // success
 	}); // ajax	
 } // axBDetail    
+*/
