@@ -16,16 +16,18 @@ public class GoodsVO {
 	private String gcategory;
 	private String gcategory2;
 	private String ginfo;
-	private String mid;
+	private String Member_mid;
 	
-	public String getMid() {
-		return mid;
+	
+	
+	public String getMember_mid() {
+		return Member_mid;
 	}
-	
-	public void setMid(String mid) {
-		this.mid = mid;
+
+	public void setMember_mid(String member_mid) {
+		Member_mid = member_mid;
 	}
-	
+
 	public String getGcategory2() {
 		return gcategory2;
 	}
@@ -129,11 +131,14 @@ public class GoodsVO {
 	public void setGinfo(String ginfo) {
 		this.ginfo = ginfo;
 	}
+
 	@Override
 	public String toString() {
 		return "GoodsVO [gnum=" + gnum + ", gstock=" + gstock + ", gprice=" + gprice + ", gname=" + gname + ", gdate="
 				+ gdate + ", gimg1=" + gimg1 + ", gimg2=" + gimg2 + ", gimgf1=" + gimgf1 + ", gimgf2=" + gimgf2
 				+ ", gpoint=" + gpoint + ", gcategory=" + gcategory + ", gcategory2=" + gcategory2 + ", ginfo=" + ginfo
-				+ ", mid=" + mid + "]";
+				+ ", Member_mid=" + Member_mid + "]";
 	}
+	
+	
 }
