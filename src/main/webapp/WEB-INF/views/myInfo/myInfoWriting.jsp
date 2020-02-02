@@ -46,7 +46,19 @@ th, td {
 	}
 }
 </style>
+<script type="text/javascript">
+$(function(){
+	if($('#sel1>option').val()=='1'){
+		
+	}
+	
+	
+	
+})//ready
 
+
+
+</script>
 </head>
 <body class="font-Jua">
 
@@ -111,7 +123,7 @@ th, td {
 						data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>
 							고객센터 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
 						<ul id="submenu-3" class="collapse">
-							<li><a href="mCustomerIquiry"><i
+							<li><a href="mCustomerInquiry"><i
 									class="fa fa-angle-double-right"></i> 1:1문의</a></li>
 							<li><a href="mFAQ"><i
 									class="fa fa-angle-double-right"></i> FAQ</a></li>
@@ -183,11 +195,11 @@ th, td {
 											</div>
 											<div class="col-md-2 col-xs-6">
 												<div class="form-group" style="margin-top: 15px;">
-													<select class="form-control" id="sel1">
-														<option>[구매 관련]</option>
-														<option>[배송 관련]</option>
-														<option>[결제 문의]</option>
-														<option>[기타]</option>
+													<select class="form-control" id="separation" name="separation">
+														<option value="1">[구매 관련]</option>
+														<option value="2">[배송 관련]</option>
+														<option value="3">[결제 문의]</option>
+														<option value="4">[기타]</option>
 													</select>
 												</div>
 											</div>

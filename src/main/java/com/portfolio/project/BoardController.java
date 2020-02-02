@@ -19,9 +19,22 @@ public class BoardController {
 	@Autowired
 	BService service;
 	
+	@RequestMapping(value ="/mWriting")//글쓰기(모든글)
+	public ModelAndView myInfoWriting(ModelAndView model,HttpServletRequest request) {
+		model.setViewName("myInfo/myInfoWriting");
+		return model;
+	}
 	
+	@RequestMapping(value ="/mBDetail")//글상세
+	public ModelAndView myInfoBoardDetail(ModelAndView model,BoardVO vo,HttpServletRequest request) {
+		
+		vo = service.selectOne(vo);
+		model.addObject("one",vo);
+		model.setViewName("myInfo/myInfoBoardDetail");
+		return model;
+	}
 	
-	@RequestMapping(value = "/mCustomerIquiry")
+	@RequestMapping(value = "/mCustomerInquiry")
 	public ModelAndView blist(ModelAndView model, HttpServletRequest request, BoardVO vo1, MemberVO vo2) {
 		HttpSession session = request.getSession();
 		vo2 = (MemberVO)session.getAttribute("logInUser");
@@ -33,6 +46,7 @@ public class BoardController {
 	}
 	
 	
+	
 	@RequestMapping(value = "/binsert")
 	public ModelAndView binsert(ModelAndView model, BoardVO vo1, MemberVO vo2, HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -42,11 +56,11 @@ public class BoardController {
 		
 		if(service.inquiryInsert(vo1)>0) {
 	
-			model.setViewName("blist");
+			model.setViewName("redirect:mCustomerInquiry");
 			return model;
 		}else {
 
-			model.setViewName("blist");
+			model.setViewName("redirect:mCustomerInquiry");
 			return model;
 		}	
 		

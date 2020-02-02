@@ -31,5 +31,10 @@ public class BServiceImpl implements BService {
 	public ArrayList<BoardVO> suggestionSelectList(BoardVO vo) {
 		return dao.suggestionSelectList(vo);
 	}
+
+	@Override
+	public BoardVO selectOne(BoardVO vo) {
+		return dao.selectOne(vo);
+	}
 	
 }

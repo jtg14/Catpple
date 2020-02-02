@@ -33,6 +33,6 @@ public class BoardDAO {
 	}
 	
 	public BoardVO selectOne(BoardVO vo) {
-		return dao.selectOne(NS+"selctOne",vo);
+		return dao.selectOne(NS+"selectOne",vo);
 	}
 }//class

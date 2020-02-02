@@ -112,7 +112,7 @@ th, td {
 						data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>
 							고객센터 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
 						<ul id="submenu-3" class="collapse">
-							<li><a href="mCustomerIquiry"><i
+							<li><a href="mCustomerInquiry"><i
 									class="fa fa-angle-double-right"></i> 1:1문의</a></li>
 							<li><a href="mFAQ"><i
 									class="fa fa-angle-double-right"></i> FAQ</a></li>
@@ -168,18 +168,32 @@ th, td {
 									<h3 style="margin-top: 0px;">분류</h3>
 								</div>
 								<div class="col-md-4 col-xs-4">
-									<h4>[구매관련]</h4>
+									
+									<c:choose>
+										<c:when test="${one.separation=='0'}">
+											<h3 style="margin-top: 0px;">[건의 사항]</h3>
+										</c:when>
+										<c:when test="${one.separation=='1'}">
+											<h3 style="margin-top: 0px;">[구매 관련]</h3>
+										</c:when>
+										<c:when test="${one.separation=='2'}">
+											<h3 style="margin-top: 0px;">[배송 관련]</h3>
+										</c:when>
+										<c:when test="${one.separation=='3'}">
+											<h3 style="margin-top: 0px;">[결제 문의]</h3>
+										</c:when>
+										<c:when test="${one.separation=='4'}">
+											<h3 style="margin-top: 0px;">[기타]</h3>
+										</c:when>
+									</c:choose>
 								</div>
 								<div class="col-md-12 col-xs-12 detail"
 									style="min-height: 250px; font-size: 1.2em; max-height: 400px; overflow: auto; padding-top: 15px;">
-									<c:forEach begin="1" end="30">
-										얼마전에 고양이 장난감을 샀는데 손잡이부분이 깨져서 왔습니다.
-										얼마전에 고양이 장난감을 샀는데 손잡이부분이 깨져서 왔습니다.
-									</c:forEach>
+										${one.bContent}
 								</div>
 								<div class="col-md-12 col-xs-12 text-center detail"
 									style="margin-top: 20px; max-height: 350px; overflow: auto;">
-									<img src="resources/images/noBoard.png">
+									${one.bReply}
 								</div>
 								<!-- fffff -->
 							</form>

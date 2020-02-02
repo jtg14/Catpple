@@ -80,16 +80,8 @@ public class UserController {
 		model.setViewName("myInfo/myInfoWithdrawal");
 		return model;
 	}
-	@RequestMapping(value ="/mWriting")//글쓰기(모든글)
-	public ModelAndView myInfoWriting(ModelAndView model,HttpServletRequest request) {
-		model.setViewName("myInfo/myInfoWriting");
-		return model;
-	}
-	@RequestMapping(value ="/mBDetail")//글상세
-	public ModelAndView myInfoBoardDetail(ModelAndView model,HttpServletRequest request) {
-		model.setViewName("myInfo/myInfoBoardDetail");
-		return model;
-	}
+	
+	
 	@RequestMapping(value ="/sIAP")//아이디 비밀번호 찾기
 	public ModelAndView searchIDAndPW(ModelAndView model,HttpServletRequest request) {
 		model.setViewName("logIn/searchIDAndPW");
