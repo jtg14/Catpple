@@ -23,61 +23,96 @@ input[type=number]::-webkit-outer-spin-button {
 }	
 </style>
 <script type="text/javascript">
-	var firstList = new Array("사료","캔/간식","장난감","화장실/매트");
-	var secondList1 = new Array("고양이처방식","노묘용","성묘용","자묘용","전연령용");
-	var secondList2 = new Array("간식캔","주식캔","스낵","건조간식","통살");
-	
+// 대분류
+var firstList = new Array("사료","캔/간식","장난감","화장실/매트");
+
+// 소분류
+
+var secondList1 = new Array("고양이처방식","노묘용","성묘용","자묘용","전연령용");
+var secondList2 = new Array("간식캔","주식캔","스낵","건조간식","통살");
+var secondList3 = new Array("낚싯대", "막대", "인형/쿠션", "공", "박스/하우스");
+var secondList4 = new Array("하우스화장실", "평판화장실", "화장실매트","거름망","배변패드");
+// 페이지 로딩시 자동 실행  
 window.onload = function(){
-	//Select Tag
-	var v_sidoSelect = document.getElementById("sidoSelect");
-	
-	for(i=0; i<firstList.length; i++0){
-		//새로운 <option value=''>값</option> 태그 생성
-		var optionEl = document.createElement("option");
-		
-		//option태그에 value 속성값으로 저장
-		optionEl.value = firstList[i];
-		//text 문자열을 새로 생성한 <option>태그의 값으로 추가
-		optionEl.appendChild(document.createTextNode(firstLists[i]));
-		
-		//만들어진 option태그를 <select>태그에 추가
-		v_sidoSelect.appendChild(optionEl);
-	}
-	
-	//Select Tag
-	var v_gugunSelect = document.getElementById("gugunSelect");
-	//태그감추기
-	v_gugunSelect.style.display="none";
-	//Select Tag
-	var v_gugunSelect = document.getElementById("lastSelect");
-	//태그 감추기
-	v_gugunSelect.style.display="none";
-}
-//대분류 선택시
-function changeSidoSelect(){
-	//Select Tag
-	var v_sidoSelect = document.getElementById("sidoSelect");
-	var idx = v_sidoSelect.options.selectedIndex;
-	
-	if(idx<1 && idx>4){
-		return;
-	}
-	//소분류 생성
-	gugunSelectFill(idx);
+    var v_firstSelect = document.getElementById("firstSelect"); // SELECT TAG
+      
+    for (i =0 ; i<firstList.length; i++){
+        // 새로운 <option value=''>값</option> 태그 생성
+        var optionEl = document.createElement("option");
+  
+        // option태그에 value 속성 값으로 저장
+        optionEl.value = firstList[i];
+      
+        // text 문자열을 새로 생성한 <option> 태그의 값으로 추가
+        optionEl.appendChild (document.createTextNode(firstList[i]));
+      
+        // 만들어진 option 태그를 <select>태그에 추가
+        v_firstSelect.appendChild(optionEl);
+    }
+  
+    var v_secondSelect = document.getElementById("secondSelect"); // SELECT TAG
+    v_secondSelect.style.display = "none";  // 태그 감추기
+  
 }
 
-function gugunSelectFill(idx){
-	//Select Tag
-	var v_gugunSelect = document.getElementById("gugunSelect");
-	
-	var data = null;
-	
-	if(idx == 0){
-		//중분류 태그감추기
-		v_gugunSelect.style.display = "none";
-		return;
-	}
-	
+// 대분류 선택시
+function changeFirstSelect(){
+    var v_firstSelect = document.getElementById("firstSelect"); // SELECT TAG
+    var idx = v_firstSelect.options.selectedIndex;     // 선택값 0 ~ 4
+     
+
+    if (idx < 1 && idx > 4){
+        return;
+    }
+ 
+    secondSelectFill(idx);   // 중분류 생성
+}
+
+
+function secondSelectFill(idx){
+    var v_secondSelect = document.getElementById("secondSelect"); // SELECT TAG
+ 
+    var data = null;
+  
+    if (idx == 0) {
+        v_secondSelect.style.display = "none";  // 중분류 태그 감추기
+        return;
+    }
+  
+    if (idx == 1){
+     data = secondList1
+   
+     }
+    if (idx == 2){
+     data = secondList2
+     
+     }
+    if (idx == 3){
+    	data = secondList3
+    }
+    if (idx == 4 ){
+    	data = secondList4
+    }
+
+    v_secondSelect.innerHTML = "";  // 태그 출력
+      
+    for (i =0 ; i<data.length; i++){ 
+        // 새로운 <option value=''>값</option> 태그 생성
+        var optionEl = document.createElement("option");
+  
+        // value 속성 태그에 저장
+        optionEl.value = data[i];
+      
+        // text 문자열을 새로 생성한 <option> 태그에 추가
+        optionEl.appendChild (document.createTextNode(data[i]));
+      
+        // 만들어진 option 태그를 <select>태그에 추가
+        v_secondSelect.appendChild(optionEl);
+    }
+  
+v_secondSelect.style.display = ""; // 중분류 태그 출력
+  
+
 }
 </script>
 <body class="font-Jua">
@@ -233,43 +268,16 @@ function gugunSelectFill(idx){
 										</div>
 										<!-- Grid column -->
 										<div class="col-md-3 col-xs-12">
-											<!-- Material input -->
-											<div class=" form-group">
-												<label for="goodsCategory">대분류</label>
-												<select class="form-control" id="goodsCategory" name="gcategory">
-													<option value="사료">사료</option>
-													<option value="캔/간식">캔/간식</option>
-													<option value="장난감">장난감</option>
-													<option value="화장실/매트">화장실/매트</option>
-												</select>
-											</div>
+											<select class="form-control" id="firstSelect" name="gcategory" onChange="changeFirstSelect();">
+        										<option value="">대분류</option>
+    										</select>
+  										</div>
+  										<div class="col-md-3 col-xs-12">
+    										<select class="form-control" name="gcategory2" id="secondSelect">
+        										<option value="">소분류</option>
+    										</select>
 										</div>
 										
-										<c:choose>
-											<c:when test="${cate1=='사료'}">
-												<div class="col-md-3 col-xs-12">
-												<!-- Material input -->
-													<div class=" form-group">
-														<label for="goodsCategory">중분류</label> <select
-															class="form-control" id="goodsCategory" name="gcategory">
-															<option value="">대분류선택</option>
-													</select>
-													</div>
-												</div>
-											</c:when>
-											<c:otherwise>
-												<!-- Grid column -->
-												<div class="col-md-3 col-xs-12">
-												<!-- Material input -->
-													<div class=" form-group">
-														<label for="goodsCategory">소분류</label> <select
-															class="form-control" id="goodsCategory" name="gcategory">
-															<option value="">대분류선택</option>
-													</select>
-													</div>
-												</div>
-											</c:otherwise>
-										</c:choose>
 										<!-- Grid column -->
 									</div>
 									<!-- /row2  -->
