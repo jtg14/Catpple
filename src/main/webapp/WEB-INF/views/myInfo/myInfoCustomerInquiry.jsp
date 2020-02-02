@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
+	<title>1:1 문의 | Catpple</title>
 <style>
 .board-content {
 	width: 45%;
