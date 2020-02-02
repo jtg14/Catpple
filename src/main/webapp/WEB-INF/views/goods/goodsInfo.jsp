@@ -15,28 +15,29 @@
 </head>
 <body class="font-Jua">
 <jsp:include page="../header.jsp"></jsp:include>
+	<c:set var="goods" value="${goods}"/>
 	<div class="container">
 		<div class="jumbotron" 
 		style="border:5px solid crimson;border-radius:10px;">	
 			<div class="row">
 				<div class="thumbnail col-md-4">
-					<img class="goods_image" src="resources/images/stick1.jpg">
+					<img class="goods_image" src="resources/sellerInfo/${company.mId}/${goods.gimg1}">
 				</div>
 				<div class="col-md-8">
 					<h3 class="col-md-12">
-						<span class="brand_ame">GINIPET</span>
+						<span class="brand_ame">${company.mName}</span>
 						 <span class="item_Name">
-						 더 홀리스틱 홍삼&국내산오리 5.2kg
+						${goods.gname}
 						 </span>
 					</h3>
 					<div class="col-md-12">
-						<span>구매 1,444</span> <span class="divider">|</span> 
-						<span>(남은수량 52,449 개)</span>
+						<span>구매 0</span> <span class="divider">|</span> 
+						<span>(남은수량${goods.gstock} 개)</span>
 					</div>
 					<div class="col-md-12">
 						<strong class="discount-persentage">0<span>% Off</span></strong>
 						<div class="price_inner">
-							<span><s class="before-price">69,000<span>원</span></s></span> <strong>69,000<span>원</span></strong>
+							<span><s class="before-price">${goods.gprice}<span>원</span></s></span> <strong>${goods.gprice }<span>원</span></strong>
 						</div>
 					</div>
 					
@@ -45,17 +46,25 @@
 							<label for="exampleFormControlSelect1">옵션선택 select</label>
 							 <select class="form-control" id="exampleFormControlSelect1" value="옵션명">
 								<option>옵션명</option>
-								<option>더 홀리스틱 홍삼&국내산오리 5.2kg</option>
-								<option>더 홀리스틱 홍삼&국내산오리 10.4kg</option>
+								<option>${goods.gname}</option>
 							</select>
 						</div>	
 					</div>
 				</div>
+				<script>
+				function Choose(){
+				var name = ${goods.gname};
+					if($('#exampleFormControlSelect1').val() == name){
+						return true;
+					}
+				}
+				</script>
+				<c:if test="return Choose()">
 			<div class="col-md-10 col-md-offset-1 m-auto">
                 <div class="containter">
                     <div class="panel panel-primary">
-                      <div class="panel-heading">더 홀리스틱 홍삼&국내산오리 5.2kg
-                      <span class="btn pull-right" role="button" style="
+                      <div class="panel-heading">${goods.gname}
+                      <span class="btn pull-right" role="button" onClick="" style="
 								    height: 22px;
 								    padding-top: 0px;
 								    padding-bottom: 0px;">x</span></div>
@@ -73,6 +82,7 @@
                     </div>
                 </div>
             </div>
+            </c:if>
             
 			</div> <!-- end of row -->
 			
@@ -80,7 +90,7 @@
                <div class="container" style="border-bottom: 2px;border-color: crimson;">
                        <div class="col-lg-12" style="text-align:center;">
                        <div class="col-lg-3"><h1>총 금액</h1></div>
-                       <div class="col-lg-9"><h1>9,999,999 원</h1></div></div>
+                       <div class="col-lg-9"><h1>${goods.gprice} 원</h1></div></div>
                    </div>
 	       </div>
 			<div class="row">
@@ -105,7 +115,7 @@
 		<div id="myTabContent" class="tab-content container">
 		
 			  <div class="tab-pane fade active in" id="home">
-				<img class="img-responsive col-md-12" src="resources/images/stick2.jpg">
+				<img class="img-responsive col-md-12" src="resources/sellerInfo/${company.mId}/${goods.gimg2}">
 			  </div> <!-- end of goodsDetail -->
 			  
 			  <div class="tab-pane fade" id="profile">
