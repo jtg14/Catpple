@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>주문취소 | Catpple</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="resources/custom/addCSS/myroom.css">
@@ -131,7 +132,7 @@ th, td {
 				<!-- Page Heading -->
 				<div class="row" id="main"
 					style="min-height: 1000px; margin-top: 120px;">
-					<div class="col-sm-12 col-md-12 well" id="content">
+					<div class="col-sm-12 col-md-12" id="content" style="background-color:white;">
 						<!-- 메인공간 -->
 
 						<div class="col-md-10 col-xs-12 text-center">
