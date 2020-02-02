@@ -4,7 +4,7 @@
 <%@ page session="false"%>
 <html>
 <head>
-<title>상품검색 결과 | The Cat House</title>
+<title>상품검색 결과 | Catpple</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -70,7 +70,7 @@ height:100px;
          <c:forEach var="list" items="${searchResult}">
             <div class="col-md-3 col-xs-6">
                <div class="card" >
-                  <a href="#"> <img class="img" src="resources/sellerInfo/${list.member_mid}/${list.gimg1}"></a>
+                  <a href="gDetail?number=${list.gnum}"> <img class="img" src="resources/sellerInfo/${list.member_mid}/${list.gimg1}"></a>
                   <div class="goods-title">${list.gname}</div>
                   <div>
                      <font style="color: crimson; font-weight: bold; font-size: large;">${list.gprice}원</font><br>
@@ -90,15 +90,6 @@ height:100px;
          <c:if test="${searchResult eq null}">
          		<h2>"${searchWord}"에 대한 검색 결과가 없습니다.</h2>
          </c:if>
-      </div>
-      <div align="center" style="margin-top: 3%;">
-         <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-         </ul>
       </div>
    </div>
 	

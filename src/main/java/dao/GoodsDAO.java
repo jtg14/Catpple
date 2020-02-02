@@ -21,4 +21,7 @@ public class GoodsDAO {
 	public ArrayList<GoodsVO> goodsSearch(String keyword){
 		return (ArrayList)dao.selectList(NS+"goodsSearch",keyword);
 	}
+	public GoodsVO goodsDetail(GoodsVO vo) {
+		return dao.selectOne("goodsDetail",vo);
+	}
 }

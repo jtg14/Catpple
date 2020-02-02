@@ -42,4 +42,7 @@ public class MemberDAO {
 	public int mdelete(MemberVO vo) {
 		return dao.update(NS+"mdelete", vo);
 	}
+	public MemberVO findCompany(MemberVO vo) {
+		return dao.selectOne(NS+"findCompany",vo);
+	}
 }

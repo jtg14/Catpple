@@ -36,4 +36,8 @@ public class MServiceImpl implements MService {
 	public int mdelete(MemberVO vo) {
 		return dao.mdelete(vo);
 	}
+	@Override
+	public MemberVO findCompany(MemberVO vo) {
+		return dao.findCompany(vo);
+	}
 }

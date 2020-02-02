@@ -15,4 +15,6 @@ public interface MService {
 	MemberVO phoneCheck(MemberVO vo);
 	
 	MemberVO login(MemberVO vo);
+	
+	MemberVO findCompany(MemberVO vo);
 }

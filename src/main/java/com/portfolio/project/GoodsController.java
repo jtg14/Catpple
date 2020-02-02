@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import business.GService;
+import business.MService;
 import vo.GoodsVO;
 import vo.MemberVO;
 
@@ -21,7 +22,8 @@ public class GoodsController {
 	
 	@Autowired
 	GService service;
-	
+	@Autowired
+	MService mservice;
 	@RequestMapping(value = "goodsInsert", method = RequestMethod.POST)
 	public ModelAndView goodsInsert(HttpServletRequest request, ModelAndView mv, GoodsVO vo) {
 		System.out.println("체크1");
@@ -62,6 +64,18 @@ public class GoodsController {
 			model.addObject("searchResult",list);
 			model.addObject("searchWord",searchWord);
 			model.setViewName("goods/goodsSearch");
+		return model;
+	}
+	@RequestMapping(value="/gDetail")
+	public ModelAndView goodsDetail(ModelAndView model,GoodsVO vo,HttpServletRequest request) {
+		vo.setGnum(Integer.parseInt(request.getParameter("number")));
+		vo =service.goodsDetail(vo);
+		MemberVO member = new MemberVO();
+		member.setmId(vo.getMember_mid());
+		member = mservice.findCompany(member);
+		model.addObject("company",member);
+		model.addObject("goods",vo);
+		model.setViewName("goods/goodsInfo");
 		return model;
 	}
 }
