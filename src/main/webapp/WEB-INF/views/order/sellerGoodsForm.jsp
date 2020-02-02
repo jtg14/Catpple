@@ -346,8 +346,7 @@ $(function(){
 						<div class="col-md-8 col-md-offset-1 col-xs-12"
 							style="border: 5px solid crimson; border-radius: 10px;">
 							<h2 style="margin-top: 5%; text-align: center">상품 등록</h2>
-							<form action="goodsInsert" method="post"
-								enctype="multipart/form-data">
+							<form action="goodsInsert" method="post" enctype="multipart/form-data">
 								<div style="margin: 10px 30px;">
 									<!-- Row1 아이디/이름-->
 									<div class="row">
@@ -479,7 +478,7 @@ $(function(){
 									</div>
 									<!-- /row6 -->
 
-									<button type="submit" class="btn btn-primary btn-md" id="gis" disabled="disabled">상품
+									<button type="submit" class="btn btn-primary btn-md" id="gis" disabled="disabled" onclick="">상품
 										등록</button>
 								</div>
 							</form>
