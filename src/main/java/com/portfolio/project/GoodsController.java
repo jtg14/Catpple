@@ -41,12 +41,13 @@ public class GoodsController {
 				try {
 					multipartFile1.transferTo(file1);
 					multipartFile2.transferTo(file2);
+					mv.addObject("goodsInsertInfo","상품이 등록되었습니다!");
 				}catch(Exception e) {
-					System.out.println("파일업로드 실패 : "+e.toString());
+					mv.addObject("goodsInsertInfo","파일업로드 실패!");
 				}
 			}
 		}
-		mv.setViewName("index");
+		mv.setViewName("order/sellerOrderList");
 		return mv;
 	}
 	@RequestMapping(value="/gSResult")
