@@ -124,15 +124,15 @@
 				<!-- Page Heading -->
 				<div class="row" id="main"
 					style="min-height: 1000px; margin-top: 120px;">
-					<div class="col-sm-12 col-md-12 well" id="content">
+					<div class="col-sm-12 col-md-10" id="content" style="background-color:white;">
 						<!-- 메인 공간 -->
 
 
-						<div class="col-md-10 col-xs-12">
-							<h4 style="text-align: center;">주문 /배송 조회</h4>
+						<div class="col-md-12 col-xs-12">
+							<h2>주문 /배송 조회</h2>
 							<div class="col-md-12 col-xs-12"
-								style="border: 2px solid crimson; border-radius: 10px; padding: 20px 10px; text-align: center;">
-								<label style="width: 100%;">현재 적립예정포인트는 <b
+								style="border: 5px solid crimson; border-radius: 10px; padding: 20px 10px; text-align: center;">
+								<label style="width: 100%;font-size:1.2em;">현재 적립예정포인트는 <b
 									style="color: crimson;">900점</b>입니다. 상품 평가 완료시 포인트가 적립 됩니다.<br>
 									주문 번호를 클릭하면 해당 주문 목록을 볼 수 있습니다.
 								</label>
@@ -149,8 +149,8 @@
 										<tbody>
 											<tr>
 												<td>2020.01.06</td>
-												<td><a href="#" data-toggle="collapse"
-													data-target="#demo">C20011578243517541</a></td>
+												<td style=",max-width:35%;"><a href="#" data-toggle="collapse"
+													data-target="#demo">123456789</a></td>
 												<td>1,200,000원</td>
 											</tr>
 
