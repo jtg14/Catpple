@@ -89,17 +89,17 @@
 									<div class="col col-xs-6 col-md-3">
 										<ul class="nav flex-column">
 											<li class="nav-item"><span
-												class="nav-link text-bold first-class">사료</span></li>
+												class="nav-link text-bold first-class"><a href="gSResult?search=사료">사료</a></span></li>
 											<li class="nav-item"><a
-												class="nav-link active second-class" href="#">고양이처방식</a></li>
+												class="nav-link active second-class" href="gSResult?search=고양이처방식">고양이처방식</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">노묘용</a></li>
+												href="gSResult?search=노묘용">노묘용</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">성묘용</a></li>
+												href="gSResult?search=성묘용">성묘용</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">자묘용</a></li>
+												href="gSResult?search=자묘용">자묘용</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">전연령용</a></li>
+												href="gSResult?search=전연령">전연령용</a></li>
 										</ul>
 									</div>
 									<!-- /.col  -->
@@ -107,17 +107,17 @@
 									<div class="col col-xs-6 col-md-3">
 										<ul class="nav flex-column">
 											<li class="nav-item"><span
-												class="nav-link text-bold first-class">캔,간식</span></li>
+												class="nav-link text-bold first-class"><a href="gSResult?search=캔">캔,간식</a></span></li>
 											<li class="nav-item"><a
 												class="nav-link active second-class" href="#">간식캔</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">주식캔</a></li>
+												href="gSResult?search=주식캔">주식캔</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">스낵</a></li>
+												href="gSResult?search=스낵">스낵</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">건조간식</a></li>
+												href="gSResult?search=건조간식">건조간식</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">통살</a></li>
+												href="gSResult?search=통살">통살</a></li>
 										</ul>
 									</div>
 									<!-- /.col  -->
@@ -125,17 +125,17 @@
 									<div class="col col-xs-6 col-md-3">
 										<ul class="nav flex-column">
 											<li class="nav-item"><span
-												class="nav-link text-bold first-class">장난감</span></li>
+												class="nav-link text-bold first-class"><a href="gSResult?search=장난감">장난감</a></span></li>
 											<li class="nav-item"><a
 												class="nav-link active second-class" href="#">낙싯대</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">막대</a></li>
+												href="gSResult?search=막대">막대</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">인형/쿠션</a></li>
+												href="gSResult?search=인형/쿠션">인형/쿠션</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">공</a></li>
+												href="gSResult?search=공">공</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">박스/하우스</a></li>
+												href="gSResult?search=박스/하우스">박스/하우스</a></li>
 										</ul>
 									</div>
 									<!-- /.col  -->
@@ -144,17 +144,17 @@
 									<div class="col col-xs-6 col-md-3">
 										<ul class="nav flex-column">
 											<li class="nav-item"><span
-												class="nav-link text-bold first-class">화장실/매트</span></li>
+												class="nav-link text-bold first-class"><a href="gSResult?search=화장실">화장실/매트</a></span></li>
 											<li class="nav-item"><a
 												class="nav-link active second-class" href="#">하우스화장실</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">평판화장실</a></li>
+												href="gSResult?search=평판화장실">평판화장실</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">화장실매트</a></li>
+												href="gSResult?search=화장실매트">화장실매트</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">거름망</a></li>
+												href="gSResult?search=거름망">거름망</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
-												href="#">배변패드</a></li>
+												href="gSResult?search=배변패드">배변패드</a></li>
 										</ul>
 									</div>
 									<!-- /.col  -->
@@ -172,7 +172,7 @@
 					<form class="navbar-form" method="post" action="gSResult" style="margin-top: 0px; margin-left: 0px; margin-right: 0px;">
 						<div class="form-group">
 							<input type="text" name="search" class="form-control input-lg"
-								placeholder="원하시는 상품명 또는 가격대 검색  예) 0~0"
+								placeholder="원하시는 상품명"
 								style="border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-color: crimson;">
 						</div>
 						<div class="form-group">
