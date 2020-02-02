@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
+	<title>건의 사항 | Catpple</title>
 <style>
 .board-content {
 	width: 45%;
@@ -134,7 +135,7 @@ th, td {
 				<!-- Page Heading -->
 				<div class="row" id="main"
 					style="min-height: 1000px; margin-top: 120px;">
-					<div class="col-sm-12 col-md-12 well" id="content">
+					<div class="col-sm-12 col-md-12" id="content">
 						<!-- 메인 공간 -->
 
 						<div class="col-md-10 col-xs-12">
