@@ -59,9 +59,6 @@ public class GoodsController {
 	public ModelAndView goodsSearchResult(ModelAndView model,GoodsVO vo,HttpServletRequest request) {
 		String searchWord = request.getParameter("search");
 		ArrayList<GoodsVO> list = service.goodsSearch(searchWord);
-		for(GoodsVO test : list) {
-			System.out.println(test);
-		}
 			model.addObject("searchResult",list);
 			model.addObject("searchWord",searchWord);
 			model.setViewName("goods/goodsSearch");

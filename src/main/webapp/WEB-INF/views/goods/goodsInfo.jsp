@@ -21,7 +21,6 @@
 	<div class="container">
 		<div class="jumbotron"
 			style="border: 5px solid crimson; border-radius: 10px; background-color: white;">
-			<form action="" method="post">
 				<div class="row">
 					<div class="thumbnail col-md-4 col-xs-12">
 						<img class="goods_image"
@@ -88,16 +87,16 @@
 									style="font-size: 1.4em;"
 									onclick="return purchase('${logInUser.mGrade}')">구매하기</button>
 							</div>
+			
 							<div class="col-md-2 col-xs-6">
-								<button type="submit" class="btn btn-danger btn-lg"
+								<button class="btn btn-danger btn-lg"
 									style="font-size: 1.4em;"
-									onclick="return goCart('${logInUser.mGrade}')">장바구니</button>
+									onclick="goCart('${logInUser.mGrade}')">장바구니</button>
 							</div>
 						</div>
 					</div>
 					<!-- end of row-2 -->
 				</div>
-			</form>
 			<!-- end of jumbotron -->
 			<div class="tabs-container-style-1">
 				<div class="col-md-12 col-xs-12"
