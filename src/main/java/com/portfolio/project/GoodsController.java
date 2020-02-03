@@ -26,7 +26,6 @@ public class GoodsController {
 	MService mservice;
 	@RequestMapping(value = "goodsInsert", method = RequestMethod.POST)
 	public ModelAndView goodsInsert(HttpServletRequest request, ModelAndView mv, GoodsVO vo) {
-		System.out.println("체크1");
 		MemberVO mvo = new MemberVO();
 		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 		vo.setMember_mid(mvo.getmId());
@@ -35,9 +34,10 @@ public class GoodsController {
 		MultipartFile multipartFile2 = vo.getGimgf2();
 		File file1 = new File(uploadPath, multipartFile1.getOriginalFilename());
 		File file2 = new File(uploadPath, multipartFile2.getOriginalFilename());
-		
-		vo.setGimg1(multipartFile1.getOriginalFilename());
-		vo.setGimg2(multipartFile2.getOriginalFilename());
+		String str1 = multipartFile1.getOriginalFilename();
+		String str2 = multipartFile2.getOriginalFilename();
+		vo.setGimg1(str1.substring(0,str1.lastIndexOf(".")));
+		vo.setGimg2(str2.substring(0,str2.lastIndexOf(".")));
 		int cnt = service.goodsInsert(vo);
 		if(cnt>0) {
 			if(!multipartFile1.isEmpty() && !multipartFile2.isEmpty()) {
@@ -50,8 +50,9 @@ public class GoodsController {
 				}
 			}
 		}
-		mv.setViewName("order/sellerOrderList");
-		System.out.println("체크2");
+		ArrayList<GoodsVO> list = service.myGoodsList(vo);
+		mv.addObject("myGoodsList", list);
+		mv.setViewName("order/sellerRegisterdGoods");
 		return mv;
 	}
 	@RequestMapping(value="/gSResult")
@@ -77,5 +78,14 @@ public class GoodsController {
 		model.addObject("goods",vo);
 		model.setViewName("goods/goodsInfo");
 		return model;
+	}
+	@RequestMapping(value ="/sRGoods")//내가 등록한 상품
+	public ModelAndView sellerRegisterdGoods(ModelAndView mv, HttpServletRequest request, GoodsVO vo) {
+		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+		vo.setMember_mid(mvo.getmId());;
+		ArrayList<GoodsVO> list = service.myGoodsList(vo);
+		mv.addObject("myGoodsList", list);
+		mv.setViewName("order/sellerRegisterdGoods");
+		return mv;
 	}
 }
