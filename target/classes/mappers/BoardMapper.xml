@@ -31,11 +31,16 @@
 	
 	<!-- inquirySelectListForManager -->
 	<select id="inquirySelectListForManager" resultType="vo.BoardVO">
-		select * from board where bReply=1
+		select * from board where bReply!='0'
 	</select>
 	
 	<!-- suggestionSelectListForManager -->
 	<select id="suggestionSelectListForManager" resultType="vo.BoardVO">
-		select * from board where bReply=0
+		select * from board where bReply='0'
 	</select>
+	
+	<!-- bReplyUpdate -->
+	<update id="bReplyUpdate">
+		update board set bReply=#{bReply} where bNum=#{bNum}
+	</update>
 </mapper>

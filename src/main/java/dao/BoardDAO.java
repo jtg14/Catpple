@@ -44,4 +44,8 @@ public class BoardDAO {
 		return (ArrayList)dao.selectList(NS+"suggestionSelectListForManager");
 	}
 	
+	public int bReplyUpdate(BoardVO vo) {
+		return dao.insert(NS+"bReplyUpdate",vo);
+	}
+	
 }//class
