@@ -171,7 +171,6 @@ padding-right: 0px;
 										</div>
 										<div class="col-md-6 col-xs-9 second-div">
 											<h4>${gl.gname}</h4>
-											<label style="font-size: x-small;">${gl.ginfo}</label>
 										</div>
 									</div>
 
