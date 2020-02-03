@@ -81,7 +81,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> 
 					<div class="row">
 						<div class="col-md-12 col-xs-12">
 							<div class="col-md-2 col-md-offset-4 col-xs-6">
