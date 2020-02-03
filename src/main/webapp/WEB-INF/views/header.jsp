@@ -47,7 +47,7 @@
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">나의 메뉴
 							<span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu" style="width:250px;left:87%;top:50px;">
+						<ul class="dropdown-menu" role="menu" style="width:100px;left:91%;top:50px;">
 							<li><a href="mroom"><span class="user-status" style="margin-lift:10px;">●</span><strong
 									style="margin-left: 20px;">${logInUser.mName}</strong>&nbsp;님 (마이룸)</a></li>
 							<li><a href="mCart">장바구니<span class="badge"
@@ -109,7 +109,7 @@
 											<li class="nav-item"><span
 												class="nav-link text-bold first-class"><a href="gSResult?search=캔">캔,간식</a></span></li>
 											<li class="nav-item"><a
-												class="nav-link active second-class" href="gSResult?search=간식">간식캔</a></li>
+												class="nav-link active second-class" href="#">간식캔</a></li>
 											<li class="nav-item"><a class="nav-link second-class"
 												href="gSResult?search=주식캔">주식캔</a></li>
 											<li class="nav-item"><a class="nav-link second-class"

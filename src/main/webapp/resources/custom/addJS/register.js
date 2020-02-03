@@ -172,7 +172,6 @@ $(function()
    $('#id').focus(function(){
 		$('#signUpbtn').addClass('disabled');
    });
-
  });// end of ready
 function signUpGo(){
 	if($('input:checkbox[id="defaultUnchecked"]').is(":checked") == false){
@@ -188,29 +187,4 @@ function signUpGo(){
 		   alert('회원가입성공!');
 		   return true;
 	   }
-}
-function purchase(grade){
-	if(grade == null){
-		alert('로그인이 필요한 서비스입니다.');
-		window.location.href = 'logInf';
-		return false;
-	}else if(grade == 'S'){
-		alert('판매자로 등록된 계정은 구매할수없습니다.');
-		return false;
-	}else {
-		return true;
-	}
-}
-function goCart(grade){
-	if(grade == null){
-		alert('로그인이 필요한 서비스입니다.');
-		window.location.href = 'logInf';
-		return false;
-	}else if(grade == 'S'){
-		alert('판매자로 등록된 계정은 장바구니를 이용 할 수 없습니다.');
-		return false;
-	}else {
-		return true;
-	}
-	
 }
