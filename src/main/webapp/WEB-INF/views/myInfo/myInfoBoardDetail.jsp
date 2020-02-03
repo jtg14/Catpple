@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
+	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 <title>myInfoExpectedPoints</title>
 <style>
 .item-size {
@@ -61,14 +62,29 @@ th, td {
 </style>
 
 <script>
-function replyArea(){
-	if($('#replyArea').css('display')=="none"){
-		$('#replyArea').show();
-	}else{
-		$('#replyArea').hide();
-	}
+$(function(){
 	
-}//replyArea()
+	//답변하기 버튼 클릭시
+	$('#replyButton').click(function(){
+		alert('하하');
+		var bReply = $('#replyArea').val();
+		var bNum = ${one.bNum}
+		$.ajax({
+			type:'Post',
+			url:'bReplyUpdate',
+			data:{
+				bReply:bReply,
+				bNum:bNum
+			}
+			
+		});//ajax
+		
+		
+	});//replyButton
+	
+	
+	
+});//ready
 
 </script>
 
@@ -234,16 +250,15 @@ function replyArea(){
 									<div class="col-md-2 col-xs-12 text-left content" style="color:crimson;"><h4>답변내용</h4></div>
 									<div class="col-md-10 col-xs-12" style="margin-top:10px;">
 									<c:choose>
+									
 										<c:when test="${one.bReply!='0' and one.bReply!='1'}">
-											${one.bReply}
-										</c:when>
-										<c:when test="">
 											<div>
-												<input class="" type="text" id="replyArea" name="replyArea" style="display:none;" >
+												${one.bReply}
 											</div>
 										</c:when>
+									
 										<c:otherwise>
-											등록된 답변이 없습니다.
+											<textarea id="replyArea" rows="10" cols="20" style="width:100%;"></textarea>	
 										</c:otherwise>
 									</c:choose>
 									</div> 
@@ -252,9 +267,11 @@ function replyArea(){
 								
 								<!-- fffff --> 	
 							</form>
-							<c:if test="${logInUser.mGrade=='a'}">
-										<button class="btn btn-primary pull-right" style="margin-top:10px;" onclick="replyArea()" >답변하기</button>
-								</c:if>
+							<c:if test="${logInUser.mGrade=='a'and one.bReply=='1'}">
+				
+										<button id="replyButton" class="btn btn-primary pull-right"  style="margin-top:10px;">답변하기</button>
+							
+							</c:if>
 						</div>
 					</div>
 				</div>
@@ -267,7 +284,7 @@ function replyArea(){
 	<!-- /#wrapper -->
 	
 
-<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
+
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>
 </body>
