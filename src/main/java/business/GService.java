@@ -10,5 +10,7 @@ public interface GService {
 	
 	ArrayList<GoodsVO> goodsSearch(String keyword);
 	
+	ArrayList<GoodsVO> myGoodsList(GoodsVO vo);
+	
 	GoodsVO goodsDetail (GoodsVO vo);
 }

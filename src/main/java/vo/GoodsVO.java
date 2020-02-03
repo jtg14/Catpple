@@ -15,7 +15,6 @@ public class GoodsVO {
 	private int gpoint;
 	private String gcategory;
 	private String gcategory2;
-	private String ginfo;
 	private String Member_mid;
 	
 	
@@ -124,20 +123,11 @@ public class GoodsVO {
 		this.gcategory = gcategory;
 	}
 
-	public String getGinfo() {
-		return ginfo;
-	}
-
-	public void setGinfo(String ginfo) {
-		this.ginfo = ginfo;
-	}
-
 	@Override
 	public String toString() {
 		return "GoodsVO [gnum=" + gnum + ", gstock=" + gstock + ", gprice=" + gprice + ", gname=" + gname + ", gdate="
 				+ gdate + ", gimg1=" + gimg1 + ", gimg2=" + gimg2 + ", gimgf1=" + gimgf1 + ", gimgf2=" + gimgf2
-				+ ", gpoint=" + gpoint + ", gcategory=" + gcategory + ", gcategory2=" + gcategory2 + ", ginfo=" + ginfo
-				+ ", Member_mid=" + Member_mid + "]";
+				+ ", gpoint=" + gpoint + ", gcategory=" + gcategory + ", gcategory2=" + gcategory2 + ", Member_mid=" + Member_mid + "]";
 	}
 	
 	

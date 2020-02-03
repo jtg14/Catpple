@@ -28,11 +28,7 @@ public class OrderController {//주문성공 페이지
 		model.setViewName("order/sellerGoodsUpdateForm");
 		return model;
 	}
-	@RequestMapping(value ="/sRGoods")//내가 등록한 상품
-	public ModelAndView sellerRegisterdGoods(ModelAndView model) {
-		model.setViewName("order/sellerRegisterdGoods");
-		return model;
-	}
+	
 	@RequestMapping(value ="/sOList")//주문 요청 목록
 	public ModelAndView sellerOrderList(ModelAndView model) {
 		model.setViewName("order/sellerOrderList");

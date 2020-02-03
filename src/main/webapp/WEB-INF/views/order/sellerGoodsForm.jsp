@@ -124,12 +124,10 @@ $(function(){
 	var c_goodsName = false;
 	var c_gprice = false;
 	var c_goodsAmount = false;
-	var c_goodsInfo = false;
 	var c_uploadfilef = false;
 	var c_uploadfilef2 = false;
 	
 	//포커스아웃설정
-	$('#firstSelect').focus();
 	$('#firstSelect').focusout(function(){
 		c_firstSelect = cf_firstSelect();
 	});
@@ -144,9 +142,6 @@ $(function(){
 	});
 	$('#goodsAmount').focusout(function(){
 		c_goodsAmount = cf_goodsAmount();
-	});
-	$('#goodsInfo').focusout(function(){
-		c_goodsInfo = cf_goodsInfo();
 	});
 	$('#uploadfilef').focusout(function(){
 		c_uploadfilef = cf_uploadfilef();
@@ -186,19 +181,10 @@ $(function(){
 	}
 	function cf_goodsAmount(){
 		if($('#goodsAmount').val()!==''){
-			$('#goodsInfo').focus();
-			return true;
-		} else {
-			alert('상품수량을 입력해주세요.');
-			return false;
-		}
-	}
-	function cf_goodsInfo(){
-		if($('#goodsInfo').val()!==''){
 			$('#uploadfilef').focus();
 			return true;
 		} else {
-			alert('상품내용을 입력해주세요.');
+			alert('상품수량을 입력해주세요.');
 			return false;
 		}
 	}
@@ -223,7 +209,7 @@ $(function(){
 	}
 	function inCheck(){
 		if(c_firstSelect == true && c_goodsName == true && c_gprice == true && c_goodsAmount == true
-		&& c_goodsInfo == true && c_uploadfilef == true && c_uploadfilef2 == true) {
+		&& c_uploadfilef == true && c_uploadfilef2 == true) {
 			$('#upfMessage2').html('상품을 등록합니다.');
 			$('#gis').attr('disabled', false);
 		} else {
@@ -445,18 +431,6 @@ $(function(){
 										</div>
 									</div>
 									<!-- /row4 -->
-
-									<!-- row5 상품 정보 -->
-									<div class="row">
-										<div class="col-md-12">
-											<label for="goodsInfo">상품 정보</label>
-											<div class="form-group">
-												<textarea rows="5" cols="50" class="form-control"
-													id="goodsInfo" name="ginfo" placeholder="상품 내용을 입력하세요."></textarea>
-											</div>
-										</div>
-									</div>
-									<!-- /row5 -->
 
 									<!-- row6 상품 이미지 -->
 									<div class="row">
