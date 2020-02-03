@@ -142,15 +142,16 @@ public class UserController {
 	}
 	@RequestMapping(value ="/logIn")//로그인진행
 	public ModelAndView logIn(ModelAndView model,MemberVO vo,HttpServletRequest request) {
-		vo.setmId(request.getParameter("id"));
-		vo.setmPw(request.getParameter("password"));
 		vo = service.login(vo);
 		if(vo != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("logInUser",vo);
 			session.setMaxInactiveInterval(60 * 60 * 2); //두시간
-			model.setViewName("index");
+			model.addObject("logIn","success");
+		}else if(vo == null){
+			model.addObject("logIn","failed");
 		}
+		model.setViewName("jsonView");
 		return model;
 	}
 	@RequestMapping(value="logOut")
@@ -183,17 +184,6 @@ public class UserController {
 		}
 		
 		model.setViewName("index");
-		return model;
-	}
-	@RequestMapping(value = "/logInCheck")
-	public ModelAndView logInCheck(ModelAndView model,MemberVO vo) {
-		vo = service.login(vo);
-		if(vo != null) {
-			model.addObject("code",true);
-		}else{
-			model.addObject("code",false);
-		}
-		model.setViewName("jasonView");
 		return model;
 	}
 }

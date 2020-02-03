@@ -60,25 +60,30 @@ function removeCommas(x) {
 function logInCheck(){
 	var id = $('#id').val();
 	var password = $('#password').val();
-	
+	if(id == ''){
+		alert('아이디를 입력 해주세요.');
+	}else if (password == ''){
+		alert('비밀번호를 입력 해주세요.');
+	}else{
 	$.ajax({
 		type:'Post',
-		url:'logInCheck',
+		url:'logIn',
 		data:{
 			mId:id,
 			mPw:password
 		},
 		success:function(data){
-			if(data.code == true){
-				alert('환영합니다'+id+'님');
-				return true;
-			}else if(data.code == false){
-				alert('등록 된 정보와 일치하지 않습니다.');
-				return false;
+			if(data.logIn == 'success'){
+				alert('환영합니다. '+id+' 님');
+				window.location.href = 'home';
+			}else if(data.logIn == 'failed'){
+				alert('등록 된 정보와 일치하지 않거나 \n\n 시스템에 없는 계정 입니다.');
+				$('#id').focus();
+				window.location.href = 'logInf';
 			}
-			return false;
-		}
-	});
-	return false;
+			}
+		});
+	}
+	
 }
 
