@@ -73,7 +73,6 @@
 		<div class="col-md-offset-4 col-md-4 col-xs-12 text-center">
 			<div class="container col-md-12"
 				style="border: 5px solid crimson; border-radius: 10px; padding: 20px;">
-				<form action="logIn" method="post">
 					<div class="col-md-12 col-xs-12 text-center">
 						<input class="form-control input-sm" type="text" placeholder="아이디" name="id" id="id">
 						<input class="form-control input-sm" type="password" name="password" id="password"
@@ -82,9 +81,8 @@
 					<div class="col-md-6 col-xs-6 text-center"
 						style="margin-top: 10px;">
 						<button class="btn loginbtn" type="submit"
-							style="height: 80px; padding-left: 0px; padding-right: 0px;" onclick="return logInCheck()">로그인</button>
+							style="height: 80px; padding-left: 0px; padding-right: 0px;" onclick="logInCheck()">로그인</button>
 					</div>
-				</form>
 				<div class="col-md-6 col-xs-6 text-center"
 					style="margin-top: 10px; padding-left: 0px; padding-right: 0px;">
 					<div class="col-md-12 col-xs-12" style="margin-bottom: 10px;">
