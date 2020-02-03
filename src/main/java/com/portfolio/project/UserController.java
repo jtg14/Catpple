@@ -150,8 +150,6 @@ public class UserController {
 			session.setAttribute("logInUser",vo);
 			session.setMaxInactiveInterval(60 * 60 * 2); //두시간
 			model.setViewName("index");
-		}else {//로그인실패
-			model.setViewName("logIn/logInForm");
 		}
 		return model;
 	}
@@ -185,6 +183,17 @@ public class UserController {
 		}
 		
 		model.setViewName("index");
+		return model;
+	}
+	@RequestMapping(value = "/logInCheck")
+	public ModelAndView logInCheck(ModelAndView model,MemberVO vo) {
+		vo = service.login(vo);
+		if(vo != null) {
+			model.addObject("code",true);
+		}else{
+			model.addObject("code",false);
+		}
+		model.setViewName("jasonView");
 		return model;
 	}
 }

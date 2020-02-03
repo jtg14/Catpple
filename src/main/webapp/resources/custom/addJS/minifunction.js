@@ -57,4 +57,28 @@ function removeCommas(x) {
     if(!x || x.length == 0) return "";
     else return x.split(",").join("");
 }
+function logInCheck(){
+	var id = $('#id').val();
+	var password = $('#password').val();
+	
+	$.ajax({
+		type:'Post',
+		url:'logInCheck',
+		data:{
+			mId:id,
+			mPw:password
+		},
+		success:function(data){
+			if(data.code == true){
+				alert('환영합니다'+id+'님');
+				return true;
+			}else if(data.code == false){
+				alert('등록 된 정보와 일치하지 않습니다.');
+				return false;
+			}
+			return false;
+		}
+	});
+	return false;
+}
 

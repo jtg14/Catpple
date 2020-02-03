@@ -14,7 +14,6 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
-
 </head>
 <body class="font-Jua">
 	<jsp:include page="../header.jsp"></jsp:include>
@@ -23,79 +22,81 @@
 		<div class="jumbotron"
 			style="border: 5px solid crimson; border-radius: 10px; background-color: white;">
 			<form action="" method="post">
-			<div class="row">
-				<div class="thumbnail col-md-4 col-xs-12">
-					<img class="goods_image"
-						src="resources/sellerInfo/${company.mId}/${goods.gimg1}">
-				</div>
-				<div class="col-md-8 col-xs-12">
+				<div class="row">
+					<div class="thumbnail col-md-4 col-xs-12">
+						<img class="goods_image"
+							src="resources/sellerInfo/${company.mId}/${goods.gimg1}">
+					</div>
+					<div class="col-md-8 col-xs-12">
 						<div class="col-md-12 col-xs-12">
 							<h3>
-								<span class="brand_ame">${company.mName}</span> 
-								<span class="item_Name"> ${goods.gname} </span>
-					</h3>
-					</div>
+								<span class="brand_ame">${company.mName}</span> <span
+									class="item_Name"> ${goods.gname} </span>
+							</h3>
+						</div>
 						<div class="col-md-12 col-xs-12">
 							<span>구매 0</span> <span class="divider">|</span> <span id="stock">(남은수량${goods.gstock}
-							개)</span>
-					</div>
-					<div class="col-md-12 col-xs-6" style="margin-top: 40px;">
-						<strong class="discount-persentage">0<span>% Off</span></strong>
-						<div class="price_inner">
-							<del>
+								개)</span>
+						</div>
+						<div class="col-md-12 col-xs-6" style="margin-top: 40px;">
+							<strong class="discount-persentage">0<span>% Off</span></strong>
+							<div class="price_inner">
+								<del>
 									<span class="before-price">${goods.gprice}</span><span
 										class="before-price">원</span>
 								</del>
 								<strong id="price">${goods.gprice}</strong><strong><span>원</span></strong>
+							</div>
 						</div>
-					</div>
 
-					<div class="col-md-3 col-xs-6" style="margin-top: 60px;">
-						<div class="input-group">
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="button" id="btn-minus">-</button>
-							</span> <input type="text" class="form-control amount_bar"
+						<div class="col-md-3 col-xs-6" style="margin-top: 60px;">
+							<div class="input-group">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button" id="btn-minus">-</button>
+								</span> <input type="text" class="form-control amount_bar"
 									maxlength="4" value="1" numberOnly id="amount1"> <span
-								class="input-group-btn">
-								<button class="btn btn-default" type="button" id="btn-plus">+</button>
-							</span>
-						</div>
-					</div>
-
-
-				</div>
-				<!-- end of row -->
-
-				<div class="row">
-					<div class="container"
-						style="border-bottom: 2px; border-color: crimson;">
-						<div class="col-lg-12" style="text-align: center;">
-							<div class="col-md-3 col-xs-12">
-								<h1>총 금액</h1>
+									class="input-group-btn">
+									<button class="btn btn-default" type="button" id="btn-plus">+</button>
+								</span>
 							</div>
-							<div class="col-md-9 col-xs-12">
+						</div>
+
+
+					</div>
+					<!-- end of row -->
+
+					<div class="row">
+						<div class="container"
+							style="border-bottom: 2px; border-color: crimson;">
+							<div class="col-lg-12" style="text-align: center;">
+								<div class="col-md-3 col-xs-12">
+									<h1>총 금액</h1>
+								</div>
+								<div class="col-md-9 col-xs-12">
 									<h1 class="text-right" id="total">
-									<fmt:formatNumber value="${goods.gprice}" pattern="#,###" /> 원
+										<fmt:formatNumber value="${goods.gprice}" pattern="#,###" />
+										원
 									</h1>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 col-xs-12">
+					<div class="row">
+						<div class="col-md-12 col-xs-12">
 							<div class="col-md-2 col-md-offset-4 col-xs-6">
 								<button type="submit" class="btn btn-danger btn-lg pull-right"
 									style="font-size: 1.4em;"
 									onclick="return purchase('${logInUser.mGrade}')">구매하기</button>
-						</div>
-						<div class="col-md-2 col-xs-6">
+							</div>
+							<div class="col-md-2 col-xs-6">
 								<button type="submit" class="btn btn-danger btn-lg"
-									style="font-size: 1.4em;" onclick="return goCart('${logInUser.mGrade}')">장바구니</button>
+									style="font-size: 1.4em;"
+									onclick="return goCart('${logInUser.mGrade}')">장바구니</button>
+							</div>
 						</div>
 					</div>
+					<!-- end of row-2 -->
 				</div>
-				<!-- end of row-2 -->
-			</div>
 			</form>
 			<!-- end of jumbotron -->
 			<div class="tabs-container-style-1">
@@ -147,21 +148,22 @@
 				</div>
 			</div>
 		</div>
-			</div>
-		<!-- end of container -->
+	</div>
+	<!-- end of container -->
 
 
 
-		
-		<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<script
-			src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
-		<script
-			src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-		<script src="resources/bootstrap/js/bootstrap.min.js"></script>
-		<script src="resources/custom/addJS/register.js"></script>
-		<div class="article">
-			<jsp:include page="../footer.jsp"></jsp:include>
-		</div>
+
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/custom/addJS/register.js"></script>
+	<script src="resources/custom/addJS/minifunction.js"></script>
+	<div class="article">
+		<jsp:include page="../footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>
