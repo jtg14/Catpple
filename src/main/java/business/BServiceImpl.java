@@ -47,6 +47,11 @@ public class BServiceImpl implements BService {
 		return dao.suggestionSelectListForManager();
 	}
 
+	@Override
+	public int bReplyUpdate(BoardVO vo) {
+		return dao.bReplyUpdate(vo);
+	}
+
 	
 	
 }
