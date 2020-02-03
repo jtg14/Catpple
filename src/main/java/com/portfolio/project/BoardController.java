@@ -27,8 +27,9 @@ public class BoardController {
 	
 	@RequestMapping(value ="/mBDetail")//글상세
 	public ModelAndView myInfoBoardDetail(ModelAndView model,BoardVO vo,HttpServletRequest request) {
-		
+		System.out.println("mBDetail=>"+vo);
 		vo = service.selectOne(vo);
+		System.out.println("mBDetail result=>"+vo);
 		model.addObject("one",vo);
 		model.setViewName("myInfo/myInfoBoardDetail");
 		return model;
@@ -82,5 +83,16 @@ public class BoardController {
 		
 	}//binsert
 	
+	
+	@RequestMapping(value = "/bReplyUpdate")
+	public ModelAndView bReplyUpdate(ModelAndView model, BoardVO vo) {
+		System.out.println("들어옴");
+		System.out.println(vo);
+		if(service.bReplyUpdate(vo)>0) {
+			model.setViewName("redirect:mBDetail?bNum="+vo.getbNum());
+		}
+		
+		return model;
+	}//bReplyUpdate
 	
 }
