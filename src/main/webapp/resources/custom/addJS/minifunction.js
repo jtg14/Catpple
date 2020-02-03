@@ -21,23 +21,29 @@ $(function() {
 	});
 	
 	$('input:text[numberOnly]').on('keyup', function() {
-	    $(this).val(addCommas($(this).val().replace(/[^0-9]/g,'')));
+		$(this).val($(this).val().replace(/[^0-9]/g,''));
 	});
 	$('#btn-minus').click(function(){
 		$('#amount1').val($('#amount1').val()-1);
+		$('#total').html(addCommas(parseInt($('#price').html()) * $('#amount1').val())+' 원');
 		$('#amount1').focus();
 		});
 	$('#btn-plus').click(function(){
 		$('#amount1').val(parseInt($('#amount1').val())+1);
+		$('#total').html(addCommas(parseInt($('#price').html()) * $('#amount1').val())+' 원');
 		$('#amount1').focus();
 		});
 	$('#amount1').focusout(function(){
 		if($('#amount1').val()<=0){
 			$('#amount1').val('1');
+			$('#total').html(addCommas(parseInt($('#price').html()) * $('#amount1').val())+' 원');
 			alert('주문수량은 최소 1개 입니다.');
-		}else if($('#amount1').val()>9999){
+		}else if($('#amount1').val()>parseInt($('#stock').html().substring(5,$('#stock').html().length-10))){
+			alert('최대 갯수는 '+$('#stock').html().substring(5,$('#stock').html().length-10)+' 개 입니다.');
 			$('#amount1').val('1');
-			alert('주문수량은 최소 1개 입니다.');
+			$('#total').html(addCommas(parseInt($('#price').html()) * $('#amount1').val())+' 원');
+		}else if($('#amount1').val() >0 && $('#amount1').val() <9999){
+			$('#total').html(addCommas(parseInt($('#price').html()) * $('#amount1').val())+' 원');
 		}
 	});
 }); //ready
