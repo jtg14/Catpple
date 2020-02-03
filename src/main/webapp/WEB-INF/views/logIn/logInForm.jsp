@@ -64,6 +64,9 @@
 	}
 }
 </style>
+<script>
+alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입니다.');
+</script>
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
