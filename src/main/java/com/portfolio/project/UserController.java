@@ -154,13 +154,13 @@ public class UserController {
 		model.setViewName("jsonView");
 		return model;
 	}
-	@RequestMapping(value="logOut")
+	@RequestMapping(value="/logOut")
 	public ModelAndView logOut(ModelAndView model,HttpServletRequest request) {
 		request.getSession().invalidate();
 		model.setViewName("index");
 		return model;
 	}
-	@RequestMapping(value="mchange")
+	@RequestMapping(value="/mchange")
 	public ModelAndView myInfoChange(ModelAndView model,HttpServletRequest request, MemberVO vo) {
 		int cnt = service.mChange(vo);
 		if(cnt>0) {

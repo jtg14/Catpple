@@ -25,11 +25,9 @@ public class MemberDAO {
 		return dao.selectOne(NS+"phoneCheck",vo);
 	}
 	public MemberVO login(MemberVO vo) {
-		System.out.println("로그인 입력 정보 (ID/PW) : ("+vo.getmId()+"/"+vo.getmPw()+")");
 		vo = dao.selectOne(NS+"logIn",vo);
 		if(vo != null) {
 			System.out.println("LogIn Success.");
-			System.out.println("Current Login User : "+vo);
 		}else {
 			System.out.println("LogIn Failed");
 		}
