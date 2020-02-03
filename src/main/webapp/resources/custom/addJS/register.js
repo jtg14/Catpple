@@ -183,8 +183,9 @@ function signUpGo(){
 	   }else if(phoneCheck == false){
 	   alert('휴대폰 인증을 하셔야 가입이 가능합니다.');
 	   return false;
-	   }else{
-		   alert('회원가입성공!');
+	   }else if($('#id').val() != null && $('#name').val() != null && $('#email').val() != null && 
+			   $('#phone').val() != null && $('#password').val() != null){
+		   alert('회원가입이 완료되었습니다.');
 		   return true;
 	   }
 }
