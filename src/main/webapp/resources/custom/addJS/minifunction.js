@@ -92,7 +92,7 @@ function find(){//f
 	window.open(url,"_blank"
 		,"toolbar=no,menubar=yes,scrollbars=yes,resize=no,width=500px,height=200px,top=200,left=400;");
 }
-function confirm(g){
+function confirmA(g){
 	var passwordregex = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,16}$/;
 	var p1 = $('#passwordChange').val();
 	var p2 = $('#cpasswordChange').val();

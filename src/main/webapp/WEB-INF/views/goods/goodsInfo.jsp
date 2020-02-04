@@ -85,13 +85,14 @@
 							<div class="col-md-2 col-md-offset-4 col-xs-6">
 								<button type="submit" class="btn btn-danger btn-lg pull-right"
 									style="font-size: 1.4em;"
-									onclick="return purchase('${logInUser.mGrade}')">구매하기</button>
+									onclick="purchase('${logInUser.mGrade}')">구매하기</button>
 							</div>
 			
 							<div class="col-md-2 col-xs-6">
-								<button class="btn btn-danger btn-lg"
+								<a class="btn btn-danger btn-lg"
 									style="font-size: 1.4em;"
-									onclick="goCart('${logInUser.mGrade}')">장바구니</button>
+									type="button"
+									onclick="goCart('${logInUser.mGrade}')">장바구니</a>
 							</div>
 						</div>
 					</div>
