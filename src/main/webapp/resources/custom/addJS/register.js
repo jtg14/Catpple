@@ -214,8 +214,8 @@ function goCart(grade,id,number){
 				url:'infoToCart',
 				data:{
 					cAmount:$('#amount1').val(),
-					Member_mId:id,
-					Goods_gNum:number
+					member_mId:id,
+					goods_gNum:number
 				},
 				success:function(data){
 					if(data.code == '100'){
@@ -225,7 +225,7 @@ function goCart(grade,id,number){
 							location.href = 'mCart';
 						}
 					}else if(data.code == '101'){
-						alert('장바구니에 등록을 실패하였습니다.');
+						alert('이미 장바구니에 있는 상품 입니다.');
 					}
 				}
 			});
