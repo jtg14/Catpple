@@ -43,4 +43,25 @@
 	<update id="bReplyUpdate">
 		update board set bReply=#{bReply} where bNum=#{bNum}
 	</update>
+	
+	<!-- inquiryTotalRowCount -->
+	<select id="inquiryTotalRowCount" resultType="integer">
+		select count(*) from board where bReply!='0'
+	</select>
+	
+	<!-- suggestionTotalRowCount -->
+	<select id="suggestionTotalRowCount" resultType="integer">
+		select count(*) from board where bReply='0'
+	</select>
+	
+	<!-- inquirySelectPageList -->
+	<select id="inquirySelectPageList" resultType="vo.BoardVO">
+		select b.* from (select * from board where bReply!='0') AS b order by b.bNum desc limit 0, 3 
+	</select>
+	
+	<!-- suggestionSelectPageList -->
+	<select id="suggestionSelectPageList" resultType="vo.BoardVO">
+		select b.* from (select * from board where bReply='0') AS b order by b.bNum desc limit 0, 3 
+	</select>
+	
 </mapper>

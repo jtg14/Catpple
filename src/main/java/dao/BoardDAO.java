@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import vo.BoardVO;
-import vo.MemberVO;
+import vo.PageVO;
 
 @Repository
 public class BoardDAO {
@@ -46,6 +46,18 @@ public class BoardDAO {
 	
 	public int bReplyUpdate(BoardVO vo) {
 		return dao.insert(NS+"bReplyUpdate",vo);
+	}
+	
+	public PageVO inquirySelectPageList(PageVO pvo) {
+		pvo.setTotalCount(dao.selectOne(NS+"inquiryTotalRowCount"));
+		pvo.setList((ArrayList)dao.selectList(NS+"inquirySelectPageList",pvo));
+		return pvo;
+	}
+	
+	public PageVO suggestionSelectPageList(PageVO pvo) {
+		pvo.setTotalCount(dao.selectOne(NS+"suggestionTotalRowCount"));
+		pvo.setList((ArrayList)dao.selectList(NS+"suggestionSelectPageList",pvo));
+		return pvo;
 	}
 	
 }//class

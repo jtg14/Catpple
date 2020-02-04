@@ -238,6 +238,41 @@ th, td {
 							</table>
 						</div>
 
+						<!-- paging -->
+						<div>
+							<c:choose>
+								<c:when test="${sPage>perPageNo}">
+									<a href="mCustomerInquiry?currPage=1">First</a>&nbsp;
+									<a href="mCustomerInquiry?currPage=${sPage-1}">이전</a>&nbsp;&nbsp;
+								</c:when>
+								<c:otherwise>
+									<font color="gray">First&nbsp;이전&nbsp;&nbsp;</font>
+								</c:otherwise>
+							</c:choose>
+							
+							<c:forEach  var="i"  begin="${sPage}" end="${ePage}">
+								<c:choose>
+									<c:when test="${i==currPage}">
+										<font size="5" color="Orange">${i}&nbsp;</font>
+									</c:when>
+									<c:otherwise>
+										<a href="mCustomerInquiry?currPage=${i}">${i}&nbsp;</a>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							
+							<c:choose>
+								<c:when test="${ePage==totalPageNo}">
+									<font color="gray">&nbsp;&nbsp;다음&nbsp;Last</font>
+								</c:when>
+								<c:otherwise>
+									<a href="mCustomerInquiry?currPage=${ePage+1}">&nbsp;다음</a>&nbsp;
+									<a href="mCustomerInquiry?currPage=${totalPageNo}">Last</a>&nbsp;
+								</c:otherwise>
+							</c:choose>
+						</div>
+						
+						
 
 					</div>
 				</div>
