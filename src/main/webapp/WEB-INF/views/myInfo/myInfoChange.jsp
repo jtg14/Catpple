@@ -98,15 +98,17 @@ function emailChangeBtn(){
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse" style="max-height:700px;">
 				<ul class="nav navbar-nav side-nav" style="height: 90%;">
-					<li><h3>
+					<c:if test="${logInUser.mGrade!='S'}">
+							<li><h3>
 							<a href="#" data-toggle="collapse" data-target="#submenu-1"
 								aria-expended="true"><i class="fa fa-fw fa-search"></i>내지갑 <i
 								class="fa fa-fw fa-angle-down pull-right"></i></a>
 						</h3>
 						<ul id="submenu-1" class="collapse">
-							<li><a href="mpoint"><i
+							<li><a href="mpoint" ><i
 									class="fa fa-angle-double-right"></i> 포인트</a></li>
-						</ul></li>
+						</ul>
+					</li>
 					<li><h3><a href="#" data-toggle="collapse"
 						data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>
 							주문배송 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
@@ -133,6 +135,7 @@ function emailChangeBtn(){
 							<li><a href="mWriting"><i
 									class="fa fa-angle-double-right"></i> 글쓰기 (모든글)</a></li>
 						</ul></li>
+						</c:if>
 					<li><h3><a href="#" data-toggle="collapse"
 						data-target="#submenu-4"><i class="fa fa-fw fa-star"></i>
 							내정보 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
@@ -142,19 +145,20 @@ function emailChangeBtn(){
 							<li><a href="mWdrawal"><i
 									class="fa fa-angle-double-right"></i> 회원탈퇴</a></li>
 						</ul></li>
-					<li><h3><a href="#" data-toggle="collapse"
+						
+						<c:if test="${logInUser.mGrade!='C'}">
+						<li><h3><a href="#" data-toggle="collapse"
 						data-target="#submenu-5"><i class="fa fa-fw fa-star"></i>
 							판매자 메뉴 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
 						<ul id="submenu-5" class="collapse">
 							<li><a href="sGForm"><i
 									class="fa fa-angle-double-right"></i> 상품등록</a></li>
-							<li><a href="sGUForm"><i
-									class="fa fa-angle-double-right"></i> 등록상품 수정</a></li>
 							<li><a href="sRGoods"><i
 									class="fa fa-angle-double-right"></i> 나의 상품</a></li>
 							<li><a href="sOList"><i
 									class="fa fa-angle-double-right"></i> 주문목록</a></li>
 						</ul></li>
+						</c:if>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
