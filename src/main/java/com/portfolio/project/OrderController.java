@@ -26,11 +26,6 @@ public class OrderController {//주문성공 페이지
 		model.setViewName("order/sellerGoodsForm");
 		return model;
 	}
-	@RequestMapping(value ="/sGUForm")//상품등록 수정
-	public ModelAndView sellerGoodsUpdateForm(ModelAndView model) {
-		model.setViewName("order/sellerGoodsUpdateForm");
-		return model;
-	}
 	
 	@RequestMapping(value ="/sOList")//주문 요청 목록
 	public ModelAndView sellerOrderList(ModelAndView model) {
