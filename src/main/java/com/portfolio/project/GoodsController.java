@@ -92,4 +92,48 @@ public class GoodsController {
 		mv.setViewName("order/sellerGoodsUpdateForm");
 		return mv;
 	}
+	@RequestMapping(value = "gupdate")
+	public ModelAndView gupdate(ModelAndView mv, HttpServletRequest request, GoodsVO vo) {
+		MemberVO mvo = new MemberVO();
+		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+		vo.setMember_mid(mvo.getmId());
+		String uploadPath = "C:\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getMember_mid();
+		
+		MultipartFile multipartFile1 = vo.getGimgf1();
+		MultipartFile multipartFile2 = vo.getGimgf2();
+		
+		File file1 = new File(uploadPath, multipartFile1.getOriginalFilename());
+		File file2 = new File(uploadPath, multipartFile2.getOriginalFilename());
+		
+		String str1 = multipartFile1.getOriginalFilename();
+		String str2 = multipartFile2.getOriginalFilename();
+		
+		vo.setGimg1(str1.substring(0,str1.lastIndexOf(".")));
+		vo.setGimg2(str2.substring(0,str2.lastIndexOf(".")));
+		System.out.println(vo.getGcategory());
+		System.out.println(vo.getGcategory2());
+		GoodsVO vo2 = service.goodsDetail(vo);
+		int cnt = service.goodsUpdate(vo);
+		if(cnt>0) {
+			if(!multipartFile1.isEmpty() && !multipartFile2.isEmpty()) {
+				try {
+					//기존파일삭제
+					File deleteFile1 = new File(uploadPath+"\\"+vo2.getGimg1()+".jpg");
+					File deleteFile2 = new File(uploadPath+"\\"+vo2.getGimg2()+".jpg");
+					deleteFile1.delete();
+					deleteFile2.delete();
+					
+					multipartFile1.transferTo(file1);
+					multipartFile2.transferTo(file2);
+					mv.addObject("goodsInsertInfo","상품이 업데이트되었습니다!");
+				}catch(Exception e) {
+					mv.addObject("goodsInsertInfo","파일업로드 실패!");
+				}
+			}
+		}
+		ArrayList<GoodsVO> list = service.myGoodsList(vo);
+		mv.addObject("myGoodsList", list);
+		mv.setViewName("order/sellerRegisterdGoods");
+		return mv;
+	}
 }

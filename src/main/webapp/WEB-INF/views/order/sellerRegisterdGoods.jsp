@@ -174,20 +174,22 @@ padding-right: 0px;
 											<img class="img" src="resources/sellerInfo/${logInUser.mId}/${gl.gimg1}.jpg" width="100px" height="100px;"/>
 										</div>
 										<div class="col-md-6 col-xs-9 second-div">
-											<input class="form-controller" name="gnum" size="10" readonly="readonly" value="${gl.gnum}">
+											상품번호 : <input class="form-controller" name="gnum" size="10" readonly="readonly" value="${gl.gnum}">
 											<h4>${gl.gname}</h4>
 										</div>
 									</div>
 
 
 									<div class="col-md-6 col-xs-12 third-div">
-										<div class="col-md-3 col-xs-3" style="padding-right: 0px;">
-											<span>${gl.gprice}원</span>
+										<div class="col-md-4 col-xs-6" style="padding-right: 0px;">
+											가격 : ${gl.gprice}원
 										</div>
-										<div class="col-md-9 col-xs-9">
-											<span>재고 : 5개</span> <button type="submit" class="pull-right btn btn-danger">편집하기</button>
+										<div class="col-md-4 col-xs-6">
+											재고 : ${gl.gstock}개
 										</div>
-
+										<div class="col-md-4 col-xs-12">
+											<button type="submit" class="btn btn-danger">편집하기</button>
+										</div>
 									</div>
 
 
