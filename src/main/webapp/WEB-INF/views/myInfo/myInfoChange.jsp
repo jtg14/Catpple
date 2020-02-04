@@ -13,7 +13,8 @@
 <link rel="stylesheet" href="resources/custom/addCSS/footer.css">
 <link rel="stylesheet" href="resources/custom/addCSS/star-rating.css">
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
-<link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
+<link
+	href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
 <style type="text/css">
 .font-Jua {
@@ -56,9 +57,9 @@
 }
 </style>
 <script type="text/javascript">
-function emailChangeBtn(){
-	$('#mEmail').removeClass('readonly');
-};
+	function emailChangeBtn() {
+		$('#mEmail').removeClass('readonly');
+	};
 </script>
 </head>
 <body class="font-Jua">
@@ -71,7 +72,7 @@ function emailChangeBtn(){
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-ex1-collapse" >
+					data-target=".navbar-ex1-collapse">
 					<span class="sr-only">Toggle navigation</span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
@@ -96,7 +97,8 @@ function emailChangeBtn(){
 					</ul></li>
 			</ul>
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse" style="max-height:700px;">
+			<div class="collapse navbar-collapse navbar-ex1-collapse"
+				style="max-height: 700px;">
 				<ul class="nav navbar-nav side-nav" style="height: 90%;">
 					<li><h3>
 							<a href="#" data-toggle="collapse" data-target="#submenu-1"
@@ -104,12 +106,14 @@ function emailChangeBtn(){
 								class="fa fa-fw fa-angle-down pull-right"></i></a>
 						</h3>
 						<ul id="submenu-1" class="collapse">
-							<li><a href="mpoint"><i
-									class="fa fa-angle-double-right"></i> 포인트</a></li>
+							<li><a href="mpoint"><i class="fa fa-angle-double-right"></i>
+									포인트</a></li>
 						</ul></li>
-					<li><h3><a href="#" data-toggle="collapse"
-						data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>
-							주문배송 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
+					<li><h3>
+							<a href="#" data-toggle="collapse" data-target="#submenu-2"><i
+								class="fa fa-fw fa-star"></i> 주문배송 <i
+								class="fa fa-fw fa-angle-down pull-right"></i></a>
+						</h3>
 						<ul id="submenu-2" class="collapse">
 							<li><a href="mODelivery"><i
 									class="fa fa-angle-double-right"></i> 주문/배송조회</a></li>
@@ -117,43 +121,49 @@ function emailChangeBtn(){
 									class="fa fa-angle-double-right"></i> 주문취소</a></li>
 							<li><a href="mRExchange"><i
 									class="fa fa-angle-double-right"></i> 반품/교환</a></li>
-							<li><a href="mCart"><i
-									class="fa fa-angle-double-right"></i> 장바구니</a></li>
+							<li><a href="mCart"><i class="fa fa-angle-double-right"></i>
+									장바구니</a></li>
 						</ul></li>
-					<li><h3><a href="#" data-toggle="collapse"
-						data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>
-							고객센터 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
+					<li><h3>
+							<a href="#" data-toggle="collapse" data-target="#submenu-3"><i
+								class="fa fa-fw fa-star"></i> 고객센터 <i
+								class="fa fa-fw fa-angle-down pull-right"></i></a>
+						</h3>
 						<ul id="submenu-3" class="collapse">
 							<li><a href="mCustomerInquiry"><i
 									class="fa fa-angle-double-right"></i> 1:1문의</a></li>
-							<li><a href="mFAQ"><i
-									class="fa fa-angle-double-right"></i> FAQ</a></li>
+							<li><a href="mFAQ"><i class="fa fa-angle-double-right"></i>
+									FAQ</a></li>
 							<li><a href="mSuggestions"><i
 									class="fa fa-angle-double-right"></i> 건의사항</a></li>
 							<li><a href="mWriting"><i
 									class="fa fa-angle-double-right"></i> 글쓰기 (모든글)</a></li>
 						</ul></li>
-					<li><h3><a href="#" data-toggle="collapse"
-						data-target="#submenu-4"><i class="fa fa-fw fa-star"></i>
-							내정보 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
+					<li><h3>
+							<a href="#" data-toggle="collapse" data-target="#submenu-4"><i
+								class="fa fa-fw fa-star"></i> 내정보 <i
+								class="fa fa-fw fa-angle-down pull-right"></i></a>
+						</h3>
 						<ul id="submenu-4" class="collapse">
 							<li><a href="mChangef"><i
 									class="fa fa-angle-double-right"></i> 내정보변경</a></li>
 							<li><a href="mWdrawal"><i
 									class="fa fa-angle-double-right"></i> 회원탈퇴</a></li>
 						</ul></li>
-					<li><h3><a href="#" data-toggle="collapse"
-						data-target="#submenu-5"><i class="fa fa-fw fa-star"></i>
-							판매자 메뉴 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
+					<li><h3>
+							<a href="#" data-toggle="collapse" data-target="#submenu-5"><i
+								class="fa fa-fw fa-star"></i> 판매자 메뉴 <i
+								class="fa fa-fw fa-angle-down pull-right"></i></a>
+						</h3>
 						<ul id="submenu-5" class="collapse">
-							<li><a href="sGForm"><i
-									class="fa fa-angle-double-right"></i> 상품등록</a></li>
+							<li><a href="sGForm"><i class="fa fa-angle-double-right"></i>
+									상품등록</a></li>
 							<li><a href="sGUForm"><i
 									class="fa fa-angle-double-right"></i> 등록상품 수정</a></li>
 							<li><a href="sRGoods"><i
 									class="fa fa-angle-double-right"></i> 나의 상품</a></li>
-							<li><a href="sOList"><i
-									class="fa fa-angle-double-right"></i> 주문목록</a></li>
+							<li><a href="sOList"><i class="fa fa-angle-double-right"></i>
+									주문목록</a></li>
 						</ul></li>
 				</ul>
 			</div>
@@ -180,7 +190,7 @@ function emailChangeBtn(){
 												<td class="table-head"
 													style="padding-left: 0px; padding-right: 0px;">아이디</td>
 												<td style="text-align: left;">
-													<div class="col-md-6 col-xs-12">
+													<div class="col-md-6 col-xs-12" style="padding-left: 0px;">
 														<input class="form-control input-sm" type="text"
 															readonly="readonly" name="mId" value="${logInUser.mId}">
 													</div>
@@ -191,10 +201,7 @@ function emailChangeBtn(){
 													style="padding-left: 0px; padding-right: 0px;">비밀번호</td>
 												<td style="text-align: left;"><div
 														class="col-md-6 col-xs-12" style="padding-left: 0px;">
-														<input class="form-control input-sm" type="password"
-															name="mPw" placeholder="비밀번호"> <input
-															class="form-control input-sm" type="password"
-															placeholder="비밀번호 확인" style="margin-top: 5px;">
+														<a class="btn btn-primary" type="button" onclick="find()">비밀번호 변경하기</a>
 													</div></td>
 											</tr>
 											<tr>
@@ -314,6 +321,7 @@ function emailChangeBtn(){
 	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>
+	<script src="resources/custom/addJS/minifunction.js"></script>
 </body>
 <footer>
 	<div class="article">

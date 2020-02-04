@@ -86,4 +86,50 @@ function logInCheck(){
 	}
 	
 }
+function find(){//f
+	var url="changePwf";
+	// idDupCheck?id=banana
+	window.open(url,"_blank"
+		,"toolbar=no,menubar=yes,scrollbars=yes,resize=no,width=500px,height=200px,top=200,left=400;");
+}
+function confirm(g){
+	var passwordregex = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,16}$/;
+	var p1 = $('#passwordChange').val();
+	var p2 = $('#cpasswordChange').val();
+	var reason;
+	if(g == ''){
+		alert('세션이 만료 되었습니다. 로그인을 해주시기 바랍니다.');
+		opener.location.href = 'logInf';
+		return false;
+	}else if(!passwordregex.test($('#passwordChange').val())){
+		alert('비밀번호는 숫자+영문+특수문자를 포함한 8 ~ 16 자 이내로 입력해주세요.');
+		return false;
+	}
+	else if(p1 != p2){
+		alert('비밀번호 와 비밀번호 확인은 일치해야 합니다.');
+		return false;
+	}else if(p1 == ''){
+		alert('변경하실 비빌번호를 입력 해주세요.');
+		return false;
+	}else{
+		$.ajax({
+			type:'Post',
+			url:'changePw',
+			data:{
+				id:g,
+				password:p1,
+			},
+			success:function(data){
+				if(data.code == '100'){
+					opener.alert('비밀번호를 변경하는데 성공 하였습니다. \n\n 변경 된 정보로 로그인 해주시기바랍니다.');
+					self.close();
+					opener.location.href = 'logInf';
+				}else if (data.code == '101'){
+					opener.alert('비밀번호를 변경하는데 실패 하였습니다');
+				}
+			}
+			
+		});
+	}
+}
 

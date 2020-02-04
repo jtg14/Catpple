@@ -17,4 +17,6 @@ public interface MService {
 	MemberVO login(MemberVO vo);
 	
 	MemberVO findCompany(MemberVO vo);
+	
+	int ChangePassword(MemberVO vo);
 }
