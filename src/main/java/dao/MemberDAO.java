@@ -8,7 +8,6 @@ import vo.MemberVO;
 
 @Repository
 public class MemberDAO {
-	
 	@Autowired
 	private SqlSession dao;
 	private final static String NS ="portfolio.mapper.MemberMapper.";
@@ -26,11 +25,6 @@ public class MemberDAO {
 	}
 	public MemberVO login(MemberVO vo) {
 		vo = dao.selectOne(NS+"logIn",vo);
-		if(vo != null) {
-			System.out.println("LogIn Success.");
-		}else {
-			System.out.println("LogIn Failed");
-		}
 		return vo; 
 		
 	}

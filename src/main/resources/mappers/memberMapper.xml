@@ -15,7 +15,7 @@
 	select * from Member where mPhone=#{mPhone}
 	</select>
 	<select id="logIn" resultType="vo.MemberVO">
-	select * from Member where mId = #{mId} and mPw = #{mPw} and mstatus='F'
+	select * from Member where mId = #{mId} and mstatus='F'
 	</select>
 	<select id="findCompany" resultType="vo.MemberVO">
 	select mid,mname from member where mid = #{mId}

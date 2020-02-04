@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,8 +18,8 @@ import vo.MemberVO;
 public class UserController {
 	@Autowired
 	MService service;
-
-	
+	@Autowired
+	BCryptPasswordEncoder passwordEncorder;
 	
 	@RequestMapping(value ="/signupf")//회원가입
 	public ModelAndView SignUpForm(ModelAndView model,HttpServletRequest request) {
@@ -109,6 +110,7 @@ public class UserController {
 	}
 	@RequestMapping(value ="/signup")//회원가입진행
 	public ModelAndView signupGo(ModelAndView model,MemberVO vo,HttpServletRequest request) {
+		
 		vo = new MemberVO(
 		request.getParameter("id"),
 		request.getParameter("password"),
@@ -117,12 +119,15 @@ public class UserController {
 		request.getParameter("name"),
 		request.getParameter("options")
 		);
-		if(service.join(vo)>0) {//회원가입성공
+		vo.setmPw(passwordEncorder.encode(vo.getmPw()));
+		if(vo.getmGrade()== "S") {
 			File sellerPersonalFolder = new File("C:\\Jason\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getmId());
 			if (!sellerPersonalFolder.exists()) {  // ff의 존재여부 확인
 				sellerPersonalFolder.mkdir();		// 없으면 생성	
 				System.out.println("판매자로 회원가입이 완료되어 디렉토리 생성");
 			}
+		}
+		if(service.join(vo)>0) {//회원가입성공
 			model.setViewName("logIn/logInForm");
 		}else {//회원가입실패
 			model.setViewName("logIn/signUpForm");
@@ -142,13 +147,14 @@ public class UserController {
 	}
 	@RequestMapping(value ="/logIn")//로그인진행
 	public ModelAndView logIn(ModelAndView model,MemberVO vo,HttpServletRequest request) {
+		String password = vo.getmPw();
 		vo = service.login(vo);
-		if(vo != null) {
+		if(passwordEncorder.matches(password,vo.getmPw())) {
 			HttpSession session = request.getSession();
 			session.setAttribute("logInUser",vo);
 			session.setMaxInactiveInterval(60 * 60 * 2); //두시간
 			model.addObject("logIn","success");
-		}else if(vo == null){
+		}else{
 			model.addObject("logIn","failed");
 		}
 		model.setViewName("jsonView");
