@@ -93,9 +93,23 @@ public class UserController {
 		model.setViewName("logIn/logInForm");
 		return model;
 	}
+	@RequestMapping(value ="/changePwf")//비밀번호변경
+	public ModelAndView changePwf(ModelAndView model,HttpServletRequest request) {
+		model.setViewName("logIn/changePw");
+		return model;
+	}
+
 	@RequestMapping(value ="/changePw")//비밀번호변경
 	public ModelAndView changePw(ModelAndView model,HttpServletRequest request) {
-		model.setViewName("logIn/changePw");
+		MemberVO vo = new MemberVO();
+		vo.setmId(request.getParameter("id"));
+		vo.setmPw(passwordEncorder.encode( request.getParameter("password")));
+		if(service.ChangePassword(vo)>0) {
+			model.addObject("code","100");
+		}else {
+			model.addObject("code","101");
+		}
+		model.setViewName("jsonView");
 		return model;
 	}
 	@RequestMapping(value ="/idCheck")//아이디 중복검사
@@ -149,13 +163,13 @@ public class UserController {
 	public ModelAndView logIn(ModelAndView model,MemberVO vo,HttpServletRequest request) {
 		String password = vo.getmPw();
 		vo = service.login(vo);
-		if(passwordEncorder.matches(password,vo.getmPw())) {
+		if(vo == null) {
+			model.addObject("logIn","failed");
+		}else if(passwordEncorder.matches(password,vo.getmPw())) {
 			HttpSession session = request.getSession();
 			session.setAttribute("logInUser",vo);
 			session.setMaxInactiveInterval(60 * 60 * 2); //두시간
 			model.addObject("logIn","success");
-		}else{
-			model.addObject("logIn","failed");
 		}
 		model.setViewName("jsonView");
 		return model;
