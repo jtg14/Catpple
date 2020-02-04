@@ -17,20 +17,17 @@
 			style="border: 5px solid crimson; border-radius: 10px; padding: 20px;">
 			<div id="pwChangeForm" class=" col-md-12 col-xs-12 text-center">
 				<h3>비밀번호 변경</h3>
-				<form action="#" method="post">
 					<div class="col-md-12 col-xs-12 text-center">
-						<input id="mid" class="form-control input-sm" type="password"
-							placeholder="변경할 비밀번호"> <input id="mphone"
-							class="form-control input-sm" type="password"
+						<input id="passwordChange" class="form-control input-sm" type="password"
+							placeholder="변경할 비밀번호">
+						<input id="cpasswordChange" class="form-control input-sm" type="password"
 							placeholder="비밀번호 확인" style="margin-top: 5px;">
 					</div>
 					<div class="col-md-12 col-xs-12 text-center"
 						style="margin-top: 10px;">
-						<button class="btn btn-success btn-block" id="idfindbtn"
-							style="padding-left: 0px; padding-right: 0px;">비밀번호 변경</button>
+						<a class="btn btn-success btn-block" type="button"
+							style="padding-left: 0px; padding-right: 0px;" onclick="confirm('${logInUser.mId}')">비밀번호 변경</a>
 					</div>
-				</form>
-
 			</div>
 		</div>
 	</div>
@@ -40,7 +37,6 @@
 	<script
 		src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="resources/register.js"></script>
 	<script src="resources/custom/addJS/minifunction.js"></script>
 </body>
 </html>

@@ -37,4 +37,7 @@ public class MemberDAO {
 	public MemberVO findCompany(MemberVO vo) {
 		return dao.selectOne(NS+"findCompany",vo);
 	}
+	public int ChangePassword(MemberVO vo) {
+		return dao.update(NS+"ChangePassword",vo);
+	}
 }
