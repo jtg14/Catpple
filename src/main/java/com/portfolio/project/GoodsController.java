@@ -92,6 +92,9 @@ public class GoodsController {
 		mv.setViewName("order/sellerGoodsUpdateForm");
 		return mv;
 	}
+
+	
+
 	@RequestMapping(value = "gupdate")
 	public ModelAndView gupdate(ModelAndView mv, HttpServletRequest request, GoodsVO vo) {
 		MemberVO mvo = new MemberVO();
@@ -136,4 +139,5 @@ public class GoodsController {
 		mv.setViewName("order/sellerRegisterdGoods");
 		return mv;
 	}
+
 }

@@ -189,7 +189,7 @@ function signUpGo(){
 		   return true;
 	   }
 }
-function purchase(grade){
+function purchase(grade,id,number){
 	if(grade == ''){
 		alert('로그인이 필요한 서비스입니다.');
 		window.location.href = 'logInf';
@@ -201,7 +201,7 @@ function purchase(grade){
 		});
 	}
 }
-function goCart(grade){
+function goCart(grade,id,number){
 	if(grade == ''){
 		alert('로그인이 필요한 서비스입니다.');
 		window.location.href = 'logInf';
@@ -209,9 +209,28 @@ function goCart(grade){
 		alert('판매자로 등록된 계정은 장바구니를 이용 할 수 없습니다.');
 	}else{
 		if(confirm('해당 상품을 장바구니에 담으시겠습니까?')){
-			alert('예클릭');
+			$.ajax({
+				type:'Post',
+				url:'infoToCart',
+				data:{
+					cAmount:$('#amount1').val(),
+					Member_mId:id,
+					Goods_gNum:number
+				},
+				success:function(data){
+					if(data.code == '100'){
+						if(confirm('장바구니에 넣었습니다 계속 쇼핑 하시겠습니까?')){
+							return false;
+						}else{
+							location.href = 'mCart';
+						}
+					}else if(data.code == '101'){
+						alert('장바구니에 등록을 실패하였습니다.');
+					}
+				}
+			});
 		}else{
-			alert('아니오 클릭');
+			alert('취소 되었습니다.');
 		};
 	};
 	
