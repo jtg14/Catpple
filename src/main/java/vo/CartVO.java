@@ -5,7 +5,36 @@ public class CartVO {
 	private int cAmount;
 	private String member_mId;
 	private int goods_gNum;
+	private String gname;
+	private int gprice;
+	private String sellerID; 
+	private String gimg1;
 	
+	
+	public String getGname() {
+		return gname;
+	}
+	public void setGname(String gname) {
+		this.gname = gname;
+	}
+	public int getGprice() {
+		return gprice;
+	}
+	public void setGprice(int gprice) {
+		this.gprice = gprice;
+	}
+	public String getSellerID() {
+		return sellerID;
+	}
+	public void setSellerID(String sellerID) {
+		this.sellerID = sellerID;
+	}
+	public String getGimg1() {
+		return gimg1;
+	}
+	public void setGimg1(String gimg1) {
+		this.gimg1 = gimg1;
+	}
 	public int getcId() {
 		return cId;
 	}

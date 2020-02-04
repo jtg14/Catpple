@@ -2,12 +2,15 @@ package business;
 
 import java.util.ArrayList;
 
-import vo.BoardVO;
 import vo.CartVO;
-import vo.PageVO;
+import vo.MemberVO;
 
 public interface CService {
 	int infoToCart(CartVO vo);
 	
 	CartVO findDupGoods(CartVO vo);
+	
+	ArrayList<CartVO> cartList(MemberVO vo);
+	
+	int deleteCart(CartVO vo);
 }

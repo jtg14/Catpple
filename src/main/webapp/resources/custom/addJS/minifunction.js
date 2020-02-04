@@ -132,4 +132,24 @@ function confirmA(g){
 		});
 	}
 }
-
+function deleteCart(cid){
+	if(confirm('정말 삭제 하시겠습니까?')){
+		$.ajax({
+			type:'Post',
+			url:'deleteCart',
+			data:{
+				cId:cid
+			},
+			success:function(data){
+				if(data.code == 300){
+					alert('성공적으로 삭제했습니다.');
+					location.reload();
+				}else if (data.code == 301){
+					alert('삭제에 실패 하였습니다.');
+				}
+			}
+		});
+	}else{
+		return false;
+	}
+}

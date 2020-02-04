@@ -138,20 +138,21 @@
 
 						<div class="col-md-10 col-xs-12">
 							<h2 style="color: crimson">장바구니</h2>
-							<%-- <c:forEach begin="1" end="5"> --%>
+							<c:forEach var="list" items="${list}" varStatus="vs">
 							<div class="container text-center"
 								style="border-top: 2px solid lightgray; padding-top: 10px; padding-bottom: 10px;">
 								<div class="col-md-6 col-xs-12"
 									style="padding-top: 0px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px;">
 									<div class="col-md-6 col-xs-3" style="padding-left: 0px;">
-										<img class="img" src="resources/images/item3.jpg" />
+										<img class="img" src="resources/sellerInfo/${list.sellerID}/${list.gimg1}" style="width:110px;hieght:110px;"/>
 									</div>
+									
 									<div class="col-md-6 col-xs-9"
 										style="padding-top: 4%; padding-right: 0px;">
-										<h4 style="padding-left: 8px;">프로베스트 캣 밸런스 15kg</h4>
+										<h4 style="padding-left: 8px;">${list.gname}</h4>	
 										<label style="font-size: x-small;">재고 있음</label> <label
 											for="primary" class="btn btn-primary">선택 <input
-											type="checkbox" id="primary" class="badgebox"
+											type="checkbox" id="cart${vs.index}" class="badgebox"
 											checked="checked"><span class="badge">&check;</span></label>
 									</div>
 
@@ -160,12 +161,12 @@
 								<div class="col-md-6 col-xs-12 first-div"
 									style="padding-top: 5%">
 									<div class="col-md-3 col-xs-3">
-										<span>10000원</span>
+										<span>${list.gprice}원</span>
 									</div>
 									<div class="col-md-9 col-xs-9">
 										<span>수량 <input class="form-group input-sm"
-											type="number" style="width: 60px; margin-bottom: 5px;"></span>
-										<a class="pull-right">삭제</a>
+											type="number" value="${list.cAmount}" style="width: 60px; margin-bottom: 5px;"></span>
+										<a class="btn btn-default pull-right" type="button" onclick="deleteCart('${list.cId}')">삭제</a>
 									</div>
 									<div class="col-md-3 col-md-offset-6 col-xs-2 col-xs-offset-3">
 										<button id="amount"
@@ -173,7 +174,7 @@
 									</div>
 								</div>
 							</div>
-							<%-- </c:forEach> --%>
+						</c:forEach>
 
 						</div>
 						<div class="col-md-2 col-md-offset-8 col-xs-4 col-xs-offset-4"
@@ -195,6 +196,7 @@
 	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>
+	<script src="resources/custom/addJS/minifunction.js"></script>
 </body>
 <footer>
 	<div class="article">
