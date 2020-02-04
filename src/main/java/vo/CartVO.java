@@ -5,6 +5,7 @@ public class CartVO {
 	private int cAmount;
 	private String member_mId;
 	private int goods_gNum;
+	
 	public int getcId() {
 		return cId;
 	}

@@ -217,13 +217,19 @@ public class UserController {
 	public ModelAndView infoToCart(ModelAndView model,HttpServletRequest request,CartVO vo) {
 		System.out.println(vo);
 		if(cartService.findDupGoods(vo) == null) {//장바구니에 들어있는지 확인
+			System.out.println("같은 상품 존재 하지않음 ");
 			if(cartService.infoToCart(vo) > 0) {  //없으면 장바구니로 넣기
+				System.out.println("장바구니 추가성공 ");
+				System.out.println(vo);
 				model.addObject("code","100");
+			}else {
+				System.out.println("장바구니에 추가실패");
 			}
 		}else {
+			System.out.println("이미 같은 물품이 장바구니에 존재");
 			model.addObject("code","101");
 		}
-		model.setViewName("jasonView");
+		model.setViewName("jsonView");
 		return model;
 		
 	}
