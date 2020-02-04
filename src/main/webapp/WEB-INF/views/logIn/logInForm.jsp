@@ -73,18 +73,16 @@
 		<div class="col-md-offset-4 col-md-4 col-xs-12 text-center">
 			<div class="container col-md-12"
 				style="border: 5px solid crimson; border-radius: 10px; padding: 20px;">
-				<form action="logIn" method="post">
 					<div class="col-md-12 col-xs-12 text-center">
-						<input class="form-control input-sm" type="text" placeholder="아이디" name="id">
-						<input class="form-control input-sm" type="password" name="password"
+						<input class="form-control input-sm" type="text" placeholder="아이디" name="id" id="id" style="font-size:1.2em;">
+						<input class="form-control input-sm" type="password" name="password" id="password" style="font-size:1.2em;"
 							placeholder="비밀번호" style="margin-top: 5px;">
 					</div>
 					<div class="col-md-6 col-xs-6 text-center"
 						style="margin-top: 10px;">
 						<button class="btn loginbtn" type="submit"
-							style="height: 80px; padding-left: 0px; padding-right: 0px;">로그인</button>
+							style="height: 80px; padding-left: 0px; padding-right: 0px;" onclick="logInCheck()">로그인</button>
 					</div>
-				</form>
 				<div class="col-md-6 col-xs-6 text-center"
 					style="margin-top: 10px; padding-left: 0px; padding-right: 0px;">
 					<div class="col-md-12 col-xs-12" style="margin-bottom: 10px;">
@@ -99,16 +97,14 @@
 		</div>
 	</div>
 
+	
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/custom/addJS/minifunction.js"></script>
 	<div class="article">
 		<jsp:include page="../footer.jsp"></jsp:include>
 	</div>
-	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="resources/register.js"></script>
-	<script src="resources/custom/addJS/minifunction.js"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <title>제품 상세 | The Cat House</title>
@@ -14,82 +14,94 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
-
 </head>
 <body class="font-Jua">
 	<jsp:include page="../header.jsp"></jsp:include>
 	<c:set var="goods" value="${goods}" />
 	<div class="container">
 		<div class="jumbotron"
-			style="border: 5px solid crimson; border-radius: 10px;">
-			<div class="row">
-				<div class="thumbnail col-md-4">
-					<img class="goods_image"
-						src="resources/sellerInfo/${company.mId}/${goods.gimg1}">
-				</div>
-				<div class="col-md-8">
-					<h3 class="col-md-12">
-						<span class="brand_ame">${company.mName}</span> <span
-							class="item_Name"> ${goods.gname} </span>
-					</h3>
-					<div class="col-md-12">
-						<span>구매 0</span> <span class="divider">|</span> <span>(남은수량${goods.gstock}
-							개)</span>
-					</div>
-					<div class="col-md-12">
-						<strong class="discount-persentage">0<span>% Off</span></strong>
-						<div class="price_inner">
-							<span><s class="before-price">${goods.gprice}<span>원</span></s></span>
-							<strong>${goods.gprice }<span>원</span></strong>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-xs-6">
-						<div class="input-group">
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="button" id="btn-minus">-</button>
-							</span> <input type="text" class="form-control amount_bar" maxlength="4"
-								value="1" numberOnly id="amount1"> <span
-								class="input-group-btn">
-								<button class="btn btn-default" type="button" id="btn-plus">+</button>
-							</span>
-						</div>
-					</div>
-
-
-				</div>
-				<!-- end of row -->
-
+			style="border: 5px solid crimson; border-radius: 10px; background-color: white;">
 				<div class="row">
-					<div class="container"
-						style="border-bottom: 2px; border-color: crimson;">
-						<div class="col-lg-12" style="text-align: center;">
-							<div class="col-lg-3">
-								<h1>총 금액</h1>
-							</div>
-							<div class="col-lg-9">
-								<h1>${goods.gprice}원</h1>
+					<div class="thumbnail col-md-4 col-xs-12">
+						<img class="goods_image"
+							src="resources/sellerInfo/${company.mId}/${goods.gimg1}">
+					</div>
+					<div class="col-md-8 col-xs-12">
+						<div class="col-md-12 col-xs-12">
+							<h3>
+								<span class="brand_ame">${company.mName}</span> <span
+									class="item_Name"> ${goods.gname} </span>
+							</h3>
+						</div>
+						<div class="col-md-12 col-xs-12">
+							<span>구매 0</span> <span class="divider">|</span> <span id="stock">(남은수량${goods.gstock}
+								개)</span>
+						</div>
+						<div class="col-md-12 col-xs-6" style="margin-top: 40px;">
+							<strong class="discount-persentage">0<span>% Off</span></strong>
+							<div class="price_inner">
+								<del>
+									<span class="before-price">${goods.gprice}</span><span
+										class="before-price">원</span>
+								</del>
+								<strong id="price">${goods.gprice}</strong><strong><span>원</span></strong>
 							</div>
 						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="col-md-2 col-md-offset-4">
-							<button type="button" class="btn btn-danger btn-lg pull-right"
-								style="font-size: 1.4em;">구매하기</button>
+
+						<div class="col-md-3 col-xs-6" style="margin-top: 60px;">
+							<div class="input-group">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button" id="btn-minus">-</button>
+								</span> <input type="text" class="form-control amount_bar"
+									maxlength="4" value="1" numberOnly id="amount1"> <span
+									class="input-group-btn">
+									<button class="btn btn-default" type="button" id="btn-plus">+</button>
+								</span>
+							</div>
 						</div>
-						<div class="col-md-2">
-							<button type="button" class="btn btn-danger btn-lg"
-								style="font-size: 1.4em;">장바구니</button>
+
+
+					</div>
+					<!-- end of row -->
+
+					<div class="row">
+						<div class="container"
+							style="border-bottom: 2px; border-color: crimson;">
+							<div class="col-lg-12" style="text-align: center;">
+								<div class="col-md-3 col-xs-12">
+									<h1>총 금액</h1>
+								</div>
+								<div class="col-md-9 col-xs-12">
+									<h1 class="text-right" id="total">
+										<fmt:formatNumber value="${goods.gprice}" pattern="#,###" />
+										원
+									</h1>
+								</div>
+							</div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-md-12 col-xs-12">
+							<div class="col-md-2 col-md-offset-4 col-xs-6">
+								<button type="submit" class="btn btn-danger btn-lg pull-right"
+									style="font-size: 1.4em;"
+									onclick="purchase('${logInUser.mGrade}')">구매하기</button>
+							</div>
+			
+							<div class="col-md-2 col-xs-6">
+								<a class="btn btn-danger btn-lg"
+									style="font-size: 1.4em;"
+									type="button"
+									onclick="goCart('${logInUser.mGrade}')">장바구니</a>
+							</div>
+						</div>
+					</div>
+					<!-- end of row-2 -->
 				</div>
-				<!-- end of row-2 -->
-			</div>
 			<!-- end of jumbotron -->
 			<div class="tabs-container-style-1">
-				<div style="margin-bottom: 20px;">
+				<div class="col-md-12 col-xs-12"
+					style="margin-top: 20px; margin-bottom: 20px;">
 					<ul id="myTab" class="nav nav-tabs nav-justified"
 						style="font-size: 2em;">
 						<li class="active"><a href="#home" data-toggle="tab">상품
@@ -113,11 +125,11 @@
 						<p>3. 주문하신 상품과 다른 상품이 배송되었거나 파손된 경우 반품처리 후 교환이 가능합니다.</p>
 						<p>4. 오발송 및 파손된 상품에 대한 내용은 1:1 문의 또는 위탁물류업체로 문의 주시기 바랍니다.</p>
 						<p>
-							<strong>[위탁물류업체 연락처: 070-4237-9270&nbsp;]</strong>
+							<strong>[위탁물류업체 연락처: 070-9999-9999&nbsp;]</strong>
 						</p>
 						<p>
 							<strong>[<span class="Apple-converted-space">&nbsp;</span>반품
-								주소:&nbsp;경기도 평택시 청북읍 청원로 362-46
+								주소:&nbsp;경기도 성남시 돌마로
 							</strong><strong>&nbsp;CJ 대한통운 ]</strong>
 						</p>
 						<p>&nbsp;</p>
@@ -136,20 +148,22 @@
 				</div>
 			</div>
 		</div>
-		<!-- end of container -->
+	</div>
+	<!-- end of container -->
 
 
 
-		<div class="article">
-			<jsp:include page="../footer.jsp"></jsp:include>
-		</div>
-		<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<script
-			src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
-		<script
-			src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-		<script src="resources/bootstrap/js/bootstrap.min.js"></script>
-		<script src="resources/register.js"></script>
-		<script src="resources/custom/addJS/minifunction.js"></script>
+
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/custom/addJS/register.js"></script>
+	<script src="resources/custom/addJS/minifunction.js"></script>
+	<div class="article">
+		<jsp:include page="../footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

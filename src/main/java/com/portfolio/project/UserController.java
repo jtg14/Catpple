@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,8 +18,8 @@ import vo.MemberVO;
 public class UserController {
 	@Autowired
 	MService service;
-
-	
+	@Autowired
+	BCryptPasswordEncoder passwordEncorder;
 	
 	@RequestMapping(value ="/signupf")//회원가입
 	public ModelAndView SignUpForm(ModelAndView model,HttpServletRequest request) {
@@ -92,9 +93,24 @@ public class UserController {
 		model.setViewName("logIn/logInForm");
 		return model;
 	}
+	@RequestMapping(value ="/changePwf")//비밀번호변경
+	public ModelAndView changePwf(ModelAndView model,HttpServletRequest request) {
+		model.setViewName("logIn/changePw");
+		return model;
+	}
+
 	@RequestMapping(value ="/changePw")//비밀번호변경
 	public ModelAndView changePw(ModelAndView model,HttpServletRequest request) {
-		model.setViewName("logIn/changePw");
+		MemberVO vo = new MemberVO();
+		vo.setmId(request.getParameter("id"));
+		vo.setmPw(passwordEncorder.encode( request.getParameter("password")));
+		if(service.ChangePassword(vo)>0) {
+			model.addObject("code","100");
+			request.getSession().invalidate();
+		}else {
+			model.addObject("code","101");
+		}
+		model.setViewName("jsonView");
 		return model;
 	}
 	@RequestMapping(value ="/idCheck")//아이디 중복검사
@@ -109,6 +125,7 @@ public class UserController {
 	}
 	@RequestMapping(value ="/signup")//회원가입진행
 	public ModelAndView signupGo(ModelAndView model,MemberVO vo,HttpServletRequest request) {
+		
 		vo = new MemberVO(
 		request.getParameter("id"),
 		request.getParameter("password"),
@@ -117,12 +134,15 @@ public class UserController {
 		request.getParameter("name"),
 		request.getParameter("options")
 		);
-		if(service.join(vo)>0) {//회원가입성공
+		vo.setmPw(passwordEncorder.encode(vo.getmPw()));
+		if(vo.getmGrade()== "S") {
 			File sellerPersonalFolder = new File("C:\\Jason\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getmId());
 			if (!sellerPersonalFolder.exists()) {  // ff의 존재여부 확인
 				sellerPersonalFolder.mkdir();		// 없으면 생성	
 				System.out.println("판매자로 회원가입이 완료되어 디렉토리 생성");
 			}
+		}
+		if(service.join(vo)>0) {//회원가입성공
 			model.setViewName("logIn/logInForm");
 		}else {//회원가입실패
 			model.setViewName("logIn/signUpForm");
@@ -142,26 +162,28 @@ public class UserController {
 	}
 	@RequestMapping(value ="/logIn")//로그인진행
 	public ModelAndView logIn(ModelAndView model,MemberVO vo,HttpServletRequest request) {
-		vo.setmId(request.getParameter("id"));
-		vo.setmPw(request.getParameter("password"));
+		String password = vo.getmPw();
 		vo = service.login(vo);
-		if(vo != null) {
+		if(vo == null) {//없는 아이디일때
+			model.addObject("logIn","failed");
+		}else if(passwordEncorder.matches(password,vo.getmPw())) {
 			HttpSession session = request.getSession();
 			session.setAttribute("logInUser",vo);
 			session.setMaxInactiveInterval(60 * 60 * 2); //두시간
-			model.setViewName("index");
-		}else {//로그인실패
-			model.setViewName("logIn/logInForm");
+			model.addObject("logIn","success");
+		}else if(!passwordEncorder.matches(password,vo.getmPw())) {//비밀번호 틀렸을때
+			model.addObject("logIn","failed");
 		}
+		model.setViewName("jsonView");
 		return model;
 	}
-	@RequestMapping(value="logOut")
+	@RequestMapping(value="/logOut")
 	public ModelAndView logOut(ModelAndView model,HttpServletRequest request) {
 		request.getSession().invalidate();
 		model.setViewName("index");
 		return model;
 	}
-	@RequestMapping(value="mchange")
+	@RequestMapping(value="/mchange")
 	public ModelAndView myInfoChange(ModelAndView model,HttpServletRequest request, MemberVO vo) {
 		int cnt = service.mChange(vo);
 		if(cnt>0) {

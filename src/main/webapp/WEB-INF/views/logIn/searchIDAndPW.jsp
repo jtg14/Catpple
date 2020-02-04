@@ -57,14 +57,6 @@
          </div>
       </div>
    </div>
-<script>
-function find(){//f
-	var url="changePw";
-	// idDupCheck?id=banana
-	window.open(url,"_blank"
-		,"toolbar=no,menubar=yes,scrollbars=yes,resize=no,width=300px,height=200px,top=200,left=500;");
-}
-</script>
 
       <!-- resultArea에 들어갈 코드 -->
     

@@ -6,11 +6,13 @@
 		<typeAlias type="vo.MemberVO" alias="MemberVO" />
 		<typeAlias type="vo.GoodsVO" alias="GoodsVO" />
 		<typeAlias type="vo.BoardVO" alias="BoardVO" />
+		<typeAlias type="vo.CartVO" alias="CartVO" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/memberMapper.xml" />
 		<mapper resource="mappers/goodsMapper.xml" />
 		<mapper resource="mappers/BoardMapper.xml" />
+		<mapper resource="mappers/CartMapper.xml" />
 	</mappers> 
 	
 	

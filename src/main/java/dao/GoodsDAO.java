@@ -24,4 +24,7 @@ public class GoodsDAO {
 	public GoodsVO goodsDetail(GoodsVO vo) {
 		return dao.selectOne("goodsDetail",vo);
 	}
+	public ArrayList<GoodsVO> myGoodsList(GoodsVO vo){
+		return (ArrayList)dao.selectList(NS+"myGoodsList", vo);
+	}
 }

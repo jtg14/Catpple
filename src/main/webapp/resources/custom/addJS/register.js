@@ -183,8 +183,36 @@ function signUpGo(){
 	   }else if(phoneCheck == false){
 	   alert('휴대폰 인증을 하셔야 가입이 가능합니다.');
 	   return false;
-	   }else{
-		   alert('회원가입성공!');
+	   }else if($('#id').val() != null && $('#name').val() != null && $('#email').val() != null && 
+			   $('#phone').val() != null && $('#password').val() != null){
+		   alert('회원가입이 완료되었습니다.');
 		   return true;
 	   }
+}
+function purchase(grade){
+	if(grade == ''){
+		alert('로그인이 필요한 서비스입니다.');
+		window.location.href = 'logInf';
+	}else if(grade == 'S'){
+		alert('판매자로 등록된 계정은 구매할수없습니다.');
+	}else {
+		$.ajax({
+			
+		});
+	}
+}
+function goCart(grade){
+	if(grade == ''){
+		alert('로그인이 필요한 서비스입니다.');
+		window.location.href = 'logInf';
+	}else if(grade == 'S'){
+		alert('판매자로 등록된 계정은 장바구니를 이용 할 수 없습니다.');
+	}else{
+		if(confirm('해당 상품을 장바구니에 담으시겠습니까?')){
+			alert('예클릭');
+		}else{
+			alert('아니오 클릭');
+		};
+	};
+	
 }

@@ -6,6 +6,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class OrderController {//주문성공 페이지
+	
+	
+	
 	@RequestMapping(value ="/osuccess")
 	public ModelAndView orderSuccess(ModelAndView model) {
 		model.setViewName("order/orderSuccess");
@@ -23,16 +26,7 @@ public class OrderController {//주문성공 페이지
 		model.setViewName("order/sellerGoodsForm");
 		return model;
 	}
-	@RequestMapping(value ="/sGUForm")//상품등록 수정
-	public ModelAndView sellerGoodsUpdateForm(ModelAndView model) {
-		model.setViewName("order/sellerGoodsUpdateForm");
-		return model;
-	}
-	@RequestMapping(value ="/sRGoods")//내가 등록한 상품
-	public ModelAndView sellerRegisterdGoods(ModelAndView model) {
-		model.setViewName("order/sellerRegisterdGoods");
-		return model;
-	}
+	
 	@RequestMapping(value ="/sOList")//주문 요청 목록
 	public ModelAndView sellerOrderList(ModelAndView model) {
 		model.setViewName("order/sellerOrderList");
@@ -46,6 +40,12 @@ public class OrderController {//주문성공 페이지
 	@RequestMapping(value ="/gsearch")//상품검색
 	public ModelAndView goodsSearch(ModelAndView model) {
 		model.setViewName("goods/goodsSearch");
+		return model;
+	}
+	@RequestMapping(value = "/cInsert")//장바구니에 넣기 
+	public ModelAndView mCartInsert(ModelAndView model) {
+		
+		model.setViewName("jsonView");
 		return model;
 	}
 	

@@ -40,4 +40,8 @@ public class MServiceImpl implements MService {
 	public MemberVO findCompany(MemberVO vo) {
 		return dao.findCompany(vo);
 	}
+	@Override
+	public int ChangePassword(MemberVO vo) {
+		return dao.ChangePassword(vo);
+	}
 }

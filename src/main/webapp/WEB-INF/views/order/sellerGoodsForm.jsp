@@ -124,12 +124,10 @@ $(function(){
 	var c_goodsName = false;
 	var c_gprice = false;
 	var c_goodsAmount = false;
-	var c_goodsInfo = false;
 	var c_uploadfilef = false;
 	var c_uploadfilef2 = false;
 	
 	//포커스아웃설정
-	$('#firstSelect').focus();
 	$('#firstSelect').focusout(function(){
 		c_firstSelect = cf_firstSelect();
 	});
@@ -144,9 +142,6 @@ $(function(){
 	});
 	$('#goodsAmount').focusout(function(){
 		c_goodsAmount = cf_goodsAmount();
-	});
-	$('#goodsInfo').focusout(function(){
-		c_goodsInfo = cf_goodsInfo();
 	});
 	$('#uploadfilef').focusout(function(){
 		c_uploadfilef = cf_uploadfilef();
@@ -186,19 +181,10 @@ $(function(){
 	}
 	function cf_goodsAmount(){
 		if($('#goodsAmount').val()!==''){
-			$('#goodsInfo').focus();
-			return true;
-		} else {
-			alert('상품수량을 입력해주세요.');
-			return false;
-		}
-	}
-	function cf_goodsInfo(){
-		if($('#goodsInfo').val()!==''){
 			$('#uploadfilef').focus();
 			return true;
 		} else {
-			alert('상품내용을 입력해주세요.');
+			alert('상품수량을 입력해주세요.');
 			return false;
 		}
 	}
@@ -223,7 +209,7 @@ $(function(){
 	}
 	function inCheck(){
 		if(c_firstSelect == true && c_goodsName == true && c_gprice == true && c_goodsAmount == true
-		&& c_goodsInfo == true && c_uploadfilef == true && c_uploadfilef2 == true) {
+		&& c_uploadfilef == true && c_uploadfilef2 == true) {
 			$('#upfMessage2').html('상품을 등록합니다.');
 			$('#gis').attr('disabled', false);
 		} else {
@@ -270,7 +256,8 @@ $(function(){
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse" style="max-height:700px;">
 				<ul class="nav navbar-nav side-nav" style="height: 90%;">
-					<li><h3>
+					<c:if test="${logInUser.mGrade!='S'}">
+							<li><h3>
 							<a href="#" data-toggle="collapse" data-target="#submenu-1"
 								aria-expended="true"><i class="fa fa-fw fa-search"></i>내지갑 <i
 								class="fa fa-fw fa-angle-down pull-right"></i></a>
@@ -278,9 +265,8 @@ $(function(){
 						<ul id="submenu-1" class="collapse">
 							<li><a href="mpoint" ><i
 									class="fa fa-angle-double-right"></i> 포인트</a></li>
-							<li><a href="mEPoint" ><i
-									class="fa fa-angle-double-right"></i> 적립 예정 포인트</a></li>
-						</ul></li>
+						</ul>
+					</li>
 					<li><h3><a href="#" data-toggle="collapse"
 						data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>
 							주문배송 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
@@ -307,6 +293,7 @@ $(function(){
 							<li><a href="mWriting"><i
 									class="fa fa-angle-double-right"></i> 글쓰기 (모든글)</a></li>
 						</ul></li>
+						</c:if>
 					<li><h3><a href="#" data-toggle="collapse"
 						data-target="#submenu-4"><i class="fa fa-fw fa-star"></i>
 							내정보 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
@@ -316,19 +303,20 @@ $(function(){
 							<li><a href="mWdrawal"><i
 									class="fa fa-angle-double-right"></i> 회원탈퇴</a></li>
 						</ul></li>
-					<li><h3><a href="#" data-toggle="collapse"
+						
+						<c:if test="${logInUser.mGrade!='C'}">
+						<li><h3><a href="#" data-toggle="collapse"
 						data-target="#submenu-5"><i class="fa fa-fw fa-star"></i>
 							판매자 메뉴 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
 						<ul id="submenu-5" class="collapse">
 							<li><a href="sGForm"><i
 									class="fa fa-angle-double-right"></i> 상품등록</a></li>
-							<li><a href="sGUForm"><i
-									class="fa fa-angle-double-right"></i> 등록상품 수정</a></li>
 							<li><a href="sRGoods"><i
 									class="fa fa-angle-double-right"></i> 나의 상품</a></li>
 							<li><a href="sOList"><i
 									class="fa fa-angle-double-right"></i> 주문목록</a></li>
 						</ul></li>
+						</c:if>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -426,7 +414,7 @@ $(function(){
 											<div class="form-group ">
 												<div class="input-group">
 													<input type="number" class="form-control" id="gprice"
-														name="gPrice" placeholder="0"> <span
+														name="gprice" placeholder="0"> <span
 														class="input-group-addon">원</span>
 												</div>
 											</div>
@@ -445,18 +433,6 @@ $(function(){
 										</div>
 									</div>
 									<!-- /row4 -->
-
-									<!-- row5 상품 정보 -->
-									<div class="row">
-										<div class="col-md-12">
-											<label for="goodsInfo">상품 정보</label>
-											<div class="form-group">
-												<textarea rows="5" cols="50" class="form-control"
-													id="goodsInfo" name="ginfo" placeholder="상품 내용을 입력하세요."></textarea>
-											</div>
-										</div>
-									</div>
-									<!-- /row5 -->
 
 									<!-- row6 상품 이미지 -->
 									<div class="row">

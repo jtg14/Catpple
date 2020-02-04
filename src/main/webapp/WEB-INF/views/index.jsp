@@ -21,6 +21,9 @@
 	color:lightgray;
 }
 </style>
+<script>
+alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입니다.');
+</script>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -112,10 +115,11 @@
     </div>
   </div>
   </c:forEach>
-  <div class="col-md-12 col-xs-12">
-  <img src="resources/images/catanddog.png">
-  </div>
+    
 </div>
+  <div class="col-md-12 col-xs-12">
+<img src="resources/images/catanddog.png" style="width:100%;hight:100%;">
+  </div>
 </div>
 
 	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
