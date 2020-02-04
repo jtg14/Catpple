@@ -412,7 +412,7 @@ $(function(){
 											<div class="form-group ">
 												<div class="input-group">
 													<input type="number" class="form-control" id="gprice"
-														name="gPrice" placeholder="0"> <span
+														name="gprice" placeholder="0"> <span
 														class="input-group-addon">원</span>
 												</div>
 											</div>

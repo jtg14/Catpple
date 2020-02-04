@@ -88,4 +88,11 @@ public class GoodsController {
 		mv.setViewName("order/sellerRegisterdGoods");
 		return mv;
 	}
+	@RequestMapping(value ="/sGUForm")//상품등록 수정
+	public ModelAndView sellerGoodsUpdateForm(ModelAndView mv, HttpServletRequest request, GoodsVO vo) {
+		vo = service.goodsDetail(vo);
+		mv.addObject("goodsDetail", vo);
+		mv.setViewName("order/sellerGoodsUpdateForm");
+		return mv;
+	}
 }
