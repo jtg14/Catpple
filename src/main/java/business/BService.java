@@ -3,6 +3,7 @@ package business;
 import java.util.ArrayList;
 
 import vo.BoardVO;
+import vo.PageVO;
 
 public interface BService {
 	int inquiryInsert(BoardVO vo);
@@ -20,5 +21,7 @@ public interface BService {
     public ArrayList<BoardVO> suggestionSelectListForManager();
     
     public int bReplyUpdate(BoardVO vo);
+    
+	public PageVO inquirySelectPageList(PageVO pvo);
 	
 }

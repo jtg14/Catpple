@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import dao.BoardDAO;
 import vo.BoardVO;
+import vo.PageVO;
 @Service
 public class BServiceImpl implements BService {
 	@Autowired
@@ -50,6 +51,11 @@ public class BServiceImpl implements BService {
 	@Override
 	public int bReplyUpdate(BoardVO vo) {
 		return dao.bReplyUpdate(vo);
+	}
+
+	@Override
+	public PageVO inquirySelectPageList(PageVO pvo) {
+		return dao.inquirySelectPageList(pvo);
 	}
 
 	

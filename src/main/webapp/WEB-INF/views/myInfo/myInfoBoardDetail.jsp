@@ -66,8 +66,7 @@ $(function(){
 	
 	//답변하기 버튼 클릭시
 	$('#replyButton').click(function(){
-		alert('하하');
-		var bReply = $('#replyArea').val();
+		var bReply = $('#replyText').val();
 		var bNum = ${one.bNum}
 		$.ajax({
 			type:'Post',
@@ -75,8 +74,11 @@ $(function(){
 			data:{
 				bReply:bReply,
 				bNum:bNum
-			}
-			
+			},
+			success:function(result){
+				$('#replyText').hide();
+				$('#replyArea').show();
+			} // success
 		});//ajax
 		
 		
@@ -256,26 +258,29 @@ $(function(){
 									<c:choose>
 									
 										<c:when test="${one.bReply!='0' and one.bReply!='1'}">
+										
 											<div>
 												${one.bReply}
 											</div>
+										 	
 										</c:when>
 									
 										<c:otherwise>
-											<textarea id="replyArea" rows="10" cols="20" style="width:100%;"></textarea>	
+											<textarea id="replyText" rows="10" cols="20" style="width:100%;"></textarea>	
 										</c:otherwise>
 									</c:choose>
 									</div> 
 									
 								</div>
-								
+								</form>
 								<!-- fffff --> 	
-							</form>
+							<!-- 관리자이고  -->
 							<c:if test="${logInUser.mGrade=='a'and one.bReply=='1'}">
 				
-										<button id="replyButton" class="btn btn-primary pull-right"  style="margin-top:10px;">답변하기</button>
+										<input id="replyButton" class="btn btn-primary pull-right"  type="submit" value="답변하기" style="margin-top:10px;">
 							
 							</c:if>
+							
 						</div>
 					</div>
 				</div>
