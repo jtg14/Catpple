@@ -26,7 +26,7 @@
 					<div class="col-md-12 col-xs-12 text-center"
 						style="margin-top: 10px;">
 						<a class="btn btn-success btn-block" type="button"
-							style="padding-left: 0px; padding-right: 0px;" onclick="confirm('${logInUser.mId}')">비밀번호 변경</a>
+							style="padding-left: 0px; padding-right: 0px;" onclick="confirmA('${logInUser.mId}')">비밀번호 변경</a>
 					</div>
 			</div>
 		</div>

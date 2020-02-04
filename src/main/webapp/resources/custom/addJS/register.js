@@ -193,13 +193,12 @@ function purchase(grade){
 	if(grade == ''){
 		alert('로그인이 필요한 서비스입니다.');
 		window.location.href = 'logInf';
-		return false;
 	}else if(grade == 'S'){
 		alert('판매자로 등록된 계정은 구매할수없습니다.');
-		return false;
 	}else {
-		url
-		return true;
+		$.ajax({
+			
+		});
 	}
 }
 function goCart(grade){
@@ -208,15 +207,12 @@ function goCart(grade){
 		window.location.href = 'logInf';
 	}else if(grade == 'S'){
 		alert('판매자로 등록된 계정은 장바구니를 이용 할 수 없습니다.');
-	}else {
-		var cf = confirm('해당 상품을 장바구니에 담으시겠습니까?');
-		if(cf){
-			$.ajax({
-				type:'Post',
-				url:''
-			});
+	}else{
+		if(confirm('해당 상품을 장바구니에 담으시겠습니까?')){
+			alert('예클릭');
 		}else{
-		}
-	}
+			alert('아니오 클릭');
+		};
+	};
 	
 }
