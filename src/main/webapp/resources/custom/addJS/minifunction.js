@@ -78,8 +78,8 @@ function logInCheck(){
 				window.location.href = 'home';
 			}else if(data.logIn == 'failed'){
 				alert('등록 된 정보와 일치하지 않거나 \n\n 시스템에 없는 계정 입니다.');
-				$('#id').focus();
 				window.location.href = 'logInf';
+				$('#id').focus();
 			}
 			}
 		});
@@ -121,9 +121,9 @@ function confirm(g){
 			},
 			success:function(data){
 				if(data.code == '100'){
-					opener.alert('비밀번호를 변경하는데 성공 하였습니다. \n\n 변경 된 정보로 로그인 해주시기바랍니다.');
-					self.close();
+					alert('비밀번호를 변경하는데 성공 하였습니다. \n\n 변경 된 정보로 로그인 해주시기바랍니다.');
 					opener.location.href = 'logInf';
+					close();
 				}else if (data.code == '101'){
 					opener.alert('비밀번호를 변경하는데 실패 하였습니다');
 				}

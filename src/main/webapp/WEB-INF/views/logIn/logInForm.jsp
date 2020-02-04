@@ -74,8 +74,8 @@
 			<div class="container col-md-12"
 				style="border: 5px solid crimson; border-radius: 10px; padding: 20px;">
 					<div class="col-md-12 col-xs-12 text-center">
-						<input class="form-control input-sm" type="text" placeholder="아이디" name="id" id="id">
-						<input class="form-control input-sm" type="password" name="password" id="password"
+						<input class="form-control input-sm" type="text" placeholder="아이디" name="id" id="id" style="font-size:1.2em;">
+						<input class="form-control input-sm" type="password" name="password" id="password" style="font-size:1.2em;"
 							placeholder="비밀번호" style="margin-top: 5px;">
 					</div>
 					<div class="col-md-6 col-xs-6 text-center"
