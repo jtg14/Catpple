@@ -162,6 +162,7 @@ padding-right: 0px;
 						<div class="col-md-10 col-xs-12">
 							<h2 style="color: crimson">나의 등록 상품</h2>
 							<c:forEach var="gl" items="${myGoodsList}">
+								<form action="sGUForm" method="post">
 								<div class="container text-center"
 									style="border-top: 2px solid lightgray; padding-top: 10px; padding-bottom: 10px;">
 									<div class="col-md-6 col-xs-12"
@@ -170,6 +171,7 @@ padding-right: 0px;
 											<img class="img" src="resources/sellerInfo/${logInUser.mId}/${gl.gimg1}.jpg" width="100px" height="100px;"/>
 										</div>
 										<div class="col-md-6 col-xs-9 second-div">
+											<input class="form-controller" name="gnum" size="10" readonly="readonly" value="${gl.gnum}">
 											<h4>${gl.gname}</h4>
 										</div>
 									</div>
@@ -177,10 +179,10 @@ padding-right: 0px;
 
 									<div class="col-md-6 col-xs-12 third-div">
 										<div class="col-md-3 col-xs-3" style="padding-right: 0px;">
-											<span>${gl.gprice}</span>
+											<span>${gl.gprice}원</span>
 										</div>
 										<div class="col-md-9 col-xs-9">
-											<span>재고 : 5개</span> <a class="pull-right" href="#">편집하기</a>
+											<span>재고 : 5개</span> <button type="submit" class="pull-right btn btn-danger">편집하기</button>
 										</div>
 
 									</div>
@@ -188,6 +190,7 @@ padding-right: 0px;
 
 
 								</div>
+								</form>
 							</c:forEach>
 
 						</div>
