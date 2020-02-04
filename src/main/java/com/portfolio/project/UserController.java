@@ -1,6 +1,7 @@
 package com.portfolio.project;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import business.CService;
+import business.GService;
 import business.MService;
 import vo.CartVO;
+import vo.GoodsVO;
 import vo.MemberVO;
 
 @Controller
@@ -22,6 +25,8 @@ public class UserController {
 	MService service;
 	@Autowired
 	CService cartService;
+	@Autowired
+	GService gservice;
 	@Autowired
 	BCryptPasswordEncoder passwordEncorder;
 	
@@ -62,6 +67,11 @@ public class UserController {
 	}
 	@RequestMapping(value ="/mCart")//장바구니
 	public ModelAndView myInfoCart(ModelAndView model,HttpServletRequest request) {
+		MemberVO vo =(MemberVO) request.getSession().getAttribute("logInUser");
+		ArrayList<CartVO> list = cartService.cartList(vo);
+		
+		model.addObject("list",list);
+		
 		model.setViewName("myInfo/myInfoCart");
 		return model;
 	}
@@ -232,5 +242,15 @@ public class UserController {
 		model.setViewName("jsonView");
 		return model;
 		
+	}
+	@RequestMapping(value="/deleteCart")
+	public ModelAndView deleteCart(ModelAndView model,CartVO vo) {
+		if(cartService.deleteCart(vo)>0) {
+			model.addObject("code","300");
+		}else {
+			model.addObject("code","301");
+		}
+		model.setViewName("jsonView");
+		return model;
 	}
 }

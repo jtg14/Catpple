@@ -27,4 +27,8 @@ public class CartDAO {
 	public ArrayList<CartVO> cartList(MemberVO vo){
 		return (ArrayList)dao.selectList(NS+"cartList",vo);
 	}
+	public int deleteCart(CartVO vo) {
+		return dao.delete(NS+"deleteCart",vo);
+	}
+	
 }

@@ -11,6 +11,10 @@
 	select * from Cart where member_mid = #{member_mId} and goods_gnum = ${goods_gNum}
 	</select>
 	<select id="cartList" resultType="vo.CartVO">
-	 	select * from cart where member_mid= #{mId} 
+	 	select c.cId,c.camount,c.member_mid,c.goods_gnum,g.gname,g.gprice,g.member_mid sellerID,
+	 	g.gimg1 from Cart c,Goods g where c.goods_gnum = g.gnum and c.member_mid=#{mId}
 	</select>
+	<delete id="deleteCart">
+		delete from cart where cid = #{cId}
+	</delete>
 </mapper>
