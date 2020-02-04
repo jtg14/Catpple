@@ -11,13 +11,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import business.CService;
 import business.MService;
+import vo.CartVO;
 import vo.MemberVO;
 
 @Controller
 public class UserController {
 	@Autowired
 	MService service;
+	@Autowired
+	CService cartService;
 	@Autowired
 	BCryptPasswordEncoder passwordEncorder;
 	
@@ -208,5 +212,19 @@ public class UserController {
 		
 		model.setViewName("index");
 		return model;
+	}
+	@RequestMapping(value="/infoToCart")//상품 상세정보 -> 장바구니
+	public ModelAndView infoToCart(ModelAndView model,HttpServletRequest request,CartVO vo) {
+		System.out.println(vo);
+		if(cartService.findDupGoods(vo) == null) {//장바구니에 들어있는지 확인
+			if(cartService.infoToCart(vo) > 0) {  //없으면 장바구니로 넣기
+				model.addObject("code","100");
+			}
+		}else {
+			model.addObject("code","101");
+		}
+		model.setViewName("jasonView");
+		return model;
+		
 	}
 }

@@ -3,8 +3,8 @@ package vo;
 public class CartVO {
 	private int cId;
 	private int cAmount;
-	private String Member_mId;
-	private int Goods_gNum;
+	private String member_mId;
+	private int goods_gNum;
 	public int getcId() {
 		return cId;
 	}
@@ -18,21 +18,23 @@ public class CartVO {
 		this.cAmount = cAmount;
 	}
 	public String getMember_mId() {
-		return Member_mId;
+		return member_mId;
 	}
 	public void setMember_mId(String member_mId) {
-		Member_mId = member_mId;
+		this.member_mId = member_mId;
 	}
 	public int getGoods_gNum() {
-		return Goods_gNum;
+		return goods_gNum;
 	}
 	public void setGoods_gNum(int goods_gNum) {
-		Goods_gNum = goods_gNum;
+		this.goods_gNum = goods_gNum;
 	}
 	@Override
 	public String toString() {
-		return "CartVO [cId=" + cId + ", cAmount=" + cAmount + ", Member_mId=" + Member_mId + ", Goods_gNum="
-				+ Goods_gNum + "]";
+		return "CartVO [cId=" + cId + ", cAmount=" + cAmount + ", member_mId=" + member_mId + ", goods_gNum="
+				+ goods_gNum + "]";
 	}
+	
+	
 	
 }

@@ -92,4 +92,5 @@ public class GoodsController {
 		mv.setViewName("order/sellerGoodsUpdateForm");
 		return mv;
 	}
+	
 }

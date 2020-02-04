@@ -4,11 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "portfolio.mapper.CartMapper">
 
-
-	
-	<!-- mdelete -->
-	<update id="mdelete">
-		update member set mstatus='T' where mid=#{mId}
-	</update>
-	
+	<insert id="infoToCart">
+	insert into Cart (CID,CAMOUNT,MEMBER_MID,GOODS_GNUM) values((select ifnull(max(cId),0)+1 from cart as cId),#{cAmount},#{member_mId},#{goods_gNum})
+	</insert>
+	<select id="findDupGoods" resultType="vo.CartVO">
+	select * from Cart where member_mid = #{member_mId} and goods_gnum = ${goods_gNum}
+	</select>
 </mapper>

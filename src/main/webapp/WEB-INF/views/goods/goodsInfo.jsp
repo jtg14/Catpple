@@ -53,8 +53,8 @@
 								<span class="input-group-btn">
 									<button class="btn btn-default" type="button" id="btn-minus">-</button>
 								</span> <input type="text" class="form-control amount_bar"
-									maxlength="4" value="1" numberOnly id="amount1"> <span
-									class="input-group-btn">
+									maxlength="4" value="1" numberOnly id="amount1">
+									<span class="input-group-btn">
 									<button class="btn btn-default" type="button" id="btn-plus">+</button>
 								</span>
 							</div>
@@ -92,7 +92,7 @@
 								<a class="btn btn-danger btn-lg"
 									style="font-size: 1.4em;"
 									type="button"
-									onclick="goCart('${logInUser.mGrade}')">장바구니</a>
+									onclick="goCart('${logInUser.mGrade}','${logInUser.mId}','${goods.gnum}')">장바구니</a>
 							</div>
 						</div>
 					</div>
