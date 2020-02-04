@@ -106,6 +106,7 @@ public class UserController {
 		vo.setmPw(passwordEncorder.encode( request.getParameter("password")));
 		if(service.ChangePassword(vo)>0) {
 			model.addObject("code","100");
+			request.getSession().invalidate();
 		}else {
 			model.addObject("code","101");
 		}
@@ -163,13 +164,15 @@ public class UserController {
 	public ModelAndView logIn(ModelAndView model,MemberVO vo,HttpServletRequest request) {
 		String password = vo.getmPw();
 		vo = service.login(vo);
-		if(vo == null) {
+		if(vo == null) {//없는 아이디일때
 			model.addObject("logIn","failed");
 		}else if(passwordEncorder.matches(password,vo.getmPw())) {
 			HttpSession session = request.getSession();
 			session.setAttribute("logInUser",vo);
 			session.setMaxInactiveInterval(60 * 60 * 2); //두시간
 			model.addObject("logIn","success");
+		}else if(!passwordEncorder.matches(password,vo.getmPw())) {//비밀번호 틀렸을때
+			model.addObject("logIn","failed");
 		}
 		model.setViewName("jsonView");
 		return model;
