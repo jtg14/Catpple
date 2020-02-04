@@ -13,4 +13,6 @@ public interface GService {
 	ArrayList<GoodsVO> myGoodsList(GoodsVO vo);
 	
 	GoodsVO goodsDetail (GoodsVO vo);
+	
+	int goodsUpdate(GoodsVO vo);
 }

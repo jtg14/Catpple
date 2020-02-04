@@ -19,4 +19,10 @@
 	<select id = "myGoodsList" resultType="vo.GoodsVO">
 		select * from goods where Member_mid = #{Member_mid}
 	</select>
+	<update id="goodsUpdate">
+		update goods set 
+		gcategory=#{gcategory}, gcategory2=#{gcategory2}, 
+		gname=#{gname}, gprice=#{gprice}, gstock=#{gstock}, gimg1=#{gimg1}, gimg2=#{gimg2} 
+		where gnum=#{gnum}
+	</update>
 </mapper>

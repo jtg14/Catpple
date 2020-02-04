@@ -232,7 +232,7 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 						<div class="col-md-8 col-md-offset-1 col-xs-12"
 							style="border: 5px solid crimson; border-radius: 10px; padding-bottom: 10px;">
 							<h2 style="margin-top: 5%;">상품 수정 및 삭제</h2>
-							<form>
+							<form action="gupdate" method="post" enctype="multipart/form-data">
 								<div style="margin: 10px 30px;">
 
 									<!-- Row1 아이디/이름-->
@@ -274,7 +274,7 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 										<div class="col-md-3 col-xs-6">
 											<!-- Material input -->
 											<div class="form-group">
-												<label for="goodsNumber">상품번호</label> <input type="text"
+												<label for="goodsNumber">상품번호</label> <input type="text" name="gnum"
 													class="form-control" id="goodsNumber" value="${goodsDetail.gnum}"
 													readonly="readonly">
 											</div>
@@ -283,12 +283,12 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 										<div style="margin-top: 35px;">
 										<div class="col-md-3 col-xs-12">
 											<select class="form-control" id="firstSelect" name="gcategory" onChange="changeFirstSelect();">
-        										<option value="${goodsDetail.gcategory}">${goodsDetail.gcategory}</option>
+        										<option value="">${goodsDetail.gcategory}</option>
     										</select>
   										</div>
   										<div class="col-md-3 col-xs-12">
     										<select class="form-control" name="gcategory2" id="secondSelect">
-        										<option value="${goodsDetail.gcategory2}">${goodsDetail.gcategory2}</option>
+        										<option value="">${goodsDetail.gcategory2}</option>
     										</select>
 										</div>
 										</div>
@@ -300,7 +300,7 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 										<div class="col-md-9 col-xs-12">
 											<!-- Material input -->
 											<div class="form-group">
-												<label for="goodsName">상품 이름</label> <input type="text"
+												<label for="goodsName">상품 이름</label> <input type="text" name="gname"
 													class="form-control" id="goodsName" placeholder="상품이름" value="${goodsDetail.gname}">
 
 											</div>
@@ -327,7 +327,7 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 											<!-- Material input -->
 											<div class="form-group">
 												<div class="input-group">
-													<input type="number" class="form-control" id="goodsPrice"
+													<input type="number" class="form-control" id="goodsPrice" name="gprice"
 														placeholder="0" value="${goodsDetail.gprice}"> <span class="input-group-addon">원</span>
 												</div>
 											</div>
@@ -338,7 +338,7 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 											<!-- Material input -->
 											<div class="form-group">
 												<div class="input-group">
-													<input type="number" class="form-control" id="goodsAmount"
+													<input type="number" class="form-control" id="goodsAmount" name="gstock"
 														placeholder="0" value="${goodsDetail.gstock}"> <span class="input-group-addon">개</span>
 												</div>
 											</div>
@@ -352,7 +352,7 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 											<label for="goodsInfo">상품 이미지1</label>
 											<div class="form-group">
 												<input class="form-control" type="file" id="uploadfilef"
-													name="gimgf">
+													name="gimgf1">
 
 											</div>
 										</div>
