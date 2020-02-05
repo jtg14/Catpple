@@ -7,8 +7,8 @@
 	<!-- goodsInsert -->
 	<insert id="goodsInsert">
 		insert into 
-		goods(gnum, gstock, gprice, gname, gimg1, gimg2, gpoint, gcategory, gcategory2, Member_mid) 
-		values((select ifnull(max(gnum),0)+1 from goods as gnum), #{gstock}, #{gprice}, #{gname},#{gimg1},#{gimg2}, 0, #{gcategory}, #{gcategory2}, #{Member_mid})
+		goods(gnum, gstock, gprice, gname, gimg1, gimg2, gpoint, gcategory, gcategory2, member_mid) 
+		values((select ifnull(max(gnum),0)+1 from goods as gnum), #{gstock}, #{gprice}, #{gname},#{gimg1},#{gimg2}, 0, #{gcategory}, #{gcategory2}, #{member_mid})
 	</insert>
 	<select id="goodsSearch" parameterType="String" resultType="vo.GoodsVO">
 	select * from goods where gname like '${value}%' or gname like '%${value}%' or gname like '%${value}' or gcategory like '${value}%' or gcategory like '%${value}%' or gcategory like '%${value}' or gcategory2 like '${value}%' or gcategory2 like '%${value}%' or gcategory2 like '%${value}'
@@ -17,7 +17,7 @@
 	select * from goods where gnum = #{gnum}
 	</select>
 	<select id = "myGoodsList" resultType="vo.GoodsVO">
-		select * from goods where Member_mid = #{Member_mid}
+		select * from goods where member_mid = #{member_mid}
 	</select>
 	<update id="goodsUpdate">
 		update goods set 
@@ -25,4 +25,7 @@
 		gname=#{gname}, gprice=#{gprice}, gstock=#{gstock}, gimg1=#{gimg1}, gimg2=#{gimg2} 
 		where gnum=#{gnum}
 	</update>
+	<select id="homeGoodsList" resultType="vo.GoodsVO">
+		select * from goods order by gdate desc limit 0, 12
+	</select>
 </mapper>
