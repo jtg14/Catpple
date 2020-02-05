@@ -61,7 +61,7 @@
 	
 	<!-- suggestionSelectPageList -->
 	<select id="suggestionSelectPageList" resultType="vo.BoardVO">
-		select b.* from (select * from board where bReply='0' and member_mId='#{member_mId}') AS b order by b.bNum desc limit #{sno}, #{eno} 
+		select b.* from (select * from board where bReply='0' and member_mId=#{member_mId}) AS b order by b.bNum desc limit #{sno}, 5 
 	</select>
 	
 </mapper>

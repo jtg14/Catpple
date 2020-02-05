@@ -193,7 +193,7 @@ $(function(){
 										<h4 style="color: darkgray;">문의 해주시면 친절히 답변해 드리 겠습니다.</h4>
 									</div>
 									<div class="container">
-										<form action="binsert" method="post">
+										<form action="inquiryInsert" method="post">
 											<div class="col-md-12 col-xs-12">
 												<h3>
 													작성자<span>${logInUser.mName}</span>
@@ -245,7 +245,7 @@ $(function(){
 										<h4 style="color: darkgray;">고객님의 의견을 적극 반영 하겠습니다!</h4>
 									</div>
 									<div class="container">
-										<form id="form-customerSuggestion" action="" method="post">
+										<form id="form-customerSuggestion" action="suggestionInsert" method="post">
 											<div class="col-md-12 col-xs-12">
 												<h3>제목</h3>
 											</div>
@@ -261,7 +261,9 @@ $(function(){
 													id="bContent" style="height: 140px;"></textarea>
 											</div>
 											<div class="col-md-12 col-xs-12" style="margin-top: 20px;">
-												<button class="btn btn-primary btn-lg pull-right">문의하기</button>
+												<input 
+													class="btn btn-primary btn-lg pull-right" type="submit"
+													value="문의하기">
 											</div>
 										</form>
 									</div>

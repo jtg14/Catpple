@@ -155,6 +155,9 @@ th, td {
 							<table class="table">
 								<thead>
 									<tr>
+										<c:if test="${logInUser.mGrade=='a'}">
+											<th>작성자ID</th>
+										</c:if>
 										<th>구분</th>
 										<th class="board-content"
 											style="padding-right: 0px; padding-left: 0px;">제목</th>
@@ -185,9 +188,9 @@ th, td {
 														[건의사항]
 													</c:otherwise>
 														</c:choose></td>
-													<td class="board-content"
-														style="padding-right: 0px; padding-left: 0px; text-align: left;"><a
-														href="mBDetail?bNum=${list.bNum}"> <c:choose>
+													<td class="board-content" style="padding-right: 0px; padding-left: 0px; text-align: left;">
+														<a href="mBDetail?bNum=${list.bNum}&pageCode=I">
+														   <c:choose>
 																<c:when test="${list.bReply!='0'and list.bReply!='1'}">
 																	<span class="label label-danger"
 																		style="margin-right: 10px;">답변완료</span>
@@ -196,8 +199,9 @@ th, td {
 																	<span class="label label-success"
 																		style="margin-right: 10px;">답변대기중</span>
 																</c:otherwise>
-															</c:choose> ${list.bTitle}
-													</a></td>
+														   </c:choose> ${list.bTitle}
+														</a>
+													</td>
 													<td style="padding-right: 0px;">${list.bDate}</td>
 												</tr>
 											</c:forEach>
@@ -207,6 +211,9 @@ th, td {
 											<c:forEach var="listForManager" items="${listForManager}"
 												varStatus="">
 												<tr>
+													<td>
+														${listForManager.member_mId}
+													</td>
 													<td style="padding-left: 0px;padding-right: 0px; width:25%;">
 													<c:choose>
 															<c:when test="${listForManager.separation=='1'}">
@@ -221,13 +228,10 @@ th, td {
 															<c:when test="${listForManager.separation=='4'}">
 														[기타]
 													</c:when>
-															<c:otherwise>
-														[건의사항]
-													</c:otherwise>
 														</c:choose></td>
 													<td class="board-content"
 														style="padding-right: 0px; padding-left: 0px; text-align: left;"><a
-														href="mBDetail?bNum=${listForManager.bNum}"> <c:choose>
+														href="mBDetail?bNum=${listForManager.bNum}&pageCode=I"> <c:choose>
 																<c:when
 																	test="${listForManager.bReply!='0'and listForManager.bReply!='1'}">
 																	<span class="label label-danger"
