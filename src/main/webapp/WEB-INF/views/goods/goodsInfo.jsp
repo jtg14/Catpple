@@ -24,7 +24,7 @@
 				<div class="row">
 					<div class="thumbnail col-md-4 col-xs-12">
 						<img class="goods_image"
-							src="resources/sellerInfo/${company.mId}/${goods.gimg1}">
+							src="resources/sellerInfo/${goods.member_mid}/${goods.gimg1}.jpg">
 					</div>
 					<div class="col-md-8 col-xs-12">
 						<div class="col-md-12 col-xs-12">
@@ -114,7 +114,7 @@
 
 					<div class="tab-pane fade active in" id="home">
 						<img class="img-responsive col-md-12"
-							src="resources/sellerInfo/${company.mId}/${goods.gimg2}">
+							src="resources/sellerInfo/${company.mId}/${goods.gimg2}.jpg">
 					</div>
 					<!-- end of goodsDetail -->
 
