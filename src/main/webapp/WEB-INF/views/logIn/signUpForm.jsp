@@ -107,10 +107,10 @@
 						<div class="btn-group col-md-6 col-md-offset-3 col-xs-12"
 							data-toggle="buttons"style="margin:10px ">
 							<label class="btn btn-primary active"> <input
-								type="radio" name="options" value="S" id="buyer" autocomplete="off"
+								type="radio" name="options" value="C" id="buyer" autocomplete="off"
 								checked> 구매자로 가입
 							</label> <label class="btn btn-primary"> <input type="radio"
-								name="options" id="seller" value="C" autocomplete="off"> 판매자로 가입
+								name="options" id="seller" value="S" autocomplete="off"> 판매자로 가입
 							</label>
 						</div>
 							<div class="col-md-12 col-xs-12">	
