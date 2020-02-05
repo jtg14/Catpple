@@ -36,8 +36,8 @@ public class GoodsController {
 		File file2 = new File(uploadPath, multipartFile2.getOriginalFilename());
 		String str1 = multipartFile1.getOriginalFilename();
 		String str2 = multipartFile2.getOriginalFilename();
-		vo.setGimg1(str1.substring(0,str1.lastIndexOf(".")));
-		vo.setGimg2(str2.substring(0,str2.lastIndexOf(".")));
+		vo.setGimg1(str1);
+		vo.setGimg2(str2);
 		int cnt = service.goodsInsert(vo);
 		if(cnt>0) {
 			if(!multipartFile1.isEmpty() && !multipartFile2.isEmpty()) {

@@ -25,7 +25,7 @@
 					<span class="sr-only">Toggle navigation</span> 접속
 				</button>
 				<div class="navbar-header">
-					<a class="navbar-brand logo" style="padding-top:0px; href="home">
+					<a class="navbar-brand logo" style="padding-top:0px;" href="home">
 						<img src="resources/images/CatppleLogo.png" style="width: 150px;">
 					</a>
 				</div>

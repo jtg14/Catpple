@@ -17,7 +17,7 @@
 	select * from goods where gnum = #{gnum}
 	</select>
 	<select id = "myGoodsList" resultType="vo.GoodsVO">
-		select * from goods where member_mid = #{member_mid}
+		select * from goods where member_mid = #{member_mid} order by gdate desc
 	</select>
 	<update id="goodsUpdate">
 		update goods set 
