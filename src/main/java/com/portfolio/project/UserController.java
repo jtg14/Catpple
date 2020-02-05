@@ -197,7 +197,7 @@ public class UserController {
 	@RequestMapping(value="/logOut")
 	public ModelAndView logOut(ModelAndView model,HttpServletRequest request) {
 		request.getSession().invalidate();
-		model.setViewName("index");
+		model.setViewName("redirect:home");
 		return model;
 	}
 	@RequestMapping(value="/mchange")
