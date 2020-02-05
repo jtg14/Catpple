@@ -58,6 +58,21 @@ public class BServiceImpl implements BService {
 		return dao.inquirySelectPageList(pvo);
 	}
 
+	@Override
+	public PageVO inquirySelectPageListForManager(PageVO pvo) {
+		return dao.inquirySelectPageListForManager(pvo);
+	}
+
+	@Override
+	public PageVO suggestionSelectPageList(PageVO pvo) {
+		return dao.suggestionSelectPageList(pvo);
+	}
+
+	@Override
+	public PageVO suggestionSelectPageListForManager(PageVO pvo) {
+		return dao.suggestionSelectPageListForManager(pvo);
+	}
+
 	
 	
 }

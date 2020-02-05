@@ -39,34 +39,43 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		mvo = (MemberVO)session.getAttribute("logInUser");
 		
-		//paging
-		int currPage=1;
-		if(pvo.getCurrPage()>1){ 
-			currPage=pvo.getCurrPage();	
-		}else{ 
-			pvo.setCurrPage(currPage);
-		}
-		
-		int startRno=((currPage-1)*pvo.getPerPage())+1;
-		int endRno=(startRno+pvo.getPerPage())-1;		
-		pvo.setSno(startRno);
-		pvo.setEno(endRno);
-		
+	
 	
 		
 		
 		
 		if("C".equals(mvo.getmGrade())) {//member가 customer인 경우
+			//paging
+			//currPage설정
+			int currPage=1;
+			if(pvo.getCurrPage()>1){ 
+				currPage=pvo.getCurrPage();	
+			}else{ 
+				pvo.setCurrPage(currPage);
+			}
+			
+			//페이지 첫row와 마지막row설정
+			int startRno=((currPage-1)*pvo.getPerPage());
+			int endRno=(startRno+pvo.getPerPage());		
+			pvo.setSno(startRno);
+			pvo.setEno(endRno);
+			
+			pvo.setMember_mId(mvo.getmId());//mid를 pageVO member_mid에 저장
+			System.out.println("member_mId=>"+pvo.getMember_mId());
+			System.out.println("sno=>"+pvo.getSno());
 			pvo = service.inquirySelectPageList(pvo);
 			
-			int totalPageNo = pvo.getTotalCount()/pvo.getPerPage();
-			if (pvo.getTotalCount()%pvo.getPerPage()>0)
-				totalPageNo +=1;
 			
+			int totalPageNo = pvo.getTotalCount()/pvo.getPerPage();
+			if (pvo.getTotalCount()%pvo.getPerPage()>0) {
+				totalPageNo +=1;
+				}
 			int sPage=((currPage-1)/pvo.getPerPageNo())*pvo.getPerPageNo() + 1 ;
 			int ePage=sPage+pvo.getPerPageNo()-1; 
 			
-			if (ePage>totalPageNo) ePage=totalPageNo;
+			if (ePage>totalPageNo) {
+				ePage=totalPageNo;
+			}
 			
 			model.addObject("sPage",sPage);
 			model.addObject("ePage",ePage);
@@ -82,7 +91,22 @@ public class BoardController {
 //			model.setViewName("myInfo/myInfoCustomerInquiry");
 			return model;
 		}else if("a".equals(mvo.getmGrade())) {//member가 관리자인 경우
-			pvo = service.inquirySelectPageList(pvo);
+			//paging
+			//currPage설정
+			int currPage=1;
+			if(pvo.getCurrPage()>1){ 
+				currPage=pvo.getCurrPage();	
+			}else{ 
+				pvo.setCurrPage(currPage);
+			}
+			
+			//페이지 첫row와 마지막row설정
+			int startRno=((currPage-1)*pvo.getPerPage());
+			int endRno=(startRno+pvo.getPerPage());		
+			pvo.setSno(startRno);
+			pvo.setEno(endRno);
+			
+			pvo = service.inquirySelectPageListForManager(pvo);
 			
 			int totalPageNo = pvo.getTotalCount()/pvo.getPerPage();
 			if (pvo.getTotalCount()%pvo.getPerPage()>0)
@@ -92,6 +116,12 @@ public class BoardController {
 			int ePage=sPage+pvo.getPerPageNo()-1; 
 			
 			if (ePage>totalPageNo) ePage=totalPageNo;
+			
+//			System.out.println("sPage=>"+sPage);
+//			System.out.println("ePage=>"+ePage);
+//			System.out.println("PerPageNo=>"+pvo.getPerPageNo());
+//			System.out.println("totalPageNo =>"+totalPageNo);
+//			System.out.println("currPage=>"+pvo.getCurrPage());
 			
 			model.addObject("sPage",sPage);
 			model.addObject("ePage",ePage);
@@ -140,8 +170,12 @@ public class BoardController {
 		System.out.println("들어옴");
 		System.out.println(vo);
 		if(service.bReplyUpdate(vo)>0) {
-			model.setViewName("redirect:mBDetail?bNum="+vo.getbNum());
+			model.addObject("code", "100");
+		}else {
+			model.addObject("code", "101");
 		}
+
+		model.setViewName("jsonView");
 		
 		return model;
 	}//bReplyUpdate

@@ -13,8 +13,7 @@
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
-	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
-<title>myInfoExpectedPoints</title>
+<title>글 상세 | Catpple</title>
 <style>
 .item-size {
 	border: 3px solid lightgray;
@@ -61,34 +60,8 @@ th, td {
 }
 </style>
 
-<script>
-$(function(){
-	
-	//답변하기 버튼 클릭시
-	$('#replyButton').click(function(){
-		var bReply = $('#replyText').val();
-		var bNum = ${one.bNum}
-		$.ajax({
-			type:'Post',
-			url:'bReplyUpdate',
-			data:{
-				bReply:bReply,
-				bNum:bNum
-			},
-			success:function(result){
-				$('#replyText').hide();
-				$('#replyArea').show();
-			} // success
-		});//ajax
-		
-		
-	});//replyButton
-	
-	
-	
-});//ready
 
-</script>
+
 
 </head>
 <body class="font-Jua">
@@ -207,7 +180,7 @@ $(function(){
 					<!-- 메인내용 들어갈 공간 -->
 						<div class="container">
 							<h2>1:1 문의</h2>
-							<form id="form-CustomerInquiry">
+							
 							<div class="col-md-12 col-xs-12 detail">
 								<div class="col-md-2 col-xs-2 title">
 									<h4 style="color:crimson;">제목</h4>
@@ -277,12 +250,12 @@ $(function(){
 									</div> 
 									
 								</div>
-								</form>
+								
 								<!-- fffff --> 	
 							<!-- 관리자이고  -->
 							<c:if test="${logInUser.mGrade=='a'and one.bReply=='1'}">
 				
-										<input id="replyButton" class="btn btn-primary pull-right"  type="submit" value="답변하기" style="margin-top:10px;">
+										<button class="btn btn-primary pull-right" style="margin-top:10px;" onclick="updateReply(${one.bNum})">답변하기</button>
 							
 							</c:if>
 							
@@ -299,8 +272,31 @@ $(function(){
 	
 
 
+	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>
+	<script>
+	function updateReply(number){
+		var bReply = $('#replyText').val();
+		var bNum = number;
+		$.ajax({
+			type:'Post',
+			url:'bReplyUpdate',
+			data:{
+				bReply:bReply,
+				bNum:bNum
+			},
+			success:function(result){
+				if(result.code=='100'){
+					location.reload();
+				}else if(result.code=='101'){
+					
+				}
+			} // success
+		});//ajax
+	};//replyButton
+	
+	</script>
 </body>
 <footer>
 	<div class="article">

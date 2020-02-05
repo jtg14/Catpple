@@ -167,7 +167,8 @@ th, td {
 										<c:when test="${logInUser.mGrade=='C'}">
 											<c:forEach var="list" items="${list}" varStatus="">
 												<tr>
-													<td style="padding-left: 0px;"><c:choose>
+													<td style="padding-left: 0px;padding-right: 0px; width:25%;">
+													<c:choose>
 															<c:when test="${list.separation=='1'}">
 														[구매 관련]
 													</c:when>
@@ -206,7 +207,8 @@ th, td {
 											<c:forEach var="listForManager" items="${listForManager}"
 												varStatus="">
 												<tr>
-													<td style="padding-left: 0px;"><c:choose>
+													<td style="padding-left: 0px;padding-right: 0px; width:25%;">
+													<c:choose>
 															<c:when test="${listForManager.separation=='1'}">
 														[구매 관련]
 													</c:when>
@@ -248,11 +250,11 @@ th, td {
 						</div>
 
 						<!-- paging -->
-						<div>
+						<div class="col-md-10 col-xs-12 text-center">
 							<c:choose>
-								<c:when test="${sPage>perPageNo}">
+								<c:when test="${currPage>1}">
 									<a href="mCustomerInquiry?currPage=1">First</a>&nbsp;
-									<a href="mCustomerInquiry?currPage=${sPage-1}">이전</a>&nbsp;&nbsp;
+									<a href="mCustomerInquiry?currPage=${currPage-1}">이전</a>&nbsp;&nbsp;
 								</c:when>
 								<c:otherwise>
 									<font color="gray">First&nbsp;이전&nbsp;&nbsp;</font>
@@ -271,11 +273,11 @@ th, td {
 							</c:forEach>
 							
 							<c:choose>
-								<c:when test="${ePage==totalPageNo}">
+								<c:when test="${currPage==totalPageNo}">
 									<font color="gray">&nbsp;&nbsp;다음&nbsp;Last</font>
 								</c:when>
 								<c:otherwise>
-									<a href="mCustomerInquiry?currPage=${ePage+1}">&nbsp;다음</a>&nbsp;
+									<a href="mCustomerInquiry?currPage=${currPage+1}">&nbsp;다음</a>&nbsp;
 									<a href="mCustomerInquiry?currPage=${totalPageNo}">Last</a>&nbsp;
 								</c:otherwise>
 							</c:choose>
