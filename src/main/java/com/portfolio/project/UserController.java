@@ -151,8 +151,8 @@ public class UserController {
 		request.getParameter("options")
 		);
 		vo.setmPw(passwordEncorder.encode(vo.getmPw()));
-		if(vo.getmGrade()== "S") {
-			File sellerPersonalFolder = new File("C:\\Jason\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getmId());
+		if(vo.getmGrade().equals("S")) {
+			File sellerPersonalFolder = new File("C:\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getmId());
 			if (!sellerPersonalFolder.exists()) {  // ff의 존재여부 확인
 				sellerPersonalFolder.mkdir();		// 없으면 생성	
 				System.out.println("판매자로 회원가입이 완료되어 디렉토리 생성");
