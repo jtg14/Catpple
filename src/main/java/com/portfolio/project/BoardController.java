@@ -39,11 +39,6 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		mvo = (MemberVO)session.getAttribute("logInUser");
 		
-	
-	
-		
-		
-		
 		if("C".equals(mvo.getmGrade())) {//member가 customer인 경우
 			//paging
 			//currPage설정

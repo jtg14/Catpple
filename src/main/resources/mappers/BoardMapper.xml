@@ -14,29 +14,9 @@
 		insert into board (bnum, mname, btitle, bcontent, bdate, breply, member_mid, separation) values((select ifnull(max(bnum),0)+1 from board as bNum),#{mName},#{bTitle},#{bContent},default,0,#{member_mId},#{separation})
 	</insert>
 	
-	<!-- inquirySelectList -->
-	<select id="inquirySelectList" resultType="vo.BoardVO">
-		select * from board where member_mId=#{member_mId} and (breply=1 or breply is not null) order by bNum desc
-	</select>
-	
-	<!-- suggestionSelectList -->
-	<select id="suggestionSelectList" resultType="vo.BoardVO">
-		select * from board where member_mId=#{member_mId} and breply=0 order by bNum desc
-	</select>
-	
 	<!-- selectOne -->
 	<select id="selectOne" resultType="vo.BoardVO">
 		select * from board where bnum=#{bNum}
-	</select>
-	
-	<!-- inquirySelectListForManager -->
-	<select id="inquirySelectListForManager" resultType="vo.BoardVO">
-		select * from board where bReply!='0'
-	</select>
-	
-	<!-- suggestionSelectListForManager -->
-	<select id="suggestionSelectListForManager" resultType="vo.BoardVO">
-		select * from board where bReply='0'
 	</select>
 	
 	<!-- bReplyUpdate -->
