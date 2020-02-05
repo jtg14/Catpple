@@ -17,4 +17,7 @@
 	<delete id="deleteCart">
 		delete from cart where cid = #{cId}
 	</delete>
+	<select id="getCartRow" resultType="integer">
+		select count(*) from cart where member_mid = #{mId};
+	</select>
 </mapper>

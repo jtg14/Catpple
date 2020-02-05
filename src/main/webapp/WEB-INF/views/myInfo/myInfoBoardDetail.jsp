@@ -149,7 +149,7 @@ $(function(){
 							<li><a href="mRExchange"><i
 									class="fa fa-angle-double-right"></i> 반품/교환</a></li>
 							<li><a href="mCart"><i
-									class="fa fa-angle-double-right"></i> 장바구니</a></li>
+									class="fa fa-angle-double-right"></i> 장바구니<span class="label label-danger">${cartRow}</span></a></li>
 						</ul></li>
 					<li><h3><a href="#" data-toggle="collapse"
 						data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>

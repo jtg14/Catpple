@@ -127,6 +127,7 @@ public class UserController {
 		model.setViewName("jsonView");
 		return model;
 	}
+	
 	@RequestMapping(value ="/idCheck")//아이디 중복검사
 	public ModelAndView idCheck(ModelAndView model,MemberVO vo ) {
 		if(service.idCheck(vo) == null) {
@@ -137,6 +138,7 @@ public class UserController {
 		model.setViewName("jsonView");
 		return model;
 	}
+	
 	@RequestMapping(value ="/signup")//회원가입진행
 	public ModelAndView signupGo(ModelAndView model,MemberVO vo,HttpServletRequest request) {
 		
@@ -183,6 +185,7 @@ public class UserController {
 		}else if(passwordEncorder.matches(password,vo.getmPw())) {
 			HttpSession session = request.getSession();
 			session.setAttribute("logInUser",vo);
+			session.setAttribute("cartRow",cartService.getCartRow(vo));
 			session.setMaxInactiveInterval(60 * 60 * 2); //두시간
 			model.addObject("logIn","success");
 		}else if(!passwordEncorder.matches(password,vo.getmPw())) {//비밀번호 틀렸을때

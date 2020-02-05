@@ -30,4 +30,9 @@ public class CServiceImpl implements CService {
 	public int deleteCart(CartVO vo) {
 		return dao.deleteCart(vo);
 	}
+	@Override
+	public int getCartRow(MemberVO vo) {
+		return dao.getCartRow(vo);
+	}
+	
 }

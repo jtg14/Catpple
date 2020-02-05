@@ -30,5 +30,8 @@ public class CartDAO {
 	public int deleteCart(CartVO vo) {
 		return dao.delete(NS+"deleteCart",vo);
 	}
+	public int getCartRow(MemberVO vo) {
+		return dao.selectOne(NS+"getCartRow",vo);
+	}
 	
 }

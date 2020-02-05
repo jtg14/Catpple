@@ -57,7 +57,7 @@
 										style="margin-left: 20px;">${logInUser.mName}</strong>&nbsp;님
 										(마이룸)</a></li>
 								<li><a href="mCart">장바구니<span class="badge"
-										style="margin-left: 10px;">99 +</span></a></li>
+										style="margin-left: 10px;">${cartRow}</span></a></li>
 								<li><a href="logOut">로그아웃</a></li>
 							</ul></li>
 					</c:if>
