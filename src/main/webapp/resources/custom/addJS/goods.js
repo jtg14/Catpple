@@ -26,8 +26,6 @@ $(function() {
 
 	var v_gugunSelect = document.getElementById("gugunSelect"); // SELECT TAG
 	v_gugunSelect.style.display = "none"; // 태그 감추기
-	var v_gugunSelect = document.getElementById("lastSelect"); // SELECT TAG
-	v_gugunSelect.style.display = "none"; // 태그 감추기
 
 });
 function checkfile() {
@@ -37,11 +35,11 @@ function checkfile() {
 	var img2 = $('#uploadfilef2').val().substring(
 			$('#uploadfilef2').val().lastIndexOf('.'),
 			$('#uploadfilef2').val().length);
-
+	
 	if (img1 != '.jpg' && img1 != '.png' && img2 != '.jpg' && img2 != '.png' && img1 == '' && img2 == '' ) {
 		alert('대표이미지와 상품이미지는 jpg 파일 또는 png 파일만 가능합니다.');
 		return false;
-	}else if($('#uploadfilef2').val() == '소분류'){
+	}else if($('#gugunSelect').val() == ''){
 		alert('중분류및 소분류를 선택해주세요.');
 		return false;
 	}else if($('#goodsName').val() == ''){
@@ -51,8 +49,33 @@ function checkfile() {
 		alert('상품 가격 및 갯수는 필수 입력 사항 입니다. ');
 		return false;
 	}else{
-		alert('정상적으로 등록 되었습니다.');
-		return true;
+		 var form = $('#addGoodsForm')[0];
+		 var data = new FormData(form);
+		 formData.append("gimgf1", $("#uploadfilef")[0].files[0]);
+		 formData.append("gimgf2", $("#uploadfilef2")[0].files[0]);
+		 $('#gis').prop('disabled', true);
+		$.ajax({
+			type:'Post',
+			enctype: 'multipart/form-data',
+			url:'goodsInsert',
+			data:data,
+			processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+            	alert('상품등록에 성공하였습니다!');
+                $('#gis').prop('disabled', false);
+            	location.href = 'sRGoods';
+            	return false;
+            },
+            error: function (e) {
+            	e.responseText();
+                console.log('ERROR : ', e);
+                $('#gis').prop('isabled', false);
+                alert('등록에 실패 하였습니다.');
+            }
+		});
 	}
 
 }
@@ -128,5 +151,4 @@ function changeSecondSelect() {
 		return;
 	}
 
-	lastSelectFill(idx, idx2); // 중분류 생성
 }

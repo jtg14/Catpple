@@ -1,5 +1,7 @@
 package vo;
 
+import java.sql.Date;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class GoodsVO {
@@ -7,7 +9,7 @@ public class GoodsVO {
 	private int gstock;
 	private int gprice;
 	private String gname;
-	private String gdate;
+	private Date gdate;
 	private String gimg1;
 	private String gimg2;
 	private MultipartFile gimgf1;
@@ -41,10 +43,10 @@ public class GoodsVO {
 	public void setGname(String gname) {
 		this.gname = gname;
 	}
-	public String getGdate() {
+	public Date getGdate() {
 		return gdate;
 	}
-	public void setGdate(String gdate) {
+	public void setGdate(Date gdate) {
 		this.gdate = gdate;
 	}
 	public String getGimg1() {

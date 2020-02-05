@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,14 +21,14 @@ import vo.MemberVO;
 
 @Controller
 public class GoodsController {
-	
+	private static final Logger log = LoggerFactory.getLogger(GoodsController.class);
 	@Autowired
 	GService service;
 	@Autowired
 	MService mservice;
 	@RequestMapping(value = "goodsInsert", method = RequestMethod.POST)
 	public ModelAndView goodsInsert(HttpServletRequest request, ModelAndView mv, GoodsVO vo) {
-		System.out.println("들어온 등록 상품"+vo);
+		System.out.println("ajax로 들어온 data : "+vo);
 		MemberVO mvo = new MemberVO();
 		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 		vo.setMember_mid(mvo.getmId());
@@ -35,25 +37,29 @@ public class GoodsController {
 		MultipartFile multipartFile2 = vo.getGimgf2();
 		File file1 = new File(uploadPath, multipartFile1.getOriginalFilename());
 		File file2 = new File(uploadPath, multipartFile2.getOriginalFilename());
-		String str1 = multipartFile1.getOriginalFilename();
-		String str2 = multipartFile2.getOriginalFilename();
-		vo.setGimg1(str1);
-		vo.setGimg2(str2);
+		vo.setGimg1(multipartFile1.getOriginalFilename());
+		vo.setGimg2(multipartFile2.getOriginalFilename());
 		int cnt = service.goodsInsert(vo);
 		if(cnt>0) {
 			if(!multipartFile1.isEmpty() && !multipartFile2.isEmpty()) {
 				try {
+					log.debug("------------- file start -------------");
+					log.debug("name1 : "+multipartFile1.getName());
+					log.debug("filename1 : "+multipartFile1.getOriginalFilename());
+					log.debug("size1 : "+multipartFile1.getSize());
+					log.debug("name2 : "+multipartFile2.getName());
+					log.debug("filename2 : "+multipartFile2.getOriginalFilename());
+					log.debug("size2 : "+multipartFile2.getSize());
+					log.debug("-------------- file end --------------\n");
+
 					multipartFile1.transferTo(file1);
 					multipartFile2.transferTo(file2);
-					mv.addObject("goodsInsertInfo","상품이 등록되었습니다!");
 				}catch(Exception e) {
-					mv.addObject("goodsInsertInfo","파일업로드 실패!");
+					e.printStackTrace();
 				}
 			}
 		}
-		ArrayList<GoodsVO> list = service.myGoodsList(vo);
-		mv.addObject("myGoodsList", list);
-		mv.setViewName("order/sellerRegisterdGoods");
+		mv.setViewName("jsonView");
 		return mv;
 	}
 	@RequestMapping(value="/gSResult")

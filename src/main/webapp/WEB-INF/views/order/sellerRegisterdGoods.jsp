@@ -164,17 +164,17 @@ padding-right: 0px;
 
 						<div class="col-md-10 col-xs-12">
 							<h2 style="color: crimson">나의 등록 상품</h2>
-							<c:forEach var="gl" items="${myGoodsList}">
+							<c:forEach var="gl" items="${list}">
 								<form action="sGUForm" method="post">
 								<div class="container text-center"
 									style="border-top: 2px solid lightgray; padding-top: 10px; padding-bottom: 10px;">
 									<div class="col-md-6 col-xs-12"
 										style="padding-top: 0px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px;">
 										<div class="col-md-6 col-xs-3" style="padding-left: 0px;">
-											<img class="img" src="resources/sellerInfo/${logInUser.mId}/${gl.gimg1}.jpg" width="100px" height="100px;"/>
+											<img class="img" src="resources/sellerInfo/${logInUser.mId}/${gl.gimg1}" width="100px" height="100px;"/>
 										</div>
 										<div class="col-md-6 col-xs-9 second-div">
-											상품번호 : <input class="form-controller" name="gnum" size="10" readonly="readonly" value="${gl.gnum}">
+											상품번호 : ${gl.gnum}
 											<h4>${gl.gname}</h4>
 										</div>
 									</div>

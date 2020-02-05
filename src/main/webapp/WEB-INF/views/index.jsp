@@ -81,7 +81,7 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
 <c:forEach var="rl" items="${RecomList}">
   <div class="col-xs-6 col-md-3">
     <div class="thumbnail text-center">
-      <a href="gDetail?number=${rl.gnum}"><img src="resources/sellerInfo/${rl.member_mid}/${rl.gimg1}.jpg"></a>
+      <a href="gDetail?number=${rl.gnum}"><img src="resources/sellerInfo/${rl.member_mid}/${rl.gimg1}" style="width:100%;"></a>
       <div class="caption">
         <h3><a href="#">${rl.gname}</a></h3>
         <div class="rating">
@@ -101,7 +101,7 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
 <c:forEach var="gl" items="${goodsHomeList}">
   <div class="col-xs-6 col-md-3">
     <div class="thumbnail text-center">
-      <a href="gDetail?number=${gl.gnum}"><img src="resources/sellerInfo/${gl.member_mid}/${gl.gimg1}.jpg"></a>
+      <a href="gDetail?number=${gl.gnum}"><img src="resources/sellerInfo/${gl.member_mid}/${gl.gimg1}" style="width:100%;"></a>
       <div class="caption">
         <h3><a href="#">${gl.gname}</a></h3>
         <div class="rating">

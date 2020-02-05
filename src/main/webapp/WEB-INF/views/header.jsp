@@ -197,7 +197,7 @@
 						</div>
 					</form>
 				</ul>
-				<c:if test="${logInUser ne null}">
+				<c:if test="${logInUser.mGrade eq 'C' || logInUser.mGrade eq 'S'}">
 					<ul class="nav navbar-nav navbar-right custom-nav">
 						<li class="dropdown"><a href="#"
 							class="dropdown-toggle main-menu"
@@ -207,6 +207,7 @@
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<div class="container">
 									<div class="row">
+									<c:if test="${logInUser.mGrade eq 'C' }">
 										<div class="col col-xs-6 col-md-3">
 											<ul class="nav flex-column">
 												<li class="nav-item"><span
@@ -262,8 +263,29 @@
 											</ul>
 										</div>
 										<!-- /.col  -->
-
-
+									</c:if>
+									<c:if test="${logInUser.mGrade eq 'S' }">
+									<div class="col col-xs-6 col-md-3">
+											<ul class="nav flex-column">
+												<li class="nav-item"><span
+													class="nav-link text-bold first-class">내지갑</span></li>
+												<li class="nav-item"><a
+													class="nav-link active second-class" href="mpoint">포인트</a></li>
+											</ul>
+										</div>
+										<div class="col col-xs-6 col-md-3">
+											<ul class="nav flex-column">
+												<li class="nav-item"><span
+													class="nav-link text-bold first-class">판매자 메뉴</span></li>
+												<li class="nav-item"><a
+													class="nav-link active second-class" href="sGForm">상품등록</a></li>
+												<li class="nav-item"><a class="nav-link second-class"
+													href="sRGoods">나의 상품</a></li>
+												<li class="nav-item"><a class="nav-link second-class"
+													href="sOList">주문목록</a></li>
+											</ul>
+										</div>
+										</c:if>
 									</div>
 								</div>
 								<!--  /.container  -->
