@@ -39,4 +39,8 @@ public class GServiceImpl implements GService {
 	public ArrayList<GoodsVO> homeGoodsList() {
 		return dao.homeGoodsList();
 	}
+	@Override
+	public ArrayList<GoodsVO> homeRecomList() {
+		return dao.homeRecomList();
+	}
 }

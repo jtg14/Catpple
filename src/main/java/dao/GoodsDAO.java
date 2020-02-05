@@ -33,4 +33,7 @@ public class GoodsDAO {
 	public ArrayList<GoodsVO> homeGoodsList(){
 		return (ArrayList)dao.selectList(NS+"homeGoodsList");
 	}
+	public ArrayList<GoodsVO> homeRecomList(){
+		return (ArrayList)dao.selectList(NS+"homeRecomList");
+	}
 }

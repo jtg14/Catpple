@@ -16,5 +16,7 @@ public interface GService {
 	
 	int goodsUpdate(GoodsVO vo);
 	
-	ArrayList<GoodsVO> homeGoodsList();
+	ArrayList<GoodsVO> homeGoodsList();//업로드순 상품
+	
+	ArrayList<GoodsVO> homeRecomList();//추천리스트
 }

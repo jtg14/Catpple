@@ -28,4 +28,7 @@
 	<select id="homeGoodsList" resultType="vo.GoodsVO">
 		select * from goods order by gdate desc limit 0, 12
 	</select>
+	<select id="homeRecomList" resultType="vo.GoodsVO">
+		select * from goods order by gprice desc limit 0, 12
+	</select>
 </mapper>
