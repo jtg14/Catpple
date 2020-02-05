@@ -74,9 +74,14 @@ img{
 			</div>
 			<!-- Top Menu Items -->
 			<ul class="nav navbar-right top-nav">
-				<li><a href="#" data-placement="bottom" data-toggle="tooltip"
-					href="#" data-original-title="Good"><i
-						class="fa fa-bar-chart-o"></i> </a></li>
+				<li><c:choose>
+				<c:when test="${logInUser ne null }">
+				<a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Good">
+				</c:when>
+				<c:when test="${logInUser eq null }">
+				<a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="No User">
+				</c:when>
+				</c:choose></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">나의메뉴 <b class="fa fa-angle-down"></b></a>
 					<ul class="dropdown-menu">
