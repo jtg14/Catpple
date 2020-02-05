@@ -16,7 +16,7 @@
 <body class="font-Jua">
 	<nav class="navbar navbar-default"
 		style="background-color: white; margin-bottom: 0;">
-		<div class="container-fluid">
+		<div class="container-fluid" style="height: 70px;">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed custom-toggle"
 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-2"
@@ -25,8 +25,8 @@
 					<span class="sr-only">Toggle navigation</span> 접속
 				</button>
 				<div class="navbar-header">
-					<a class="navbar-brand logo" style="margin-top: 5px;" href="home">
-						<img alt="로고자리" src="...">
+					<a class="navbar-brand logo" style="padding-top:0px; href="home">
+						<img src="resources/images/CatppleLogo.png" style="width: 150px;">
 					</a>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -57,7 +57,7 @@
 										style="margin-left: 20px;">${logInUser.mName}</strong>&nbsp;님
 										(마이룸)</a></li>
 								<li><a href="mCart">장바구니<span class="badge"
-										style="margin-left: 10px;">99 +</span></a></li>
+										style="margin-left: 10px;">${cartRow}</span></a></li>
 								<li><a href="logOut">로그아웃</a></li>
 							</ul></li>
 					</c:if>
@@ -71,8 +71,11 @@
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header custom">
+				<div class="col-xs-10 mobile">
+					여러 메뉴를 보고 싶으시다면 ->
+				</div>
 				<button type="button" class="navbar-toggle collapsed custom-toggle"
-					style="margin-bottom: 0px; margin-top: 20px;"
+					style="margin-bottom: 0px;margin-top: 23px;"
 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
 					aria-expanded="false">
 					<span class="sr-only">Toggle navigation</span> <span
@@ -195,78 +198,79 @@
 					</form>
 				</ul>
 				<c:if test="${logInUser ne null}">
-				<ul class="nav navbar-nav navbar-right custom-nav">
-					<li class="dropdown"><a href="#"
-						class="dropdown-toggle main-menu"
-						style="text-align: center; height: 65px;" data-toggle="dropdown"
-						role="button" aria-haspopup="true" aria-expanded="false">모든메뉴
-					</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<div class="container">
-								<div class="row">
-									<div class="col col-xs-6 col-md-3">
-										<ul class="nav flex-column">
-											<li class="nav-item"><span
-												class="nav-link text-bold first-class">내지갑</span></li>
-											<li class="nav-item"><a
-												class="nav-link active second-class" href="mpoint">포인트</a></li>
-										</ul>
+					<ul class="nav navbar-nav navbar-right custom-nav">
+						<li class="dropdown"><a href="#"
+							class="dropdown-toggle main-menu"
+							style="text-align: center; height: 65px;" data-toggle="dropdown"
+							role="button" aria-haspopup="true" aria-expanded="false">모든메뉴
+						</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<div class="container">
+									<div class="row">
+										<div class="col col-xs-6 col-md-3">
+											<ul class="nav flex-column">
+												<li class="nav-item"><span
+													class="nav-link text-bold first-class">내지갑</span></li>
+												<li class="nav-item"><a
+													class="nav-link active second-class" href="mpoint">포인트</a></li>
+											</ul>
+										</div>
+										<!-- /.col  -->
+
+										<div class="col col-xs-6 col-md-3">
+											<ul class="nav flex-column">
+												<li class="nav-item"><span
+													class="nav-link text-bold first-class">주문배송</span></li>
+												<li class="nav-item"><a
+													class="nav-link active second-class" href="mODelivery">주문/배송조회</a></li>
+												<li class="nav-item"><a class="nav-link second-class"
+													href="mODelivery">주문취소</a></li>
+												<li class="nav-item"><a class="nav-link second-class"
+													href="mRExchange">반품/교환</a></li>
+												<li class="nav-item"><a class="nav-link second-class"
+													href="mCart">장바구니</a></li>
+											</ul>
+										</div>
+										<!-- /.col  -->
+
+										<div class="col col-xs-6 col-md-3">
+											<ul class="nav flex-column">
+												<li class="nav-item"><span
+													class="nav-link text-bold first-class">고객센터</span></li>
+												<li class="nav-item"><a
+													class="nav-link active second-class"
+													href="mCustomerInquiry">1:1 문의</a></li>
+												<li class="nav-item"><a class="nav-link second-class"
+													href="mFAQ">자주 묻는 질문</a></li>
+												<li class="nav-item"><a class="nav-link second-class"
+													href="mSuggestions">건의사항</a></li>
+												<li class="nav-item"><a class="nav-link second-class"
+													href="mWriting">글쓰기</a></li>
+											</ul>
+										</div>
+										<!-- /.col  -->
+
+
+										<div class="col col-xs-6 col-md-3">
+											<ul class="nav flex-column">
+												<li class="nav-item"><span
+													class="nav-link text-bold first-class">내 정보</span></li>
+												<li class="nav-item"><a
+													class="nav-link active second-class" href="mChangef">내정보변경</a></li>
+												<li class="nav-item"><a class="nav-link second-class"
+													href="mWdrawal">회원탈퇴</a></li>
+											</ul>
+										</div>
+										<!-- /.col  -->
+
+
 									</div>
-									<!-- /.col  -->
-
-									<div class="col col-xs-6 col-md-3">
-										<ul class="nav flex-column">
-											<li class="nav-item"><span
-												class="nav-link text-bold first-class">주문배송</span></li>
-											<li class="nav-item"><a
-												class="nav-link active second-class" href="mODelivery">주문/배송조회</a></li>
-											<li class="nav-item"><a class="nav-link second-class"
-												href="mODelivery">주문취소</a></li>
-											<li class="nav-item"><a class="nav-link second-class"
-												href="mRExchange">반품/교환</a></li>
-											<li class="nav-item"><a class="nav-link second-class"
-												href="mCart">장바구니</a></li>
-										</ul>
-									</div>
-									<!-- /.col  -->
-
-									<div class="col col-xs-6 col-md-3">
-										<ul class="nav flex-column">
-											<li class="nav-item"><span
-												class="nav-link text-bold first-class">고객센터</span></li>
-											<li class="nav-item"><a
-												class="nav-link active second-class" href="mCustomerInquiry">1:1 문의</a></li>
-											<li class="nav-item"><a class="nav-link second-class"
-												href="mFAQ">자주 묻는 질문</a></li>
-											<li class="nav-item"><a class="nav-link second-class"
-												href="mSuggestions">건의사항</a></li>
-											<li class="nav-item"><a class="nav-link second-class"
-												href="mWriting">글쓰기</a></li>
-										</ul>
-									</div>
-									<!-- /.col  -->
-
-
-									<div class="col col-xs-6 col-md-3">
-										<ul class="nav flex-column">
-											<li class="nav-item"><span
-												class="nav-link text-bold first-class">내 정보</span></li>
-											<li class="nav-item"><a
-												class="nav-link active second-class" href="mChangef">내정보변경</a></li>
-											<li class="nav-item"><a class="nav-link second-class"
-												href="mWdrawal">회원탈퇴</a></li>
-										</ul>
-									</div>
-									<!-- /.col  -->
-
-
 								</div>
-							</div>
-							<!--  /.container  -->
+								<!--  /.container  -->
 
 
-						</div></li>
-				</ul>
+							</div></li>
+					</ul>
 				</c:if>
 			</div>
 			<!-- /.navbar-collapse -->

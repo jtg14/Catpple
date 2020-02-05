@@ -33,15 +33,20 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" style="margin-top: 5px;" href="home">
-					<img alt="로고자리" src="...">
+				<a class="navbar-brand logo" style="margin-top: 0px;padding-top: 0px;" href="home">
+					<img src="resources/images/CatppleLogo.png" style="width:140px;">
 				</a>
 			</div>
 			<!-- Top Menu Items -->
 			<ul class="nav navbar-right top-nav">
-				<li><a href="#" data-placement="bottom" data-toggle="tooltip"
-					href="#" data-original-title="Good"><i
-						class="fa fa-bar-chart-o"></i> </a></li>
+				<li><c:choose>
+				<c:when test="${logInUser ne null }">
+				<a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Good">
+				</c:when>
+				<c:when test="${logInUser eq null }">
+				<a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="No User">
+				</c:when>
+				</c:choose></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">나의메뉴 <b class="fa fa-angle-down"></b></a>
 					<ul class="dropdown-menu">
@@ -53,7 +58,7 @@
 					</ul></li>
 			</ul>
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse" style="max-height:700px;">
+			<div class="collapse navbar-collapse navbar-ex1-collapse" style="max-height:700px;background-color:white;">
 				<ul class="nav navbar-nav side-nav" style="height: 90%;">
 					<c:if test="${logInUser.mGrade!='S'}">
 							<li><h3>
@@ -77,7 +82,7 @@
 							<li><a href="mRExchange"><i
 									class="fa fa-angle-double-right"></i> 반품/교환</a></li>
 							<li><a href="mCart"><i
-									class="fa fa-angle-double-right"></i> 장바구니</a></li>
+									class="fa fa-angle-double-right"></i> 장바구니<span class="label label-danger">${cartRow}</span></a></li>
 						</ul></li>
 					<li><h3><a href="#" data-toggle="collapse"
 						data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>

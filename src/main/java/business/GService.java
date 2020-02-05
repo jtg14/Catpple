@@ -13,4 +13,10 @@ public interface GService {
 	ArrayList<GoodsVO> myGoodsList(GoodsVO vo);
 	
 	GoodsVO goodsDetail (GoodsVO vo);
+	
+	int goodsUpdate(GoodsVO vo);
+	
+	ArrayList<GoodsVO> homeGoodsList();//업로드순 상품
+	
+	ArrayList<GoodsVO> homeRecomList();//추천리스트
 }

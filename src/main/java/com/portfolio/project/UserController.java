@@ -1,6 +1,7 @@
 package com.portfolio.project;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,13 +12,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import business.CService;
+import business.GService;
 import business.MService;
+import vo.CartVO;
+import vo.GoodsVO;
 import vo.MemberVO;
 
 @Controller
 public class UserController {
 	@Autowired
 	MService service;
+	@Autowired
+	CService cartService;
+	@Autowired
+	GService gservice;
 	@Autowired
 	BCryptPasswordEncoder passwordEncorder;
 	
@@ -58,6 +67,11 @@ public class UserController {
 	}
 	@RequestMapping(value ="/mCart")//장바구니
 	public ModelAndView myInfoCart(ModelAndView model,HttpServletRequest request) {
+		MemberVO vo =(MemberVO) request.getSession().getAttribute("logInUser");
+		ArrayList<CartVO> list = cartService.cartList(vo);
+		
+		model.addObject("list",list);
+		
 		model.setViewName("myInfo/myInfoCart");
 		return model;
 	}
@@ -113,6 +127,7 @@ public class UserController {
 		model.setViewName("jsonView");
 		return model;
 	}
+	
 	@RequestMapping(value ="/idCheck")//아이디 중복검사
 	public ModelAndView idCheck(ModelAndView model,MemberVO vo ) {
 		if(service.idCheck(vo) == null) {
@@ -123,6 +138,7 @@ public class UserController {
 		model.setViewName("jsonView");
 		return model;
 	}
+	
 	@RequestMapping(value ="/signup")//회원가입진행
 	public ModelAndView signupGo(ModelAndView model,MemberVO vo,HttpServletRequest request) {
 		
@@ -169,6 +185,7 @@ public class UserController {
 		}else if(passwordEncorder.matches(password,vo.getmPw())) {
 			HttpSession session = request.getSession();
 			session.setAttribute("logInUser",vo);
+			session.setAttribute("cartRow",cartService.getCartRow(vo));
 			session.setMaxInactiveInterval(60 * 60 * 2); //두시간
 			model.addObject("logIn","success");
 		}else if(!passwordEncorder.matches(password,vo.getmPw())) {//비밀번호 틀렸을때
@@ -180,7 +197,7 @@ public class UserController {
 	@RequestMapping(value="/logOut")
 	public ModelAndView logOut(ModelAndView model,HttpServletRequest request) {
 		request.getSession().invalidate();
-		model.setViewName("index");
+		model.setViewName("redirect:home");
 		return model;
 	}
 	@RequestMapping(value="/mchange")
@@ -207,6 +224,36 @@ public class UserController {
 		}
 		
 		model.setViewName("index");
+		return model;
+	}
+	@RequestMapping(value="/infoToCart")//상품 상세정보 -> 장바구니
+	public ModelAndView infoToCart(ModelAndView model,HttpServletRequest request,CartVO vo) {
+		System.out.println(vo);
+		if(cartService.findDupGoods(vo) == null) {//장바구니에 들어있는지 확인
+			System.out.println("같은 상품 존재 하지않음 ");
+			if(cartService.infoToCart(vo) > 0) {  //없으면 장바구니로 넣기
+				System.out.println("장바구니 추가성공 ");
+				System.out.println(vo);
+				model.addObject("code","100");
+			}else {
+				System.out.println("장바구니에 추가실패");
+			}
+		}else {
+			System.out.println("이미 같은 물품이 장바구니에 존재");
+			model.addObject("code","101");
+		}
+		model.setViewName("jsonView");
+		return model;
+		
+	}
+	@RequestMapping(value="/deleteCart")
+	public ModelAndView deleteCart(ModelAndView model,CartVO vo) {
+		if(cartService.deleteCart(vo)>0) {
+			model.addObject("code","300");
+		}else {
+			model.addObject("code","301");
+		}
+		model.setViewName("jsonView");
 		return model;
 	}
 }
