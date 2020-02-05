@@ -46,22 +46,42 @@
 	
 	<!-- inquiryTotalRowCount -->
 	<select id="inquiryTotalRowCount" resultType="integer">
-		select count(*) from board where bReply!='0'
+		select count(*) from board where bReply!='0' and member_mId=#{member_mId}
 	</select>
 	
 	<!-- suggestionTotalRowCount -->
 	<select id="suggestionTotalRowCount" resultType="integer">
+		select count(*) from board where bReply='0'and member_mId=#{member_mId}
+	</select>
+	
+	<!-- inquiryTotalRowCountForManager -->
+	<select id="inquiryTotalRowCountForManager" resultType="integer">
+		select count(*) from board where bReply!='0'
+	</select>
+	
+	<!-- suggestionTotalRowCountForManager -->
+	<select id="suggestionTotalRowCountForManager" resultType="integer">
 		select count(*) from board where bReply='0'
+	</select>
+	
+	<!-- inquirySelectPageListForManager -->
+	<select id="inquirySelectPageListForManager" resultType="vo.BoardVO">
+		select b.* from (select * from board where bReply!='0') AS b order by b.bNum desc limit #{sno}, 5 
 	</select>
 	
 	<!-- inquirySelectPageList -->
 	<select id="inquirySelectPageList" resultType="vo.BoardVO">
-		select b.* from (select * from board where bReply!='0') AS b order by b.bNum desc limit 0, 3 
+		select b.* from (select * from board where bReply!='0' and member_mId=#{member_mId}) AS b order by b.bNum desc limit #{sno}, 5
+	</select>
+	
+	<!-- suggestionSelectPageListForManager -->
+	<select id="suggestionSelectPageListForManager" resultType="vo.BoardVO">
+		select b.* from (select * from board where bReply='0') AS b order by b.bNum desc limit #{sno}, 5 
 	</select>
 	
 	<!-- suggestionSelectPageList -->
 	<select id="suggestionSelectPageList" resultType="vo.BoardVO">
-		select b.* from (select * from board where bReply='0') AS b order by b.bNum desc limit 0, 3 
+		select b.* from (select * from board where bReply='0' and member_mId='#{member_mId}') AS b order by b.bNum desc limit #{sno}, #{eno} 
 	</select>
 	
 </mapper>

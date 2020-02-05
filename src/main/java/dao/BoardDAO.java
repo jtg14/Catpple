@@ -49,7 +49,9 @@ public class BoardDAO {
 	}
 	
 	public PageVO inquirySelectPageList(PageVO pvo) {
-		pvo.setTotalCount(dao.selectOne(NS+"inquiryTotalRowCount"));
+		pvo.setTotalCount(dao.selectOne(NS+"inquiryTotalRowCount",pvo));
+//		System.out.println("totalRowCount=>"+pvo.getTotalCount());
+//		System.out.println("sno in DAO =>"+pvo.getSno());
 		pvo.setList((ArrayList)dao.selectList(NS+"inquirySelectPageList",pvo));
 		return pvo;
 	}
@@ -60,4 +62,16 @@ public class BoardDAO {
 		return pvo;
 	}
 	
+	public PageVO inquirySelectPageListForManager(PageVO pvo) {
+		pvo.setTotalCount(dao.selectOne(NS+"inquiryTotalRowCountForManager",pvo));
+//		System.out.println("sno in DAO for Manager=>"+pvo.getSno());
+		pvo.setList((ArrayList)dao.selectList(NS+"inquirySelectPageListForManager",pvo));
+		return pvo;
+	}
+	
+	public PageVO suggestionSelectPageListForManager(PageVO pvo) {
+		pvo.setTotalCount(dao.selectOne(NS+"suggestionTotalRowCountForManager"));
+		pvo.setList((ArrayList)dao.selectList(NS+"suggestionSelectPageListForManager",pvo));
+		return pvo;
+	}
 }//class

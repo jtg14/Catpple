@@ -1,12 +1,14 @@
 package vo;
 
+import java.sql.Date;
+
 public class BoardVO {
 	
 	private int bNum;
 	private String mName;
 	private String bTitle;
 	private String bContent;
-	private String bDate;
+	private Date bDate;
 	private String bReply;
 	private String member_mId;
 	private int separation;
@@ -41,10 +43,10 @@ public class BoardVO {
 	public void setbContent(String bContent) {
 		this.bContent = bContent;
 	}
-	public String getbDate() {
+	public Date getbDate() {
 		return bDate;
 	}
-	public void setbDate(String bDate) {
+	public void setbDate(Date bDate) {
 		this.bDate = bDate;
 	}
 	public String getbReply() {
