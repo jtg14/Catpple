@@ -24,28 +24,8 @@ public class BServiceImpl implements BService {
 	}
 
 	@Override
-	public ArrayList<BoardVO> inquirySelectList(BoardVO vo) {
-		return dao.inquirySelectList(vo);
-	}
-
-	@Override
-	public ArrayList<BoardVO> suggestionSelectList(BoardVO vo) {
-		return dao.suggestionSelectList(vo);
-	}
-
-	@Override
 	public BoardVO selectOne(BoardVO vo) {
 		return dao.selectOne(vo);
-	}
-
-	@Override
-	public ArrayList<BoardVO> inquirySelectListForManager() {
-		return dao.inquirySelectListForManager();
-	}
-
-	@Override
-	public ArrayList<BoardVO> suggestionSelectListForManager() {
-		return dao.suggestionSelectListForManager();
 	}
 
 	@Override
@@ -72,6 +52,8 @@ public class BServiceImpl implements BService {
 	public PageVO suggestionSelectPageListForManager(PageVO pvo) {
 		return dao.suggestionSelectPageListForManager(pvo);
 	}
+
+	
 
 	
 	
