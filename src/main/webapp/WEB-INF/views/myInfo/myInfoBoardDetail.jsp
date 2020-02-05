@@ -54,9 +54,7 @@ th, td {
 .content{
 	text-align:center;
 	}
-.title{
-	display:none;
-}
+
 }
 </style>
 
@@ -177,30 +175,31 @@ th, td {
 				<div class="row" id="main"
 					style="min-height: 1000px; margin-top: 120px;">
 					<div class="col-sm-12 col-md-12" id="content">
+					<c:if test="${pageCode=='I'}">
 					<!-- 메인내용 들어갈 공간 -->
 						<div class="container">
 							<h2>1:1 문의</h2>
 							
 							<div class="col-md-12 col-xs-12 detail">
-								<div class="col-md-2 col-xs-2 title">
+								<div class="col-md-2 col-xs-5 title">
 									<h4 style="color:crimson;">제목</h4>
 								</div>
-								<div class="col-md-10 col-xs-10">
+								<div class="col-md-10 col-xs-7">
 									<h4 style="line-height: 1.5;">
-										<span class="label label-success" style="margin-right: 10px;">답변완료</span>물건을
-										받았는데 파손 되어 있습니다.
+										<span class="label label-success" style="margin-right: 10px;">답변완료</span>
+										 ${one.bTitle}
 									</h4>
 								</div>
-								<div class="col-md-2 col-xs-6">
+								<div class="col-md-2 col-xs-5">
 									<h4 style="color:crimson;">작성자 ID</h4>
 								</div>
-								<div class="col-md-10 col-xs-6">
-									<h4>${logInUser.mId}</h4>
+								<div class="col-md-10 col-xs-7"> 
+									<h4>${one.member_mId}</h4>
 								</div>
-								<div class="col-md-2 col-xs-6">
+								<div class="col-md-2 col-xs-5">
 									<h4 style="margin-top: 0px; color:crimson;">분류</h4>
 								</div>
-								<div class="col-md-10 col-xs-6">
+								<div class="col-md-10 col-xs-7">
 									
 									<c:choose>
 										<c:when test="${one.separation=='0'}">
@@ -236,16 +235,22 @@ th, td {
 									<c:choose>
 									
 										<c:when test="${one.bReply!='0' and one.bReply!='1'}">
-										
 											<div>
 												${one.bReply}
 											</div>
-										 	
 										</c:when>
 									
-										<c:otherwise>
-											<textarea id="replyText" rows="10" cols="20" style="width:100%;"></textarea>	
-										</c:otherwise>
+										<c:when test="${one.bReply=='0' or one.bReply=='1'}">
+											<c:choose>
+												<c:when test="${logInUser.mGrade=='a'}">
+													<textarea id="replyText" rows="15" cols="20" style="width:100%;"></textarea>	
+												</c:when>
+												<c:when test="${logInUser.mGrade=='C'}">
+													등록된 답변이 없습니다.
+												</c:when>
+											</c:choose>	
+										</c:when>
+										
 									</c:choose>
 									</div> 
 									
@@ -260,6 +265,52 @@ th, td {
 							</c:if>
 							
 						</div>
+					</c:if>
+					
+					<c:if test="${pageCode=='S'}">
+						<!-- 메인내용 들어갈 공간 -->
+						<div class="container">
+							<h2>건의 사항</h2>
+							
+							<div class="col-md-12 col-xs-12 detail">
+								<div class="col-md-2 col-xs-5 title">
+									<h4 style="color:crimson;">제목</h4>
+								</div>
+								<div class="col-md-10 col-xs-7">
+									<h4 style="line-height: 1.5;">
+										${one.bTitle}
+									</h4>
+								</div>
+								<div class="col-md-2 col-xs-5">
+									<h4 style="color:crimson;">작성자 ID</h4>
+								</div>
+								<div class="col-md-10 col-xs-7">
+									<h4>${one.member_mId}</h4>
+								</div>
+								</div>
+								<div class="col-md-12 col-xs-12 detail"
+									style="min-height: 250px; font-size: 1.2em; max-height: 400px; overflow: auto; padding-top: 15px;">
+									<div class="col-md-2 col-xs-12 text-left content" style="color:crimson;"><h4>건의내용</h4>
+									</div>
+									<div class="col-md-8 col-xs-12">
+											${one.bContent}
+									</div>
+								</div>
+								
+								
+								<!-- fffff --> 	
+							<!-- 관리자이고  -->
+							<c:if test="${logInUser.mGrade=='a'and one.bReply=='1'}">
+				
+										<button class="btn btn-primary pull-right" style="margin-top:10px;" onclick="updateReply(${one.bNum})">답변하기</button>
+							
+							</c:if>
+							
+						</div>
+					</c:if>
+						
+						
+						
 					</div>
 				</div>
 				<!-- /.row -->

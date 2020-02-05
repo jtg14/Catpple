@@ -80,11 +80,7 @@ public class UserController {
 		model.setViewName("myInfo/myInfoFAQ");
 		return model;
 	}
-	@RequestMapping(value ="/mSuggestions")//건의 사항
-	public ModelAndView myInfoSuggestions(ModelAndView model,HttpServletRequest request) {
-		model.setViewName("myInfo/myInfoSuggestions");
-		return model;
-	}
+	
 	@RequestMapping(value ="/mChangef")//내정보변경
 	public ModelAndView myInfoChange(ModelAndView model,HttpServletRequest request) {
 		model.setViewName("myInfo/myInfoChange");
