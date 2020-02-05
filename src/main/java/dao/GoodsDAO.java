@@ -30,4 +30,7 @@ public class GoodsDAO {
 	public int goodsUpdate(GoodsVO vo) {
 		return dao.update(NS+"goodsUpdate", vo);
 	}
+	public ArrayList<GoodsVO> homeGoodsList(){
+		return (ArrayList)dao.selectList(NS+"homeGoodsList");
+	}
 }

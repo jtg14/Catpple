@@ -97,12 +97,13 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
   </div>
   </c:forEach>
   <div class="col-md-12 col-xs-12"><h2>새로 들어온 상품</h2></div>
-<c:forEach begin="1" end="12" varStatus="vs">
+  
+<c:forEach var="gl" items="${goodsHomeList}">
   <div class="col-xs-6 col-md-3">
     <div class="thumbnail text-center">
-      <img src="resources/images/item${vs.index}.jpg">
+      <a href="#"><img src="resources/sellerInfo/${gl.member_mid}/${gl.gimg1}.jpg"></a>
       <div class="caption">
-        <h3><a href="#">에코 필라인 퓨어 9.08kg</a></h3>
+        <h3><a href="#">${gl.gname}</a></h3>
         <div class="rating">
 		  <i class="glyphicon glyphicon-star"></i>
 		  <i class="glyphicon glyphicon-star"></i>
@@ -110,7 +111,7 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
 		  <i class="glyphicon glyphicon-star"></i>
 		  <i class="glyphicon glyphicon-star half"></i>
 		</div>
-        <p style="color:cimson;">12,000원</p>
+        <p style="color:cimson;">${gl.gprice}</p>
       </div>
     </div>
   </div>
