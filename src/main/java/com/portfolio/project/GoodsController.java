@@ -26,6 +26,7 @@ public class GoodsController {
 	MService mservice;
 	@RequestMapping(value = "goodsInsert", method = RequestMethod.POST)
 	public ModelAndView goodsInsert(HttpServletRequest request, ModelAndView mv, GoodsVO vo) {
+		System.out.println("들어온 등록 상품"+vo);
 		MemberVO mvo = new MemberVO();
 		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 		vo.setMember_mid(mvo.getmId());
