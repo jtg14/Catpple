@@ -36,8 +36,8 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" style="margin-top: 5px;" href="home">
-					<img alt="로고자리" src="...">
+				<a class="navbar-brand logo" style="margin-top: 0px;padding-top: 0px;" href="home">
+					<img src="resources/images/CatppleLogo.png" style="width:140px;">
 				</a>
 			</div>
 			<!-- Top Menu Items -->
@@ -56,7 +56,7 @@
 					</ul></li>
 			</ul>
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse" style="max-height:700px;">
+			<div class="collapse navbar-collapse navbar-ex1-collapse" style="max-height:700px;background-color:white;">
 				<ul class="nav navbar-nav side-nav" style="height: 90%;">
 					<c:if test="${logInUser.mGrade!='S'}">
 							<li><h3>
