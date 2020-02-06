@@ -35,4 +35,28 @@
 		<beans:property name="maxUploadSize" value="52428800"/> 
 	</beans:bean>
 	
+	<!-- 인터셉터 객체 생성 -->
+	<beans:bean id="loginInterceptor" class="com.portfolio.project.LoginInterceptor" />
+	<!-- 인터셉터 설정 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/mroom"/>
+			<mapping path="/mChangef"/>
+			<mapping path="/mWdrawal"/>
+			<mapping path="/sGForm"/>
+			<mapping path="/sRGoods"/>
+			<mapping path="/sOList"/>
+			<mapping path="/mpoint"/>
+			<mapping path="/mODelivery"/>
+			<mapping path="/mOCancel"/>
+			<mapping path="/mRExchange"/>
+			<mapping path="/mCart"/>
+			<mapping path="/mCustomerInquiry"/>
+			<mapping path="/mFAQ"/>
+			<mapping path="/mSuggestions"/>
+			<mapping path="/mWriting"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>
