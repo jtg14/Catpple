@@ -347,6 +347,46 @@ th, td {
 		});//ajax
 	};//replyButton
 	
+<<<<<<< Updated upstream
+=======
+	function deleteButton(pageCode){
+		if(confirm("정말 삭제하시겠습니까?")==true){
+		var bNum=${one.bNum};
+		$.ajax({
+			type:'post',
+			url:'boardDelete',
+			data:{
+				bNum:bNum,
+				pageCode:pageCode
+			},
+			success:function(result){
+				if(result.page=='I'){
+					window.location.replace('mCustomerInquiry');
+				}else if(result.page=='S'){
+					window.location.replace('mSuggestions');
+				}
+			}
+			
+			
+		})//ajax
+		}else{
+			return;
+		}
+	};//deleteButton
+	
+	function updateButton(pageCode){
+		var bNum=${one.bNum};
+		$.ajax({
+			type:'post',
+			url:''
+			
+		})//ajax
+		
+	}
+	
+	
+	
+>>>>>>> Stashed changes
 	</script>
 </body>
 <footer>
