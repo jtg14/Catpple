@@ -140,13 +140,13 @@
 								</ul>
 								<div
 									style="width: 100%; margin-bottom: 10px; box-sizing: border-box; border: thin; border-style: solid; border-color: lightgray; border-radius: 10px; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 5px;">
-									<input type="checkbox" id="customCheck"> <label
+									<input type="checkbox" id="customCheck"name="agree"> <label
 										for="customCheck" style="display: inline;">회원탈퇴 시 유의사항
 										안내를 확인하였으며 이에 동의합니다.</label>
 								</div>
-								<form action="#" method="post" style="text-align: center;">
-									<button class="btn btn-dark">회원 탈퇴임</button>
-								</form>
+								
+									<a type="button" class="btn btn-default" onclick="withDrawal('${logInUser.mId}','${logInUser.mGrade}')">회원 탈퇴</a>
+								
 							</div>
 						</div>
 
@@ -165,8 +165,8 @@
 	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>
->>>>>>> myInfoCustomerInquiry3
-</body>
+
+</body> 
 <footer>
 	<div class="article">
 		<jsp:include page="../footer.jsp" />
