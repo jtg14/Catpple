@@ -37,14 +37,9 @@
 			</div>
 			<!-- Top Menu Items -->
 			<ul class="nav navbar-right top-nav">
-				<li><c:choose>
-				<c:when test="${logInUser ne null }">
+				<li>
 				<a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Good">
-				</c:when>
-				<c:when test="${logInUser eq null }">
-				<a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="No User">
-				</c:when>
-				</c:choose></li>
+					<i class="fa fa-bar-chart-o"></i> </a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">나의메뉴 <b class="fa fa-angle-down"></b></a>
 					<ul class="dropdown-menu">
@@ -127,7 +122,7 @@
 						<div class="col-md-10 col-xs-12">
 							<h2>FAQ</h2>
 								<ul class="nav nav-tabs" role="tablist">
-									<li class="active"><a data-toggle="tab" href="#all"">전체</a></li>
+									<li class="active"><a data-toggle="tab" href="#all">전체</a></li>
 									<li><a data-toggle="tab" href="#menu1">주문/결제/배송</a></li>
 									<li><a data-toggle="tab" href="#menu2">취소/교환/반품</a></li>
 									<li><a data-toggle="tab" href="#menu3">회원가입/정보</a></li>
