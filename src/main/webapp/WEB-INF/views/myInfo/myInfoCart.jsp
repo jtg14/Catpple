@@ -182,11 +182,17 @@
 						</c:forEach>
 
 						</div>
+						<c:if test="${cartRow != 0}">
 						<div class="col-md-2 col-md-offset-8 col-xs-4 col-xs-offset-4"
 							style="margin-top: 20px;">
 							<button class="btn btn-lg btn-danger">구매하기</button>
 						</div>
-
+						</c:if>
+						<c:if test="${cartRow == 0}">
+						<div class="col-md-4 col-md-offset-4 col-xs-12 " style="martin-top:200px;">
+							<img class="img" src="resources/images/No_Cart.png" style="width:100%;">
+						</div>
+						</c:if>
 					</div>
 				</div>
 				<!-- /.row -->

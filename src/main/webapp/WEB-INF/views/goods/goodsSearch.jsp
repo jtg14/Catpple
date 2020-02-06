@@ -93,10 +93,11 @@ height:100px;
       </div>
    </div>
 	
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+
 <div class="article">
 	<jsp:include page="../footer.jsp"></jsp:include>
 </div>
-<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="resources/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

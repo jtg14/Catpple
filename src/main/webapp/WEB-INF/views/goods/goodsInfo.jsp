@@ -28,7 +28,7 @@
 					<div class="col-md-8 col-xs-12">
 						<div class="col-md-12 col-xs-12">
 							<h3>
-								<span class="brand_ame">${goods.company}</span> <span
+								<span style="color:crimson;">${goods.company}</span> <span
 									class="item_Name"> ${goods.gname} </span>
 							</h3>
 						</div>
