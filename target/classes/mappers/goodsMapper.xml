@@ -14,7 +14,7 @@
 	select * from goods where gname like '${value}%' or gname like '%${value}%' or gname like '%${value}' or gcategory like '${value}%' or gcategory like '%${value}%' or gcategory like '%${value}' or gcategory2 like '${value}%' or gcategory2 like '%${value}%' or gcategory2 like '%${value}'
 	</select>
 	<select id ="goodsDetail" resultType="vo.GoodsVO">
-	select * from goods where gnum = #{gnum}
+	select g.gnum,g.gstock,g.gprice,g.gname,g.gdate,g.gimg1,g.gimg2,g.gpoint,g.gcategory,g.gcategory2,g.member_mid,m.mname company from goods g,member m where g.member_mid = m.mid and gnum = #{gnum};
 	</select>
 	<select id = "myGoodsList" resultType="vo.GoodsVO">
 		select * from goods where member_mid = #{member_mid} order by gdate desc
