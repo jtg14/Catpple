@@ -74,14 +74,9 @@ img{
 			</div>
 			<!-- Top Menu Items -->
 			<ul class="nav navbar-right top-nav">
-				<li><c:choose>
-				<c:when test="${logInUser ne null }">
+				<li>
 				<a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Good">
-				</c:when>
-				<c:when test="${logInUser eq null }">
-				<a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="No User">
-				</c:when>
-				</c:choose></li>
+					<i class="fa fa-bar-chart-o"></i> </a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">나의메뉴 <b class="fa fa-angle-down"></b></a>
 					<ul class="dropdown-menu">
@@ -171,7 +166,7 @@ img{
 									<div class="col-md-6 col-xs-12"
 										style="padding-top: 0px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px;">
 										<div class="col-md-6 col-xs-3" style="padding-left: 0px;">
-											<img class="img" src="resources/img/feed1.jpg"/ >
+											<img class="img" src="resources/img/feed1.jpg">
 										</div>
 										<div class="col-md-6 col-xs-9 first-div">
 											<h4>프로베스트 캣 밸런스 15kg</h4>
