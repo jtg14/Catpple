@@ -42,6 +42,9 @@ function checkfile() {
 	}else if($('#gugunSelect').val() == ''){
 		alert('중분류및 소분류를 선택해주세요.');
 		return false;
+	}else if(img1 == img2){
+		alert('같은 파일은 등록할수없습니다.');
+		return false;
 	}else if($('#goodsName').val() == ''){
 		alert('상품이름은 필수입력 사항입니다.');
 		return false;
@@ -49,15 +52,14 @@ function checkfile() {
 		alert('상품 가격 및 갯수는 필수 입력 사항 입니다. ');
 		return false;
 	}else{
-		 var form = $('#addGoodsForm')[0];
+		 var form = $('#addGoodsForm');
 		 var data = new FormData(form);
-		 formData.append("gimgf1", $("#uploadfilef")[0].files[0]);
-		 formData.append("gimgf2", $("#uploadfilef2")[0].files[0]);
 		 $('#gis').prop('disabled', true);
 		$.ajax({
 			type:'Post',
 			enctype: 'multipart/form-data',
 			url:'goodsInsert',
+			dataType : 'json',
 			data:data,
 			processData: false,
             contentType: false,
@@ -74,6 +76,7 @@ function checkfile() {
                 console.log('ERROR : ', e);
                 $('#gis').prop('isabled', false);
                 alert('등록에 실패 하였습니다.');
+                return false;
             }
 		});
 	}
