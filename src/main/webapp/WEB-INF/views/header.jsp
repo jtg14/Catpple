@@ -71,16 +71,6 @@
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header custom">
-				<div class="col-xs-10 mobile">
-					<form class="navbar-form" method="post" action="gSResult"
-						style="margin-top: 6px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;border-top-width: 0px;border-bottom-width: 0px;">
-						<div class="form-group">
-							<input type="text" name="search" class="form-control input-lg"
-								placeholder="원하시는 상품명"
-								style="border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-color: crimson;">
-						</div>
-					</form>
-				</div>
 				<button type="button" class="navbar-toggle collapsed custom-toggle"
 					style="margin-bottom: 0px;margin-top: 23px;"
 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
