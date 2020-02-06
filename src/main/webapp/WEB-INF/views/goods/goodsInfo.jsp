@@ -20,83 +20,82 @@
 	<div class="container">
 		<div class="jumbotron"
 			style="border: 5px solid crimson; border-radius: 10px; background-color: white;">
-				<div class="row">
-					<div class="thumbnail col-md-4 col-xs-12">
-						<img class="goods_image"
-							src="resources/sellerInfo/${goods.member_mid}/${goods.gimg1}">
-					</div>
-					<div class="col-md-8 col-xs-12">
-						<div class="col-md-12 col-xs-12">
-							<h3>
-								<span style="color:crimson;">${goods.company}</span> <span
-									class="item_Name"> ${goods.gname} </span>
-							</h3>
-						</div>
-						<div class="col-md-12 col-xs-12">
-							<span>구매 0</span> <span class="divider">|</span> <span id="stock">(남은수량${goods.gstock}
-								개)</span>
-						</div>
-						<div class="col-md-12 col-xs-6" style="margin-top: 40px;">
-							<strong class="discount-persentage">0<span>% Off</span></strong>
-							<div class="price_inner">
-								<del>
-									<span class="before-price">${goods.gprice}</span><span
-										class="before-price">원</span>
-								</del>
-								<strong id="price">${goods.gprice}</strong><strong><span>원</span></strong>
-							</div>
-						</div>
-
-						<div class="col-md-3 col-xs-6" style="margin-top: 60px;">
-							<div class="input-group">
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button" id="btn-minus">-</button>
-								</span> <input type="text" class="form-control amount_bar"
-									maxlength="4" value="1" numberOnly id="amount1">
-									<span class="input-group-btn">
-									<button class="btn btn-default" type="button" id="btn-plus">+</button>
-								</span>
-							</div>
-						</div>
-
-
-					</div>
-					<!-- end of row -->
-
-					<div class="row">
-						<div class="container"
-							style="border-bottom: 2px; border-color: crimson;">
-							<div class="col-lg-12" style="text-align: center;">
-								<div class="col-md-3 col-xs-12">
-									<h1>총 금액</h1>
-								</div>
-								<div class="col-md-9 col-xs-12">
-									<h1 class="text-right" id="total">
-										<fmt:formatNumber value="${goods.gprice}" pattern="#,###" />
-										원
-									</h1>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12 col-xs-12">
-							<div class="col-md-2 col-md-offset-4 col-xs-6">
-								<button type="submit" class="btn btn-danger btn-lg pull-right"
-									style="font-size: 1.4em;"
-									onclick="purchase('${logInUser.mGrade}')">구매하기</button>
-							</div>
-			
-							<div class="col-md-2 col-xs-6">
-								<a class="btn btn-danger btn-lg"
-									style="font-size: 1.4em;"
-									type="button"
-									onclick="goCart('${logInUser.mGrade}','${logInUser.mId}','${goods.gnum}')">장바구니</a>
-							</div>
-						</div>
-					</div>
-					<!-- end of row-2 -->
+			<div class="row">
+				<div class="thumbnail col-md-4 col-xs-12">
+					<img class="goods_image"
+						src="resources/sellerInfo/${goods.member_mid}/${goods.gimg1}">
 				</div>
+				<div class="col-md-8 col-xs-12">
+					<div class="col-md-12 col-xs-12">
+						<h3>
+							<span style="color: crimson;">${goods.company}</span> <span
+								class="item_Name"> ${goods.gname} </span>
+						</h3>
+					</div>
+					<div class="col-md-12 col-xs-12">
+						<span>구매 0</span> <span class="divider">|</span> <span id="stock">(남은수량${goods.gstock}
+							개)</span>
+					</div>
+					<div class="col-md-12 col-xs-6" style="margin-top: 40px;">
+						<strong class="discount-persentage">0<span>% Off</span></strong>
+						<div class="price_inner">
+							<del>
+								<span class="before-price">${goods.gprice}</span><span
+									class="before-price">원</span>
+							</del>
+							<strong id="price">${goods.gprice}</strong><strong><span>원</span></strong>
+						</div>
+					</div>
+
+					<div class="col-md-3 col-xs-6" style="margin-top: 60px;">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button" id="btn-minus">-</button>
+							</span> <input type="text" class="form-control amount_bar" maxlength="4"
+								value="1" numberOnly id="amount1"> <span
+								class="input-group-btn">
+								<button class="btn btn-default" type="button" id="btn-plus">+</button>
+							</span>
+						</div>
+					</div>
+
+
+				</div>
+				<!-- end of row -->
+
+				<div class="row">
+					<div class="container"
+						style="border-bottom: 2px; border-color: crimson;">
+						<div class="col-lg-12" style="text-align: center;">
+							<div class="col-md-3 col-xs-12">
+								<h1>총 금액</h1>
+							</div>
+							<div class="col-md-9 col-xs-12">
+								<h1 class="text-right" id="total">
+									<fmt:formatNumber value="${goods.gprice}" pattern="#,###" />
+									원
+								</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 col-xs-12">
+						<div class="col-md-2 col-md-offset-4 col-xs-6">
+							<button type="submit" class="btn btn-danger btn-lg pull-right"
+								style="font-size: 1.4em;"
+								onclick="purchase('${logInUser.mGrade}')">구매하기</button>
+						</div>
+
+						<div class="col-md-2 col-xs-6">
+							<a class="btn btn-danger btn-lg" style="font-size: 1.4em;"
+								type="button"
+								onclick="goCart('${logInUser.mGrade}','${logInUser.mId}','${goods.gnum}')">장바구니</a>
+						</div>
+					</div>
+				</div>
+				<!-- end of row-2 -->
+			</div>
 			<!-- end of jumbotron -->
 			<div class="tabs-container-style-1">
 				<div class="col-md-12 col-xs-12"
@@ -109,10 +108,13 @@
 						<li class=""><a href="#change" data-toggle="tab">배송</a></li>
 					</ul>
 				</div>
-				<div id="myTabContent" class="tab-content container">
+				<div id="myTabContent" class="tab-content container"
+					style="padding-right: 0px; padding-left: 0px;">
 
-					<div class="tab-pane fade active in" id="home">
-						<img class="img-responsive col-md-12" src="resources/sellerInfo/${goods.member_mid}/${goods.gimg2}">
+					<div class="tab-pane fade active in" id="home"
+						style="padding-left: 0px; padding-right: 0px;">
+						<img class="img-responsive col-md-12"
+							src="resources/sellerInfo/${goods.member_mid}/${goods.gimg2}">
 					</div>
 					<!-- end of goodsDetail -->
 

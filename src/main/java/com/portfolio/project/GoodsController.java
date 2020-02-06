@@ -82,8 +82,11 @@ public class GoodsController {
 	}
 	@RequestMapping(value="/gDetail")
 	public ModelAndView goodsDetail(ModelAndView model,GoodsVO vo,HttpServletRequest request) {
+		String status="["+request.getRemoteAddr()+"]["+systemTime+"] : ";
 		vo.setGnum(Integer.parseInt(request.getParameter("number")));
 		vo =service.goodsDetail(vo);
+		log.info(status+"조회 된 상품 메인 이미지 파일명 : "+vo.getGimg1());
+		log.info(status+"조회 된 상품 상세 이미지 파일명 : "+vo.getGimg2());
 		model.addObject("goods",vo);
 		model.setViewName("goods/goodsInfo");
 		return model;
