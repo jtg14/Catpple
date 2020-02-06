@@ -81,9 +81,9 @@ function logInCheck(){
 				window.location.href = 'logInf';
 				$('#id').focus();
 			}
-			}
-		});
-	}
+		}
+	});
+}
 	
 }
 function find(){//f

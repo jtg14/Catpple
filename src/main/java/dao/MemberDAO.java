@@ -40,4 +40,5 @@ public class MemberDAO {
 	public int ChangePassword(MemberVO vo) {
 		return dao.update(NS+"ChangePassword",vo);
 	}
+	
 }

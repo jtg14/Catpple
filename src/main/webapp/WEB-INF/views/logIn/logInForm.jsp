@@ -95,7 +95,7 @@
 				</div>
 			</div>
 			<c:if test="${fail=='needLogin'}">
-					이용을 위해서 로그인해주세요.
+					<script>alert('세션이 만료되어 로그아웃 되었습니다.');</script>
 				</c:if>
 		</div>
 	</div>

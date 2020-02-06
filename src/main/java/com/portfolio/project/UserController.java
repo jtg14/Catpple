@@ -16,7 +16,6 @@ import business.CService;
 import business.GService;
 import business.MService;
 import vo.CartVO;
-import vo.GoodsVO;
 import vo.MemberVO;
 
 @Controller
@@ -88,6 +87,7 @@ public class UserController {
 	}
 	@RequestMapping(value ="/mWdrawal")//회원탈퇴
 	public ModelAndView myInfoWithdrawal(ModelAndView model,HttpServletRequest request) {
+		
 		model.setViewName("myInfo/myInfoWithdrawal");
 		return model;
 	}
@@ -174,12 +174,12 @@ public class UserController {
 	}
 	@RequestMapping(value ="/logIn")//로그인진행
 	public ModelAndView logIn(ModelAndView model,MemberVO vo,HttpServletRequest request) {
+		HttpSession session = request.getSession();
 		String password = vo.getmPw();
 		vo = service.login(vo);
 		if(vo == null) {//없는 아이디일때
 			model.addObject("logIn","failed");
 		}else if(passwordEncorder.matches(password,vo.getmPw())) {
-			HttpSession session = request.getSession();
 			session.setAttribute("logInUser",vo);
 			session.setAttribute("cartRow",cartService.getCartRow(vo));
 			session.setMaxInactiveInterval(60 * 60 * 2); //두시간
@@ -213,13 +213,13 @@ public class UserController {
 		vo = (MemberVO) request.getSession().getAttribute("logInUser");
 		int cnt = service.mdelete(vo);
 		if(cnt>0) {
-			System.out.println("회원탈퇴 완료");
+			model.addObject("code","100");
 			request.getSession().invalidate();
 		} else {
-			System.out.println("회원 탈퇴 오류");
+			model.addObject("code","101");
 		}
 		
-		model.setViewName("index");
+		model.setViewName("jsonView");
 		return model;
 	}
 	@RequestMapping(value="/infoToCart")//상품 상세정보 -> 장바구니
