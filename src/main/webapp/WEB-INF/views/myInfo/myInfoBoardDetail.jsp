@@ -56,6 +56,8 @@ th, td {
 	}
 
 }
+
+
 </style>
 
 
@@ -177,9 +179,10 @@ th, td {
 					<div class="col-sm-12 col-md-12" id="content">
 					<c:if test="${pageCode=='I'}">
 					<!-- 메인내용 들어갈 공간 -->
+					
 						<div class="container">
 							<h2>1:1 문의</h2>
-							
+						
 							<div class="col-md-12 col-xs-12 detail">
 								<div class="col-md-2 col-xs-5 title">
 									<h4 style="color:crimson;">제목</h4>
@@ -187,7 +190,12 @@ th, td {
 								<div class="col-md-10 col-xs-7">
 									<h4 style="line-height: 1.5;">
 										<span class="label label-success" style="margin-right: 10px;">답변완료</span>
-										 ${one.bTitle}
+										<div style="display:inline;">
+										<div style="display:inline-block;" id="titleDiv">${one.bTitle}</div>
+											<div id="bTitleTextArea" style="display:none;">
+												<input class="form-control input-sm" value="${one.bTitle}"name="bTitle" id="bTitle">
+											</div>
+										</div>
 									</h4>
 								</div>
 								<div class="col-md-2 col-xs-5">
@@ -224,8 +232,11 @@ th, td {
 									style="min-height: 250px; font-size: 1.2em; max-height: 400px; overflow: auto; padding-top: 15px;">
 									<div class="col-md-2 col-xs-12 text-left content" style="color:crimson;"><h4>문의내용</h4>
 									</div>
-									<div class="col-md-8 col-xs-12">
+									<div class="col-md-8 col-xs-12" style="display:block;" id="contentDiv">
 											${one.bContent}
+									</div>
+									<div class="col-md-8 col-xs-12" style="display:none;" id="bContentTextArea">
+										<input class="form-control noresize" name="bContent" id="bContent"  value="${one.bContent}" style="min-height: 140px;">
 									</div>
 								</div>
 								<div class="col-md-12 col-xs-12 text-left detail"
@@ -242,7 +253,7 @@ th, td {
 									
 										<c:when test="${one.bReply=='0' or one.bReply=='1'}">
 											<c:choose>
-												<c:when test="${logInUser.mGrade=='a'}">
+												<c:when test="${logInUser.mGrade=='A'}">
 													<textarea id="replyText" rows="15" cols="20" style="width:100%;"></textarea>	
 												</c:when>
 												<c:when test="${logInUser.mGrade=='C'}">
@@ -255,22 +266,25 @@ th, td {
 									</div> 
 									
 								</div>
-								 <input type="button"  class="btn btn-primary pull-right" onclick="deleteButton('I')" value="삭제하기"/>
-								 <input type="button"  class="btn btn-primary pull-right" onclick="updateButton('I')" value="수정하기"/>
-								<!-- fffff --> 	
-							<!-- 관리자이고  -->
-							<c:if test="${logInUser.mGrade=='a'and one.bReply=='1'}">
-				
-										<button class="btn btn-primary pull-right" style="margin-top:10px;" onclick="updateReply(${one.bNum})">답변하기</button>
-							
-							</c:if>
-							
+							<c:choose>	
+								<c:when test="${logInUser.mGrade=='C'}">
+									<c:if test="${one.bReply=='0' or one.bReply=='1'}">
+										 <input type="button"  class="btn btn-primary pull-right" onclick="deleteButton('I')" value="삭제하기"/>
+										 <input type="button" id="btn1" class="btn btn-primary pull-right" style="display:inline-block;"onclick="updateButton1()" value="수정하기"/>
+										 <input type="button" id="btn2" class="btn btn-primary pull-right" style="display:none;" onclick="updateButton2()" value="수정완료"/>
+									</c:if>
+								</c:when>	
+								<c:when test="${logInUser.mGrade=='A'}">
+									<input type="button" class="btn btn-primary pull-right" style="margin-top:10px;" onclick="updateReply(${one.bNum})" value="답변하기"/>
+								</c:when>
+							</c:choose>
 						</div>
 					</c:if>
 					
 					<c:if test="${pageCode=='S'}">
 						<!-- 메인내용 들어갈 공간 -->
 						<div class="container">
+						
 							<h2>건의 사항</h2>
 							
 							<div class="col-md-12 col-xs-12 detail">
@@ -297,17 +311,14 @@ th, td {
 											${one.bContent}
 									</div>
 								</div>
-								 <input type="button"  class="btn btn-primary pull-right" onclick="deleteButton('S')" value="삭제하기"/>
-								 <input type="button"  class="btn btn-primary pull-right" onclick="updateButton('I')" value="수정하기"/>
-								
-								<!-- fffff --> 	
-							<!-- 관리자이고  -->
-							<c:if test="${logInUser.mGrade=='a'and one.bReply=='1'}">
-				
-									<button class="btn btn-primary pull-right" style="margin-top:10px;" onclick="updateReply(${one.bNum})">답변하기</button>
+								 
 							
-							</c:if>
-							
+							<c:choose>	
+								<c:when test="${logInUser.mGrade=='C'}">
+									 <input type="button"  class="btn btn-primary pull-right" onclick="deleteButton('S')" value="삭제하기"/>
+								</c:when>
+							</c:choose>
+						
 						</div>
 					</c:if>
 						
@@ -374,15 +385,49 @@ th, td {
 		}
 	};//deleteButton
 	
-	function updateButton(pageCode){
-		var bNum=${one.bNum};
-		$.ajax({
-			
-			
-			
-		})//ajax
+	function updateButton1(){
+		$('#titleDiv').css('display','none');
+		$('#bContentTextArea').css('display','block');
+		$('#contentDiv').css('display','none');
+		$('#bTitleTextArea').css('display','inline');
+		$('#btn1').css('display','none');
+		$('#btn2').css('display','inline');
 		
-	}
+		
+	}//updateButton
+	
+	function updateButton2(){
+		alert('gkgk');
+		var bNum=${one.bNum};
+		var bTitle=$('#bTitle').val();
+		var bContent=$('#bContent').val();
+		alert(bNum+bTitle+bContent);
+		
+		$.ajax({
+			type:'post',
+			url:'boardUpdate',
+			data:{
+				bNum:bNum,
+				bTitle:bTitle,
+				bContent:bContent
+			},
+			success:function(result){
+				if(result.code=='100'){
+					alert('수정되었습니다.');
+					window.location.reload();
+				}else if(result.code=='101'){
+					alert('오류가 발생했습니다.');
+				}
+			}	
+		
+			
+		});//ajax
+		
+		
+		
+	}//updateButton2
+	
+	
 	
 	
 	

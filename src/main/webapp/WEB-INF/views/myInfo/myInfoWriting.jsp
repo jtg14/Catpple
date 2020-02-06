@@ -179,8 +179,7 @@ $(function(){
 						<div class="tabs-container-style-1">
 							<div class="col-md-12 col-xs-12">
 								<ul id="myTab" class="nav nav-tabs" style="font-size: 1.5em;">
-									<li class="active"><a href="#home" data-toggle="tab">1:1
-											문의</a></li>
+									<li class="active"><a href="#home" data-toggle="tab">1:1문의</a></li>
 									<li class=""><a href="#profile" data-toggle="tab">건의사항</a></li>
 								</ul>
 							</div>
@@ -216,13 +215,16 @@ $(function(){
 												<h3>제목</h3>
 											</div>
 											<div class="col-md-12 col-xs-12">
+												
 												<input class="form-control input-sm" name="bTitle"
 													id="bTitle">
+												
+												
 											</div>
 											<div class="col-md-12 col-xs-12">
 												<h3>내용</h3>
 											</div>
-											<div class="col-md-12 col-xs-12">
+											<div class="col-md-12 col-xs-12">										  
 												<textarea class="form-control noresize" name="bContent"
 													id="bContent" style="height: 140px;"></textarea>
 											</div>

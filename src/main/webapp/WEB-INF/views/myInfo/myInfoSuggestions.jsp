@@ -155,7 +155,7 @@ th, td {
 								<thead>
 									<tr>
 									<c:choose>
-										<c:when test="${logInUser.mGrade=='a'}">
+										<c:when test="${logInUser.mGrade=='A'}">
 											<th>작성자</th>
 										</c:when>
 									</c:choose>
@@ -182,7 +182,7 @@ th, td {
 											</c:forEach>
 										</c:when>
 										
-										<c:when test="${logInUser.mGrade=='a'}">
+										<c:when test="${logInUser.mGrade=='A'}">
 											<c:forEach var="listForManager" items="${listForManager}"
 												varStatus="">
 												<tr>

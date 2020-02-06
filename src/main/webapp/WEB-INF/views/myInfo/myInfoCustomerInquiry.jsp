@@ -155,7 +155,7 @@ th, td {
 							<table class="table">
 								<thead>
 									<tr>
-										<c:if test="${logInUser.mGrade=='a'}">
+										<c:if test="${logInUser.mGrade=='A'}">
 											<th>작성자ID</th>
 										</c:if>
 										<th>구분</th>
@@ -208,7 +208,7 @@ th, td {
 											
 										</c:when>
 										 
-										<c:when test="${logInUser.mGrade=='a'}">
+										<c:when test="${logInUser.mGrade=='A'}">
 											<c:forEach var="listForManager" items="${listForManager}"
 												varStatus="">
 												<tr>

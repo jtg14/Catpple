@@ -58,6 +58,11 @@ public class BServiceImpl implements BService {
 		return dao.boardDelete(vo);
 	}
 
+	@Override
+	public int boardUpdate(BoardVO vo) {
+		return dao.boardUpdate(vo);
+	}
+
 	
 	
 	
