@@ -35,4 +35,18 @@
 		<beans:property name="maxUploadSize" value="52428800"/> 
 	</beans:bean>
 	
+	<!-- 인터셉터 객체 생성 -->
+	<beans:bean id="loginInterceptor" class="com.portfolio.project.LoginInterceptor" />
+	<!-- 인터셉터 설정 -->
+	<interceptors>
+		<interceptor>
+			<!-- <mapping path="/**"/>  전체경로 지정-->
+			<mapping path="/mroom"/>
+			<!-- 제외시킬 파일 경로 
+			<exclude-mapping path="joinF"/>
+			-->
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>

@@ -94,10 +94,12 @@
 					</div>
 				</div>
 			</div>
+			<c:if test="${fail=='needLogin'}">
+					이용을 위해서 로그인해주세요.
+				</c:if>
 		</div>
 	</div>
 
-	
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
 	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
