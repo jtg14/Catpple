@@ -53,8 +53,14 @@ public class BServiceImpl implements BService {
 		return dao.suggestionSelectPageListForManager(pvo);
 	}
 
-	
+	@Override
+	public int boardDelete(BoardVO vo) {
+		return dao.boardDelete(vo);
+	}
 
+	
+	
+	
 	
 	
 }

@@ -1,67 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace = "portfolio.mapper.BoardMapper">
+
+<mapper namespace="portfolio.mapper.BoardMapper">
 
 	<!-- inquiryInsert() -->
-	<insert id="bInquiryInsert">
-		insert into board (bnum, mname, btitle, bcontent, bdate, breply, member_mid, separation) values((select ifnull(max(bnum),0)+1 from board as bNum),#{mName},#{bTitle},#{bContent},default,1,#{member_mId},#{separation})
+
+
+	<insert id="bInquiryInsert">insert into board (bnum, mname, btitle, bcontent,
+		bdate, breply, member_mid, separation) values((select
+		ifnull(max(bnum),0)+1 from board as
+		bNum),#{mName},#{bTitle},#{bContent},default,1,#{member_mId},#{separation})
 	</insert>
-	
+
 	<!-- suggestionInsert -->
-	<insert id="bSuggestionInsert">
-		insert into board (bnum, mname, btitle, bcontent, bdate, breply, member_mid, separation) values((select ifnull(max(bnum),0)+1 from board as bNum),#{mName},#{bTitle},#{bContent},default,0,#{member_mId},#{separation})
+
+
+	<insert id="bSuggestionInsert">insert into board (bnum, mname, btitle, bcontent,
+		bdate, breply, member_mid, separation) values((select
+		ifnull(max(bnum),0)+1 from board as
+		bNum),#{mName},#{bTitle},#{bContent},default,0,#{member_mId},#{separation})
 	</insert>
-	
+
 	<!-- selectOne -->
-	<select id="selectOne" resultType="vo.BoardVO">
-		select * from board where bnum=#{bNum}
-	</select>
-	
+
+
+	<select id="selectOne" resultType="vo.BoardVO">select * from board where
+		bnum=#{bNum} </select>
+
 	<!-- bReplyUpdate -->
-	<update id="bReplyUpdate">
-		update board set bReply=#{bReply} where bNum=#{bNum}
+
+
+	<update id="bReplyUpdate">update board set bReply=#{bReply} where bNum=#{bNum}
 	</update>
-	
+
 	<!-- inquiryTotalRowCount -->
-	<select id="inquiryTotalRowCount" resultType="integer">
-		select count(*) from board where bReply!='0' and member_mId=#{member_mId}
-	</select>
-	
+
+
+	<select id="inquiryTotalRowCount" resultType="integer">select count(*)
+		from board where bReply!='0' and member_mId=#{member_mId} </select>
+
 	<!-- suggestionTotalRowCount -->
-	<select id="suggestionTotalRowCount" resultType="integer">
-		select count(*) from board where bReply='0'and member_mId=#{member_mId}
-	</select>
-	
+
+
+	<select id="suggestionTotalRowCount" resultType="integer">select count(*)
+		from board where bReply='0'and member_mId=#{member_mId} </select>
+
 	<!-- inquiryTotalRowCountForManager -->
-	<select id="inquiryTotalRowCountForManager" resultType="integer">
-		select count(*) from board where bReply!='0'
-	</select>
-	
+
+
+	<select id="inquiryTotalRowCountForManager" resultType="integer">select
+		count(*) from board where bReply!='0' </select>
+
 	<!-- suggestionTotalRowCountForManager -->
-	<select id="suggestionTotalRowCountForManager" resultType="integer">
-		select count(*) from board where bReply='0'
-	</select>
-	
+
+
+	<select id="suggestionTotalRowCountForManager"
+		resultType="integer">select count(*) from board where bReply='0' </select>
+
 	<!-- inquirySelectPageListForManager -->
-	<select id="inquirySelectPageListForManager" resultType="vo.BoardVO">
-		select b.* from (select * from board where bReply!='0') AS b order by b.bNum desc limit #{sno}, 5 
-	</select>
-	
+
+
+	<select id="inquirySelectPageListForManager"
+		resultType="vo.BoardVO">select b.* from (select * from board where bReply!='0') AS
+		b order by b.bNum desc limit #{sno}, 5 </select>
+
 	<!-- inquirySelectPageList -->
-	<select id="inquirySelectPageList" resultType="vo.BoardVO">
-		select b.* from (select * from board where bReply!='0' and member_mId=#{member_mId}) AS b order by b.bNum desc limit #{sno}, 5
-	</select>
-	
+
+
+	<select id="inquirySelectPageList" resultType="vo.BoardVO">select b.* from
+		(select * from board where bReply!='0' and member_mId=#{member_mId})
+		AS b order by b.bNum desc limit #{sno}, 5 </select>
+
 	<!-- suggestionSelectPageListForManager -->
-	<select id="suggestionSelectPageListForManager" resultType="vo.BoardVO">
-		select b.* from (select * from board where bReply='0') AS b order by b.bNum desc limit #{sno}, 5 
-	</select>
-	
+
+
+	<select id="suggestionSelectPageListForManager"
+		resultType="vo.BoardVO">select b.* from (select * from board where bReply='0') AS b
+		order by b.bNum desc limit #{sno}, 5 </select>
+
 	<!-- suggestionSelectPageList -->
-	<select id="suggestionSelectPageList" resultType="vo.BoardVO">
-		select b.* from (select * from board where bReply='0' and member_mId=#{member_mId}) AS b order by b.bNum desc limit #{sno}, 5 
-	</select>
-	
+
+
+	<select id="suggestionSelectPageList" resultType="vo.BoardVO">select b.* from
+		(select * from board where bReply='0' and member_mId=#{member_mId}) AS
+		b order by b.bNum desc limit #{sno}, 5 </select>
+
+	<!-- boardDelete -->
+
+
+	<delete id="boardDelete">delete from board where bNum=#{bNum} </delete>
+
 </mapper>

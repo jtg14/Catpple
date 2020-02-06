@@ -22,4 +22,8 @@ public interface BService {
 	
 	public PageVO suggestionSelectPageListForManager(PageVO pvo);
 	
+	public int boardDelete(BoardVO vo);
+	
+
+	
 }

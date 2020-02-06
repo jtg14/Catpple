@@ -205,6 +205,7 @@ th, td {
 													<td style="padding-right: 0px;">${list.bDate}</td>
 												</tr>
 											</c:forEach>
+											
 										</c:when>
 										 
 										<c:when test="${logInUser.mGrade=='a'}">

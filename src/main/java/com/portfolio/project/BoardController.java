@@ -66,8 +66,6 @@ public class BoardController {
 			
 			
 			pvo.setMember_mId(mvo.getmId());//mid를 pageVO member_mid에 저장
-			System.out.println("member_mId=>"+pvo.getMember_mId());
-			System.out.println("sno=>"+pvo.getSno());
 			pvo = service.inquirySelectPageList(pvo);
 			
 			
@@ -132,16 +130,12 @@ public class BoardController {
 			
 		}
 		
-//		bvo.setMember_mId(mvo.getmId());
-//		ArrayList<BoardVO> list = service.inquirySelectList(bvo);
-//		model.addObject("list", list);
-//		model.setViewName("myInfo/myInfoCustomerInquiry");
 		return model;
 	}
 	
 	
 	@RequestMapping(value = "/mSuggestions")//건의사항
-	public ModelAndView mSuggestion(ModelAndView model, HttpServletRequest request, BoardVO bvo, MemberVO mvo, PageVO pvo) {
+	public ModelAndView mSuggestions(ModelAndView model, HttpServletRequest request, BoardVO bvo, MemberVO mvo, PageVO pvo) {
 		HttpSession session = request.getSession();
 		mvo = (MemberVO)session.getAttribute("logInUser");
 		
@@ -161,14 +155,10 @@ public class BoardController {
 		
 			
 			pvo.setMember_mId(mvo.getmId());//mid를 pageVO member_mid에 저장
-			System.out.println("member_mId=>"+pvo.getMember_mId());
-			System.out.println("sno=>"+pvo.getSno());
 			pvo = service.suggestionSelectPageList(pvo);
 			
-			System.out.println("totalCount=>"+pvo.getTotalCount());
-			System.out.println("perPage=>"+pvo.getPerPage());
 			int totalPageNo = pvo.getTotalCount()/pvo.getPerPage();
-			System.out.println("totalPageNum=>"+totalPageNo);
+
 			if (pvo.getTotalCount()%pvo.getPerPage()>0) {
 				totalPageNo +=1;
 				}
@@ -187,9 +177,6 @@ public class BoardController {
 			model.addObject("currPage",currPage);
 			model.addObject("list", pvo.getList());
 			model.setViewName("myInfo/myInfoSuggestions");
-			System.out.println("currPage in suggestion=>"+currPage);
-			System.out.println("sPage in suggestion=>"+sPage);
-			System.out.println("ePage in suggestion=>"+ePage);
 
 			return model;
 		}else if("a".equals(mvo.getmGrade())) {//member가 관리자인 경우
@@ -202,7 +189,7 @@ public class BoardController {
 				pvo.setCurrPage(currPage);
 			}
 			
-			//페이지 첫row와 마지막row설정
+			//페이지 첫row 설정
 			int startRno=((currPage-1)*pvo.getPerPage());	
 			pvo.setSno(startRno);
 		
@@ -233,7 +220,6 @@ public class BoardController {
 			
 		}
 		
-
 		return model;
 	}//mSuggestions
 	
@@ -248,11 +234,9 @@ public class BoardController {
 		vo1.setMember_mId(vo2.getmId());
 		
 		if(service.inquiryInsert(vo1)>0) {
-	
 			model.setViewName("redirect:mCustomerInquiry");
 			return model;
 		}else {
-
 			model.setViewName("redirect:mCustomerInquiry");
 			return model;
 		}	
@@ -262,18 +246,15 @@ public class BoardController {
 	
 	@RequestMapping(value = "/suggestionInsert")
 	public ModelAndView suggestionInsert(ModelAndView model, BoardVO vo1, MemberVO vo2, HttpServletRequest request) {
-		System.out.println("suggestionInsert=들어옴");
 		HttpSession session = request.getSession();
 		vo2 = (MemberVO)session.getAttribute("logInUser");
 		vo1.setmName(vo2.getmName());
 		vo1.setMember_mId(vo2.getmId());
 		
 		if(service.suggestionInsert(vo1)>0) {
-	
 			model.setViewName("redirect:mSuggestions");
 			return model;
 		}else {
-
 			model.setViewName("redirect:mSuggestions");
 			return model;
 		}	
@@ -283,8 +264,7 @@ public class BoardController {
 	
 	@RequestMapping(value = "/bReplyUpdate")
 	public ModelAndView bReplyUpdate(ModelAndView model, BoardVO vo) {
-		System.out.println("들어옴");
-		System.out.println(vo);
+	
 		if(service.bReplyUpdate(vo)>0) {
 			model.addObject("code", "100");
 		}else {
@@ -292,14 +272,32 @@ public class BoardController {
 		}
 
 		model.setViewName("jsonView");
-		
 		return model;
 	}//bReplyUpdate
 	
+	@RequestMapping(value = "/boardDelete")
+	public ModelAndView boardDelete(ModelAndView model, BoardVO vo, HttpServletRequest request) {
+		String pageCode = request.getParameter("pageCode");
+		service.boardDelete(vo);
+		if("I".equals(pageCode)) {
+			model.addObject("page", "I");
+			model.setViewName("jsonView");
+			
+		}else if("S".equals(pageCode)) {
+			model.addObject("page", "S");
+			model.setViewName("jsonView");
+		
+		}
+		
+		return model;
+	}//inquiryDelete
 	
-	
-	
-	
+	@RequestMapping(value = "/boardUpdate")
+	public ModelAndView boardUpdate(ModelAndView model, BoardVO vo, HttpServletRequest request) {
+		
+		return model;
+	}
 	
 	
 }
+

@@ -57,4 +57,14 @@ public class BoardDAO {
 		pvo.setList((ArrayList)dao.selectList(NS+"suggestionSelectPageListForManager",pvo));
 		return pvo;
 	}
+	
+	public int boardDelete(BoardVO vo) {
+		return dao.delete(NS+"boardDelete",vo);
+	}
+	
+	public int suggestionDelete(BoardVO vo) {
+		return dao.delete(NS+"suggestionDelete",vo);
+	}
+	
+	
 }//class
