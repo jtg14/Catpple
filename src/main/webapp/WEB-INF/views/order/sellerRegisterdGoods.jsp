@@ -45,7 +45,11 @@ padding-right: 0px;
 }
 
 </style>
-
+<script>
+ $(function (){
+	location.reload();
+ });
+</script>
 </head>
 <body class="font-Jua">
 

@@ -67,10 +67,8 @@ public class GoodsController {
 			}
 		}
 		log.info("------------- 상품 등록 성공 -------------");
-		vo = null;
-		mvo = null;
 		
-		mv.setViewName("jsonView");
+		mv.setViewName("redirect:sRGoods");
 		return mv;
 	}
 	@RequestMapping(value="/gSResult")
@@ -99,7 +97,7 @@ public class GoodsController {
 		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 		vo.setMember_mid(mvo.getmId());;
 		ArrayList<GoodsVO> list = service.myGoodsList(vo);
-		mv.addObject("myGoodsList", list);
+		mv.addObject("list", list);
 		mv.setViewName("order/sellerRegisterdGoods");
 		return mv;
 	}
