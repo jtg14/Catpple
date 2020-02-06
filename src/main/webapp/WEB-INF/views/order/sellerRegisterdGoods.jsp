@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
+	<title>내가 등록한 상품 | Catpple</title>
 <style>
 
 .second-div{
@@ -45,11 +46,7 @@ padding-right: 0px;
 }
 
 </style>
-<script>
- $(function (){
-	location.reload();
- });
-</script>
+
 </head>
 <body class="font-Jua">
 
@@ -162,20 +159,15 @@ padding-right: 0px;
 					style="min-height: 1000px; margin-top: 120px;">
 					<div class="col-sm-12 col-md-12" id="content">
 						<!-- 메인 공간 -->
-
-
-
-
 						<div class="col-md-10 col-xs-12">
 							<h2 style="color: crimson">나의 등록 상품</h2>
 							<c:forEach var="gl" items="${list}">
-								<form action="sGUForm" method="post">
 								<div class="container text-center"
 									style="border-top: 2px solid lightgray; padding-top: 10px; padding-bottom: 10px;">
 									<div class="col-md-6 col-xs-12"
 										style="padding-top: 0px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px;">
 										<div class="col-md-6 col-xs-3" style="padding-left: 0px;">
-											<img class="img" src="resources/sellerInfo/${logInUser.mId}/${gl.gimg1}" width="100px" height="100px;"/>
+											<img class="img" src="resources/sellerInfo/${gl.member_mid}/${gl.gimg1}" width="100px" height="100px;"/>
 										</div>
 										<div class="col-md-6 col-xs-9 second-div">
 											상품번호 : ${gl.gnum}
@@ -192,14 +184,10 @@ padding-right: 0px;
 											재고 : ${gl.gstock}개
 										</div>
 										<div class="col-md-4 col-xs-12">
-											<button type="submit" class="btn btn-danger">편집하기</button>
+											<a href="sGUForm?gnum=${gl.gnum}" class="btn btn-danger">편집하기</a>
 										</div>
 									</div>
-
-
-
 								</div>
-								</form>
 							</c:forEach>
 
 						</div>
@@ -217,6 +205,7 @@ padding-right: 0px;
 	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>
+
 </body>
 <footer>
 	<div class="article">

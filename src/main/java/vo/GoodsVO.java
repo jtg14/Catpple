@@ -18,7 +18,15 @@ public class GoodsVO {
 	private String gcategory;
 	private String gcategory2;
 	private String member_mid;
+	private String company;
 	
+	
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
 	public int getGnum() {
 		return gnum;
 	}

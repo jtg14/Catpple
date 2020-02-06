@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
+<title>나에게 온  주문목록 | Catpple</title>
 <style>
 @media (max-width : 768px) {
      .first-div{

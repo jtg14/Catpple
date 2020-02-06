@@ -17,7 +17,6 @@
 </head>
 <body class="font-Jua">
 	<jsp:include page="../header.jsp"></jsp:include>
-	<c:set var="goods" value="${goods}" />
 	<div class="container">
 		<div class="jumbotron"
 			style="border: 5px solid crimson; border-radius: 10px; background-color: white;">
@@ -29,7 +28,7 @@
 					<div class="col-md-8 col-xs-12">
 						<div class="col-md-12 col-xs-12">
 							<h3>
-								<span class="brand_ame">${company.mName}</span> <span
+								<span class="brand_ame">${goods.company}</span> <span
 									class="item_Name"> ${goods.gname} </span>
 							</h3>
 						</div>
@@ -113,7 +112,7 @@
 				<div id="myTabContent" class="tab-content container">
 
 					<div class="tab-pane fade active in" id="home">
-						<img class="img-responsive col-md-12" src="resources/sellerInfo/${company.mId}/${goods.gimg2}">
+						<img class="img-responsive col-md-12" src="resources/sellerInfo/${goods.member_mid}/${goods.gimg2}">
 					</div>
 					<!-- end of goodsDetail -->
 

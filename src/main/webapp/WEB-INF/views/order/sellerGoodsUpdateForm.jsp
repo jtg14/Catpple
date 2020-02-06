@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>등록된 상품수정 | Catpple</title>
 <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="resources/custom/addCSS/myroom.css">
 <link rel="stylesheet" href="resources/custom/addCSS/footer.css">
@@ -13,109 +13,7 @@
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
-<script type="text/javascript">
-// 대분류
-var firstList = new Array("사료","캔/간식","장난감","화장실/매트");
 
-// 소분류
-
-var secondList1 = new Array("고양이처방식","노묘용","성묘용","자묘용","전연령용");
-var secondList2 = new Array("간식캔","주식캔","스낵","건조간식","통살");
-var secondList3 = new Array("낚싯대", "막대", "인형/쿠션", "공", "박스/하우스");
-var secondList4 = new Array("하우스화장실", "평판화장실", "화장실매트","거름망","배변패드");
-// 페이지 로딩시 자동 실행  
-window.onload = function(){
-    var v_firstSelect = document.getElementById("firstSelect"); // SELECT TAG
-      
-    for (i =0 ; i<firstList.length; i++){
-        // 새로운 <option value=''>값</option> 태그 생성
-        var optionEl = document.createElement("option");
-  
-        // option태그에 value 속성 값으로 저장
-        optionEl.value = firstList[i];
-      
-        // text 문자열을 새로 생성한 <option> 태그의 값으로 추가
-        optionEl.appendChild (document.createTextNode(firstList[i]));
-      
-        // 만들어진 option 태그를 <select>태그에 추가
-        v_firstSelect.appendChild(optionEl);
-    }
-  
-    var v_secondSelect = document.getElementById("secondSelect"); // SELECT TAG
-  
-}
-
-// 대분류 선택시
-function changeFirstSelect(){
-    var v_firstSelect = document.getElementById("firstSelect"); // SELECT TAG
-    var idx = v_firstSelect.options.selectedIndex;     // 선택값 0 ~ 4
-     
-
-    if (idx < 0 && idx > 4){
-        return;
-    }
- 
-    secondSelectFill(idx);   // 중분류 생성
-}
-
-
-function secondSelectFill(idx){
-    var v_secondSelect = document.getElementById("secondSelect"); // SELECT TAG
- 
-    var data = null;
-  
-    if (idx == 0) {
-		if(${goodsDetail.gcategory=="사료"}){
-			data=secondList1
-		}
-		if(${goodsDetail.gcategory=="캔/간식"}){
-			data=secondList2
-		}
-		if(${goodsDetail.gcategory=="장난감"}){
-			data=secondList3
-		}
-		if(${goodsDetail.gcategory=="화장실/매트"}){
-			data=secondList4
-		}
-    	/*v_secondSelect.style.display = "none";  // 중분류 태그 감추기
-        return;*/
-    }
-  
-    if (idx == 1){
-     data = secondList1
-   
-     }
-    if (idx == 2){
-     data = secondList2
-     
-     }
-    if (idx == 3){
-    	data = secondList3
-    }
-    if (idx == 4 ){
-    	data = secondList4
-    }
-
-    v_secondSelect.innerHTML = "";  // 태그 출력
-      
-    for (i =0 ; i<data.length; i++){ 
-        // 새로운 <option value=''>값</option> 태그 생성
-        var optionEl = document.createElement("option");
-  
-        // value 속성 태그에 저장
-        optionEl.value = data[i];
-      
-        // text 문자열을 새로 생성한 <option> 태그에 추가
-        optionEl.appendChild (document.createTextNode(data[i]));
-      
-        // 만들어진 option 태그를 <select>태그에 추가
-        v_secondSelect.appendChild(optionEl);
-    }
-  
-v_secondSelect.style.display = ""; // 중분류 태그 출력
-  
-}
-</script>
 </head>
 <body class="font-Jua">
 
@@ -228,22 +126,21 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 					<div class="col-sm-12 col-md-12" id="content">
 						<!-- 메인 공간 -->
 
-
+						<c:set var="ginfo" value="${goodsDetail}"/>
 						<div class="col-md-8 col-md-offset-1 col-xs-12"
 							style="border: 5px solid crimson; border-radius: 10px; padding-bottom: 10px;">
 							<h2 style="margin-top: 5%;">상품 수정 및 삭제</h2>
 							<form action="gupdate" method="post" enctype="multipart/form-data">
 								<div style="margin: 10px 30px;">
-
+							
 									<!-- Row1 아이디/이름-->
 									<div class="row">
 										<h3>판매자 정보</h3>
 										<!-- Grid column -->
 										<div class="col-md-3 col-xs-6">
-
 											<!-- Material input -->
 											<div class="form-group">
-												<label for="memberID">ID</label> <input type="text" value="${logInUser.mId}"
+												<label for="memberID">ID</label> <input type="text" value="${ginfo.member_mid}"
 													class="form-control" id="memberID" placeholder="ID"
 													readonly="readonly">
 											</div>
@@ -254,7 +151,7 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 										<div class="col-md-3 col-xs-6">
 											<!-- Material input -->
 											<div class=" form-group">
-												<label for="memberName">이름</label> <input type="text" value="${logInUser.mName}"
+												<label for="memberName">이름</label> <input type="text" value="${ginfo.company}"
 													class="form-control" id="memberName" placeholder="이름"
 													readonly="readonly">
 											</div>
@@ -275,21 +172,23 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 											<!-- Material input -->
 											<div class="form-group">
 												<label for="goodsNumber">상품번호</label> <input type="text" name="gnum"
-													class="form-control" id="goodsNumber" value="${goodsDetail.gnum}"
+													class="form-control" id="goodsNumber" value="${ginfo.gnum}"
 													readonly="readonly">
 											</div>
 										</div>
 										<!-- Grid column  -->
 										<div style="margin-top: 35px;">
 										<div class="col-md-3 col-xs-12">
-											<select class="form-control" id="firstSelect" name="gcategory" onChange="changeFirstSelect();">
-        										<option value="">${goodsDetail.gcategory}</option>
-    										</select>
+											<select id="sidoSelect" class="form-control" name="gcategory"
+												onChange="changeSidoSelect();">
+												<option value="">대분류</option>
+											</select>
   										</div>
   										<div class="col-md-3 col-xs-12">
-    										<select class="form-control" name="gcategory2" id="secondSelect">
-        										<option value="">${goodsDetail.gcategory2}</option>
-    										</select>
+    										<select id="gugunSelect" class="form-control"
+												name="gcategory2" onChange="changeSecondSelect();">
+												<option value="">소분류</option>
+											</select>
 										</div>
 										</div>
 										<!-- Grid column -->
@@ -301,7 +200,7 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 											<!-- Material input -->
 											<div class="form-group">
 												<label for="goodsName">상품 이름</label> <input type="text" name="gname"
-													class="form-control" id="goodsName" placeholder="상품이름" value="${goodsDetail.gname}">
+													class="form-control" id="goodsName" value="${ginfo.gname}">
 
 											</div>
 										</div>
@@ -318,7 +217,7 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 											<!-- Material input -->
 											<div class="form-group">
 												<input type="text" class="form-control" id="goodsRegDate"
-													placeholder="등록날짜" readonly="readonly" value="${goodsDetail.gdate}">
+												 readonly="readonly" value="${ginfo.gdate}">
 											</div>
 										</div>
 										<!-- Grid column -->
@@ -328,7 +227,7 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 											<div class="form-group">
 												<div class="input-group">
 													<input type="number" class="form-control" id="goodsPrice" name="gprice"
-														placeholder="0" value="${goodsDetail.gprice}"> <span class="input-group-addon">원</span>
+														placeholder="0" value="${ginfo.gprice}"> <span class="input-group-addon">원</span>
 												</div>
 											</div>
 										</div>
@@ -339,7 +238,7 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 											<div class="form-group">
 												<div class="input-group">
 													<input type="number" class="form-control" id="goodsAmount" name="gstock"
-														placeholder="0" value="${goodsDetail.gstock}"> <span class="input-group-addon">개</span>
+														placeholder="0" value="${ginfo.gstock}"> <span class="input-group-addon">개</span>
 												</div>
 											</div>
 										</div>
@@ -348,8 +247,8 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 
 									<!-- row6 상품 이미지 -->
 									<div class="row">
-										<div class="col-md-4 col-xs-6">
-											<label for="goodsInfo">상품 이미지1</label>
+										<div class="col-md-6 col-xs-12">
+											<label for="goodsInfo">상품 메인이미지</label>
 											<div class="form-group">
 												<input class="form-control" type="file" id="uploadfilef"
 													name="gimgf1">
@@ -357,17 +256,17 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 											</div>
 										</div>
 
-										<div class="col-md-4 col-xs-6">
-											<label for="goodsInfo">상품 이미지2</label>
+										<div class="col-md-6 col-xs-12">
+											<label for="goodsInfo">상품 상세이미지</label>
 											<div class="form-group">
 												<input class="form-control" type="file" id="uploadfilef2"
-													name="gimgf2">
+													name="gimgf2" >
 											</div>
 										</div>
 									</div>
 									<!-- /row6 -->
 									<div class="col-md-3 col-md-offset-5 col-xs-8 col-xs-offset-3">
-										<button type="submit" class="btn btn-primary btn-md">수정</button>
+										<button type="submit" class="btn btn-primary btn-md" onclick="checkUpdateFile()">수정</button>
 										<button type="button" class="btn btn-primary btn-md">삭제</button>
 									</div>
 								</div>
@@ -389,6 +288,7 @@ v_secondSelect.style.display = ""; // 중분류 태그 출력
 	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>
+	<script src="resources/custom/addJS/goods.js"></script>
 </body>
 <footer>
 	<div class="article">

@@ -84,10 +84,6 @@ public class GoodsController {
 	public ModelAndView goodsDetail(ModelAndView model,GoodsVO vo,HttpServletRequest request) {
 		vo.setGnum(Integer.parseInt(request.getParameter("number")));
 		vo =service.goodsDetail(vo);
-		MemberVO member = new MemberVO();
-		member.setmId(vo.getMember_mid());
-		member = mservice.findCompany(member);
-		model.addObject("company",member);
 		model.addObject("goods",vo);
 		model.setViewName("goods/goodsInfo");
 		return model;
@@ -108,51 +104,43 @@ public class GoodsController {
 		mv.setViewName("order/sellerGoodsUpdateForm");
 		return mv;
 	}
-
-	
-
 	@RequestMapping(value = "gupdate")
 	public ModelAndView gupdate(ModelAndView mv, HttpServletRequest request, GoodsVO vo) {
 		MemberVO mvo = new MemberVO();
 		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+		String status="["+request.getRemoteAddr()+"]["+systemTime+"] GoodsInsert Status ("+mvo.getmName()+" 님): ";
+		log.info("------------- 상품 업데이트 시작 -------------");
 		vo.setMember_mid(mvo.getmId());
 		String uploadPath = "C:\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getMember_mid();
-		
-		MultipartFile multipartFile1 = vo.getGimgf1();
-		MultipartFile multipartFile2 = vo.getGimgf2();
-		
-		File file1 = new File(uploadPath, multipartFile1.getOriginalFilename());
-		File file2 = new File(uploadPath, multipartFile2.getOriginalFilename());
-		
-		String str1 = multipartFile1.getOriginalFilename();
-		String str2 = multipartFile2.getOriginalFilename();
-		
-		vo.setGimg1(str1.substring(0,str1.lastIndexOf(".")));
-		vo.setGimg2(str2.substring(0,str2.lastIndexOf(".")));
-		System.out.println(vo.getGcategory());
-		System.out.println(vo.getGcategory2());
+		log.info(status+"저장 경로 설정 성공");
+		File file1 = new File(uploadPath,vo.getGimgf1().getOriginalFilename());
+		File file2 = new File(uploadPath,vo.getGimgf2().getOriginalFilename());
+		vo.setGimg1(vo.getGimgf1().getOriginalFilename());
+		vo.setGimg2(vo.getGimgf2().getOriginalFilename());
+		log.info(status+"상품 메인 이미지 [ "+vo.getGimg1()+" ] 등록성공");
+		log.info(status+"상품 상세 이미지 [ "+vo.getGimg2()+" ] 등록성공");
 		GoodsVO vo2 = service.goodsDetail(vo);
 		int cnt = service.goodsUpdate(vo);
 		if(cnt>0) {
-			if(!multipartFile1.isEmpty() && !multipartFile2.isEmpty()) {
+			log.info(status+"상품 업데이트 성공");
+			if(!vo.getGimgf1().isEmpty() && !vo.getGimgf2().isEmpty()) {
 				try {
 					//기존파일삭제
-					File deleteFile1 = new File(uploadPath+"\\"+vo2.getGimg1()+".jpg");
-					File deleteFile2 = new File(uploadPath+"\\"+vo2.getGimg2()+".jpg");
-					deleteFile1.delete();
-					deleteFile2.delete();
-					
-					multipartFile1.transferTo(file1);
-					multipartFile2.transferTo(file2);
-					mv.addObject("goodsInsertInfo","상품이 업데이트되었습니다!");
+					new File(uploadPath+"\\"+vo2.getGimg1()).delete();
+					log.info(status+"기존 상품 메인 이미지 삭제성공");		
+					new File(uploadPath+"\\"+vo2.getGimg2()).delete();
+					log.info(status+"기존 상품 상세 이미지 삭제성공");		
+					vo.getGimgf1().transferTo(file1);
+					log.info(status+"업데이트한 상품 메인 이미지 지정경로 저장 성공");		
+					vo.getGimgf2().transferTo(file2);
+					log.info(status+"업데이트한 상품 상세 이미지 지정경로 저장 성공");		
 				}catch(Exception e) {
-					mv.addObject("goodsInsertInfo","파일업로드 실패!");
+					e.printStackTrace();
 				}
 			}
 		}
-		ArrayList<GoodsVO> list = service.myGoodsList(vo);
-		mv.addObject("myGoodsList", list);
-		mv.setViewName("order/sellerRegisterdGoods");
+		log.info("------------- 상품 업데이트 모든 과정 성공 -------------");
+		mv.setViewName("redirect:sRGoods");
 		return mv;
 	}
 
