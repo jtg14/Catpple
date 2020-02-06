@@ -24,6 +24,8 @@ public interface BService {
 	
 	public int boardDelete(BoardVO vo);
 	
+	public int boardUpdate(BoardVO vo);
+	
 
 	
 }

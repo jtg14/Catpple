@@ -66,5 +66,8 @@ public class BoardDAO {
 		return dao.delete(NS+"suggestionDelete",vo);
 	}
 	
+	public int boardUpdate(BoardVO vo) {
+		return dao.update(NS+"boardUpdate",vo);
+	}
 	
 }//class

@@ -90,7 +90,11 @@
 
 	<!-- boardDelete -->
 
-
 	<delete id="boardDelete">delete from board where bNum=#{bNum} </delete>
 
+	<!-- boardUpdate -->
+
+	<update id="boardUpdate" >
+		update board set bTitle=#{bTitle}, bContent=#{bContent} where bNum=#{bNum}
+	</update>
 </mapper>

@@ -29,7 +29,7 @@ public class BoardController {
 	@RequestMapping(value ="/mBDetail")//글상세
 	public ModelAndView myInfoBoardDetail(ModelAndView model,BoardVO vo,HttpServletRequest request) {
 		String pageCode = request.getParameter("pageCode");
-		System.out.println("pageCode=>"+pageCode);
+		System.out.println("mBDetail pageCode=>"+pageCode);
 		vo = service.selectOne(vo);
 		model.addObject("one",vo);
 		
@@ -294,6 +294,18 @@ public class BoardController {
 	
 	@RequestMapping(value = "/boardUpdate")
 	public ModelAndView boardUpdate(ModelAndView model, BoardVO vo, HttpServletRequest request) {
+		System.out.println("boardUpdate의 첫vo=>"+vo);
+		
+//		System.out.println("boardUpdate 숫자=>"+service.boardUpdate(vo));
+		
+		if(service.boardUpdate(vo)>0) {
+			model.addObject("code","100");
+		}else {
+			model.addObject("code","101");
+		}
+		
+		model.setViewName("jsonView");
+			
 		
 		return model;
 	}
