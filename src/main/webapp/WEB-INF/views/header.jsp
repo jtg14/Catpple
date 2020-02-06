@@ -197,7 +197,7 @@
 						</div>
 					</form>
 				</ul>
-				<c:if test="${logInUser.mGrade eq 'C' || logInUser.mGrade eq 'S'}">
+				<c:if test="${logInUser.mGrade eq 'C' || logInUser.mGrade eq 'S' ||logInUser.mGrade eq 'A'}">
 					<ul class="nav navbar-nav navbar-right custom-nav">
 						<li class="dropdown"><a href="#"
 							class="dropdown-toggle main-menu"
@@ -264,7 +264,7 @@
 										</div>
 										<!-- /.col  -->
 									</c:if>
-									<c:if test="${logInUser.mGrade eq 'S' }">
+									<c:if test="${logInUser.mGrade eq 'S' || logInUser.mGrade eq 'A'}">
 									<div class="col col-xs-6 col-md-3">
 											<ul class="nav flex-column">
 												<li class="nav-item"><span
