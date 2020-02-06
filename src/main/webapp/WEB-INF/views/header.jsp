@@ -16,7 +16,7 @@
 <body class="font-Jua">
 	<nav class="navbar navbar-default"
 		style="background-color: white; margin-bottom: 0;">
-		<div class="container-fluid" style="height: 70px;">
+		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed custom-toggle"
 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-2"
@@ -24,7 +24,7 @@
 					style="margin-top: 10px; margin-bottom: 10px;">
 					<span class="sr-only">Toggle navigation</span> 접속
 				</button>
-				<div class="navbar-header">
+				<div class="navbar-header"style="height:70px;">
 					<a class="navbar-brand logo" style="padding-top:0px;" href="home">
 						<img src="resources/images/CatppleLogo.png" style="width: 150px;">
 					</a>
@@ -72,7 +72,14 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header custom">
 				<div class="col-xs-10 mobile">
-					여러 메뉴를 보고 싶으시다면 ->
+					<form class="navbar-form" method="post" action="gSResult"
+						style="margin-top: 6px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;border-top-width: 0px;border-bottom-width: 0px;">
+						<div class="form-group">
+							<input type="text" name="search" class="form-control input-lg"
+								placeholder="원하시는 상품명"
+								style="border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-color: crimson;">
+						</div>
+					</form>
 				</div>
 				<button type="button" class="navbar-toggle collapsed custom-toggle"
 					style="margin-bottom: 0px;margin-top: 23px;"
