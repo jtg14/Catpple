@@ -181,7 +181,7 @@ th, td {
 												</tr>
 											</c:forEach>
 										</c:when>
-										 
+										
 										<c:when test="${logInUser.mGrade=='a'}">
 											<c:forEach var="listForManager" items="${listForManager}"
 												varStatus="">

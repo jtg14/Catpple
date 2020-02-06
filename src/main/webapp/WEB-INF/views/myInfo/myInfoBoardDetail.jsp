@@ -255,7 +255,8 @@ th, td {
 									</div> 
 									
 								</div>
-								
+								 <input type="button"  class="btn btn-primary pull-right" onclick="deleteButton('I')" value="삭제하기"/>
+								 <input type="button"  class="btn btn-primary pull-right" onclick="updateButton('I')" value="수정하기"/>
 								<!-- fffff --> 	
 							<!-- 관리자이고  -->
 							<c:if test="${logInUser.mGrade=='a'and one.bReply=='1'}">
@@ -296,13 +297,14 @@ th, td {
 											${one.bContent}
 									</div>
 								</div>
-								
+								 <input type="button"  class="btn btn-primary pull-right" onclick="deleteButton('S')" value="삭제하기"/>
+								 <input type="button"  class="btn btn-primary pull-right" onclick="updateButton('I')" value="수정하기"/>
 								
 								<!-- fffff --> 	
 							<!-- 관리자이고  -->
 							<c:if test="${logInUser.mGrade=='a'and one.bReply=='1'}">
 				
-										<button class="btn btn-primary pull-right" style="margin-top:10px;" onclick="updateReply(${one.bNum})">답변하기</button>
+									<button class="btn btn-primary pull-right" style="margin-top:10px;" onclick="updateReply(${one.bNum})">답변하기</button>
 							
 							</c:if>
 							
@@ -347,8 +349,6 @@ th, td {
 		});//ajax
 	};//replyButton
 	
-<<<<<<< Updated upstream
-=======
 	function deleteButton(pageCode){
 		if(confirm("정말 삭제하시겠습니까?")==true){
 		var bNum=${one.bNum};
@@ -377,8 +377,8 @@ th, td {
 	function updateButton(pageCode){
 		var bNum=${one.bNum};
 		$.ajax({
-			type:'post',
-			url:''
+			
+			
 			
 		})//ajax
 		
@@ -386,7 +386,6 @@ th, td {
 	
 	
 	
->>>>>>> Stashed changes
 	</script>
 </body>
 <footer>
