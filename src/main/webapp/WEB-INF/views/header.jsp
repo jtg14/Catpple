@@ -208,13 +208,17 @@
 										<div class="col col-xs-6 col-md-2">
 											<ul class="nav flex-column">
 												<li class="nav-item"><span
-													class="nav-link text-bold first-class">내지갑</span></li>
+													class="nav-link text-bold first-class">내 정보</span></li>
 												<li class="nav-item"><a
 													class="nav-link active second-class" href="mpoint">포인트</a></li>
+												<li class="nav-item"><a
+													class="nav-link active second-class" href="mChangef">내정보변경</a></li>
+												<li class="nav-item"><a class="nav-link second-class"
+													href="mWdrawal">회원탈퇴</a></li>
 											</ul>
 										</div>
 										<!-- /.col  -->
-
+										
 										<div class="col col-xs-6 col-md-2">
 											<ul class="nav flex-column">
 												<li class="nav-item"><span
@@ -247,8 +251,8 @@
 											</ul>
 										</div>
 										<!-- /.col  -->
-
-
+									</c:if>
+									<c:if test="${logInUser.mGrade eq 'S' || logInUser.mGrade eq 'A'}">
 										<div class="col col-xs-6 col-md-2">
 											<ul class="nav flex-column">
 												<li class="nav-item"><span
@@ -260,16 +264,6 @@
 											</ul>
 										</div>
 										<!-- /.col  -->
-									</c:if>
-									<c:if test="${logInUser.mGrade eq 'S' || logInUser.mGrade eq 'A'}">
-									<div class="col col-xs-6 col-md-2">
-											<ul class="nav flex-column">
-												<li class="nav-item"><span
-													class="nav-link text-bold first-class">내지갑</span></li>
-												<li class="nav-item"><a
-													class="nav-link active second-class" href="mpoint">포인트</a></li>
-											</ul>
-										</div>
 										<div class="col col-xs-6 col-md-2">
 											<ul class="nav flex-column">
 												<li class="nav-item"><span
