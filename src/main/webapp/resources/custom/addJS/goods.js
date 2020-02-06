@@ -42,7 +42,7 @@ function checkfile() {
 	}else if($('#gugunSelect').val() == ''){
 		alert('중분류및 소분류를 선택해주세요.');
 		return false;
-	}else if(img1 == img2){
+	}else if($('#uploadfilef').val() === $('#uploadfilef2').val()){
 		alert('같은 파일은 등록할수없습니다.');
 		return false;
 	}else if($('#goodsName').val() == ''){
@@ -59,25 +59,11 @@ function checkfile() {
 			type:'Post',
 			enctype: 'multipart/form-data',
 			url:'goodsInsert',
-			dataType : 'json',
 			data:data,
 			processData: false,
             contentType: false,
             cache: false,
-            timeout: 600000,
-            success: function (data) {
-            	alert('상품등록에 성공하였습니다!');
-                $('#gis').prop('disabled', false);
-            	location.href = 'sRGoods';
-            	return false;
-            },
-            error: function (e) {
-            	e.responseText();
-                console.log('ERROR : ', e);
-                $('#gis').prop('isabled', false);
-                alert('등록에 실패 하였습니다.');
-                return false;
-            }
+            timeout: 600000
 		});
 	}
 
