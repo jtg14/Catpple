@@ -79,11 +79,13 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
 <div class="col-md-12 col-xs-12"><h2>추천상품</h2></div>
 
 <c:forEach var="rl" items="${RecomList}">
-  <div class="col-xs-6 col-md-3">
+  <div class="col-xs-12 col-md-3">
     <div class="thumbnail text-center">
-      <a href="gDetail?number=${rl.gnum}"><img src="resources/sellerInfo/${rl.member_mid}/${rl.gimg1}" style="width:100%;"></a>
+      <a href="gDetail?number=${rl.gnum}"><img src="resources/sellerInfo/${rl.member_mid}/${rl.gimg1}" style="width:200px;"></a>
       <div class="caption">
+      <div class="col-xs-12 col-md-12" style="min-height:130px;">
         <h3><a href="#">${rl.gname}</a></h3>
+        </div>
         <div class="rating">
 		  <i class="glyphicon glyphicon-star"></i>
 		  <i class="glyphicon glyphicon-star"></i>
@@ -91,7 +93,7 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
 		  <i class="glyphicon glyphicon-star"></i>
 		  <i class="glyphicon glyphicon-star half"></i>
 		</div>
-        <p style="color:cimson;">${rl.gprice}원</p>
+        <p style="color:cimson;font-size:1.5em;">${rl.gprice}원</p>
       </div>
     </div>
   </div>
@@ -99,11 +101,13 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
   <div class="col-md-12 col-xs-12"><h2>새로 들어온 상품</h2></div>
   
 <c:forEach var="gl" items="${goodsHomeList}">
-  <div class="col-xs-6 col-md-3">
+  <div class="col-xs-12 col-md-3">
     <div class="thumbnail text-center">
-      <a href="gDetail?number=${gl.gnum}"><img src="resources/sellerInfo/${gl.member_mid}/${gl.gimg1}" style="width:100%;"></a>
+      <a href="gDetail?number=${gl.gnum}"><img src="resources/sellerInfo/${gl.member_mid}/${gl.gimg1}" style="width:200px;"></a>
       <div class="caption">
+      <div class="col-xs-12 col-md-12 " style="min-height:130px;">
         <h3><a href="#">${gl.gname}</a></h3>
+       </div>
         <div class="rating">
 		  <i class="glyphicon glyphicon-star"></i>
 		  <i class="glyphicon glyphicon-star"></i>
@@ -111,7 +115,7 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
 		  <i class="glyphicon glyphicon-star"></i>
 		  <i class="glyphicon glyphicon-star half"></i>
 		</div>
-        <p style="color:cimson;">${gl.gprice}원</p>
+        <p style="color:cimson;font-size:1.5em;">${gl.gprice}원</p>
       </div>
     </div>
   </div>

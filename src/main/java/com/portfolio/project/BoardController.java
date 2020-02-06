@@ -90,7 +90,7 @@ public class BoardController {
 			model.setViewName("myInfo/myInfoCustomerInquiry");
 
 			return model;
-		}else if("a".equals(mvo.getmGrade())) {//member가 관리자인 경우
+		}else if("A".equals(mvo.getmGrade())) {//member가 관리자인 경우
 			//paging
 			//currPage설정
 			int currPage=1;
@@ -179,7 +179,7 @@ public class BoardController {
 			model.setViewName("myInfo/myInfoSuggestions");
 
 			return model;
-		}else if("a".equals(mvo.getmGrade())) {//member가 관리자인 경우
+		}else if("A".equals(mvo.getmGrade())) {//member가 관리자인 경우
 			//paging
 			//currPage설정
 			int currPage=1;

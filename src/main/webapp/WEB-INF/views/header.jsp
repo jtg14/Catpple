@@ -207,8 +207,8 @@
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<div class="container">
 									<div class="row">
-									<c:if test="${logInUser.mGrade eq 'C' }">
-										<div class="col col-xs-6 col-md-3">
+									<c:if test="${logInUser.mGrade eq 'C' || logInUser.mGrade eq 'A' }">
+										<div class="col col-xs-6 col-md-2">
 											<ul class="nav flex-column">
 												<li class="nav-item"><span
 													class="nav-link text-bold first-class">내지갑</span></li>
@@ -218,7 +218,7 @@
 										</div>
 										<!-- /.col  -->
 
-										<div class="col col-xs-6 col-md-3">
+										<div class="col col-xs-6 col-md-2">
 											<ul class="nav flex-column">
 												<li class="nav-item"><span
 													class="nav-link text-bold first-class">주문배송</span></li>
@@ -234,7 +234,7 @@
 										</div>
 										<!-- /.col  -->
 
-										<div class="col col-xs-6 col-md-3">
+										<div class="col col-xs-6 col-md-2">
 											<ul class="nav flex-column">
 												<li class="nav-item"><span
 													class="nav-link text-bold first-class">고객센터</span></li>
@@ -252,7 +252,7 @@
 										<!-- /.col  -->
 
 
-										<div class="col col-xs-6 col-md-3">
+										<div class="col col-xs-6 col-md-2">
 											<ul class="nav flex-column">
 												<li class="nav-item"><span
 													class="nav-link text-bold first-class">내 정보</span></li>
@@ -265,7 +265,7 @@
 										<!-- /.col  -->
 									</c:if>
 									<c:if test="${logInUser.mGrade eq 'S' || logInUser.mGrade eq 'A'}">
-									<div class="col col-xs-6 col-md-3">
+									<div class="col col-xs-6 col-md-2">
 											<ul class="nav flex-column">
 												<li class="nav-item"><span
 													class="nav-link text-bold first-class">내지갑</span></li>
@@ -273,7 +273,7 @@
 													class="nav-link active second-class" href="mpoint">포인트</a></li>
 											</ul>
 										</div>
-										<div class="col col-xs-6 col-md-3">
+										<div class="col col-xs-6 col-md-2">
 											<ul class="nav flex-column">
 												<li class="nav-item"><span
 													class="nav-link text-bold first-class">판매자 메뉴</span></li>
