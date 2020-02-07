@@ -40,5 +40,10 @@ public class MemberDAO {
 	public int ChangePassword(MemberVO vo) {
 		return dao.update(NS+"ChangePassword",vo);
 	}
-	
+	public MemberVO searchID(MemberVO vo) {
+		return dao.selectOne(NS+"searchID",vo);
+	}
+	public MemberVO searchPW(MemberVO vo) {
+		return dao.selectOne(NS+"searchPW",vo);
+	}
 }

@@ -44,4 +44,12 @@ public class MServiceImpl implements MService {
 	public int ChangePassword(MemberVO vo) {
 		return dao.ChangePassword(vo);
 	}
+	@Override
+	public MemberVO searchID(MemberVO vo) {
+		return dao.searchID(vo);
+	}
+	@Override
+	public MemberVO searchPW(MemberVO vo) {
+		return dao.searchPW(vo);
+	}
 }
