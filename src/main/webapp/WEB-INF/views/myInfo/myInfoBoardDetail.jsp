@@ -176,7 +176,14 @@ th, td {
 								</div>
 								<div class="col-md-10 col-xs-7">
 									<h4 style="line-height: 1.5;">
-										<span class="label label-success" style="margin-right: 10px;">답변완료</span>
+										<c:choose>
+											<c:when test="${one.bReply=='1'}">
+												<span class="label label-success" style="margin-right: 10px;">답변대기중</span>
+											</c:when>
+											<c:when test="${one.bReply!='0' and one.bReply!='1'}">
+												<span class="label label-danger" style="margin-right: 10px;">답변완료</span>
+											</c:when>
+										</c:choose>
 										<div style="display:inline;">
 										<div style="display:inline-block;" id="titleDiv">${one.bTitle}</div>
 											<div id="bTitleTextArea" style="display:none;">
@@ -223,7 +230,7 @@ th, td {
 											${one.bContent}
 									</div>
 									<div class="col-md-8 col-xs-12" style="display:none;" id="bContentTextArea">
-										<input class="form-control noresize" name="bContent" id="bContent"  value="${one.bContent}" style="min-height: 140px;">
+										<textarea rows="5" cols="10" id="bContent" style="width:125%;" value="${one.bContent}">${one.bContent}</textarea>									
 									</div>
 								</div>
 								<div class="col-md-12 col-xs-12 text-left detail"
@@ -387,7 +394,6 @@ th, td {
 		var bNum=${one.bNum};
 		var bTitle=$('#bTitle').val();
 		var bContent=$('#bContent').val();
-		alert(bNum+bTitle+bContent);
 		
 		$.ajax({
 			type:'post',
