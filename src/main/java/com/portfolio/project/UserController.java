@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import business.CService;
@@ -266,15 +265,11 @@ public class UserController {
 
 	@RequestMapping(value="/searchID")//아이디찾기 minifunction.js에서 들어옴
 	public ModelAndView searchID(ModelAndView model, MemberVO vo) {
-		vo=service.searchID(vo);
-		String mId = vo.getmId();
-		
-		if(vo!=null){
-			model.addObject("searchedID",mId);
+		if(service.searchID(vo)!=null){
+			model.addObject("searchedID",vo.getmId());
 			model.addObject("code", "50");
-			
-		}else{
-			model.addObject("code", "51");
+		}else if(vo == null){
+			model.addObject("code","51");
 		}
 		model.setViewName("jsonView");
 		return model;
@@ -303,17 +298,25 @@ public class UserController {
 		String mCertification = request.getParameter("mCertification");
 			if(mCertification.equals("123")) {//발송된 코드 제대로 입력
 				model.addObject("code","200");
-				model.setViewName("jsonView");
 			}else {//발송된 코드 잘못입력했을시
 				model.addObject("code","202");
-				model.setViewName("jsonView");
 			}
+			model.setViewName("jsonView");
 			return model;
 	}//mConfirm2
-
-	
+	@RequestMapping(value="/cTOrder")
+	public ModelAndView cartToOrder(ModelAndView model,HttpServletRequest request,String[] arr) {
+		int [] intArr = new int [arr.length];
+		for(int i = 0;i <intArr.length;i++) {
+			intArr[i] = Integer.parseInt(arr[i]);
+		}
+		ArrayList<CartVO> list = cartService.purchaseList(intArr,(String)request.getParameter("id"));
+		request.getSession().setAttribute("list",list);
+		model.setViewName("jsonView");
+		return model;
+	}
 	
 }//class
 
-}
+
 

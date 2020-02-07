@@ -1,6 +1,6 @@
 package com.portfolio.project;
 
-import java.util.ArrayList;
+
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import business.CService;
-import vo.CartVO;
 
 @Controller
 public class OrderController {//주문성공 페이지
@@ -29,14 +28,8 @@ public class OrderController {//주문성공 페이지
 	}
 
 	@RequestMapping(value ="/oinfo")//주문정보
-	public ModelAndView orderInfo(ModelAndView model,HttpServletRequest request,String[] arr) {
-		int [] intArr = new int [arr.length];
-		for(int i = 0;i <intArr.length;i++) {
-			intArr[i] = Integer.parseInt(arr[i]);
-		}
-		ArrayList<CartVO> list = cartService.purchaseList(intArr,(String)request.getParameter("id"));
-		model.addObject("list",list);
-		model.setViewName("jsonView");
+	public ModelAndView orderInfo(ModelAndView model,HttpServletRequest request) {
+		model.setViewName("order/orderInfo");
 		return model;
 	}
 

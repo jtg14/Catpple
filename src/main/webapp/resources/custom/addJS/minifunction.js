@@ -246,14 +246,14 @@ function purchaseOnCart(grade,id){
 		}else {
 			$.ajax({
 				type:'Post',
-				url:'oinfo',
+				url:'cTOrder',
 				traditional : true,
 				data:{
 					'arr':purchaseList,
 					id:id
 				},
 				success:function(result){
-					location.href='order/orderInfo.jsp'
+					location.href='oinfo';
 				}
 			});
 			
