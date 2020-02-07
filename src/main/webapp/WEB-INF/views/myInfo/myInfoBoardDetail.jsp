@@ -384,7 +384,6 @@ th, td {
 	}//updateButton
 	
 	function updateButton2(){
-		alert('gkgk');
 		var bNum=${one.bNum};
 		var bTitle=$('#bTitle').val();
 		var bContent=$('#bContent').val();
