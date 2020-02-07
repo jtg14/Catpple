@@ -91,10 +91,12 @@
 					</tr>
 				</thead>
 				<tbody>
+				<c:forEach var="list" items="list">
 					<tr>
-						<td>더 홀리스틱 홍삼&국내산오리 5.2kg</td>
+						<td>더 홀리스틱 홍삼&국내산오리 5. 2kg</td>
 						<td>10개</td>
 					</tr>
+				</c:forEach>	
 				</tbody>
 			</table>
 		</div>

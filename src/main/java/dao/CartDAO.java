@@ -1,6 +1,8 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,19 @@ public class CartDAO {
 	}
 	public int getCartRow(MemberVO vo) {
 		return dao.selectOne(NS+"getCartRow",vo);
+	}
+	public ArrayList<CartVO> purchaseList(int [] arr,String memberid){
+		Map<String,Object> map = new HashMap<String,Object>();
+		ArrayList<Integer> checkedCId = new ArrayList<Integer>();
+		for(int i = 0;i < arr.length;i++) {
+			checkedCId.add(arr[i]);
+		}
+		for(int i = 0;i < checkedCId.size();i++) {
+			System.out.println("dao에서넘어온 값 출력 : "+checkedCId.get(i));
+		}
+		map.put("member_mId",memberid);
+		map.put("cIdList",checkedCId);
+		return(ArrayList) dao.selectList(NS+"purchaseList",map);
 	}
 	
 }

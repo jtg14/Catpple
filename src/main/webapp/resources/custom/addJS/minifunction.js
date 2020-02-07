@@ -46,6 +46,9 @@ $(function() {
 			$('#total').html(addCommas(parseInt($('#price').html()) * $('#amount1').val())+' 원');
 		}
 	});
+	
+	
+	
 }); //ready
 //3자리 단위마다 콤마 생성
 function addCommas(x) {
@@ -153,3 +156,31 @@ function deleteCart(cid){
 		return false;
 	}
 }
+function purchaseOnCart(grade,id){
+	var purchaseList = new Array();
+	$("input[name=box]:checked").each(function() {
+		purchaseList.push($(this).val());
+	});
+		if(grade == ''){
+			alert('로그인이 필요한 서비스입니다.');
+			window.location.href = 'logInf';
+		}else if(grade == 'S'){
+			alert('판매자로 등록된 계정은 구매할수없습니다.');
+		}else if(purchaseList.length == 0){
+			alert('선택된 항목이 없습니다.');
+		}else {
+			$.ajax({
+				type:'Post',
+				url:'oinfo',
+				traditional : true,
+				data:{
+					'arr':purchaseList,
+					id:id
+				},
+				success:function(result){
+					location.href='order/orderInfo.jsp'
+				}
+			});
+			
+		}
+	}

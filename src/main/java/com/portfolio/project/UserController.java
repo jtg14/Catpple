@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import business.CService;
@@ -28,6 +31,8 @@ public class UserController {
 	GService gservice;
 	@Autowired
 	BCryptPasswordEncoder passwordEncorder;
+	
+	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 	
 	@RequestMapping(value ="/signupf")//회원가입
 	public ModelAndView SignUpForm(ModelAndView model,HttpServletRequest request) {
@@ -182,6 +187,7 @@ public class UserController {
 		}else if(passwordEncorder.matches(password,vo.getmPw())) {
 			session.setAttribute("logInUser",vo);
 			session.setAttribute("cartRow",cartService.getCartRow(vo));
+			System.out.println(cartService.getCartRow(vo));
 			session.setMaxInactiveInterval(60 * 60 * 2); //두시간
 			model.addObject("logIn","success");
 		}else if(!passwordEncorder.matches(password,vo.getmPw())) {//비밀번호 틀렸을때
@@ -252,4 +258,5 @@ public class UserController {
 		model.setViewName("jsonView");
 		return model;
 	}
+	
 }

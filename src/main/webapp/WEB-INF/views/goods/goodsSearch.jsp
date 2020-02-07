@@ -71,7 +71,7 @@ height:100px;
             <div class="col-md-3 col-xs-6">
                <div class="card" >
                   <a href="gDetail?number=${list.gnum}"> <img class="img" src="resources/sellerInfo/${list.member_mid}/${list.gimg1}"></a>
-                  <div class="goods-title">${list.gname}</div>
+                 <div class="goods-title"><a href="gDetail?number=${list.gnum}"> ${list.gname}</a></div>
                   <div>
                      <font style="color: crimson; font-weight: bold; font-size: large;">${list.gprice}원</font><br>
                      <span>(할인여부등)<br></span> <span
