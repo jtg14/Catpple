@@ -34,5 +34,8 @@ public class CServiceImpl implements CService {
 	public int getCartRow(MemberVO vo) {
 		return dao.getCartRow(vo);
 	}
-	
+	@Override
+	public ArrayList<CartVO> purchaseList(int[] arr,String memberid) {
+		return dao.purchaseList(arr,memberid);
+	}
 }

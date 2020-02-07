@@ -172,6 +172,8 @@ $(function()
    $('#id').focus(function(){
 		$('#signUpbtn').addClass('disabled');
    });
+   
+  
  });// end of ready
 function signUpGo(){
 	if($('input:checkbox[id="defaultUnchecked"]').is(":checked") == false){
@@ -189,7 +191,9 @@ function signUpGo(){
 		   return true;
 	   }
 }
-function purchase(grade,id,number){
+
+
+function purchase(grade,id,number){//상품 디테일에서구매
 	if(grade == ''){
 		alert('로그인이 필요한 서비스입니다.');
 		window.location.href = 'logInf';

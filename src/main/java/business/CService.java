@@ -15,4 +15,6 @@ public interface CService {
 	int deleteCart(CartVO vo);
 	
 	int getCartRow(MemberVO vo);
+	
+	ArrayList<CartVO> purchaseList(int [] arr,String memberid);
 }

@@ -1,13 +1,26 @@
 package com.portfolio.project;
 
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import business.CService;
+import vo.CartVO;
+
 @Controller
 public class OrderController {//주문성공 페이지
 	
+	@Autowired
+	CService cartService;
 	
+	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 	
 	@RequestMapping(value ="/osuccess")
 	public ModelAndView orderSuccess(ModelAndView model) {
@@ -16,8 +29,14 @@ public class OrderController {//주문성공 페이지
 	}
 
 	@RequestMapping(value ="/oinfo")//주문정보
-	public ModelAndView orderInfo(ModelAndView model) {
-		model.setViewName("order/orderInfo");
+	public ModelAndView orderInfo(ModelAndView model,HttpServletRequest request,String[] arr) {
+		int [] intArr = new int [arr.length];
+		for(int i = 0;i <intArr.length;i++) {
+			intArr[i] = Integer.parseInt(arr[i]);
+		}
+		ArrayList<CartVO> list = cartService.purchaseList(intArr,(String)request.getParameter("id"));
+		model.addObject("list",list);
+		model.setViewName("jsonView");
 		return model;
 	}
 
