@@ -22,14 +22,15 @@
 
             <form action="#" method="post">
                <div class="col-md-12 col-xs-12 text-center">
-                  <input class="form-control input-sm" type="text" placeholder="아이디">
-                  <input class="form-control input-sm" type="text"
+                  <input id="searchName" class="form-control input-sm" type="text" placeholder="이름">
+                  <input id="searchPhone" class="form-control input-sm" type="text"
                      placeholder="전화번호" style="margin-top: 5px;">
                </div>
                <div class="col-md-12 col-xs-12 text-center"
                   style="margin-top: 10px;">
-                  <button class="btn btn-success btn-block" id="idfindbtn"
-                     style="padding-left: 0px; padding-right: 0px;">아이디
+                  <button type="button" class="btn btn-success btn-block" id="idfindbtn"
+                     style="padding-left: 0px; padding-right: 0px;" 
+                     onclick="searchIDButton()">아이디
                      찾기</button>
                </div>
             </form>
@@ -40,18 +41,23 @@
 
             <form action="#" method="post">
                <div class="col-md-12 col-xs-12 text-center">
-                  <input id="mid" class="form-control input-sm" type="text"
-                     placeholder="아이디"> <input id="mphone"
-                     class="form-control input-sm" type="text" placeholder="전화번호"
-                     style="margin-top: 5px;"> <input id="mname"
-                     class="form-control input-sm" type="text" placeholder="이름"
-                     style="margin-top: 5px;">
+                  <input id="mid" class="form-control input-sm" type="text" placeholder="아이디"> 
+                  <div class="input-group">
+                 	 <input id="mphone" class="form-control input-sm" type="text" placeholder="전화번호" style="margin-top: 5px;">
+                 		<span class="input-group-btn">
+							<button class="btn btn-danger" type="button" style="margin-top:5px;" onclick="confirmButton()">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span> 
+								인증하기
+							</button>
+						</span>
+                  </div>
+                  <input id="mcertification" class="form-control input-sm" type="text" placeholder="인증번호를 입력하세요" style="margin-top: 5px; display:none;">
                </div>
-               <div class="col-md-12 col-xs-12 text-center"
-                  style="margin-top: 10px;">
-                  <button class="btn btn-success btn-block" id="idfindbtn"
-                     style="padding-left: 0px; padding-right: 0px;" onclick="find()">비밀번호
-                     찾기</button>
+             
+               <div class="col-md-12 col-xs-12 text-center" style="margin-top: 10px;">
+                  <button type="button" class="btn btn-success btn-block" id="idfindbtn" style="padding-left: 0px; padding-right: 0px;" onclick="confirmButton2()">
+              		    인증 확인
+              	  </button>
                </div>
             </form>
          </div>

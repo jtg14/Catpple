@@ -92,6 +92,8 @@ function find(){//f
 	window.open(url,"_blank"
 		,"toolbar=no,menubar=yes,scrollbars=yes,resize=no,width=500px,height=200px,top=200,left=400;");
 }
+
+
 function confirmA(g){
 	var passwordregex = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,16}$/;
 	var p1 = $('#passwordChange').val();
@@ -153,3 +155,74 @@ function deleteCart(cid){
 		return false;
 	}
 }
+
+
+function searchIDButton(){//아이디찾기
+	var mName = $('#searchName').val();
+	var mPhone = $('#searchPhone').val();
+	$.ajax({
+		type:'post',
+		url:'searchID',//UserController
+		data:{
+			mName:mName,
+			mPhone:mPhone
+		},
+		success:function(result){
+			if(result.code=='50'){
+				alert('찾으시는 아이디는 \"'+ result.searchedID +'\" 입니다.');
+			}else if(result.code=='51'){
+				alert('일치하는 ID가 없습니다.');
+			}
+		}
+		
+	});//ajax
+}//searchIDButton()
+
+function confirmButton(){//인증버튼 from searchIDAndPW.jsp
+	$('#mcertification').css('display','block');
+	var mId = $('#mid').val();
+	var mPhone = $('#mphone').val();
+	$.ajax({
+		type:'post',
+		url:'mConfirm1',
+		data:{
+			mId : mId,
+			mPhone : mPhone
+		},
+		success:function(result){
+			if(result.code=='200'){
+				alert('인증번호가 발송되었습니다.');
+			}else if(result.code=='201'){
+				alert('ID와 전화번호를 제대로 입력해주세요.');
+			}
+		}
+		
+	});//ajax
+	
+}//confirmButton()
+
+
+function confirmButton2(){
+	var mCertification = $('#mcertification').val();
+	var mId = $('#mid').val();
+	$.ajax({
+		type:'post',
+		url:'mConfirm2',
+		data:{
+			mCertification:mCertification
+		},
+		success:function(result){
+			if(result.code=='200'){
+				var url="changePwf?mId="+mId;
+				// idDupCheck?id=banana
+				window.open(url,"_blank"
+					,"toolbar=no,menubar=yes,scrollbars=yes,resize=no,width=500px,height=200px,top=200,left=400;");
+			}else if(result.code=='202'){
+				alert('인증번호와 일치하지 않습니다');
+			}
+		}
+		
+	});//ajax
+}//confirmButton2()
+
+

@@ -20,4 +20,7 @@ public interface MService {
 	
 	int ChangePassword(MemberVO vo);
 	
+	MemberVO searchID(MemberVO vo);
+	
+	MemberVO searchPW(MemberVO vo);
 }

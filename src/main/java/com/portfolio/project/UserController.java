@@ -104,7 +104,10 @@ public class UserController {
 		return model;
 	}
 	@RequestMapping(value ="/changePwf")//비밀번호변경
-	public ModelAndView changePwf(ModelAndView model,HttpServletRequest request) {
+	public ModelAndView changePwf(ModelAndView model,MemberVO vo,HttpServletRequest request) {
+		String mId = request.getParameter("mId");
+		vo.setmId(mId);
+		model.addObject("logInUser",vo);
 		model.setViewName("logIn/changePw");
 		return model;
 	}
@@ -132,6 +135,7 @@ public class UserController {
 			model.addObject("code",201);
 		}
 		model.setViewName("jsonView");
+		
 		return model;
 	}
 	
@@ -252,4 +256,54 @@ public class UserController {
 		model.setViewName("jsonView");
 		return model;
 	}
-}
+	
+	@RequestMapping(value="/searchID")//아이디찾기 minifunction.js에서 들어옴
+	public ModelAndView searchID(ModelAndView model, MemberVO vo) {
+		vo=service.searchID(vo);
+		String mId = vo.getmId();
+		
+		if(vo!=null){
+			model.addObject("searchedID",mId);
+			model.addObject("code", "50");
+			
+		}else{
+			model.addObject("code", "51");
+		}
+		model.setViewName("jsonView");
+		return model;
+	}//searchID
+	
+	
+	@RequestMapping(value="/mConfirm1")
+	public ModelAndView mConfirm1(ModelAndView model, MemberVO vo) {
+		vo = service.searchPW(vo);
+		if(vo!=null) {//아이디와 전화번호 제대로 입력
+			//여기서 코드 발송해주기
+			
+			model.addObject("code", "200");
+			model.setViewName("jsonView");
+		}else {//아이디 전화번호와 매칭되는 자료 없음
+			model.addObject("code", "201");
+			model.setViewName("jsonView");
+		}
+		return model;
+	}//mConfirm1
+	
+	
+	
+	@RequestMapping(value="/mConfirm2")
+	public ModelAndView mConfirm(ModelAndView model, MemberVO vo, HttpServletRequest request) {
+		String mCertification = request.getParameter("mCertification");
+			if(mCertification.equals("123")) {//발송된 코드 제대로 입력
+				model.addObject("code","200");
+				model.setViewName("jsonView");
+			}else {//발송된 코드 잘못입력했을시
+				model.addObject("code","202");
+				model.setViewName("jsonView");
+			}
+			return model;
+	}//mConfirm2
+
+	
+	
+}//class
