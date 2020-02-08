@@ -26,7 +26,7 @@ public class OrderController {//주문성공 페이지
 		model.setViewName("order/orderSuccess");
 		return model;
 	}
-
+	
 	@RequestMapping(value ="/oinfo")//주문정보
 	public ModelAndView orderInfo(ModelAndView model,HttpServletRequest request) {
 		model.setViewName("order/orderInfo");

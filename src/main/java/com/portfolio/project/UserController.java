@@ -48,11 +48,6 @@ public class UserController {
 		model.setViewName("myInfo/myInfoPoint");
 		return model;
 	}
-	@RequestMapping(value ="/mEPoint")//적립 예정 포인트
-	public ModelAndView myInfoExpectedPoints(ModelAndView model,HttpServletRequest request) {
-		model.setViewName("myInfo/myInfoExpectedPoints");
-		return model;
-	}
 	@RequestMapping(value ="/mODelivery")//주문/배송 조회
 	public ModelAndView myInfoOrderDelivery(ModelAndView model,HttpServletRequest request) {
 		model.setViewName("myInfo/myInfoOrderDelivery");
@@ -307,6 +302,7 @@ public class UserController {
 			model.setViewName("jsonView");
 			return model;
 	}//mConfirm2
+	
 	@RequestMapping(value="/cTOrder")
 	public ModelAndView cartToOrder(ModelAndView model,HttpServletRequest request,String[] arr) {
 		int [] intArr = new int [arr.length];
