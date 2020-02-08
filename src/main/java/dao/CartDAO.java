@@ -41,9 +41,6 @@ public class CartDAO {
 		for(int i = 0;i < arr.length;i++) {
 			checkedCId.add(arr[i]);
 		}
-		for(int i = 0;i < checkedCId.size();i++) {
-			System.out.println("dao에서넘어온 값 출력 : "+checkedCId.get(i));
-		}
 		map.put("member_mId",memberid);
 		map.put("cIdList",checkedCId);
 		return(ArrayList) dao.selectList(NS+"purchaseList",map);
