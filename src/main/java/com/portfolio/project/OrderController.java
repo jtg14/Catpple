@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import business.CService;
+import vo.MemberVO;
 
 @Controller
 public class OrderController {//주문성공 페이지
@@ -19,7 +20,9 @@ public class OrderController {//주문성공 페이지
 	@Autowired
 	CService cartService;
 	
-	private static final Logger log = LoggerFactory.getLogger(UserController.class);
+	
+	
+	private static final Logger log = LoggerFactory.getLogger(OrderController.class);
 	
 	@RequestMapping(value ="/osuccess")
 	public ModelAndView orderSuccess(ModelAndView model) {
@@ -56,6 +59,13 @@ public class OrderController {//주문성공 페이지
 	}
 	@RequestMapping(value = "/cInsert")//장바구니에 넣기 
 	public ModelAndView mCartInsert(ModelAndView model) {
+		
+		model.setViewName("jsonView");
+		return model;
+	}
+	@RequestMapping(value="/order")
+	public ModelAndView order(ModelAndView model,MemberVO vo) {
+		log.info("-------------------주문 접수시작-------------------");
 		
 		model.setViewName("jsonView");
 		return model;
