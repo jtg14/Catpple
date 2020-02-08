@@ -3,9 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -79,5 +83,19 @@
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 	</interceptors>
+	<beans:bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="dataSource"/>
+		<!-- 어떤 DB를 사용하는지 알려줌 -->
+		</beans:bean>
+	<tx:advice id="txAdvice" transaction-manager="txManager" >
+		<tx:attributes>
+			<tx:method name="get" read-only="true"/>
+			<tx:method name="*" rollback-for="Exception"/>
+		</tx:attributes>
+	</tx:advice>
+	 <aop:config>
+	 	<aop:pointcut id="txPointcut" expression="execution(* com.portfolio.*.*Controller.order(..))"/>
+	 	<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+	 </aop:config>
 	
 </beans:beans>
