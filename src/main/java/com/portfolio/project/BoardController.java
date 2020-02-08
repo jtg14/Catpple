@@ -19,7 +19,6 @@ import vo.PageVO;
 public class BoardController {
 	@Autowired
 	BService service;
-	
 	@RequestMapping(value ="/mWriting")//글쓰기(모든글)
 	public ModelAndView myInfoWriting(ModelAndView model,HttpServletRequest request) {
 		model.setViewName("myInfo/myInfoWriting");

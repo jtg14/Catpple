@@ -235,6 +235,9 @@ public class UserController {
 				System.out.println("장바구니 추가성공 ");
 				System.out.println(vo);
 				model.addObject("code","100");
+				HttpSession session = request.getSession();
+				MemberVO mvo = (MemberVO) session.getAttribute("logInUser");
+				session.setAttribute("cartRow",cartService.getCartRow(mvo));
 			}else {
 				System.out.println("장바구니에 추가실패");
 			}
