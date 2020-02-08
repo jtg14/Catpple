@@ -106,7 +106,7 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
       <a href="gDetail?number=${gl.gnum}"><img src="resources/sellerInfo/${gl.member_mid}/${gl.gimg1}" style="width:200px;"></a>
       <div class="caption">
       <div class="col-xs-12 col-md-12 " style="min-height:130px;">
-        <h3><a href="gDetail?number=${rl.gnum}">${gl.gname}</a></h3>
+        <h3><a href="gDetail?number=${gl.gnum}">${gl.gname}</a></h3>
        </div>
         <div class="rating">
 		  <i class="glyphicon glyphicon-star"></i>

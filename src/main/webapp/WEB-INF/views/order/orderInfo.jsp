@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <html>
 <head>
 <title>주문완료 | Catpple</title>
@@ -9,6 +10,7 @@
 <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="resources/custom/addCSS/footer.css">
 <link rel="stylesheet" href="resources/custom/addCSS/header.css">
+<link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
 <style>
 .font-Jua {
@@ -46,6 +48,7 @@
 </style>
 </head>
 <body>
+<c:set var ="listSize" value="${fn:length(list)}"/>
 	<jsp:include page="../header.jsp"></jsp:include>
 	<div class="container ">
 		<!-- 주문완료 -->
@@ -87,15 +90,15 @@
 			<table class="table">
 				<thead class="thead">
 					<tr>
-						<th>상품/옵션정보</th>
-						<th>수량</th>
+						<th>상품/옵션정보 (<span id="itemSize">${listSize}</span>)</th>
+						<th style="width:20%;">수량</th>
 					</tr>
 				</thead>
 				<tbody>
 				<c:forEach var="list" items="${list}">
 					<tr>
 						<td>${list.gname}</td>
-						<td>${list.cAmount}</td>
+						<td style="width:20%;">${list.cAmount}</td>
 					</tr>
 				</c:forEach>	
 				</tbody>
@@ -107,17 +110,17 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>상품금액</th>
-						<th>할인금액</th>
-						<th>할인적용금액</th>
+						<th class="text-center">상품금액</th>
+						<th class="text-center">할인금액</th>
+						<th class="text-center">할인적용금액</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="list" items="${list}">
-					<tr>
-						<td><fmt:formatNumber value="${list.gprice * list.cAmount}" pattern="#,###" />원</td>
+					<c:forEach var="list" items="${list}" varStatus="status">
+					<tr class="text-right">
+						<td style="width:35%" id="before${status.index}"><fmt:formatNumber value="${list.gprice * list.cAmount}" pattern="#,###" />원</td>
 						<td>(-)0원</td>
-						<td><fmt:formatNumber value="${list.gprice * list.cAmount}" pattern="#,###" />원</td>
+						<td style="width:35%" id="after${status.index}"><fmt:formatNumber value="${list.gprice * list.cAmount}" pattern="#,###" />원</td>
 					</tr>
 					</c:forEach>
 				</tbody>
@@ -132,7 +135,7 @@
 			<div class="col-xs-6 text-left" style="padding-top: 5px;">주문금액</div>
 			<div class="col-xs-6 text-right"
 				style="padding-right: 0px; padding-left: 0px;">
-				<span class="h3">690,000</span>원
+				<span class="h3" id="before-total">690,000</span>원
 			</div>
 		</div>
 		<!-- discount -->
@@ -148,7 +151,7 @@
 			<div class="col-xs-6 text-left" style="padding-top: 5px;">최종결제금액</div>
 			<div class="col-xs-6 text-right"
 				style="padding-right: 0px; padding-left: 0px;">
-				<span class="h3">690,000</span>원
+				<span class="h3 after" id="after-total">690,000</span>원
 			</div>
 		</div>
 		<!-- 추가 할인 및 포인트적용 -->
@@ -161,7 +164,7 @@
 						style="width: 100; display: inline-block" type="number">
 				</div>
 				<div class="col-md-5 col-xs-12" style="margin-top: 5px;">
-					보유포인트 : <span>99,999</span>원
+					보유포인트 : <span><fmt:formatNumber value="${logInUser.mPoint}" pattern="#,###" /></span>원
 				</div>
 			</div>
 			<div class="container" style="padding-right: 0px; padding-left: 0px;">
@@ -221,17 +224,17 @@
 									<td>배송메모</td>
 									<td>
 										<div class="col-md-8 col-xs-12" style="padding-left: 0px;">
-											<input type="text" class="form-control input-sm">
+											<input type="text" id="delivery" class="form-control input-sm" maxlength="49">
 										</div>
-										<div class="col-md-2 col-xs-12">
-											0/50<span>최대 50자</span>
+										<div class="col-md-3 col-xs-12">
+											<span id="currentLength">0</span>/50<span style="marin-left:10px;">최대 50자</span>
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>주문자</td>
 									<td>
-										<div class="col-md-3 col-xs-12 text-center">전태구</div>
+										<div class="col-md-3 col-xs-12 text-center">${logInUser.mName}</div>
 									</td>
 								</tr>
 							</tbody>
@@ -256,7 +259,8 @@
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingTwo">
 									<h4 class="panel-title">
-										<input type="checkbox"> <a class="collapsed"
+										<input type="checkbox">
+											<a class="collapsed"
 											data-toggle="collapse" data-parent="#accordion"
 											href="#collapseTwo" aria-expanded="false"
 											aria-controls="collapseTwo"> 개인정보 수집 및 이용에 동의 합니다. </a>
@@ -295,22 +299,23 @@
 						<div class="col-md-12 col-xs-12">
 							<h4><input type="checkbox"><span style="margin-left:20px;">위 내용을  확인 했으며 모든 내용에 동의 합니다</span></h4>
 						</div>
-						<div class="col-md-6 col-xs-6 text-right">
-						<button type="button" class="btn btn-danger">구매하기</button>
-						</div>
-						<div class="col-md-6 col-xs-6">
-						<button type="button" class="btn btn-default">취소하기</button>
-						</div>
+						
 					</div>
 				</div>
 			</div>
-
+					<div class="col-md-6 col-xs-6 text-center">
+						<button type="button" class="btn btn-danger">구매하기</button>
+					</div>
+					<div class="col-md-6 col-xs-6 text-center">
+						<button type="button" class="btn btn-default">취소하기</button>
+					</div>
 		</form>
 	</div>
 
 	
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/custom/addJS/order.js"></script>
 	<div class="article">
 		<jsp:include page="../footer.jsp"></jsp:include>
 	</div>
