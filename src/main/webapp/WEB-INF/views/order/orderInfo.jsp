@@ -1,5 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
 <title>주문완료 | Catpple</title>
@@ -91,10 +92,12 @@
 					</tr>
 				</thead>
 				<tbody>
+				<c:forEach var="list" items="${list}">
 					<tr>
-						<td>더 홀리스틱 홍삼&국내산오리 5.2kg</td>
-						<td>10개</td>
+						<td>${list.gname}</td>
+						<td>${list.cAmount}</td>
 					</tr>
+				</c:forEach>	
 				</tbody>
 			</table>
 		</div>
@@ -110,11 +113,13 @@
 					</tr>
 				</thead>
 				<tbody>
+					<c:forEach var="list" items="${list}">
 					<tr>
-						<td>690,000원</td>
+						<td><fmt:formatNumber value="${list.gprice * list.cAmount}" pattern="#,###" />원</td>
 						<td>(-)0원</td>
-						<td>690,000원</td>
+						<td><fmt:formatNumber value="${list.gprice * list.cAmount}" pattern="#,###" />원</td>
 					</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
@@ -303,11 +308,12 @@
 		</form>
 	</div>
 
+	
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
 	<div class="article">
 		<jsp:include page="../footer.jsp"></jsp:include>
 	</div>
-	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
 g

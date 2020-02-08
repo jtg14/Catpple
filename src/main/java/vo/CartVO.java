@@ -59,11 +59,16 @@ public class CartVO {
 	public void setGoods_gNum(int goods_gNum) {
 		this.goods_gNum = goods_gNum;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "CartVO [cId=" + cId + ", cAmount=" + cAmount + ", member_mId=" + member_mId + ", goods_gNum="
-				+ goods_gNum + "]";
+				+ goods_gNum + ", gname=" + gname + ", gprice=" + gprice + ", sellerID=" + sellerID + ", gimg1=" + gimg1
+				+ "]";
 	}
+	
+	
 	
 	
 	
