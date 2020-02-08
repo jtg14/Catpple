@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <html>
 <head>
 <title>주문완료 | Catpple</title>
@@ -11,7 +12,9 @@
 <link rel="stylesheet" href="resources/custom/addCSS/footer.css">
 <link rel="stylesheet" href="resources/custom/addCSS/header.css">
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
-<link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
+	rel="stylesheet">
 <style>
 .font-Jua {
 	font-family: Jua;
@@ -48,7 +51,7 @@
 </style>
 </head>
 <body>
-<c:set var ="listSize" value="${fn:length(list)}"/>
+	<c:set var="listSize" value="${fn:length(list)}" />
 	<jsp:include page="../header.jsp"></jsp:include>
 	<div class="container ">
 		<!-- 주문완료 -->
@@ -90,17 +93,18 @@
 			<table class="table">
 				<thead class="thead">
 					<tr>
-						<th>상품/옵션정보 (<span id="itemSize">${listSize}</span>)</th>
-						<th style="width:20%;">수량</th>
+						<th>상품/옵션정보 (<span id="itemSize">${listSize}</span>)
+						</th>
+						<th style="width: 20%;">수량</th>
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach var="list" items="${list}">
-					<tr>
-						<td>${list.gname}</td>
-						<td style="width:20%;">${list.cAmount}</td>
-					</tr>
-				</c:forEach>	
+					<c:forEach var="list" items="${list}">
+						<tr>
+							<td>${list.gname}</td>
+							<td style="width: 20%;">${list.cAmount}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
@@ -117,11 +121,13 @@
 				</thead>
 				<tbody>
 					<c:forEach var="list" items="${list}" varStatus="status">
-					<tr class="text-right">
-						<td style="width:35%" id="before${status.index}"><fmt:formatNumber value="${list.gprice * list.cAmount}" pattern="#,###" />원</td>
-						<td>(-)0원</td>
-						<td style="width:35%" id="after${status.index}"><fmt:formatNumber value="${list.gprice * list.cAmount}" pattern="#,###" />원</td>
-					</tr>
+						<tr class="text-right">
+							<td style="width: 35%" id="before${status.index}"><fmt:formatNumber
+									value="${list.gprice * list.cAmount}" pattern="#,###" />원</td>
+							<td>(-)0원</td>
+							<td style="width: 35%" id="after${status.index}"><fmt:formatNumber
+									value="${list.gprice * list.cAmount}" pattern="#,###" />원</td>
+						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
@@ -164,7 +170,8 @@
 						style="width: 100; display: inline-block" type="number">
 				</div>
 				<div class="col-md-5 col-xs-12" style="margin-top: 5px;">
-					보유포인트 : <span><fmt:formatNumber value="${logInUser.mPoint}" pattern="#,###" /></span>원
+					보유포인트 : <span><fmt:formatNumber value="${logInUser.mPoint}"
+							pattern="#,###" /></span>원
 				</div>
 			</div>
 			<div class="container" style="padding-right: 0px; padding-left: 0px;">
@@ -173,12 +180,12 @@
 						<span class="h3">배송지선택</span>
 					</div>
 					<div class="col-md-2 col-xs-6">
-						<label> <input type="radio" id="q128" name="quality[21]"
-							value="1" /> 기본배송지
+						<label> <input type="radio" id="default"
+							name="quality[21]" value="1" /> 기본배송지
 						</label>
 					</div>
 					<div class="col-md-2 col-xs-6">
-						<label> <input type="radio" id="q129" name="quality[21]"
+						<label> <input type="radio" id="other" name="quality[21]"
 							checked="checked" value="2" /> 직접입력
 						</label>
 					</div>
@@ -197,17 +204,30 @@
 									<td>
 										<div class="col-md-2 col-xs-6" style="padding-left: 0px;">
 											<input type="text" class="form-control input-sm"
+												id="sample2_postcode" placeholder="우편번호"
 												style="margin-bottom: 8px;">
 										</div>
 										<div class="col-md-10 col-xs-6" style="margin-bottom: 8px;">
-											<button class="btn btn-sm">주소 찾기</button>
+											<input type="button" onclick="sample2_execDaumPostcode()"
+												value="우편번호 찾기"><br>
 										</div>
 										<div class="col-md-7 col-xs-12" style="padding-left: 0px;">
 											<input type="text" class="form-control input-sm"
-												style="margin-bottom: 8px;">
+												id="sample2_address" placeholder="주소"
+												style="margin-bottom: 8px;"><br>
 										</div>
 										<div class="col-md-7 col-xs-12" style="padding-left: 0px;">
-											<input type="text" class="form-control input-sm">
+											<input type="text" id="sample2_detailAddress"
+												placeholder="상세주소"><input type="text"
+												id="sample2_extraAddress" placeholder="참고항목">
+										</div>
+										<div id="layer"
+											style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+											<img
+												src="//t1.daumcdn.net/postcode/resource/images/close.png"
+												id="btnCloseLayer"
+												style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
+												onclick="closeDaumPostcode()" alt="닫기 버튼">
 										</div>
 									</td>
 								</tr>
@@ -224,10 +244,12 @@
 									<td>배송메모</td>
 									<td>
 										<div class="col-md-8 col-xs-12" style="padding-left: 0px;">
-											<input type="text" id="delivery" class="form-control input-sm" maxlength="49">
+											<input type="text" id="delivery"
+												class="form-control input-sm" maxlength="49">
 										</div>
 										<div class="col-md-3 col-xs-12">
-											<span id="currentLength">0</span>/50<span style="marin-left:10px;">최대 50자</span>
+											<span id="currentLength">0</span>/50<span
+												style="marin-left: 10px;">최대 50자</span>
 										</div>
 									</td>
 								</tr>
@@ -259,8 +281,7 @@
 							<div class="panel panel-default">
 								<div class="panel-heading" role="tab" id="headingTwo">
 									<h4 class="panel-title">
-										<input type="checkbox">
-											<a class="collapsed"
+										<input type="checkbox"> <a class="collapsed"
 											data-toggle="collapse" data-parent="#accordion"
 											href="#collapseTwo" aria-expanded="false"
 											aria-controls="collapseTwo"> 개인정보 수집 및 이용에 동의 합니다. </a>
@@ -290,32 +311,123 @@
 								</div>
 								<div id="collapseThree" class="panel-collapse collapse"
 									role="tabpanel" aria-labelledby="headingThree">
-									<div class="panel-body">
-									주문 상품의 상품명, 가격, 배송정보에 동의합니다.
-									</div>
+									<div class="panel-body">주문 상품의 상품명, 가격, 배송정보에 동의합니다.</div>
 								</div>
 							</div>
-						</div><!-- 이용동의 탭  -->
-						<div class="col-md-12 col-xs-12">
-							<h4><input type="checkbox"><span style="margin-left:20px;">위 내용을  확인 했으며 모든 내용에 동의 합니다</span></h4>
 						</div>
-						
+						<!-- 이용동의 탭  -->
+						<div class="col-md-12 col-xs-12">
+							<h4>
+								<input type="checkbox"><span style="margin-left: 20px;">위
+									내용을 확인 했으며 모든 내용에 동의 합니다</span>
+							</h4>
+						</div>
+
 					</div>
 				</div>
 			</div>
-					<div class="col-md-6 col-xs-6 text-center">
-						<button type="button" class="btn btn-danger">구매하기</button>
-					</div>
-					<div class="col-md-6 col-xs-6 text-center">
-						<button type="button" class="btn btn-default">취소하기</button>
-					</div>
+			<div class="col-md-6 col-xs-6 text-center">
+				<button type="button" class="btn btn-danger">구매하기</button>
+			</div>
+			<div class="col-md-6 col-xs-6 text-center">
+				<button type="button" class="btn btn-default">취소하기</button>
+			</div>
 		</form>
 	</div>
 
-	
+
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
 	<script src="resources/custom/addJS/order.js"></script>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+	<script>
+    // 우편번호 찾기 화면을 넣을 element
+    var element_layer = document.getElementById('layer');
+
+    function closeDaumPostcode() {
+        // iframe을 넣은 element를 안보이게 한다.
+        element_layer.style.display = 'none';
+    }
+
+    function sample2_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("sample2_extraAddress").value = extraAddr;
+                
+                } else {
+                    document.getElementById("sample2_extraAddress").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample2_postcode').value = data.zonecode;
+                document.getElementById("sample2_address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("sample2_detailAddress").focus();
+
+                // iframe을 넣은 element를 안보이게 한다.
+                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
+                element_layer.style.display = 'none';
+            },
+            width : '100%',
+            height : '100%',
+            maxSuggestItems : 5
+        }).embed(element_layer);
+
+        // iframe을 넣은 element를 보이게 한다.
+        element_layer.style.display = 'block';
+
+        // iframe을 넣은 element의 위치를 화면의 가운데로 이동시킨다.
+        initLayerPosition();
+    }
+
+    // 브라우저의 크기 변경에 따라 레이어를 가운데로 이동시키고자 하실때에는
+    // resize이벤트나, orientationchange이벤트를 이용하여 값이 변경될때마다 아래 함수를 실행 시켜 주시거나,
+    // 직접 element_layer의 top,left값을 수정해 주시면 됩니다.
+    function initLayerPosition(){
+        var width = 300; //우편번호서비스가 들어갈 element의 width
+        var height = 400; //우편번호서비스가 들어갈 element의 height
+        var borderWidth = 5; //샘플에서 사용하는 border의 두께
+
+        // 위에서 선언한 값들을 실제 element에 넣는다.
+        element_layer.style.width = width + 'px';
+        element_layer.style.height = height + 'px';
+        element_layer.style.border = borderWidth + 'px solid';
+        // 실행되는 순간의 화면 너비와 높이 값을 가져와서 중앙에 뜰 수 있도록 위치를 계산한다.
+        element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
+        element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
+    }
+</script>
 	<div class="article">
 		<jsp:include page="../footer.jsp"></jsp:include>
 	</div>
