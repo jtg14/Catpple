@@ -217,8 +217,9 @@
 												style="margin-bottom: 8px;"><br>
 										</div>
 										<div class="col-md-7 col-xs-12" style="padding-left: 0px;">
-											<input type="text" id="sample2_detailAddress"
-												placeholder="상세주소"><input type="text"
+												<input type="text" id="sample2_detailAddress"
+												placeholder="상세주소">
+												<input type="text"
 												id="sample2_extraAddress" placeholder="참고항목">
 										</div>
 										<div id="layer"

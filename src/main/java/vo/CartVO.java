@@ -9,7 +9,22 @@ public class CartVO {
 	private int gprice;
 	private String sellerID; 
 	private String gimg1;
-	
+	private String dstate;
+	public String getDstate() {
+		return dstate;
+	}
+	public void setDstate(String dstate) {
+		this.dstate = dstate;
+	}
+	public int getOstock() {
+		return ostock;
+	}
+	public void setOstock(int ostock) {
+		this.ostock = ostock;
+	}
+
+
+	private int ostock;
 	
 	public String getGname() {
 		return gname;
@@ -59,14 +74,14 @@ public class CartVO {
 	public void setGoods_gNum(int goods_gNum) {
 		this.goods_gNum = goods_gNum;
 	}
-	
-	
 	@Override
 	public String toString() {
 		return "CartVO [cId=" + cId + ", cAmount=" + cAmount + ", member_mId=" + member_mId + ", goods_gNum="
 				+ goods_gNum + ", gname=" + gname + ", gprice=" + gprice + ", sellerID=" + sellerID + ", gimg1=" + gimg1
-				+ "]";
+				+ ", dstate=" + dstate + ", ostock=" + ostock + "]";
 	}
+	
+	
 	
 	
 	

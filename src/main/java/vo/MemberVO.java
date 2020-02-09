@@ -9,6 +9,7 @@ public class MemberVO {
 	private int mAddr1;
 	private String mAddr2;
 	private String mAddr3;
+	private String mAddr4;
 	private int mPoint;
 	private String mGrade;
 	private String mStatus;

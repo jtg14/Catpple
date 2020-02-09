@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import vo.CartVO;
+import vo.GoodsVO;
 import vo.MemberVO;
 
 
@@ -44,6 +45,10 @@ public class CartDAO {
 		map.put("member_mId",memberid);
 		map.put("cIdList",checkedCId);
 		return(ArrayList) dao.selectList(NS+"purchaseList",map);
+	}
+	
+	public ArrayList<CartVO> selectReceivedOrderList(GoodsVO vo) {
+		return (ArrayList)dao.selectList(NS+"selectReceivedOrderList",vo);
 	}
 	
 }

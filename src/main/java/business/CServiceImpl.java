@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import dao.CartDAO;
 import vo.CartVO;
+import vo.GoodsVO;
 import vo.MemberVO;
 
 @Service
@@ -37,5 +38,9 @@ public class CServiceImpl implements CService {
 	@Override
 	public ArrayList<CartVO> purchaseList(int[] arr,String memberid) {
 		return dao.purchaseList(arr,memberid);
+	}
+	@Override
+	public ArrayList<CartVO> selectReceivedOrderList(GoodsVO vo) {
+		return dao.selectReceivedOrderList(vo);
 	}
 }

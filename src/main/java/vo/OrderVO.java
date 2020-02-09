@@ -4,12 +4,13 @@ import java.sql.Date;
 
 public class OrderVO {
 	int oNum;
-	Date iDate;
+	Date oDate;
 	int oPrice;
 	int oStock;
 	int oAddr1;
 	String oAddr2;
 	String oAddr3;
+	String oAddr4;
 	String oPhone;
 	String oState;
 	String member_mId;
@@ -20,11 +21,11 @@ public class OrderVO {
 	public void setoNum(int oNum) {
 		this.oNum = oNum;
 	}
-	public Date getiDate() {
-		return iDate;
+	public Date getoDate() {
+		return oDate;
 	}
 	public void setiDate(Date iDate) {
-		this.iDate = iDate;
+		this.oDate = iDate;
 	}
 	public int getoPrice() {
 		return oPrice;
@@ -82,9 +83,9 @@ public class OrderVO {
 	}
 	@Override
 	public String toString() {
-		return "OrderVO [oNum=" + oNum + ", iDate=" + iDate + ", oPrice=" + oPrice + ", oStock=" + oStock + ", oAddr1="
-				+ oAddr1 + ", oAddr2=" + oAddr2 + ", oAddr3=" + oAddr3 + ", oPhone=" + oPhone + ", oState=" + oState
-				+ ", member_mId=" + member_mId + ", goods_gNum=" + goods_gNum + "]";
+		return "OrderVO [oNum=" + oNum + ", oDate=" + oDate + ", oPrice=" + oPrice + ", oStock=" + oStock + ", oAddr1="
+				+ oAddr1 + ", oAddr2=" + oAddr2 + ", oAddr3=" + oAddr3 + ", oAddr4=" + oAddr4 + ", oPhone=" + oPhone
+				+ ", oState=" + oState + ", member_mId=" + member_mId + ", goods_gNum=" + goods_gNum + "]";
 	}
 	
 	
