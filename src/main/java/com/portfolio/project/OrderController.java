@@ -3,6 +3,7 @@ package com.portfolio.project;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,6 +68,14 @@ public class OrderController {//주문성공 페이지
 	public ModelAndView order(ModelAndView model,MemberVO vo) {
 		log.info("-------------------주문 접수시작-------------------");
 		
+		model.setViewName("jsonView");
+		return model;
+	}
+	@RequestMapping(value ="/pMYAddr")
+	public ModelAndView passMeYourAddr(ModelAndView model,HttpServletRequest request,HttpServletResponse response) {
+		log.info("유저받으러 들어옴");
+		model.addObject("user",request.getSession().getAttribute("logInUser"));
+		response.setCharacterEncoding("UTF-8");
 		model.setViewName("jsonView");
 		return model;
 	}
