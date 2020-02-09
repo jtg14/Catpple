@@ -335,6 +335,8 @@
 		</form>
 			<div class="col-md-6 col-xs-6 text-center">
 				<button type="button" class="btn btn-default" onclick="cancelOrder()">취소하기</button>
+
+
 			</div>
 	</div>
 
