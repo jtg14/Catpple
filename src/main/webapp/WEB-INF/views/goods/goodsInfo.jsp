@@ -23,27 +23,27 @@
 			<div class="row">
 				<div class="thumbnail col-md-4 col-xs-12">
 					<img class="goods_image"
-						src="resources/sellerInfo/${goods.member_mid}/${goods.gimg1}">
+						src="resources/sellerInfo/${goods.member_mId}/${goods.gImg1}">
 				</div>
 				<div class="col-md-8 col-xs-12">
 					<div class="col-md-12 col-xs-12">
 						<h3>
 							<span style="color: crimson;">${goods.company}</span> <span
-								class="item_Name"> ${goods.gname} </span>
+								class="item_Name"> ${goods.gName} </span>
 						</h3>
 					</div>
 					<div class="col-md-12 col-xs-12">
-						<span>구매 0</span> <span class="divider">|</span> <span id="stock">(남은수량${goods.gstock}
+						<span>구매 0</span> <span class="divider">|</span> <span id="stock">(남은수량${goods.gStock}
 							개)</span>
 					</div>
 					<div class="col-md-12 col-xs-6" style="margin-top: 40px;">
 						<strong class="discount-persentage">0<span>% Off</span></strong>
 						<div class="price_inner">
 							<del>
-								<span class="before-price">${goods.gprice}</span><span
+								<span class="before-price">${goods.gPrice}</span><span
 									class="before-price">원</span>
 							</del>
-							<strong id="price">${goods.gprice}</strong><strong><span>원</span></strong>
+							<strong id="price">${goods.gPrice}</strong><strong><span>원</span></strong>
 						</div>
 					</div>
 
@@ -72,7 +72,7 @@
 							</div>
 							<div class="col-md-9 col-xs-12">
 								<h1 class="text-right" id="total">
-									<fmt:formatNumber value="${goods.gprice}" pattern="#,###" />
+									<fmt:formatNumber value="${goods.gPrice}" pattern="#,###" />
 									원
 								</h1>
 							</div>
@@ -90,7 +90,7 @@
 						<div class="col-md-2 col-xs-6">
 							<a class="btn btn-danger btn-lg" style="font-size: 1.4em;"
 								type="button"
-								onclick="goCart('${logInUser.mGrade}','${logInUser.mId}','${goods.gnum}')">장바구니</a>
+								onclick="goCart('${logInUser.mGrade}','${logInUser.mId}','${goods.gNum}')">장바구니</a>
 						</div>
 					</div>
 				</div>
@@ -114,7 +114,7 @@
 					<div class="tab-pane fade active in" id="home"
 						style="padding-left: 0px; padding-right: 0px;">
 						<img class="img-responsive col-md-12"
-							src="resources/sellerInfo/${goods.member_mid}/${goods.gimg2}">
+							src="resources/sellerInfo/${goods.member_mId}/${goods.gImg2}">
 					</div>
 					<!-- end of goodsDetail -->
 

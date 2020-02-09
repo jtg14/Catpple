@@ -14,13 +14,8 @@ import vo.PaymentVO;
 	SqlSession dao;
 	private final static String NS ="portfolio.mapper.OrderMapper.";
 	
-	public int  insertOrder(OrderVO vo) {
-		return dao.insert(NS+"insertOrder",vo);
+	public OrderVO  insertOrder(OrderVO vo) {
+		return dao.selectOne(NS+"insertOrder",vo);
 	}
-	public int insertPayment(PaymentVO vo) {
-		return dao.insert(NS+"insertPayment",vo);
-	}
-	public int insertDelivery(DeliveryVO vo) {
-		return dao.insert(NS+"insertDelivery",vo);
-	}
+
 }

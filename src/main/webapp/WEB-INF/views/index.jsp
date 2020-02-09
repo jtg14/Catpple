@@ -81,10 +81,10 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
 <c:forEach var="rl" items="${RecomList}">
   <div class="col-xs-12 col-md-3">
     <div class="thumbnail text-center">
-      <a href="gDetail?number=${rl.gnum}"><img src="resources/sellerInfo/${rl.member_mid}/${rl.gimg1}" style="width:200px;"></a>
+      <a href="gDetail?number=${rl.gNum}"><img src="resources/sellerInfo/${rl.member_mId}/${rl.gImg1}" style="width:200px;"></a>
       <div class="caption">
       <div class="col-xs-12 col-md-12" style="min-height:130px;">
-        <h3><a href="gDetail?number=${rl.gnum}">${rl.gname}</a></h3>
+        <h3><a href="gDetail?number=${rl.gNum}">${rl.gName}</a></h3>
         </div>
         <div class="rating">
 		  <i class="glyphicon glyphicon-star"></i>
@@ -93,7 +93,7 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
 		  <i class="glyphicon glyphicon-star"></i>
 		  <i class="glyphicon glyphicon-star half"></i>
 		</div>
-        <p style="color:cimson;font-size:1.5em;">${rl.gprice}원</p>
+        <p style="color:cimson;font-size:1.5em;">${rl.gPrice}원</p>
       </div>
     </div>
   </div>
@@ -103,10 +103,10 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
 <c:forEach var="gl" items="${goodsHomeList}">
   <div class="col-xs-12 col-md-3">
     <div class="thumbnail text-center">
-      <a href="gDetail?number=${gl.gnum}"><img src="resources/sellerInfo/${gl.member_mid}/${gl.gimg1}" style="width:200px;"></a>
+      <a href="gDetail?number=${gl.gNum}"><img src="resources/sellerInfo/${gl.member_mId}/${gl.gImg1}" style="width:200px;"></a>
       <div class="caption">
       <div class="col-xs-12 col-md-12 " style="min-height:130px;">
-        <h3><a href="gDetail?number=${gl.gnum}">${gl.gname}</a></h3>
+        <h3><a href="gDetail?number=${gl.gNum}">${gl.gName}</a></h3>
        </div>
         <div class="rating">
 		  <i class="glyphicon glyphicon-star"></i>
@@ -115,7 +115,7 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
 		  <i class="glyphicon glyphicon-star"></i>
 		  <i class="glyphicon glyphicon-star half"></i>
 		</div>
-        <p style="color:cimson;font-size:1.5em;">${gl.gprice}원</p>
+        <p style="color:cimson;font-size:1.5em;">${gl.gPrice}원</p>
       </div>
     </div>
   </div>

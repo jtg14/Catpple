@@ -186,8 +186,7 @@ img{
 											<span>반품 날짜: xxxx/xx/xx</span>
 										</div>
 
-										<div class="col-md-offset-6
-          col-md-3 col-xs-6"
+										<div class="col-md-offset-6 col-md-3 col-xs-6"
 											style="margin-top: 10px; margin-bottom: 10px;">
 											<span style="font-weight: bold; color: crimson;">반품완료</span>
 										</div>

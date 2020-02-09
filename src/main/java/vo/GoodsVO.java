@@ -5,70 +5,63 @@ import java.sql.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class GoodsVO {
-	private int gnum;
-	private int gstock;
-	private int gprice;
-	private String gname;
-	private Date gdate;
-	private String gimg1;
-	private String gimg2;
+	private int gNum;
+	private int gStock;
+	private int gPrice;
+	private String gName;
+	private Date gDate;
+	private String gImg1;
+	private String gImg2;
 	private MultipartFile gimgf1;
 	private MultipartFile gimgf2;
-	private int gpoint;
-	private String gcategory;
-	private String gcategory2;
-	private String member_mid;
+	private int gPoint;
+	private String gCategory;
+	private String gCategory2;
+	private String member_mId;
 	private String company;
+	public int getgNum() {
+		return gNum;
+	}
+	public void setgNum(int gNum) {
+		this.gNum = gNum;
+	}
+	public int getgStock() {
+		return gStock;
+	}
+	public void setgStock(int gStock) {
+		this.gStock = gStock;
+	}
+	public int getgPrice() {
+		return gPrice;
+	}
+	public void setgPrice(int gPrice) {
+		this.gPrice = gPrice;
+	}
+	public String getgName() {
+		return gName;
+	}
+	public void setgName(String gName) {
+		this.gName = gName;
+	}
+	public Date getgDate() {
+		return gDate;
+	}
+	public void setgDate(Date gDate) {
+		this.gDate = gDate;
+	}
+	public String getgImg1() {
+		return gImg1;
+	}
+	public void setgImg1(String gImg1) {
+		this.gImg1 = gImg1;
+	}
+	public String getgImg2() {
+		return gImg2;
+	}
+	public void setgImg2(String gImg2) {
+		this.gImg2 = gImg2;
+	}
 	
-	
-	public String getCompany() {
-		return company;
-	}
-	public void setCompany(String company) {
-		this.company = company;
-	}
-	public int getGnum() {
-		return gnum;
-	}
-	public void setGnum(int gnum) {
-		this.gnum = gnum;
-	}
-	public int getGstock() {
-		return gstock;
-	}
-	public void setGstock(int gstock) {
-		this.gstock = gstock;
-	}
-	public int getGprice() {
-		return gprice;
-	}
-	public void setGprice(int gprice) {
-		this.gprice = gprice;
-	}
-	public String getGname() {
-		return gname;
-	}
-	public void setGname(String gname) {
-		this.gname = gname;
-	}
-	public Date getGdate() {
-		return gdate;
-	}
-	public void setGdate(Date gdate) {
-		this.gdate = gdate;
-	}
-	public String getGimg1() {
-		return gimg1;
-	}
-	public void setGimg1(String gimg1) {
-		this.gimg1 = gimg1;
-	}
-	public String getGimg2() {
-		return gimg2;
-	}
-	public void setGimg2(String gimg2) {
-		this.gimg2 = gimg2;
-	}
 	public MultipartFile getGimgf1() {
 		return gimgf1;
 	}
@@ -81,39 +74,43 @@ public class GoodsVO {
 	public void setGimgf2(MultipartFile gimgf2) {
 		this.gimgf2 = gimgf2;
 	}
-	public int getGpoint() {
-		return gpoint;
+	public int getgPoint() {
+		return gPoint;
 	}
-	public void setGpoint(int gpoint) {
-		this.gpoint = gpoint;
+	public void setgPoint(int gPoint) {
+		this.gPoint = gPoint;
 	}
-	public String getGcategory() {
-		return gcategory;
+	public String getgCategory() {
+		return gCategory;
 	}
-	public void setGcategory(String gcategory) {
-		this.gcategory = gcategory;
+	public void setgCategory(String gCategory) {
+		this.gCategory = gCategory;
 	}
-	public String getGcategory2() {
-		return gcategory2;
+	public String getgCategory2() {
+		return gCategory2;
 	}
-	public void setGcategory2(String gcategory2) {
-		this.gcategory2 = gcategory2;
+	public void setgCategory2(String gCategory2) {
+		this.gCategory2 = gCategory2;
 	}
-	public String getMember_mid() {
-		return member_mid;
+	public String getMember_mId() {
+		return member_mId;
 	}
-	public void setMember_mid(String member_mid) {
-		this.member_mid = member_mid;
+	public void setMember_mId(String member_mId) {
+		this.member_mId = member_mId;
+	}
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
 	}
 	@Override
 	public String toString() {
-		return "GoodsVO [gnum=" + gnum + ", gstock=" + gstock + ", gprice=" + gprice + ", gname=" + gname + ", gdate="
-				+ gdate + ", gimg1=" + gimg1 + ", gimg2=" + gimg2 + ", gimgf1=" + gimgf1 + ", gimgf2=" + gimgf2
-				+ ", gpoint=" + gpoint + ", gcategory=" + gcategory + ", gcategory2=" + gcategory2 + ", member_mid="
-				+ member_mid + "]";
+		return "GoodsVO [gNum=" + gNum + ", gStock=" + gStock + ", gPrice=" + gPrice + ", gName=" + gName + ", gDate="
+				+ gDate + ", gImg1=" + gImg1 + ", gImg2=" + gImg2 + ", gImgf1=" + gimgf1 + ", gImgf2=" + gimgf2
+				+ ", gPoint=" + gPoint + ", gCategory=" + gCategory + ", gCategory2=" + gCategory2 + ", member_mId="
+				+ member_mId + ", company=" + company + "]";
 	}
-	
-	
 	
 	
 	

@@ -5,7 +5,7 @@ import java.sql.Date;
 public class PaymentVO {
 	int pPrice;
 	int pNum;
-	Date pData;
+	Date pDate;
 	String pPayment;
 	int order_oNum;
 	public int getpPrice() {
@@ -21,10 +21,10 @@ public class PaymentVO {
 		this.pNum = pNum;
 	}
 	public Date getpData() {
-		return pData;
+		return pDate;
 	}
-	public void setpData(Date pData) {
-		this.pData = pData;
+	public void setpData(Date pDate) {
+		this.pDate = pDate;
 	}
 	public String getpPayment() {
 		return pPayment;
@@ -40,8 +40,16 @@ public class PaymentVO {
 	}
 	@Override
 	public String toString() {
-		return "PaymentVO [pPrice=" + pPrice + ", pNum=" + pNum + ", pData=" + pData + ", pPayment=" + pPayment
+		return "PaymentVO [pPrice=" + pPrice + ", pNum=" + pNum + ", pDate=" + pDate + ", pPayment=" + pPayment
 				+ ", order_oNum=" + order_oNum + "]";
+	}
+	public PaymentVO(int pPrice, int pNum, Date pDate, String pPayment, int order_oNum) {
+		super();
+		this.pPrice = pPrice;
+		this.pNum = pNum;
+		this.pDate = pDate;
+		this.pPayment = pPayment;
+		this.order_oNum = order_oNum;
 	}
 	
 	

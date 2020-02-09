@@ -204,19 +204,19 @@ th, td {
 								<div class="col-md-10 col-xs-7">
 									
 									<c:choose>
-										<c:when test="${one.separation=='0'}">
+										<c:when test="${one.bSeparation=='0'}">
 											<h4 style="margin-top: 0px;">[건의 사항]</h4>
 										</c:when>
-										<c:when test="${one.separation=='1'}">
+										<c:when test="${one.bSeparation=='1'}">
 											<h4 style="margin-top: 0px;">[구매 관련]</h4>
 										</c:when>
-										<c:when test="${one.separation=='2'}">
+										<c:when test="${one.bSeparation=='2'}">
 											<h4 style="margin-top: 0px;">[배송 관련]</h4>
 										</c:when>
-										<c:when test="${one.separation=='3'}">
+										<c:when test="${one.bSeparation=='3'}">
 											<h4 style="margin-top: 0px;">[결제 문의]</h4>
 										</c:when>
-										<c:when test="${one.separation=='4'}">
+										<c:when test="${one.bSeparation=='4'}">
 											<h4 style="margin-top: 0px;">[기타]</h4>
 										</c:when>
 									</c:choose>
