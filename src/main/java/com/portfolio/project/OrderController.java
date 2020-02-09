@@ -71,4 +71,9 @@ public class OrderController {//주문성공 페이지
 		return model;
 	}
 	
+	@RequestMapping(value = "/cancelOrder")
+	public ModelAndView cancelOrder(HttpServletRequest request,ModelAndView mv) {
+		mv.setViewName("index");
+		return mv;
+	}
 }

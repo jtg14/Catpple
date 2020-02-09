@@ -330,7 +330,7 @@
 				<button type="button" class="btn btn-danger">구매하기</button>
 			</div>
 			<div class="col-md-6 col-xs-6 text-center">
-				<button type="button" class="btn btn-default">취소하기</button>
+				<a href="cancelOrder" class="btn btn-default" onclick="return confirm('정말 취소하시겠습니까?')">취소하기</a>
 			</div>
 		</form>
 	</div>
