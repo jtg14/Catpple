@@ -11,7 +11,7 @@ public class BoardVO {
 	private Date bDate;
 	private String bReply;
 	private String member_mId;
-	private int separation;
+	private int bSeparation;
 	public int getbNum() {
 		return bNum;
 	}
@@ -28,11 +28,11 @@ public class BoardVO {
 	public void setbTitle(String bTitle) {
 		this.bTitle = bTitle;
 	}
-	public int getSeparation() {
-		return separation;
+	public int getbSeparation() {
+		return bSeparation;
 	}
-	public void setSeparation(int separation) {
-		this.separation = separation;
+	public void setbSeparation(int bSeparation) {
+		this.bSeparation = bSeparation;
 	}
 	public void setbNum(int bNum) {
 		this.bNum = bNum;
@@ -65,7 +65,7 @@ public class BoardVO {
 	public String toString() {
 		return "BoardVO [bNum=" + bNum + ", mName=" + mName + ", bTitle=" + bTitle + ", bContent=" + bContent
 				+ ", bDate=" + bDate + ", bReply=" + bReply + ", member_mId=" + member_mId + ", separation="
-				+ separation + "]";
+				+ bSeparation + "]";
 	}
 	
 	

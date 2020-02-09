@@ -41,17 +41,17 @@ public class GoodsController {
 		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 		String status="["+request.getRemoteAddr()+"]["+systemTime+"] GoodsInsert Status ("+mvo.getmName()+" 님): ";
 		log.info("------------- 상품 등록 시작 -------------");
-		vo.setMember_mid(mvo.getmId());
+		vo.setMember_mId(mvo.getmId());
 
-		log.info(status+"현재 상품 등록 유저("+vo.getMember_mid()+") 로 상품에 등록 완료");
-		String uploadPath = "C:\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getMember_mid();
+		log.info(status+"현재 상품 등록 유저("+vo.getMember_mId()+") 로 상품에 등록 완료");
+		String uploadPath = "C:\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getMember_mId();
 		log.info(status+"파일 설치위치("+uploadPath+") 경로 지정성공");
 		MultipartFile multipartFile1 = vo.getGimgf1();
 		MultipartFile multipartFile2 = vo.getGimgf2();
 		log.info(status+"상품 메인  이미지 이름 ("+multipartFile1.getOriginalFilename()+")");
 		log.info(status+"상품 상세 설명 이미지 이름 ("+multipartFile2.getOriginalFilename()+")");
-		vo.setGimg1(multipartFile1.getOriginalFilename());
-		vo.setGimg2(multipartFile2.getOriginalFilename());
+		vo.setgImg1(multipartFile1.getOriginalFilename());
+		vo.setgImg2(multipartFile2.getOriginalFilename());
 		int cnt = service.goodsInsert(vo);
 		if(cnt>0) {
 			log.info(status+"DataBase 이미지 파일명 저장 성공");
@@ -83,10 +83,10 @@ public class GoodsController {
 	@RequestMapping(value="/gDetail")
 	public ModelAndView goodsDetail(ModelAndView model,GoodsVO vo,HttpServletRequest request) {
 		String status="["+request.getRemoteAddr()+"]["+systemTime+"] : ";
-		vo.setGnum(Integer.parseInt(request.getParameter("number")));
+		vo.setgNum(Integer.parseInt(request.getParameter("number")));
 		vo =service.goodsDetail(vo);
-		log.info(status+"조회 된 상품 메인 이미지 파일명 : "+vo.getGimg1());
-		log.info(status+"조회 된 상품 상세 이미지 파일명 : "+vo.getGimg2());
+		log.info(status+"조회 된 상품 메인 이미지 파일명 : "+vo.getgImg1());
+		log.info(status+"조회 된 상품 상세 이미지 파일명 : "+vo.getgImg2());
 		model.addObject("goods",vo);
 		model.setViewName("goods/goodsInfo");
 		return model;
@@ -94,7 +94,7 @@ public class GoodsController {
 	@RequestMapping(value ="/sRGoods")//내가 등록한 상품
 	public ModelAndView sellerRegisterdGoods(ModelAndView mv, HttpServletRequest request, GoodsVO vo) {
 		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
-		vo.setMember_mid(mvo.getmId());;
+		vo.setMember_mId(mvo.getmId());;
 		ArrayList<GoodsVO> list = service.myGoodsList(vo);
 		mv.addObject("list", list);
 		mv.setViewName("order/sellerRegisterdGoods");
@@ -113,15 +113,15 @@ public class GoodsController {
 		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 		String status="["+request.getRemoteAddr()+"]["+systemTime+"] GoodsInsert Status ("+mvo.getmName()+" 님): ";
 		log.info("------------- 상품 업데이트 시작 -------------");
-		vo.setMember_mid(mvo.getmId());
-		String uploadPath = "C:\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getMember_mid();
+		vo.setMember_mId(mvo.getmId());
+		String uploadPath = "C:\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getMember_mId();
 		log.info(status+"저장 경로 설정 성공");
 		File file1 = new File(uploadPath,vo.getGimgf1().getOriginalFilename());
 		File file2 = new File(uploadPath,vo.getGimgf2().getOriginalFilename());
-		vo.setGimg1(vo.getGimgf1().getOriginalFilename());
-		vo.setGimg2(vo.getGimgf2().getOriginalFilename());
-		log.info(status+"상품 메인 이미지 [ "+vo.getGimg1()+" ] 등록성공");
-		log.info(status+"상품 상세 이미지 [ "+vo.getGimg2()+" ] 등록성공");
+		vo.setgImg1(vo.getGimgf1().getOriginalFilename());
+		vo.setgImg2(vo.getGimgf2().getOriginalFilename());
+		log.info(status+"상품 메인 이미지 [ "+vo.getgImg1()+" ] 등록성공");
+		log.info(status+"상품 상세 이미지 [ "+vo.getgImg2()+" ] 등록성공");
 		GoodsVO vo2 = service.goodsDetail(vo);
 		int cnt = service.goodsUpdate(vo);
 		if(cnt>0) {
@@ -129,9 +129,9 @@ public class GoodsController {
 			if(!vo.getGimgf1().isEmpty() && !vo.getGimgf2().isEmpty()) {
 				try {
 					//기존파일삭제
-					new File(uploadPath+"\\"+vo2.getGimg1()).delete();
+					new File(uploadPath+"\\"+vo2.getgImg1()).delete();
 					log.info(status+"기존 상품 메인 이미지 삭제성공");		
-					new File(uploadPath+"\\"+vo2.getGimg2()).delete();
+					new File(uploadPath+"\\"+vo2.getgImg2()).delete();
 					log.info(status+"기존 상품 상세 이미지 삭제성공");		
 					vo.getGimgf1().transferTo(file1);
 					log.info(status+"업데이트한 상품 메인 이미지 지정경로 저장 성공");		

@@ -101,7 +101,7 @@
 				<tbody>
 					<c:forEach var="list" items="${list}">
 						<tr>
-							<td>${list.gname}</td>
+							<td>${list.gName}</td>
 							<td style="width: 20%;">${list.cAmount}</td>
 						</tr>
 					</c:forEach>
@@ -123,10 +123,10 @@
 					<c:forEach var="list" items="${list}" varStatus="status">
 						<tr class="text-right">
 							<td style="width: 35%" id="before${status.index}"><fmt:formatNumber
-									value="${list.gprice * list.cAmount}" pattern="#,###" />원</td>
+									value="${list.gPrice * list.cAmount}" pattern="#,###" />원</td>
 							<td>(-)0원</td>
 							<td style="width: 35%" id="after${status.index}"><fmt:formatNumber
-									value="${list.gprice * list.cAmount}" pattern="#,###" />원</td>
+									value="${list.gPrice * list.cAmount}" pattern="#,###" />원</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -141,7 +141,7 @@
 			<div class="col-xs-6 text-left" style="padding-top: 5px;">주문금액</div>
 			<div class="col-xs-6 text-right"
 				style="padding-right: 0px; padding-left: 0px;">
-				<span class="h3" id="before-total">690,000</span>원
+				<span class="h3" id="before-total"></span>원
 			</div>
 		</div>
 		<!-- discount -->
@@ -157,11 +157,11 @@
 			<div class="col-xs-6 text-left" style="padding-top: 5px;">최종결제금액</div>
 			<div class="col-xs-6 text-right"
 				style="padding-right: 0px; padding-left: 0px;">
-				<span class="h3 after" id="after-total">690,000</span>원
+				<span class="h3 after" id="after-total"></span>원
 			</div>
 		</div>
 		<!-- 추가 할인 및 포인트적용 -->
-		<form role="form" id="order-form">
+		<form role="form" id="order-form" action="order" method="post">
 			<div class="col-md-6 col-xs-12 text-center"
 				style="padding-top: 15px; padding-bottom: 20px;">
 				<div class="col-md-3 col-xs-6" style="margin-top: 5px;">포인트사용</div>
@@ -198,31 +198,31 @@
 							<tbody>
 								<tr>
 									<td class="table-head">받으시는분</td>
-									<td><input type="text" class="form-control input-sm"
-										id ="addressee"style="width: 100;"></td>
+									<td><input type="text" class="form-control input-sm" name="oName"
+										id ="addressee"style="width: 100;" value="${logInUser.mName}"></td>
 								</tr>
 								<tr>
 									<td class="table-head">주소</td>
 									<td>
 										<div class="col-md-2 col-xs-5" style="padding-left: 0px;height: 40px;">
-											<input type="text" class="form-control"
-												id="sample2_postcode" placeholder="우편번호">
+											<input type="text" class="form-control" value="${logInUser.mAddr1}"
+												name="oAddr1" id="sample2_postcode" placeholder="우편번호">
 										</div>
 										<div class="col-md-10 col-xs-7" style="padding-left: 0px;height: 40px;">
 											<input type="button" class="btn btn-default" onclick="sample2_execDaumPostcode()"
-												value="우편번호 찾기"><br>
+												value="우편번호 찾기" ><br>
 										</div>
 										<div class="col-md-4 col-xs-12" style="padding-left: 0px;height: 40px;">
-											<input type="text" class="form-control"
-												id="sample2_address" placeholder="주소">
+											<input type="text" class="form-control" name="oAddr2"
+												id="sample2_address" placeholder="주소" value="${logInUser.mAddr2}">
 										</div>
 										<div class="col-md-4 col-xs-12" style="padding-left: 0px;height: 40px;">		
-												<input type="text" class="form-control"
-												id="sample2_extraAddress" placeholder="참고항목">
+												<input type="text" class="form-control" name="oAddr3"
+												id="sample2_extraAddress" placeholder="참고항목" value="${logInUser.mAddr3}">
 										</div>
 										<div class="col-md-8 col-xs-12" style="padding-left: 0px;height: 40px;">
-											<input type="text" id="sample2_detailAddress"
-												placeholder="상세주소" class="form-control">
+											<input type="text" id="sample2_detailAddress" name="oAddr4"
+												placeholder="상세주소" class="form-control" value="${logInUser.mAddr4}">
 										</div>
 										<div id="layer"
 											style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
@@ -238,8 +238,8 @@
 									<td>휴대전화</td>
 									<td>
 										<div class="col-md-4 col-xs-12" style="padding-left: 0px;">
-											<input type="text" class="form-control input-sm"
-											 id="phoneNumber" placeholder="휴대폰 번호">
+											<input type="text" class="form-control input-sm" name="oPhone"
+											 id="phoneNumber" placeholder="휴대폰 번호" value="${logInUser.mPhone}">
 										</div>
 									</td>
 								</tr>
@@ -247,7 +247,7 @@
 									<td>배송 메모</td>
 									<td>
 										<div class="col-md-8 col-xs-12" style="padding-left: 0px;">
-											<input type="text" id="delivery"
+											<input type="text" id="delivery" name="dInfo"
 												class="form-control input-sm" value="부재시 문앞에 놔주세요." maxlength="49">
 										</div>
 										<div class="col-md-3 col-xs-12">

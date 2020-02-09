@@ -149,14 +149,14 @@
 										style="padding-top: 0px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px;">
 										<div class="col-md-6 col-xs-4" style="padding-left: 0px;">
 											<img class="img"
-												src="resources/sellerInfo/${list.sellerID}/${list.gimg1}"
+												src="resources/sellerInfo/${list.sellerID}/${list.gImg1}"
 												style="width: 110px; hieght: 110px;" />
 										</div>
 											
 										<div class="col-md-6 col-xs-8"
 											style="padding-top: 4%; padding-right: 0px;">
 
-											<h4 style="padding-left: 8px;">${list.gname}</h4>
+											<h4 style="padding-left: 8px;">${list.gName}</h4>
 											<label style="font-size: x-small;">재고 있음</label>
 											<div class="checkbox">
 												<label style="font-size: 2em"> <input name="box"
@@ -172,7 +172,7 @@
 									<div class="col-md-6 col-xs-12 first-div"
 										style="padding-top: 5%;padding-left: 0px;padding-right: 0px;">
 										<div class="col-md-3 col-xs-4">
-											<span>${list.gprice}원</span>
+											<span>${list.gPrice}원</span>
 										</div>
 										<div class="col-md-9 col-xs-8">
 											<span>수량 <input class="form-group input-sm"
