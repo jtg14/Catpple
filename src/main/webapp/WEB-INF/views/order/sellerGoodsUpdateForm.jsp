@@ -163,22 +163,22 @@
 										<div class="col-md-3 col-xs-6">
 											<!-- Material input -->
 											<div class="form-group">
-												<label for="goodsNumber">상품번호</label> <input type="text" name="gnum"
-													class="form-control" id="goodsNumber" value="${ginfo.gnum}"
+												<label for="goodsNumber">상품번호</label> <input type="text" name="gNum"
+													class="form-control" id="goodsNumber" value="${ginfo.gNum}"
 													readonly="readonly">
 											</div>
 										</div>
 										<!-- Grid column  -->
 										<div style="margin-top: 35px;">
 										<div class="col-md-3 col-xs-12">
-											<select id="sidoSelect" class="form-control" name="gcategory"
+											<select id="sidoSelect" class="form-control" name="gCategory"
 												onChange="changeSidoSelect();">
 												<option value="">대분류</option>
 											</select>
   										</div>
   										<div class="col-md-3 col-xs-12">
     										<select id="gugunSelect" class="form-control"
-												name="gcategory2" onChange="changeSecondSelect();">
+												name="gCategory2" onChange="changeSecondSelect();">
 												<option value="">소분류</option>
 											</select>
 										</div>
@@ -191,8 +191,8 @@
 										<div class="col-md-9 col-xs-12">
 											<!-- Material input -->
 											<div class="form-group">
-												<label for="goodsName">상품 이름</label> <input type="text" name="gname"
-													class="form-control" id="goodsName" value="${ginfo.gname}">
+												<label for="goodsName">상품 이름</label> <input type="text" name="gName"
+													class="form-control" id="goodsName" value="${ginfo.gName}">
 
 											</div>
 										</div>
@@ -209,7 +209,7 @@
 											<!-- Material input -->
 											<div class="form-group">
 												<input type="text" class="form-control" id="goodsRegDate"
-												 readonly="readonly" value="${ginfo.gdate}">
+												 readonly="readonly" value="${ginfo.gDate}">
 											</div>
 										</div>
 										<!-- Grid column -->
@@ -218,8 +218,8 @@
 											<!-- Material input -->
 											<div class="form-group">
 												<div class="input-group">
-													<input type="number" class="form-control" id="goodsPrice" name="gprice"
-														placeholder="0" value="${ginfo.gprice}"> <span class="input-group-addon">원</span>
+													<input type="number" class="form-control" id="goodsPrice" name="gPrice"
+														placeholder="0" value="${ginfo.gPrice}"> <span class="input-group-addon">원</span>
 												</div>
 											</div>
 										</div>
@@ -229,8 +229,8 @@
 											<!-- Material input -->
 											<div class="form-group">
 												<div class="input-group">
-													<input type="number" class="form-control" id="goodsAmount" name="gstock"
-														placeholder="0" value="${ginfo.gstock}"> <span class="input-group-addon">개</span>
+													<input type="number" class="form-control" id="goodsAmount" name="gStock"
+														placeholder="0" value="${ginfo.gStock}"> <span class="input-group-addon">개</span>
 												</div>
 											</div>
 										</div>

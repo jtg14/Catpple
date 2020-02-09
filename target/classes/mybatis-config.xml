@@ -7,12 +7,14 @@
 		<typeAlias type="vo.GoodsVO" alias="GoodsVO" />
 		<typeAlias type="vo.BoardVO" alias="BoardVO" />
 		<typeAlias type="vo.CartVO" alias="CartVO" />
+		<typeAlias type="vo.OrderVO" alias="OrderVO" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mappers/memberMapper.xml" />
 		<mapper resource="mappers/goodsMapper.xml" />
 		<mapper resource="mappers/BoardMapper.xml" />
 		<mapper resource="mappers/CartMapper.xml" />
+		<mapper resource="mappers/OrderMapper.xml" />
 	</mappers> 
 	
 	

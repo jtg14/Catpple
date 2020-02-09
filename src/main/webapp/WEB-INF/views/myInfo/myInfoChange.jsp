@@ -56,11 +56,6 @@
 	}
 }
 </style>
-<script type="text/javascript">
-	function emailChangeBtn() {
-		$('#mEmail').removeClass('readonly');
-	};
-</script>
 </head>
 <body class="font-Jua">
 
@@ -309,6 +304,11 @@
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>
 	<script src="resources/custom/addJS/minifunction.js"></script>
+	<script type="text/javascript">
+	function emailChangeBtn() {
+		$('#mEmail').removeClass('readonly');
+	};
+</script>
 </body>
 <footer>
 	<div class="article">

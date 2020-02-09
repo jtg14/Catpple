@@ -13,22 +13,22 @@ $(function(){
 	});
 	$('input:radio[name=destination]').click(function(){
 		 
-        if($('input[name=destination]:checked').val() == '1'){//기본 배송지 선택
-        		$.ajax({
-        			type:'Post',
-        			url:'pMYAddr',
-        			success:function(data){
-        				$('#addressee').val(data.user.mName);
-        				$('#sample2_postcode').val(data.user.mAddr1);//우편번호
-        				$('#sample2_address').val(data.user.mAddr2);//도로명
-        				$('#sample2_extraAddress').val(data.user.mAddr3);//아파트명
-        				$('#sample2_detailAddress').val(data.user.mAddr4);//동호수
-        				$('#phoneNumber').val(data.user.mPhone);//연락처
-        			},
-        			error:function(e){
-        				alert(e.text());
-        			}
-        		});
+		if($('input[name=destination]:checked').val() == '1'){//기본 배송지 선택
+    		$.ajax({
+    			type:'Post',
+    			url:'pMYAddr',
+    			success:function(data){
+    				$('#addressee').val(data.user.mName);
+    				$('#sample2_postcode').val(data.user.mAddr1);//우편번호
+    				$('#sample2_address').val(data.user.mAddr2);//도로명
+    				$('#sample2_extraAddress').val(data.user.mAddr3);//아파트명
+    				$('#sample2_detailAddress').val(data.user.mAddr4);//동호수
+    				$('#phoneNumber').val(data.user.mPhone);//연락처
+    			},
+    			error:function(e){
+    				alert(e.text());
+    			}
+    		});
         	
         }else if($('input[name=destination]:checked').val() == '2'){//직접 입력 선택
 
@@ -58,10 +58,13 @@ function goPurchase(){
  	}else if(phone == ''){
  		alert('연락처 기재는 필수입니다.');
  		return false;
- 	}else if($('input:checkbox[id="agreeforOrder"]').is(':checked') == false){
+ 	}else if($('input:checkbox[name="agreeforOrder"]').is(':checked') == false){
  		alert('주문 상품 정보에 동의를 안하시면 구매하실수 없습니다.');
- 	}else if($('input:checkbox[id=""lastAgree""]').is(':checked') == false){
- 		alert('최종동의는 필수입니다.');
+ 	}else if($("#phoneNumber").val().test(/^01(?:0|1|[6-9]&\d{7}|\d{8})+$/)){
+ 		alert('올바른 연락처를 입력해주세요.');
+ 		return false;
+ 	}else if($('input:checkbox[id="lastAgree"]').is(':checked') == false){
+ 		alert('최종 동의는 필수입니다.');
  		return false;
  	}else{
  		return true;
