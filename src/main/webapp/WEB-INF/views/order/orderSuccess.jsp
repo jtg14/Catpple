@@ -89,21 +89,20 @@
 					<tbody>
 						<tr>
 							<td class="table-head">배송지 정보</td>
-							<td>${orderInfo.oPhone}<br>${orderInfo.oName}<br>
-								${orderInfo.oAddr1}<br>
-								${orderInfo.oAddr2}<br>
-								${orderInfo.oAddr3}<br>
-								${orderInfo.oAddr4}<br>
+							<td>${dupInfo.oPhone}<br>${dupInfo.oName}<br>
+								${dupInfo.oAddr1}<br>
+								${dupInfo.oAddr2}<br>
+								${dupInfo.oAddr3}<br>
+								${dupInfo.oAddr4}<br>
 							</td>
 						</tr>
 						<tr>
 							<td class="table-head">배송 메모</td>
-							<td>${orderInfo.dInfo}</td>
+							<td>${dupInfo.dInfo}</td>
 						</tr>
 						<tr>
 							<td class="table-head">결제 정보</td>
-							<td>거래수단 : ${orderInfo.pPayment}<br> 결제번호 : ${orderInfo.pNum}<br>
-								운송장 번호 : ${orderInfo.dNum}
+							<td>거래수단 : ${paymentInfo.pPayment}<br> 결제번호 : ${dupInfo.pNum}<br>
 							</td>
 						</tr>
 						<tr>
@@ -117,7 +116,7 @@
 				  <div class="panel-body text-center">
 				    적립 포인트
 				  </div>
-				  <div class="panel-footer text-right">(+)${Point}P</div>
+				  <div class="panel-footer text-right">(+)${paymentInfo.pPrice / 10}P</div>
 				</div>
 				<div class="col-md-12 col-sm-12 text-center" style="margin-top:30;">
 	            <button type="button" class="btn btn-primary btn-lg"style="font-size:1.4em;">쇼핑계속하기</button>
@@ -130,7 +129,7 @@
 			</div>
 			<div class="col-sm-12 col-md-4 item-list"
 				style="padding-right: 0px; padding-left: 0px; max-height: 350px; position: relative; overflow: auto;">
-				<c:forEach var="list" items="vtList" varStatus="status">
+				<c:forEach var="list" items="${olist}" varStatus="status">
 					<div class="col-sm-12 col-md-4"
 						style="padding-right: 0px; padding-left: 0px; width: 100%; margin-top: 20px; border-top: 1px solid lightgray; padding-top: 10px; padding-bottom: 10px; min-height: 100;">
 						<div class="col-xs-3 col-md-3"
@@ -141,8 +140,8 @@
 							style="padding-right: 0px; padding-left: 0px;">
 							<p>${list.gName}</p>
 							<p>선택 - 기본(<fmt:formatNumber value="${list.oPrice}" pattern="#,###" />원)</p>
-							<p id = "itemPriceNo.${status.index}">상품금액 : <fmt:formatNumber value="${list.oPrice}" pattern="#,###" />원</p>
-							<p id = "itemStockNo.${status.index}">주문수량 : ${list.oStock}개</p>
+							<p>상품금액 : <fmt:formatNumber value="${list.oPrice}" pattern="#,###" />원</p>
+							<p>주문수량 : ${list.oStock}개</p>
 						</div>
 					</div>
 				</c:forEach>
@@ -150,22 +149,22 @@
 			<div class="col-sm-12 col-md-4 result-tablebox"style="background-color:crimson;">
 				<table class="result-table" style="width:100%;">
 				<tbody>
-					<tr><td>상품금액</td><td class="text-right" ><span id="before-totalPrice"></span></td></tr>
+					<tr><td>상품금액</td><td class="text-right" ><fmt:formatNumber value="${paymentInfo.pPrice}" pattern="#,###" />원</td></tr>
 					<tr><td>배송비</td><td class="text-right">(+)0원</td></tr>
 					<tr><td>적립금 사용</td><td class="text-right">(-)0원</td></tr>
 					<tr><td>할인금액</td><td class="text-right">(-)0원</td></tr>
-					<tr><td>최종 결제금액</td><td class="text-right"><span id="after-totalPrice"></span>원</td></tr>
+					<tr><td>최종 결제금액</td><td class="text-right"><fmt:formatNumber value="${paymentInfo.pPrice}" pattern="#,###" />원</td></tr>
 				</tbody>
 				</table>
 			</div>
 		</div>
 		
 	</div>
-	<div class="article">
-		<jsp:include page="../footer.jsp"></jsp:include>
-	</div>
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
 	<script src="resources/custom/addJS/order.js"></script>
+	<div class="article">
+		<jsp:include page="../footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

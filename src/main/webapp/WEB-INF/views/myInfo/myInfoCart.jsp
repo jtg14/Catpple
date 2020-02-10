@@ -149,7 +149,7 @@
 										style="padding-top: 0px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px;">
 										<div class="col-md-6 col-xs-4" style="padding-left: 0px;">
 											<img class="img"
-												src="resources/sellerInfo/${list.member_mId}/${list.gImg1}"
+												src="resources/sellerInfo/${list.sellerID}/${list.gImg1}"
 												style="width: 110px; hieght: 110px;" />
 										</div>
 											
