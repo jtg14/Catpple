@@ -40,7 +40,7 @@ $(function(){
 			$('#phoneNumber').val('');//연락처
         }
     });
-   
+   alert('첫번째 상품 가격 => '+$('#itemPriceNo.1').val().substring(7,$('#itemPriceNo.1').val().length-1));
 });
 function addCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
