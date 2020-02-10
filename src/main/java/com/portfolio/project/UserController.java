@@ -48,11 +48,7 @@ public class UserController {
 		model.setViewName("myInfo/myInfoPoint");
 		return model;
 	}
-	@RequestMapping(value ="/mODelivery")//주문/배송 조회
-	public ModelAndView myInfoOrderDelivery(ModelAndView model,HttpServletRequest request) {
-		model.setViewName("myInfo/myInfoOrderDelivery");
-		return model;
-	}
+	
 	@RequestMapping(value ="/mOCancel")//주문 취소
 	public ModelAndView myInfoOrderCancel(ModelAndView model,HttpServletRequest request) {
 		model.setViewName("myInfo/myInfoOrderCancel");

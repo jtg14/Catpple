@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import business.CService;
 import business.MService;
 import business.OService;
+import business.PService;
 import vo.CartVO;
 import vo.GoodsVO;
 import vo.MemberVO;
@@ -34,6 +35,8 @@ public class OrderController {//주문성공 페이지
 	OService service;
 	@Autowired
 	MService mservice;
+	@Autowired
+	PService pservice;
 	
 	private static final Logger log = LoggerFactory.getLogger(OrderController.class);
 	
@@ -173,4 +176,18 @@ public class OrderController {//주문성공 페이지
 		model.setViewName("jsonView");
 		return model;
 	}
+	
+	
+	@RequestMapping(value ="/mODelivery")//주문/배송 조회
+	public ModelAndView myInfoOrderDelivery(ModelAndView model,HttpServletRequest request) {
+		MemberVO mvo =(MemberVO)request.getSession().getAttribute("logInUser");
+		ArrayList<PaymentVO> plist = pservice.paymentList(mvo);
+		
+		model.addObject("plist", plist);
+		
+		model.setViewName("myInfo/myInfoOrderDelivery");
+		return model;
+	}
+	
+	
 }
