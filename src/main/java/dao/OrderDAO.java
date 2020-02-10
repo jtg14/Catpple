@@ -20,7 +20,9 @@ import vo.PaymentVO;
 	private final static String NS ="portfolio.mapper.OrderMapper.";
 	
 	public int insertPayment(PaymentVO vo) {
-		return dao.insert(NS+"insertPayment",vo);
+		int pNum = dao.insert(NS+"insertPayment",vo);
+		System.out.println("OrderDAO pNum: "+pNum);
+		return pNum;
 	}
 	public int insertOandD(ArrayList olist) {
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -30,5 +32,7 @@ import vo.PaymentVO;
 	public OrderVO findOrder(int oNum) {
 		return dao.selectOne(NS+"findOrder",oNum);
 	}
-
+	public PaymentVO findPayment(PaymentVO vo) {
+		return dao.selectOne(NS+"findPayment",vo);
+	}
 }

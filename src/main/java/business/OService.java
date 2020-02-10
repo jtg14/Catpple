@@ -13,4 +13,5 @@ public interface OService {
 	
 	int insertPayment(PaymentVO vo);
 	
+	PaymentVO findPayment(PaymentVO vo);
 }

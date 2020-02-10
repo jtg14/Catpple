@@ -25,4 +25,8 @@ public class OServiceImpl implements OService {
 	public int insertPayment(PaymentVO vo) {
 		return dao.insertPayment(vo);
 	}
+	@Override
+	public PaymentVO findPayment(PaymentVO vo) {
+		return dao.findPayment(vo);
+	}
 }
