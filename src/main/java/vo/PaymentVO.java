@@ -7,7 +7,6 @@ public class PaymentVO {
 	int pNum;
 	Date pDate;
 	String pPayment;
-	int order_oNum;
 	public int getpPrice() {
 		return pPrice;
 	}
@@ -20,10 +19,10 @@ public class PaymentVO {
 	public void setpNum(int pNum) {
 		this.pNum = pNum;
 	}
-	public Date getpData() {
+	public Date getpDate() {
 		return pDate;
 	}
-	public void setpData(Date pDate) {
+	public void setpDate(Date pDate) {
 		this.pDate = pDate;
 	}
 	public String getpPayment() {
@@ -32,25 +31,9 @@ public class PaymentVO {
 	public void setpPayment(String pPayment) {
 		this.pPayment = pPayment;
 	}
-	public int getOrder_oNum() {
-		return order_oNum;
-	}
-	public void setOrder_oNum(int order_oNum) {
-		this.order_oNum = order_oNum;
-	}
 	@Override
 	public String toString() {
-		return "PaymentVO [pPrice=" + pPrice + ", pNum=" + pNum + ", pDate=" + pDate + ", pPayment=" + pPayment
-				+ ", order_oNum=" + order_oNum + "]";
+		return "PaymentVO [pPrice=" + pPrice + ", pNum=" + pNum + ", pDate=" + pDate + ", pPayment=" + pPayment + "]";
 	}
-	public PaymentVO(int pPrice, int pNum, Date pDate, String pPayment, int order_oNum) {
-		super();
-		this.pPrice = pPrice;
-		this.pNum = pNum;
-		this.pDate = pDate;
-		this.pPayment = pPayment;
-		this.order_oNum = order_oNum;
-	}
-	
 	
 }

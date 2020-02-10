@@ -16,11 +16,11 @@ public class OrderVO {
 	String oPhone;
 	String dNum;
 	String dInfo;
-	int pNum;
-	String pPayment;
 	String member_mId;
 	int goods_gNum;
 	String gName;
+	int payment_pNum;
+	String pPayment;
 	public int getoNum() {
 		return oNum;
 	}
@@ -30,10 +30,8 @@ public class OrderVO {
 	public Date getoDate() {
 		return oDate;
 	}
-
 	public void setoDate(Date oDate) {
 		this.oDate = oDate;
-
 	}
 	public int getoPrice() {
 		return oPrice;
@@ -101,18 +99,6 @@ public class OrderVO {
 	public void setdInfo(String dInfo) {
 		this.dInfo = dInfo;
 	}
-	public int getpNum() {
-		return pNum;
-	}
-	public void setpNum(int pNum) {
-		this.pNum = pNum;
-	}
-	public String getpPayment() {
-		return pPayment;
-	}
-	public void setpPayment(String pPayment) {
-		this.pPayment = pPayment;
-	}
 	public String getMember_mId() {
 		return member_mId;
 	}
@@ -131,13 +117,26 @@ public class OrderVO {
 	public void setgName(String gName) {
 		this.gName = gName;
 	}
+	public int getPayment_pNum() {
+		return payment_pNum;
+	}
+	public void setPayment_pNum(int payment_pNum) {
+		this.payment_pNum = payment_pNum;
+	}
+	public String getpPayment() {
+		return pPayment;
+	}
+	public void setpPayment(String pPayment) {
+		this.pPayment = pPayment;
+	}
 	@Override
 	public String toString() {
-		return 
-				+ oAddr1 + ", oAddr2=" + oAddr2 + ", oAddr3=" + oAddr3 + ", oAddr4=" + oAddr4 + ", oPhone=" + oPhone
-				+ ", oStatus=" + oStatus + ", dInfo=" + dInfo + ", member_mId=" + member_mId + ", goods_gNum="
-				+ goods_gNum + "]";
-
-
+		return "OrderVO [oNum=" + oNum + ", oDate=" + oDate + ", oPrice=" + oPrice + ", oStock=" + oStock + ", oAddr1="
+				+ oAddr1 + ", oAddr2=" + oAddr2 + ", oAddr3=" + oAddr3 + ", oAddr4=" + oAddr4 + ", oStatus=" + oStatus
+				+ ", oName=" + oName + ", oPhone=" + oPhone + ", dNum=" + dNum + ", dInfo=" + dInfo + ", member_mId="
+				+ member_mId + ", goods_gNum=" + goods_gNum + ", gName=" + gName + ", payment_pNum=" + payment_pNum
+				+ ", pPayment=" + pPayment + "]";
 	}
+	
+	
 }
