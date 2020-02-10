@@ -65,6 +65,7 @@ public class CartVO {
 	public void setSellerID(String sellerID) {
 		this.sellerID = sellerID;
 	}
+
 	public int getcId() {
 		return cId;
 	}
@@ -101,11 +102,35 @@ public class CartVO {
 	public void setgPrice(int gPrice) {
 		this.gPrice = gPrice;
 	}
-	public String getGimg1() {
-		return gimg1;
+	public String getSellerID() {
+		return sellerID;
 	}
-	public void setGimg1(String gimg1) {
-		this.gimg1 = gimg1;
+	public void setSellerID(String sellerID) {
+		this.sellerID = sellerID;
+	}
+	public String getgImg1() {
+		return gImg1;
+	}
+	public void setgImg1(String gImg1) {
+		this.gImg1 = gImg1;
+	}
+	public String getdState() {
+		return dState;
+	}
+	public void setdState(String dState) {
+		this.dState = dState;
+	}
+	public int getgStock() {
+		return gStock;
+	}
+	public void setgStock(int gStock) {
+		this.gStock = gStock;
+	}
+	public String getdDate() {
+		return dDate;
+	}
+	public void setdDate(String dDate) {
+		this.dDate = dDate;
 	}
 	@Override
 	public String toString() {
@@ -113,9 +138,7 @@ public class CartVO {
 				+ goods_gNum + ", gName=" + gName + ", gPrice=" + gPrice + ", sellerID=" + sellerID + ", gimg1=" + gimg1
 				+ ", dstate=" + dstate + ", gstock=" + gstock + ", ddate=" + ddate + ", dpk=" + dpk + ", ostock="
 				+ ostock + "]";
-	}
-	
 
-	
+	}
 	
 }

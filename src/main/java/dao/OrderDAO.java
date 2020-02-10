@@ -1,14 +1,15 @@
 package dao;
 
+
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import vo.CartVO;
-import vo.DeliveryVO;
-import vo.MemberVO;
 import vo.OrderVO;
 import vo.PaymentVO;
 
@@ -18,10 +19,13 @@ import vo.PaymentVO;
 	SqlSession dao;
 	private final static String NS ="portfolio.mapper.OrderMapper.";
 	
-	public int  insertOrder(OrderVO vo) {
-		int oNum = dao.insert(NS+"insertOrder",vo);
-		System.out.println("결과 처리후 return 된 oNum : " +oNum);
-		return oNum;
+	public int insertPayment(PaymentVO vo) {
+		return dao.insert(NS+"insertPayment",vo);
+	}
+	public int insertOandD(ArrayList olist) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("olist",olist);
+		return dao.insert(NS+"insertOandD",map);
 	}
 	public OrderVO findOrder(int oNum) {
 		return dao.selectOne(NS+"findOrder",oNum);
