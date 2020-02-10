@@ -19,10 +19,12 @@ import org.springframework.web.servlet.ModelAndView;
 import business.CService;
 import business.MService;
 import business.OService;
+import business.PService;
 import vo.CartVO;
 import vo.GoodsVO;
 import vo.MemberVO;
 import vo.OrderVO;
+import vo.PaymentVO;
 
 @Controller
 public class OrderController {//주문성공 페이지
@@ -33,6 +35,8 @@ public class OrderController {//주문성공 페이지
 	OService service;
 	@Autowired
 	MService mservice;
+	@Autowired
+	PService pservice;
 	
 	private static final Logger log = LoggerFactory.getLogger(OrderController.class);
 	
@@ -63,8 +67,8 @@ public class OrderController {//주문성공 페이지
 		ArrayList<CartVO> list = cartService.selectReceivedOrderList(gvo);
 		
 		for(int i=0; i<list.size(); i++) {
-			String subDate = list.get(i).getDdate().substring(0,19);
-			list.get(i).setDdate(subDate);
+			String subDate = list.get(i).getdDate().substring(0,19);
+			list.get(i).setdDate(subDate);
 		}
 		
 		
@@ -106,7 +110,7 @@ public class OrderController {//주문성공 페이지
 			log.info("기본주소지 등록 완료!");
 		}
 		for(CartVO cvo : list) {
-			vo.setoPrice(cvo.getGprice());
+			vo.setoPrice(cvo.getgPrice());
 			vo.setoStock(cvo.getcAmount());
 			vo.setMember_mId(logInUser.getmId());
 			vo.setGoods_gNum(cvo.getGoods_gNum());
@@ -166,4 +170,18 @@ public class OrderController {//주문성공 페이지
 		model.setViewName("jsonView");
 		return model;
 	}
+	
+	
+	@RequestMapping(value ="/mODelivery")//주문/배송 조회
+	public ModelAndView myInfoOrderDelivery(ModelAndView model,HttpServletRequest request) {
+		MemberVO mvo =(MemberVO)request.getSession().getAttribute("logInUser");
+		ArrayList<PaymentVO> plist = pservice.paymentList(mvo);
+		
+		model.addObject("plist", plist);
+		
+		model.setViewName("myInfo/myInfoOrderDelivery");
+		return model;
+	}
+	
+	
 }

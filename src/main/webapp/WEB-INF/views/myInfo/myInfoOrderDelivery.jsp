@@ -145,10 +145,10 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td>2020.01.06</td>
+												<td>${plist.pDate}</td>
 												<td style=",max-width:35%;"><a href="#" data-toggle="collapse"
-													data-target="#demo">123456789</a></td>
-												<td>1,200,000원</td>
+													data-target="#demo">${plist.pNum}</a></td>
+												<td>${plist.pPrice}원</td>
 											</tr>
 
 										</tbody>
@@ -160,11 +160,11 @@
 												style="padding-left: 0px; padding-right: 0px;">
 												<img src="resources/images/item1.jpg">
 											</div>
-											<div class="col-md-4 col-xs-8" style="padding-right: 0px;">메롱메롱메롱메롱메롱메롱메롱메롱메롱</div>
-											<div class="col-md-2 col-xs-8">600,000원</div>
+											<div class="col-md-4 col-xs-8" style="padding-right: 0px;">${plist.gName }</div>
+											<div class="col-md-2 col-xs-8">${plist.gPrice}</div>
 											<div class="col-md-3 col-xs-8 text-center">
-												<h4>판매자</h4>
-												<h6 style="color: lightgray;">(010-7777-7777)</h6>
+												<h4>판매자:${plist.Member_mId}</h4>
+												<h6 style="color: lightgray;">(${plist.mPhone})</h6>
 											</div>
 										</div>
 										<div class="col-md-12 col-xs-12"
