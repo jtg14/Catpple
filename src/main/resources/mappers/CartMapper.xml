@@ -29,8 +29,8 @@
 	</select>
 
 	<select id="selectReceivedOrderList" resultType="vo.CartVO">
-		select g.gimg1, g.gname, g.gprice, o.member_mid, o.ostock, d.dstate from goods as g, corder as o, delivery as d 
-		where g.gnum=o.goods_gnum and o.onum=d.corder_onum and g.member_mid=#{member_mid} order by d.dstate, d.ddate;
+		select g.gimg1, g.gstock, g.gname, g.gprice, o.member_mid, o.ostock, d.dstate, d.ddate from goods as g, corder as o, delivery as d 
+		where g.gnum=o.goods_gnum and o.onum=d.corder_onum and g.member_mId=#{member_mId} order by d.dstate, d.ddate;
 	
 	</select>
 	

@@ -48,6 +48,7 @@ padding-right: 0px;
 
 </style>
 
+
 </head>
 <body class="font-Jua">
 
@@ -151,25 +152,32 @@ padding-right: 0px;
 					style="min-height: 1000px; margin-top: 120px;">
 					<div class="col-sm-12 col-md-12" id="content">
 						<!-- 메인 공간 -->
-
-
-						<div class="col-md-10 col-xs-12">
-							<h2 style="color: crimson">받은 주문 목록</h2>
+						<div class="col-md-12 col-xs-12">
+						<div class="col-md-6 col-xs-8">
+							<h2 style="color: crimson">받은 주문 목록</h2>  
+						</div>
+						<div class="col-md-6 col-xs-4 pull-right" style="margin-top:17px;"> 
+							<button class="btn btn-danger pull-right" onclick="return confirm('배송하시겠습니까?')">배송하기</button>
 							
+						</div>
+						</div>
+					
+						<div class="col-md-10 col-xs-12">
+						
 							<c:forEach var="list" items="${list}">
-								<div class="container text-center"
-									style="border-top: 2px solid lightgray; padding-top: 10px; padding-bottom: 10px;">
+								<div id="" class="container text-center"
+									style="border-top: 2px solid lightgray;padding-top: 10px; padding-bottom: 10px;">
 									<div class="col-md-6 col-xs-12"
 										style="padding-top: 0px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px;">
 										<div class="col-md-6 col-xs-3" style="padding-left: 0px;">
 											<input name="box2" value="${list.dstate}" type="checkbox"> <img class="img"
-												src="resources/foodImg/mainfood1.jpg" />
+												src="resources/sellerInfo/${logInUser.mId}/${list.gname}"/>
 										</div>
+										
 										<div class="col-md-6 col-xs-9 second-div">
 											<h4>${list.gname}</h4>
-											<label style="font-size: x-small;">재고 있음</label>
+											<label style="font-size: x-small;">재고 : ${list.gstock}</label>
 										</div>
-
 
 									</div>
 									<div class="col-md-6 col-xs-12 third-div">
@@ -186,33 +194,34 @@ padding-right: 0px;
 										<div class="col-md-6 col-xs-12 fourth-div"
 		                                	 style="margin-top: 10px;">
 		                                	 <span>주문자ID : ${list.member_mId}</span>
+		                                	
 		                            	  </div>
 		                              
-		                            	  <div class="col-md-5" style="margin-top: 10px;">
-		                           	      <span>배송상태 : 
+		                            	  <div class="col-md-5" >
+		                           	      <span>
 			                           	      <c:choose>
 			                           	    	  <c:when test="${list.dstate=='a'}">
-			                           	     		 배송준비 중
+			                           	     		<font style="color:crimson;"> 배송준비 중</font>
 			                           	     	  </c:when>
 			                           	     	  
 			                           	     	  <c:when test="${list.dstate=='b'}">
-			                           	     		 배송 중
+			                           	     		 <font style="color:#FF8C00;">배송 중</font>
 			                           	     	  </c:when>
 			                           	     	  
 			                           	     	  <c:when test="${list.dstate=='c'}">
-			                           	     		 배송 완료
+			                           	     		<font style="color:green;"> 배송 완료 </font>
 			                           	     	  </c:when>
 			                           	      </c:choose>
-		                           	      </span>
+		                           	      </span><br>
+		                           	      ${list.ddate}
 		                          	    </div>
 
 
 									</div>
 								</div>
 							</c:forEach>
-							<div class="col-md-12 col-xs-12">
-		                	     <button class="btn btn-danger pull-right" onclick="return confirm('배송상태를 변경하시겠습니까?')">배송상태변경</button>
-		                    </div>
+						
+							
 						</div>
 					</div>
 				</div>
