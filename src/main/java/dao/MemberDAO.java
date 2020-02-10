@@ -50,4 +50,7 @@ public class MemberDAO {
 	public int updateAddr(OrderVO vo) {
 		return dao.update(NS+"updateAddr",vo);
 	}
+	public int addPoint(MemberVO vo) {
+		return dao.update(NS+"addPoint",vo);
+	}
 }

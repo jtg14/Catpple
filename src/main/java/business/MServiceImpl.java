@@ -57,4 +57,8 @@ public class MServiceImpl implements MService {
 	public int updateAddr(OrderVO vo) {
 		return dao.updateAddr(vo);
 	}
+	@Override
+	public int addPoint(MemberVO vo) {
+		return dao.addPoint(vo);
+	}
 }

@@ -13,8 +13,11 @@ public class OServiceImpl implements OService {
 	OrderDAO dao;
 
 	@Override
-	public OrderVO insertOrder(OrderVO vo) {
+	public int insertOrder(OrderVO vo) {
 		return dao.insertOrder(vo);
 	}
-	
+	@Override
+	public OrderVO findOrder(int oNum) {
+		return dao.findOrder(oNum);
+	}
 }

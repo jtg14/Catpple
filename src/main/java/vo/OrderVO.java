@@ -11,11 +11,16 @@ public class OrderVO {
 	String oAddr2;
 	String oAddr3;
 	String oAddr4;
+	String oStatus;
+	String oName;
 	String oPhone;
-	String oState;
+	String dNum;
 	String dInfo;
+	int pNum;
+	String pPayment;
 	String member_mId;
 	int goods_gNum;
+	String gName;
 	public int getoNum() {
 		return oNum;
 	}
@@ -64,23 +69,47 @@ public class OrderVO {
 	public void setoAddr4(String oAddr4) {
 		this.oAddr4 = oAddr4;
 	}
+	public String getoStatus() {
+		return oStatus;
+	}
+	public void setoStatus(String oStatus) {
+		this.oStatus = oStatus;
+	}
+	public String getoName() {
+		return oName;
+	}
+	public void setoName(String oName) {
+		this.oName = oName;
+	}
 	public String getoPhone() {
 		return oPhone;
 	}
 	public void setoPhone(String oPhone) {
 		this.oPhone = oPhone;
 	}
-	public String getoState() {
-		return oState;
+	public String getdNum() {
+		return dNum;
 	}
-	public void setoState(String oState) {
-		this.oState = oState;
+	public void setdNum(String dNum) {
+		this.dNum = dNum;
 	}
 	public String getdInfo() {
 		return dInfo;
 	}
 	public void setdInfo(String dInfo) {
 		this.dInfo = dInfo;
+	}
+	public int getpNum() {
+		return pNum;
+	}
+	public void setpNum(int pNum) {
+		this.pNum = pNum;
+	}
+	public String getpPayment() {
+		return pPayment;
+	}
+	public void setpPayment(String pPayment) {
+		this.pPayment = pPayment;
 	}
 	public String getMember_mId() {
 		return member_mId;
@@ -94,13 +123,18 @@ public class OrderVO {
 	public void setGoods_gNum(int goods_gNum) {
 		this.goods_gNum = goods_gNum;
 	}
+	public String getgName() {
+		return gName;
+	}
+	public void setgName(String gName) {
+		this.gName = gName;
+	}
 	@Override
 	public String toString() {
 		return "OrderVO [oNum=" + oNum + ", oDate=" + oDate + ", oPrice=" + oPrice + ", oStock=" + oStock + ", oAddr1="
-				+ oAddr1 + ", oAddr2=" + oAddr2 + ", oAddr3=" + oAddr3 + ", oAddr4=" + oAddr4 + ", oPhone=" + oPhone
-				+ ", oState=" + oState + ", dInfo=" + dInfo + ", member_mId=" + member_mId + ", goods_gNum="
-				+ goods_gNum + "]";
+				+ oAddr1 + ", oAddr2=" + oAddr2 + ", oAddr3=" + oAddr3 + ", oAddr4=" + oAddr4 + ", oStatus=" + oStatus
+				+ ", oName=" + oName + ", oPhone=" + oPhone + ", dNum=" + dNum + ", dInfo=" + dInfo + ", pNum=" + pNum
+				+ ", pPayment=" + pPayment + ", member_mId=" + member_mId + ", goods_gNum=" + goods_gNum + ", gName="
+				+ gName + "]";
 	}
-	
-	
 }

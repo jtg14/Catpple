@@ -4,6 +4,7 @@ import vo.OrderVO;
 
 public interface OService {
 
-	OrderVO insertOrder(OrderVO vo);
+	int insertOrder(OrderVO vo);
 	
+	OrderVO findOrder(int oNum);
 }

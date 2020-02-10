@@ -74,13 +74,20 @@ public class OrderController {//주문성공 페이지
 	}
 	@RequestMapping(value="/order")
 	public ModelAndView order(ModelAndView model,OrderVO vo,HttpServletRequest request) {
+		int expectedPoint = 0;
 		log.info("-------------------주문 접수시작-------------------");
 		ArrayList<CartVO> list = (ArrayList)request.getSession().getAttribute("list");//받아올 장바구니리스트
+		log.info("주문할 장바구니 받아오기 성공 !");
 		ArrayList<OrderVO> olist = new ArrayList<OrderVO>();
+		log.info("장바구니 에서 주문목록으로 옮길 List생성");
 		ArrayList<OrderVO> vertualList = new ArrayList<OrderVO>();
+		log.info("처리후 반환될 주문목록 받아올 가상List생성");
 		MemberVO logInUser = (MemberVO)request.getSession().getAttribute("logInUser");
+		log.info("세션 유저 불러오기성공");
 		if(mservice.login(logInUser).getmAddr1() == 0) {
+			log.info("현재 유저 첫주문 여부 확인!");
 			mservice.updateAddr(vo); //기본주소지 추가
+			log.info("기본주소지 등록 완료!");
 		}
 		for(CartVO cvo : list) {
 			vo.setoPrice(cvo.getgPrice());
@@ -91,11 +98,24 @@ public class OrderController {//주문성공 페이지
 			olist.add(vo);
 			cartService.deleteCart(cvo);
 		}
+		log.info("장바구니에서 불러온 목록 처리할 list로 옮기기 성공 !");
+		log.info("장바구니 모든항목 삭제 완료 !");
 		for(OrderVO ovo : olist) {
-			vertualList.add(service.insertOrder(ovo));
-			log.info(ovo.toString());
+			OrderVO ovo2 =  service.findOrder(service.insertOrder(ovo)*-1);
+			log.info(ovo2.toString());
+			vertualList.add(ovo2);
+			expectedPoint += ovo.getoPrice() / 10;
 		}
+		log.info("불러온 List 처리후 반환된객체 가상List 에 추가 성공");
 		request.getSession().setAttribute("vtList",vertualList);
+		request.getSession().setAttribute("listSize",vertualList.size());
+		request.getSession().setAttribute("orderInfo",vertualList.get(0));
+		log.info("가상 List Session에 추가성공");
+		logInUser.setmPoint(expectedPoint);
+		mservice.addPoint(logInUser);
+		request.getSession().setAttribute("Point", expectedPoint);
+		log.info("포인트적립 성공 !");
+		log.info("-------------------주문 모든과정 성공-------------------");
 		model.setViewName("redirect:osuccess");
 		return model;
 	}
