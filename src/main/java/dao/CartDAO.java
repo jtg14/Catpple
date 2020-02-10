@@ -2,6 +2,7 @@ package dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -50,5 +51,18 @@ public class CartDAO {
 	public ArrayList<CartVO> selectReceivedOrderList(GoodsVO vo) {
 		return (ArrayList)dao.selectList(NS+"selectReceivedOrderList",vo);
 	}
+	
+	public int changeDstate(List<Integer> list) {
+//		ArrayList<Integer> list = new ArrayList();
+//		for(int i=0;i<array.length;i++) {
+//			list.add(array[i]);
+//		}
+		
+		System.out.println("List in DAO=>"+list);
+		
+		return dao.update(NS+"changeDstate", list);
+	}
+	
+	
 	
 }

@@ -157,8 +157,7 @@ padding-right: 0px;
 							<h2 style="color: crimson">받은 주문 목록</h2>  
 						</div>
 						<div class="col-md-6 col-xs-4 pull-right" style="margin-top:17px;"> 
-							<button class="btn btn-danger pull-right" onclick="return confirm('배송하시겠습니까?')">배송하기</button>
-							
+							<button onclick="deliveryButton()" class="btn btn-danger pull-right" onclick="return confirm('배송하시겠습니까?')">배송하기</button>
 						</div>
 						</div>
 					
@@ -170,7 +169,7 @@ padding-right: 0px;
 									<div class="col-md-6 col-xs-12"
 										style="padding-top: 0px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px;">
 										<div class="col-md-6 col-xs-3" style="padding-left: 0px;">
-											<input name="box2" value="${list.dstate}" type="checkbox"> <img class="img"
+											<input name="box2" value="${list.dpk}" type="checkbox"> <img class="img"
 												src="resources/sellerInfo/${logInUser.mId}/${list.gname}"/>
 										</div>
 										
@@ -235,15 +234,7 @@ padding-right: 0px;
 
 
 
-	<scirpt>
-	$(function(){
-		var dstateList = new Array();
-		$("input[name=box2]:checked").each(function())
 	
-	
-	
-	});
-	</scirpt>
 
 	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.js"></script>

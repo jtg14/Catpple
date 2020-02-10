@@ -3,6 +3,7 @@ package com.portfolio.project;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import business.CService;
@@ -153,5 +155,22 @@ public class OrderController {//주문성공 페이지
 		
 		mv.setViewName("index");
 		return mv;
+	}
+	
+	@RequestMapping(value = "/changeDstate")
+	public ModelAndView changeDstate(@RequestParam(value="dpkList") List<Integer> dpkList, ModelAndView model, HttpServletRequest request) {
+		
+		System.out.println("list=>"+dpkList);
+		
+
+		if(cartService.changeDstate(dpkList)>0) {
+			System.out.println("changeDstate처리후");
+			model.addObject("code", "100");
+		}else {
+			model.addObject("code", "101");
+		}
+		
+		model.setViewName("jsonView");
+		return model;
 	}
 }
