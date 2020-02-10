@@ -12,6 +12,13 @@ public class CartVO {
 	private String dstate;
 	private int gstock;
 	private String ddate;
+	private int dpk;
+	public int getDpk() {
+		return dpk;
+	}
+	public void setDpk(int dpk) {
+		this.dpk = dpk;
+	}
 	public String getDdate() {
 		return ddate;
 	}
@@ -104,7 +111,8 @@ public class CartVO {
 	public String toString() {
 		return "CartVO [cId=" + cId + ", cAmount=" + cAmount + ", member_mId=" + member_mId + ", goods_gNum="
 				+ goods_gNum + ", gName=" + gName + ", gPrice=" + gPrice + ", sellerID=" + sellerID + ", gimg1=" + gimg1
-				+ ", dstate=" + dstate + ", gstock=" + gstock + ", ddate=" + ddate + ", ostock=" + ostock + "]";
+				+ ", dstate=" + dstate + ", gstock=" + gstock + ", ddate=" + ddate + ", dpk=" + dpk + ", ostock="
+				+ ostock + "]";
 	}
 	
 

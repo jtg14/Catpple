@@ -1,6 +1,7 @@
 package business;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import vo.CartVO;
 import vo.GoodsVO;
@@ -20,4 +21,6 @@ public interface CService {
 	ArrayList<CartVO> purchaseList(int [] arr,String memberid);
 	
 	ArrayList<CartVO> selectReceivedOrderList(GoodsVO vo);
+	
+	int changeDstate(List<Integer> list);
 }

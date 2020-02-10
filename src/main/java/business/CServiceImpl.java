@@ -1,6 +1,7 @@
 package business;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,9 @@ public class CServiceImpl implements CService {
 	@Override
 	public ArrayList<CartVO> selectReceivedOrderList(GoodsVO vo) {
 		return dao.selectReceivedOrderList(vo);
+	}
+	@Override
+	public int changeDstate(List<Integer> list) {
+		return dao.changeDstate(list);
 	}
 }

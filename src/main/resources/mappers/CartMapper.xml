@@ -29,11 +29,17 @@
 	</select>
 
 	<select id="selectReceivedOrderList" resultType="vo.CartVO">
-		select g.gimg1, g.gstock, g.gname, g.gprice, o.member_mid, o.ostock, d.dstate, d.ddate from goods as g, corder as o, delivery as d 
+		select g.gimg1, g.gstock, g.gname, g.gprice, o.member_mid, o.ostock, d.dstate, d.ddate,d.dpk from goods as g, corder as o, delivery as d 
 		where g.gnum=o.goods_gnum and o.onum=d.corder_onum and g.member_mId=#{member_mId} order by d.dstate, d.ddate;
 	
 	</select>
 	
-
+	<update id="changeDstate"  parameterType="java.util.List">
+		update delivery set dstate='b' where dpk in
+		<foreach collection="list" item="dpk" open="(" close=")" index="index" separator=",">
+			${dpk}
+		</foreach>
+	
+	</update>
 
 </mapper>
