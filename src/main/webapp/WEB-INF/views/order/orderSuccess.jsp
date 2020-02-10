@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page session="false"%>
 <html>
 <head>
@@ -87,18 +89,21 @@
 					<tbody>
 						<tr>
 							<td class="table-head">배송지 정보</td>
-							<td>031-712-7447<br>전태구<br>경기 성남시 분당구 구미동 7-2
-								광천프라자 5층
+							<td>${orderInfo.oPhone}<br>${orderInfo.oName}<br>
+								${orderInfo.oAddr1}<br>
+								${orderInfo.oAddr2}<br>
+								${orderInfo.oAddr3}<br>
+								${orderInfo.oAddr4}<br>
 							</td>
 						</tr>
 						<tr>
 							<td class="table-head">배송 메모</td>
-							<td>부재시 연락바랍니다.</td>
+							<td>${orderInfo.dInfo}</td>
 						</tr>
 						<tr>
 							<td class="table-head">결제 정보</td>
-							<td>거래수단 : 신용카드<br> 카드사 : 국민카드<br> 결제번호 : A7792020<br>
-								운송장 번호 : 213213412
+							<td>거래수단 : ${orderInfo.pPayment}<br> 결제번호 : ${orderInfo.pNum}<br>
+								운송장 번호 : ${orderInfo.dNum}
 							</td>
 						</tr>
 						<tr>
@@ -110,9 +115,9 @@
 				<div class="col-md-12 col-sm12">
 				<div class="panel panel-default">
 				  <div class="panel-body text-center">
-				    적립 예정 포인트
+				    적립 포인트
 				  </div>
-				  <div class="panel-footer text-right">(+)6,900P</div>
+				  <div class="panel-footer text-right">(+)${Point}P</div>
 				</div>
 				<div class="col-md-12 col-sm-12 text-center" style="margin-top:30;">
 	            <button type="button" class="btn btn-primary btn-lg"style="font-size:1.4em;">쇼핑계속하기</button>
@@ -121,11 +126,11 @@
 			</div>
 			
 			<div class="col-sm-12 col-md-4 ">
-			<h2 class="text-center" style="color:crimson;">주문확인</h2>
+			<h2 class="text-center" style="color:crimson;">주문확인(<span id = "listSize">${listSize}</span>)</h2>
 			</div>
 			<div class="col-sm-12 col-md-4 item-list"
 				style="padding-right: 0px; padding-left: 0px; max-height: 350px; position: relative; overflow: auto;">
-				<c:forEach begin="1" end="10">
+				<c:forEach var="list" items="vtList" varStatus="status">
 					<div class="col-sm-12 col-md-4"
 						style="padding-right: 0px; padding-left: 0px; width: 100%; margin-top: 20px; border-top: 1px solid lightgray; padding-top: 10px; padding-bottom: 10px; min-height: 100;">
 						<div class="col-xs-3 col-md-3"
@@ -134,10 +139,10 @@
 						</div>
 						<div class="col-xs-9 col-md-9"
 							style="padding-right: 0px; padding-left: 0px;">
-							<p>더 홀리스틱 홍삼&국내산오리 5.2kg</p>
-							<p>선택 - 기본(69,000원)</p>
-							<p>상품금액 : 69,000원</p>
-							<p>주문수량 : 1개</p>
+							<p>${list.gName}</p>
+							<p>선택 - 기본(<fmt:formatNumber value="${list.oPrice}" pattern="#,###" />원)</p>
+							<p id = "itemPriceNo.${status.index}">상품금액 : <fmt:formatNumber value="${list.oPrice}" pattern="#,###" />원</p>
+							<p id = "itemStockNo.${status.index}">주문수량 : ${list.oStock}개</p>
 						</div>
 					</div>
 				</c:forEach>
@@ -145,11 +150,11 @@
 			<div class="col-sm-12 col-md-4 result-tablebox"style="background-color:crimson;">
 				<table class="result-table" style="width:100%;">
 				<tbody>
-					<tr><td>상품금액</td><td class="text-right">690,000원</td></tr>
+					<tr><td>상품금액</td><td class="text-right" ><span id="before-totalPrice"></span></td></tr>
 					<tr><td>배송비</td><td class="text-right">(+)0원</td></tr>
 					<tr><td>적립금 사용</td><td class="text-right">(-)0원</td></tr>
 					<tr><td>할인금액</td><td class="text-right">(-)0원</td></tr>
-					<tr><td>최종 결제금액</td><td class="text-right">690,000원</td></tr>
+					<tr><td>최종 결제금액</td><td class="text-right"><span id="after-totalPrice"></span>원</td></tr>
 				</tbody>
 				</table>
 			</div>
@@ -161,5 +166,6 @@
 	</div>
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/custom/addJS/order.js"></script>
 </body>
 </html>

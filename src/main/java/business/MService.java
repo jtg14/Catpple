@@ -26,4 +26,6 @@ public interface MService {
 	MemberVO searchPW(MemberVO vo);
 	
 	int updateAddr(OrderVO vo);
+	
+	int addPoint(MemberVO vo);
 }
