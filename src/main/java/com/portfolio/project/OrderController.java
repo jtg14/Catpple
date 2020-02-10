@@ -18,6 +18,7 @@ import business.CService;
 import business.MService;
 import business.OService;
 import vo.CartVO;
+import vo.GoodsVO;
 import vo.MemberVO;
 import vo.OrderVO;
 
@@ -52,7 +53,20 @@ public class OrderController {//주문성공 페이지
 	}
 	
 	@RequestMapping(value ="/sOList")//주문 요청 목록
-	public ModelAndView sellerOrderList(ModelAndView model) {
+	public ModelAndView sellerOrderList(ModelAndView model, HttpServletRequest request, MemberVO mvo) {
+		
+		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+		GoodsVO gvo = new GoodsVO();
+		gvo.setMember_mId(mvo.getmId());
+		ArrayList<CartVO> list = cartService.selectReceivedOrderList(gvo);
+		
+		for(int i=0; i<list.size(); i++) {
+			String subDate = list.get(i).getDdate().substring(0,19);
+			list.get(i).setDdate(subDate);
+		}
+		
+		
+		model.addObject("list",list);
 		model.setViewName("order/sellerOrderList");
 		return model;
 	}
@@ -90,7 +104,7 @@ public class OrderController {//주문성공 페이지
 			log.info("기본주소지 등록 완료!");
 		}
 		for(CartVO cvo : list) {
-			vo.setoPrice(cvo.getgPrice());
+			vo.setoPrice(cvo.getGprice());
 			vo.setoStock(cvo.getcAmount());
 			vo.setMember_mId(logInUser.getmId());
 			vo.setGoods_gNum(cvo.getGoods_gNum());

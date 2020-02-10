@@ -78,6 +78,9 @@
 			
 			<!-- OrderController -->
 			<mapping path="/sOList"/>
+			<mapping path="/oinfo"/>
+			<mapping path="/sGForm"/>
+			<mapping path="/sOList"/>
 			
 			
 			<beans:ref bean="loginInterceptor"/>

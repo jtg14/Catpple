@@ -30,8 +30,10 @@ public class OrderVO {
 	public Date getoDate() {
 		return oDate;
 	}
+
 	public void setoDate(Date oDate) {
 		this.oDate = oDate;
+
 	}
 	public int getoPrice() {
 		return oPrice;
@@ -131,10 +133,11 @@ public class OrderVO {
 	}
 	@Override
 	public String toString() {
-		return "OrderVO [oNum=" + oNum + ", oDate=" + oDate + ", oPrice=" + oPrice + ", oStock=" + oStock + ", oAddr1="
-				+ oAddr1 + ", oAddr2=" + oAddr2 + ", oAddr3=" + oAddr3 + ", oAddr4=" + oAddr4 + ", oStatus=" + oStatus
-				+ ", oName=" + oName + ", oPhone=" + oPhone + ", dNum=" + dNum + ", dInfo=" + dInfo + ", pNum=" + pNum
-				+ ", pPayment=" + pPayment + ", member_mId=" + member_mId + ", goods_gNum=" + goods_gNum + ", gName="
-				+ gName + "]";
+		return 
+				+ oAddr1 + ", oAddr2=" + oAddr2 + ", oAddr3=" + oAddr3 + ", oAddr4=" + oAddr4 + ", oPhone=" + oPhone
+				+ ", oStatus=" + oStatus + ", dInfo=" + dInfo + ", member_mId=" + member_mId + ", goods_gNum="
+				+ goods_gNum + "]";
+
+
 	}
 }

@@ -48,6 +48,7 @@ padding-right: 0px;
 
 </style>
 
+
 </head>
 <body class="font-Jua">
 
@@ -151,54 +152,76 @@ padding-right: 0px;
 					style="min-height: 1000px; margin-top: 120px;">
 					<div class="col-sm-12 col-md-12" id="content">
 						<!-- 메인 공간 -->
-
-
+						<div class="col-md-12 col-xs-12">
+						<div class="col-md-6 col-xs-8">
+							<h2 style="color: crimson">받은 주문 목록</h2>  
+						</div>
+						<div class="col-md-6 col-xs-4 pull-right" style="margin-top:17px;"> 
+							<button class="btn btn-danger pull-right" onclick="return confirm('배송하시겠습니까?')">배송하기</button>
+							
+						</div>
+						</div>
+					
 						<div class="col-md-10 col-xs-12">
-							<h2 style="color: crimson">받은 주문 목록</h2>
-							<c:choose>
-								<c:when test="${goodsInsertInfo!=null}">
-									<div class="col-md-12 col-xs-12"><h1>${goodsInsertInfo}</h1></div>
-								</c:when>
-								<c:otherwise></c:otherwise>
-							</c:choose>
-							<c:forEach begin="1" end="5">
-								<div class="container text-center"
-									style="border-top: 2px solid lightgray; padding-top: 10px; padding-bottom: 10px;">
+						
+							<c:forEach var="list" items="${list}">
+								<div id="" class="container text-center"
+									style="border-top: 2px solid lightgray;padding-top: 10px; padding-bottom: 10px;">
 									<div class="col-md-6 col-xs-12"
 										style="padding-top: 0px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px;">
 										<div class="col-md-6 col-xs-3" style="padding-left: 0px;">
-											<input type="checkbox"> <img class="img"
-												src="resources/foodImg/mainfood1.jpg" />
+											<input name="box2" value="${list.dstate}" type="checkbox"> <img class="img"
+												src="resources/sellerInfo/${logInUser.mId}/${list.gname}"/>
 										</div>
+										
 										<div class="col-md-6 col-xs-9 second-div">
-											<h4>프로베스트 캣 밸런스 15kg</h4>
-											<label style="font-size: x-small;">재고 있음</label>
+											<h4>${list.gname}</h4>
+											<label style="font-size: x-small;">재고 : ${list.gstock}</label>
 										</div>
-
 
 									</div>
 									<div class="col-md-6 col-xs-12 third-div">
 										<div class="col-md-6 col-xs-6">
-											<span>10000원</span>
+											<span>${list.gprice}원</span>
 										</div>
 										<div class="col-md-3 col-xs-4" style="padding-right: 10px;">
 											<span class="pull-right">주문 수량 : </span>
 										</div>
 										<div class="col-md-3 col-xs-2">
-											<span class="pull-left">5</span>
+											<span class="pull-left">${list.ostock}</span>
 										</div>
 
 										<div class="col-md-6 col-xs-12 fourth-div"
-											style="margin-top: 10px;">
-											<span>주문자ID : prokofiev</span>
-										</div>
-
+		                                	 style="margin-top: 10px;">
+		                                	 <span>주문자ID : ${list.member_mId}</span>
+		                                	
+		                            	  </div>
+		                              
+		                            	  <div class="col-md-5" >
+		                           	      <span>
+			                           	      <c:choose>
+			                           	    	  <c:when test="${list.dstate=='a'}">
+			                           	     		<font style="color:crimson;"> 배송준비 중</font>
+			                           	     	  </c:when>
+			                           	     	  
+			                           	     	  <c:when test="${list.dstate=='b'}">
+			                           	     		 <font style="color:#FF8C00;">배송 중</font>
+			                           	     	  </c:when>
+			                           	     	  
+			                           	     	  <c:when test="${list.dstate=='c'}">
+			                           	     		<font style="color:green;"> 배송 완료 </font>
+			                           	     	  </c:when>
+			                           	      </c:choose>
+		                           	      </span><br>
+		                           	      ${list.ddate}
+		                          	    </div>
 
 
 									</div>
 								</div>
 							</c:forEach>
-
+						
+							
 						</div>
 					</div>
 				</div>
@@ -210,6 +233,17 @@ padding-right: 0px;
 	</div>
 	<!-- /#wrapper -->
 
+
+
+	<scirpt>
+	$(function(){
+		var dstateList = new Array();
+		$("input[name=box2]:checked").each(function())
+	
+	
+	
+	});
+	</scirpt>
 
 	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
