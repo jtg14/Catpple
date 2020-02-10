@@ -260,3 +260,34 @@ function purchaseOnCart(grade,id){
 		}
 	}
 
+function deliveryButton(){
+	alert('들어옴');
+	var dpkList = new Array();
+	$("input[name=box2]:checked").each(function(){
+		dpkList.push($(this).val());
+		if(dpkList.length==0){
+			alert('선택된 항목이 없습니다.');
+		}else{
+			$.ajax({
+				type:'post',
+				url:'changeDstate',
+				traditional : true,
+				data:{
+					'dpkList':dpkList
+					 },
+				success:function(result){
+					if(result.code=='100'){
+						window.location.reload();
+					}else if(result.code=='101'){
+						alert('변경에 실패했습니다.');
+					}
+						}
+				
+			});//ajax
+		}
+		
+	})
+	
+}
+
+
