@@ -1,6 +1,7 @@
 package business;
 
 import vo.MemberVO;
+import vo.OrderVO;
 
 public interface MService {
 
@@ -23,4 +24,6 @@ public interface MService {
 	MemberVO searchID(MemberVO vo);
 	
 	MemberVO searchPW(MemberVO vo);
+	
+	int updateAddr(OrderVO vo);
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import dao.MemberDAO;
 import vo.MemberVO;
+import vo.OrderVO;
 
 @Service
 public class MServiceImpl implements MService {
@@ -51,5 +52,9 @@ public class MServiceImpl implements MService {
 	@Override
 	public MemberVO searchPW(MemberVO vo) {
 		return dao.searchPW(vo);
+	}
+	@Override
+	public int updateAddr(OrderVO vo) {
+		return dao.updateAddr(vo);
 	}
 }

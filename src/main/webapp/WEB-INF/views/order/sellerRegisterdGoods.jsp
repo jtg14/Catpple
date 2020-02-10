@@ -158,24 +158,24 @@ padding-right: 0px;
 									<div class="col-md-6 col-xs-12"
 										style="padding-top: 0px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px;">
 										<div class="col-md-6 col-xs-3" style="padding-left: 0px;">
-											<img class="img" src="resources/sellerInfo/${gl.member_mid}/${gl.gimg1}" width="100px" height="100px;"/>
+											<img class="img" src="resources/sellerInfo/${gl.member_mId}/${gl.gImg1}" width="100px" height="100px;"/>
 										</div>
 										<div class="col-md-6 col-xs-9 second-div">
-											상품번호 : ${gl.gnum}
-											<h4>${gl.gname}</h4>
+											상품번호 : ${gl.gNum}
+											<h4>${gl.gName}</h4>
 										</div>
 									</div>
 
 
 									<div class="col-md-6 col-xs-12 third-div">
 										<div class="col-md-4 col-xs-6" style="padding-right: 0px;">
-											가격 : ${gl.gprice}원
+											가격 : ${gl.gPrice}원
 										</div>
 										<div class="col-md-4 col-xs-6">
-											재고 : ${gl.gstock}개
+											재고 : ${gl.gStock}개
 										</div>
 										<div class="col-md-4 col-xs-12">
-											<a href="sGUForm?gnum=${gl.gnum}" class="btn btn-danger">편집하기</a>
+											<a href="sGUForm?gnum=${gl.gNum}" class="btn btn-danger">편집하기</a>
 										</div>
 									</div>
 								</div>

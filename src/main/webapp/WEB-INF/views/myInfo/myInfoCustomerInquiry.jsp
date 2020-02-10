@@ -159,16 +159,16 @@ th, td {
 												<tr>
 													<td style="padding-left: 0px;padding-right: 0px; width:25%;">
 													<c:choose>
-															<c:when test="${list.separation=='1'}">
+															<c:when test="${list.bSeparation=='1'}">
 														[구매 관련]
 													</c:when>
-															<c:when test="${list.separation=='2'}">
+															<c:when test="${list.bSeparation=='2'}">
 														[배송 관련]
 													</c:when>
-															<c:when test="${list.separation=='3'}">
+															<c:when test="${list.bSeparation=='3'}">
 														[결제 문의]
 													</c:when>
-															<c:when test="${list.separation=='4'}">
+															<c:when test="${list.bSeparation=='4'}">
 														[기타]
 													</c:when>
 															<c:otherwise>
@@ -204,16 +204,16 @@ th, td {
 													</td>
 													<td style="padding-left: 0px;padding-right: 0px; width:25%;">
 													<c:choose>
-															<c:when test="${listForManager.separation=='1'}">
+															<c:when test="${listForManager.bSeparation=='1'}">
 														[구매 관련]
 													</c:when>
-															<c:when test="${listForManager.separation=='2'}">
+															<c:when test="${listForManager.bSeparation=='2'}">
 														[배송 관련]
 													</c:when>
-															<c:when test="${listForManager.separation=='3'}">
+															<c:when test="${listForManager.bSeparation=='3'}">
 														[결제 문의]
 													</c:when>
-															<c:when test="${listForManager.separation=='4'}">
+															<c:when test="${listForManager.bSeparation=='4'}">
 														[기타]
 													</c:when>
 														</c:choose></td>

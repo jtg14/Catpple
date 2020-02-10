@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import vo.MemberVO;
+import vo.OrderVO;
 
 @Repository
 public class MemberDAO {
@@ -45,5 +46,8 @@ public class MemberDAO {
 	}
 	public MemberVO searchPW(MemberVO vo) {
 		return dao.selectOne(NS+"searchPW",vo);
+	}
+	public int updateAddr(OrderVO vo) {
+		return dao.update(NS+"updateAddr",vo);
 	}
 }

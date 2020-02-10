@@ -6,7 +6,7 @@
 
 	<!-- memberJoin() -->
 	<insert id="join" >
-		insert into member (mid,mpw,memail,mphone,mname,maddr1,maddr2,maddr3,mpoint,mgrade,mstatus) values (#{mId},#{mPw},#{mEmail},#{mPhone},#{mName},0,null,null,0,#{mGrade},default)
+		insert into member (mId,mPw,mEmail,mPhone,mname,maddr1,maddr2,maddr3,mpoint,mgrade,mstatus) values (#{mId},#{mPw},#{mEmail},#{mPhone},#{mName},0,null,null,0,#{mGrade},default)
 	</insert>
 	<select id="idcheck" resultType="vo.MemberVO">
 	select * from Member where mid=#{mId}
@@ -31,7 +31,9 @@
 	<update id="mdelete">
 		update member set mstatus='T' where mid=#{mId}
 	</update>
-	
+	<update id = "updateAddr">
+	update member set mAddr1 = #{oAddr1} and mAddr2 = #{oAddr2} and mAddr3 = #{oAddr3} and mAddr4 = #{oAddr4} where mId= #{member_mId}
+	</update>
 	<!-- searchID -->
 	<select id="searchID" resultType="vo.MemberVO">
 		select * from member where mName = #{mName} and mPhone = #{mPhone}

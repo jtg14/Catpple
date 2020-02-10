@@ -3,7 +3,7 @@ package vo;
 import java.sql.Date;
 
 public class DeliveryVO {
-	int dAddr;
+	int dAddr1;
 	String dAddr2;
 	String dAddr3;
 	String dState;
@@ -11,11 +11,11 @@ public class DeliveryVO {
 	int dNum;
 	Date dDate;
 	int order_oNum;
-	public int getdAddr() {
-		return dAddr;
+	public int getdAddr1() {
+		return dAddr1;
 	}
-	public void setdAddr(int dAddr) {
-		this.dAddr = dAddr;
+	public void setdAddr1(int dAddr1) {
+		this.dAddr1 = dAddr1;
 	}
 	public String getdAddr2() {
 		return dAddr2;
@@ -61,8 +61,20 @@ public class DeliveryVO {
 	}
 	@Override
 	public String toString() {
-		return "DeliveryVO [dAddr=" + dAddr + ", dAddr2=" + dAddr2 + ", dAddr3=" + dAddr3 + ", dState=" + dState
+		return "DeliveryVO [dAddr1=" + dAddr1 + ", dAddr2=" + dAddr2 + ", dAddr3=" + dAddr3 + ", dState=" + dState
 				+ ", dInfo=" + dInfo + ", dNum=" + dNum + ", dDate=" + dDate + ", order_oNum=" + order_oNum + "]";
+	}
+	public DeliveryVO(int dAddr, String dAddr2, String dAddr3, String dState, String dInfo, int dNum, Date dDate,
+			int order_oNum) {
+		super();
+		this.dAddr1 = dAddr;
+		this.dAddr2 = dAddr2;
+		this.dAddr3 = dAddr3;
+		this.dState = dState;
+		this.dInfo = dInfo;
+		this.dNum = dNum;
+		this.dDate = dDate;
+		this.order_oNum = order_oNum;
 	}
 	
 	
