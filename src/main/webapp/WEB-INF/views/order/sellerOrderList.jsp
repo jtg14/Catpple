@@ -155,23 +155,18 @@ padding-right: 0px;
 
 						<div class="col-md-10 col-xs-12">
 							<h2 style="color: crimson">받은 주문 목록</h2>
-							<c:choose>
-								<c:when test="${goodsInsertInfo!=null}">
-									<div class="col-md-12 col-xs-12"><h1>${goodsInsertInfo}</h1></div>
-								</c:when>
-								<c:otherwise></c:otherwise>
-							</c:choose>
-							<c:forEach begin="1" end="5">
+							
+							<c:forEach var="list" items="${list}">
 								<div class="container text-center"
 									style="border-top: 2px solid lightgray; padding-top: 10px; padding-bottom: 10px;">
 									<div class="col-md-6 col-xs-12"
 										style="padding-top: 0px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px;">
 										<div class="col-md-6 col-xs-3" style="padding-left: 0px;">
-											<input type="checkbox"> <img class="img"
+											<input name="box2" value="${list.dstate}" type="checkbox"> <img class="img"
 												src="resources/foodImg/mainfood1.jpg" />
 										</div>
 										<div class="col-md-6 col-xs-9 second-div">
-											<h4>프로베스트 캣 밸런스 15kg</h4>
+											<h4>${list.gname}</h4>
 											<label style="font-size: x-small;">재고 있음</label>
 										</div>
 
@@ -179,26 +174,45 @@ padding-right: 0px;
 									</div>
 									<div class="col-md-6 col-xs-12 third-div">
 										<div class="col-md-6 col-xs-6">
-											<span>10000원</span>
+											<span>${list.gprice}원</span>
 										</div>
 										<div class="col-md-3 col-xs-4" style="padding-right: 10px;">
 											<span class="pull-right">주문 수량 : </span>
 										</div>
 										<div class="col-md-3 col-xs-2">
-											<span class="pull-left">5</span>
+											<span class="pull-left">${list.ostock}</span>
 										</div>
 
 										<div class="col-md-6 col-xs-12 fourth-div"
-											style="margin-top: 10px;">
-											<span>주문자ID : prokofiev</span>
-										</div>
-
+		                                	 style="margin-top: 10px;">
+		                                	 <span>주문자ID : ${list.member_mId}</span>
+		                            	  </div>
+		                              
+		                            	  <div class="col-md-5" style="margin-top: 10px;">
+		                           	      <span>배송상태 : 
+			                           	      <c:choose>
+			                           	    	  <c:when test="${list.dstate=='a'}">
+			                           	     		 배송준비 중
+			                           	     	  </c:when>
+			                           	     	  
+			                           	     	  <c:when test="${list.dstate=='b'}">
+			                           	     		 배송 중
+			                           	     	  </c:when>
+			                           	     	  
+			                           	     	  <c:when test="${list.dstate=='c'}">
+			                           	     		 배송 완료
+			                           	     	  </c:when>
+			                           	      </c:choose>
+		                           	      </span>
+		                          	    </div>
 
 
 									</div>
 								</div>
 							</c:forEach>
-
+							<div class="col-md-12 col-xs-12">
+		                	     <button class="btn btn-danger pull-right" onclick="return confirm('배송상태를 변경하시겠습니까?')">배송상태변경</button>
+		                    </div>
 						</div>
 					</div>
 				</div>
@@ -210,6 +224,17 @@ padding-right: 0px;
 	</div>
 	<!-- /#wrapper -->
 
+
+
+	<scirpt>
+	$(function(){
+		var dstateList = new Array();
+		$("input[name=box2]:checked").each(function())
+	
+	
+	
+	});
+	</scirpt>
 
 	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.js"></script>

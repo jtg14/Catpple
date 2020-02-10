@@ -25,8 +25,10 @@ public class OrderVO {
 	public Date getoDate() {
 		return oDate;
 	}
+
 	public void setoDate(Date oDate) {
 		this.oDate = oDate;
+
 	}
 	public int getoPrice() {
 		return oPrice;
@@ -100,6 +102,7 @@ public class OrderVO {
 				+ oAddr1 + ", oAddr2=" + oAddr2 + ", oAddr3=" + oAddr3 + ", oAddr4=" + oAddr4 + ", oPhone=" + oPhone
 				+ ", oState=" + oState + ", dInfo=" + dInfo + ", member_mId=" + member_mId + ", goods_gNum="
 				+ goods_gNum + "]";
+
 	}
 	
 	

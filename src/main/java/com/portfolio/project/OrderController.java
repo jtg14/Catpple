@@ -18,6 +18,7 @@ import business.CService;
 import business.MService;
 import business.OService;
 import vo.CartVO;
+import vo.GoodsVO;
 import vo.MemberVO;
 import vo.OrderVO;
 
@@ -52,7 +53,13 @@ public class OrderController {//주문성공 페이지
 	}
 	
 	@RequestMapping(value ="/sOList")//주문 요청 목록
-	public ModelAndView sellerOrderList(ModelAndView model) {
+	public ModelAndView sellerOrderList(ModelAndView model, HttpServletRequest request, MemberVO mvo) {
+		
+		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+		GoodsVO gvo = new GoodsVO();
+		gvo.setMember_mid(mvo.getmId());
+		ArrayList<CartVO> list = cartService.selectReceivedOrderList(gvo);
+		model.addObject("list",list);
 		model.setViewName("order/sellerOrderList");
 		return model;
 	}

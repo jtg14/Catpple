@@ -3,6 +3,7 @@ package business;
 import java.util.ArrayList;
 
 import vo.CartVO;
+import vo.GoodsVO;
 import vo.MemberVO;
 
 public interface CService {
@@ -17,4 +18,6 @@ public interface CService {
 	int getCartRow(MemberVO vo);
 	
 	ArrayList<CartVO> purchaseList(int [] arr,String memberid);
+	
+	ArrayList<CartVO> selectReceivedOrderList(GoodsVO vo);
 }

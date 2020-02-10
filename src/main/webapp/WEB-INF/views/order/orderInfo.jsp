@@ -216,6 +216,7 @@
 											<input type="text" class="form-control" name="oAddr2"
 												id="sample2_address" placeholder="주소" value="${logInUser.mAddr2}">
 										</div>
+
 										<div class="col-md-4 col-xs-12" style="padding-left: 0px;height: 40px;">		
 												<input type="text" class="form-control" name="oAddr3"
 												id="sample2_extraAddress" placeholder="참고항목" value="${logInUser.mAddr3}">
@@ -223,6 +224,7 @@
 										<div class="col-md-8 col-xs-12" style="padding-left: 0px;height: 40px;">
 											<input type="text" id="sample2_detailAddress" name="oAddr4"
 												placeholder="상세주소" class="form-control" value="${logInUser.mAddr4}">
+
 										</div>
 										<div id="layer"
 											style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">

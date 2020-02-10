@@ -8,41 +8,34 @@ public class CartVO {
 	private String gName;
 	private int gPrice;
 	private String sellerID; 
-	private String gImg1;
-	public int getcId() {
-		return cId;
+	private String gimg1;
+	private String dstate;
+	public String getDstate() {
+		return dstate;
 	}
-	public void setcId(int cId) {
-		this.cId = cId;
+	public void setDstate(String dstate) {
+		this.dstate = dstate;
 	}
-	public int getcAmount() {
-		return cAmount;
+	public int getOstock() {
+		return ostock;
 	}
-	public void setcAmount(int cAmount) {
-		this.cAmount = cAmount;
+	public void setOstock(int ostock) {
+		this.ostock = ostock;
 	}
-	public String getMember_mId() {
-		return member_mId;
-	}
-	public void setMember_mId(String member_mId) {
-		this.member_mId = member_mId;
-	}
-	public int getGoods_gNum() {
-		return goods_gNum;
-	}
-	public void setGoods_gNum(int goods_gNum) {
-		this.goods_gNum = goods_gNum;
-	}
-	public String getgName() {
+
+
+	private int ostock;
+	
+	public String getGname() {
 		return gName;
 	}
-	public void setgName(String gName) {
+	public void setGname(String gName) {
 		this.gName = gName;
 	}
-	public int getgPrice() {
+	public int getGprice() {
 		return gPrice;
 	}
-	public void setgPrice(int gPrice) {
+	public void setGprice(int gPrice) {
 		this.gPrice = gPrice;
 	}
 	public String getSellerID() {
@@ -51,22 +44,20 @@ public class CartVO {
 	public void setSellerID(String sellerID) {
 		this.sellerID = sellerID;
 	}
-	public String getgImg1() {
-		return gImg1;
+	public String getGimg1() {
+		return gimg1;
 	}
-	public void setgImg1(String gImg1) {
-		this.gImg1 = gImg1;
+	public void setGimg1(String gimg1) {
+		this.gimg1 = gimg1;
 	}
+
+
 	@Override
 	public String toString() {
 		return "CartVO [cId=" + cId + ", cAmount=" + cAmount + ", member_mId=" + member_mId + ", goods_gNum="
-				+ goods_gNum + ", gName=" + gName + ", gPrice=" + gPrice + ", sellerID=" + sellerID + ", gImg1=" + gImg1
-				+ "]";
+				+ goods_gNum + ", gname=" + gName + ", gprice=" + gPrice + ", sellerID=" + sellerID + ", gimg1=" + gimg1
+				+ ", dstate=" + dstate + ", ostock=" + ostock + "]";
+
 	}
-	
-	
-	
-	
-	
 	
 }
