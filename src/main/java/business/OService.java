@@ -1,10 +1,16 @@
 package business;
 
+import java.util.ArrayList;
+
 import vo.OrderVO;
+import vo.PaymentVO;
 
 public interface OService {
 
-	int insertOrder(OrderVO vo);
+	int insertOandD(ArrayList olist);
 	
 	OrderVO findOrder(int oNum);
+	
+	int insertPayment(PaymentVO vo);
+	
 }

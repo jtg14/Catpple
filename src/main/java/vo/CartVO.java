@@ -8,6 +8,7 @@ public class CartVO {
 	private String gName;
 	private int gPrice;
 	private String sellerID; 
+
 	private String gImg1;
 	private String dState;
 	private int gStock;
@@ -91,8 +92,7 @@ public class CartVO {
 				+ goods_gNum + ", gName=" + gName + ", gPrice=" + gPrice + ", sellerID=" + sellerID + ", gImg1=" + gImg1
 				+ ", dState=" + dState + ", gStock=" + gStock + ", dDate=" + dDate + ", dPk=" + dPk + "]";
 	}
-	
 
-	
+
 	
 }

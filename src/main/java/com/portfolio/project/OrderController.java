@@ -120,17 +120,23 @@ public class OrderController {//주문성공 페이지
 		}
 		log.info("장바구니에서 불러온 목록 처리할 list로 옮기기 성공 !");
 		log.info("장바구니 모든항목 삭제 완료 !");
+		PaymentVO pvo = new PaymentVO();
+		pvo.setpPrice(0);
+		log.info("결체 정보 총가격 초기화");
 		for(OrderVO ovo : olist) {
-			OrderVO ovo2 =  service.findOrder(service.insertOrder(ovo)*-1);
-			log.info(ovo2.toString());
-			vertualList.add(ovo2);
-			expectedPoint += ovo.getoPrice() / 10;
+			pvo.setpPrice(pvo.getpPrice()+ovo.getoPrice());
+		}
+		
+		int pnum = service.insertPayment(pvo);
+		for(OrderVO ovo : olist) {
+			ovo.setPayment_pNum(pnum);
 		}
 		log.info("불러온 List 처리후 반환된객체 가상List 에 추가 성공");
 		request.getSession().setAttribute("vtList",vertualList);
 		request.getSession().setAttribute("listSize",vertualList.size());
 		request.getSession().setAttribute("orderInfo",vertualList.get(0));
 		log.info("가상 List Session에 추가성공");
+		log.info("가상리스트 출력");
 		logInUser.setmPoint(expectedPoint);
 		mservice.addPoint(logInUser);
 		request.getSession().setAttribute("Point", expectedPoint);
