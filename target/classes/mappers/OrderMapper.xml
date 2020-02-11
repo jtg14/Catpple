@@ -13,10 +13,9 @@
 	</select>
 	<!-- 결재정보 추가 -->
 	<insert id="insertPayment">
-	@paymentNumber:=(select ifnull(max(pNum),0)+1 from payment as pNum);
-	insert  into payment (pNum,pPrice,pDate,pPayment) values (,#{pPrice},default,'신용카드')
-	<selectKey keyProperty="pNum" resultType="int" order="AFTER">
-		SELECT LAST_INSERT_ID()
+	insert  into payment (pPrice,pDate,pPayment) values (${pPrice},default,'신용카드')
+	<selectKey keyProperty="pNum" resultType="integer" order="AFTER">
+		SELECT LAST_INSERT_ID() as pNum
 	</selectKey>
 	</insert>
 	<insert id="insertOandD" parameterType="java.util.HashMap">

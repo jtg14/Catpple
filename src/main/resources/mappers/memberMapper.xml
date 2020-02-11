@@ -32,7 +32,7 @@
 		update member set mstatus='T' where mid=#{mId}
 	</update>
 	<update id = "updateAddr">
-	update member set mAddr1 = #{oAddr1} and mAddr2 = #{oAddr2} and mAddr3 = #{oAddr3} and mAddr4 = #{oAddr4} where mId= #{member_mId}
+	update member set mAddr1 = #{oAddr1} , mAddr2 = #{oAddr2} , mAddr3 = #{oAddr3} , mAddr4 = #{oAddr4} where mId= #{member_mId}
 	</update>
 	<update id = "addPoint">
 	update member set mPoint = mPoint + #{mPoint} where mid = #{mId};
