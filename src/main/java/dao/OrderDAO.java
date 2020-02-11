@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import vo.GoodsVO;
 import vo.OrderVO;
 import vo.PaymentVO;
 
@@ -35,4 +36,10 @@ import vo.PaymentVO;
 	public PaymentVO findPayment(PaymentVO vo) {
 		return dao.selectOne(NS+"findPayment",vo);
 	}
+	
+	public ArrayList<OrderVO> oListInPnum(PaymentVO vo){
+		return (ArrayList)dao.selectList(NS+"oListInPnum", vo);
+	}
+	
+	
 }

@@ -183,8 +183,6 @@ public class OrderController {//주문성공 페이지
 	public ModelAndView myInfoOrderDelivery(ModelAndView model,HttpServletRequest request) {
 		MemberVO mvo =(MemberVO)request.getSession().getAttribute("logInUser");
 		ArrayList<PaymentVO> plist = pservice.paymentList(mvo);
-		System.out.println("plist인덱스0=>"+plist.get(0));
-		System.out.println("plist인덱스1=>"+plist.get(1));
 		model.addObject("plist", plist);
 		
 		model.setViewName("myInfo/myInfoOrderDelivery");
@@ -192,4 +190,20 @@ public class OrderController {//주문성공 페이지
 	}
 	
 	
-}
+	
+	@RequestMapping(value = "/oListInPnum")
+	public ModelAndView oListInPnum(ModelAndView model, HttpServletRequest request, PaymentVO pvo) {
+		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+		pvo.setMember_mId(mvo.getmId());
+		
+		int pNum = Integer.parseInt(request.getParameter("pNum"));
+		pvo.setpNum(pNum);
+		
+		ArrayList<OrderVO> oplist = service.oListInPnum(pvo);
+		
+		model.setViewName("myInfo/myInfoOrderDelivery");
+		return model;
+	}
+	
+	
+}//class

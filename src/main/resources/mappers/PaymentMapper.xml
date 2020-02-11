@@ -7,8 +7,7 @@
 <mapper namespace="portfolio.mapper.PaymentMapper">
 
 <select id="paymentList" resultType="vo.PaymentVO">
-	select distinct p.* from payment p, corder o  where o.payment_pnum=p.pnum and o.member_mid=#{mId}
-	order by p.pdate; 
+	select distinct p.* from payment p, corder o  where o.payment_pnum=p.pnum and o.member_mid=#{mId} order by p.pdate desc; 
 	</select>
 	
 </mapper>

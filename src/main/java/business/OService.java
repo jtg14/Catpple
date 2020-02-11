@@ -2,6 +2,7 @@ package business;
 
 import java.util.ArrayList;
 
+import vo.GoodsVO;
 import vo.OrderVO;
 import vo.PaymentVO;
 
@@ -14,4 +15,6 @@ public interface OService {
 	int insertPayment(PaymentVO vo);
 	
 	PaymentVO findPayment(PaymentVO vo);
+	
+	ArrayList<OrderVO> oListInPnum(PaymentVO vo);
 }

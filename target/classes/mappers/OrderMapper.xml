@@ -33,5 +33,10 @@
 	</foreach>
 	</insert>
 	
+	<select id="oListInPnum" resultType="vo.OrderVO">
+		select g.gimg1, g.gname, g.member_mid, g.gprice*g.gstock as midPrice , m.mphone, d.dstate, d.dnum
+		from goods as g, member as m, delivery as d, corder as o
+		where o.goods_gnum= g.gnum and d.corder_onum=o.onum and m.mid=g.member_mid and o.member_mid=#{mId} and o.payment_pnum=#{pNum}
+	</select>
 	
 </mapper>
