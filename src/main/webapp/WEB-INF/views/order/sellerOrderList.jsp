@@ -162,32 +162,32 @@ padding-right: 0px;
 						</div>
 					
 						<div class="col-md-10 col-xs-12">
-						
-							<c:forEach var="list" items="${list}">
+							<form>
+							<c:forEach var="list" items="${list}" varStatus="vs">
 								<div id="" class="container text-center"
 									style="border-top: 2px solid lightgray;padding-top: 10px; padding-bottom: 10px;">
 									<div class="col-md-6 col-xs-12"
 										style="padding-top: 0px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px;">
 										<div class="col-md-6 col-xs-3" style="padding-left: 0px;">
-											<input name="box2" value="${list.dpk}" type="checkbox"> <img class="img"
-												src="resources/sellerInfo/${logInUser.mId}/${list.gname}"/>
+											<input name="box2" value="${list.dPk}" type="checkbox" onclick="chBox(this.form,'${list.dState}',${vs.index})"> <img class="img"
+												src="resources/sellerInfo/${logInUser.mId}/${list.gName}"/>
 										</div>
 										
 										<div class="col-md-6 col-xs-9 second-div">
-											<h4>${list.gname}</h4>
-											<label style="font-size: x-small;">재고 : ${list.gstock}</label>
+											<h4>${list.gName}</h4>
+											<label style="font-size: x-small;">재고 : ${list.gStock}</label>
 										</div>
 
 									</div>
 									<div class="col-md-6 col-xs-12 third-div">
 										<div class="col-md-6 col-xs-6">
-											<span>${list.gprice}원</span>
+											<span>${list.gPrice}원</span>
 										</div>
 										<div class="col-md-3 col-xs-4" style="padding-right: 10px;">
 											<span class="pull-right">주문 수량 : </span>
 										</div>
 										<div class="col-md-3 col-xs-2">
-											<span class="pull-left">${list.ostock}</span>
+											<span class="pull-left">${list.gStock}</span>
 										</div>
 
 										<div class="col-md-6 col-xs-12 fourth-div"
@@ -199,27 +199,27 @@ padding-right: 0px;
 		                            	  <div class="col-md-5" >
 		                           	      <span>
 			                           	      <c:choose>
-			                           	    	  <c:when test="${list.dstate=='a'}">
+			                           	    	  <c:when test="${list.dState=='a'}">
 			                           	     		<font style="color:crimson;"> 배송준비 중</font>
 			                           	     	  </c:when>
 			                           	     	  
-			                           	     	  <c:when test="${list.dstate=='b'}">
+			                           	     	  <c:when test="${list.dState=='b'}">
 			                           	     		 <font style="color:#FF8C00;">배송 중</font>
 			                           	     	  </c:when>
 			                           	     	  
-			                           	     	  <c:when test="${list.dstate=='c'}">
+			                           	     	  <c:when test="${list.dState=='c'}">
 			                           	     		<font style="color:green;"> 배송 완료 </font>
 			                           	     	  </c:when>
 			                           	      </c:choose>
 		                           	      </span><br>
-		                           	      ${list.ddate}
+		                           	      ${list.dDate}
 		                          	    </div>
 
 
 									</div>
 								</div>
 							</c:forEach>
-						
+						</form>
 							
 						</div>
 					</div>

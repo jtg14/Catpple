@@ -197,8 +197,6 @@ public class OrderController {//주문성공 페이지
 	public ModelAndView myInfoOrderDelivery(ModelAndView model,HttpServletRequest request) {
 		MemberVO mvo =(MemberVO)request.getSession().getAttribute("logInUser");
 		ArrayList<PaymentVO> plist = pservice.paymentList(mvo);
-		System.out.println("plist인덱스0=>"+plist.get(0));
-		System.out.println("plist인덱스1=>"+plist.get(1));
 		model.addObject("plist", plist);
 		
 		model.setViewName("myInfo/myInfoOrderDelivery");
