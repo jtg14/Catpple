@@ -291,3 +291,12 @@ function deliveryButton(){
 }
 
 
+function chBox(frm,st,num) {
+    if (frm.box2[num].checked == true && st != "a") {
+       alert("배송준비중인 상품을 선택해주세요.");
+       frm.box2[num].checked = false;
+    }
+ }
+
+
+
