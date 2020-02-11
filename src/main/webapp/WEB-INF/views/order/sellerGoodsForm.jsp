@@ -169,14 +169,14 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 										</div>
 										<!-- Grid column -->
 										<div class="col-md-3 col-xs-12">
-											<select id="sidoSelect" class="form-control" name="gcategory"
+											<select id="sidoSelect" class="form-control" name="gCategory"
 												onChange="changeSidoSelect();">
 												<option value="">대분류</option>
 											</select>
 										</div>
 										<div class="col-md-3 col-xs-12">
 											<select id="gugunSelect" class="form-control"
-												name="gcategory2" onChange="changeSecondSelect();">
+												name="gCategory2" onChange="changeSecondSelect();">
 												<option value="">소분류</option>
 											</select>
 										</div>
@@ -193,7 +193,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 											<!-- Material input -->
 											<div class="form-group">
 												<label for="goodsName">상품 이름</label> <input type="text"
-													class="form-control" id="goodsName" name="gname"
+													class="form-control" id="goodsName" name="gName"
 													placeholder="상품이름">
 
 											</div>
@@ -212,7 +212,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 											<div class="form-group ">
 												<div class="input-group">
 													<input type="number" class="form-control" id="gprice"
-														name="gprice" placeholder="0"> <span
+														name="gPrice" placeholder="0"> <span
 														class="input-group-addon">원</span>
 												</div>
 											</div>
@@ -224,7 +224,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 											<div class="form-group">
 												<div class="input-group">
 													<input type="number" class="form-control" id="goodsAmount"
-														name="gstock" placeholder="0"> <span
+														name="gStock" placeholder="0"> <span
 														class="input-group-addon">개</span>
 												</div>
 											</div>
