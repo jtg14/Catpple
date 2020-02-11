@@ -84,7 +84,7 @@
 						<div class="col-md-2 col-md-offset-4 col-xs-6">
 							<button type="submit" class="btn btn-danger btn-lg pull-right"
 								style="font-size: 1.4em;"
-								onclick="purchase('${logInUser.mGrade}')">구매하기</button>
+								onclick="return purchase('${logInUser.mGrade}')">구매하기</button>
 						</div>
 
 						<div class="col-md-2 col-xs-6">
