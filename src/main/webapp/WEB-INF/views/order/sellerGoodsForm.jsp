@@ -206,7 +206,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 									<!-- row4 상품가격/상품수량/등록날짜 -->
 									<div class="row">
 										<!-- Grid column -->
-										<div class="col-md-2 col-xs-6">
+										<div class="col-md-4 col-xs-6">
 											<label for="goodsPrice">상품 가격</label>
 											<!-- Material input -->
 											<div class="form-group ">
@@ -218,7 +218,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 											</div>
 										</div>
 										<!-- Grid column -->
-										<div class="col-md-2 col-xs-6">
+										<div class="col-md-4 col-xs-6">
 											<label for="goodsAmount">상품 수량</label>
 											<!-- Material input -->
 											<div class="form-group">
@@ -234,20 +234,20 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 
 									<!-- row6 상품 이미지 -->
 									<div class="row">
-										<div class="col-md-12">
+										<div class="col-md-10 col-xs-12">
 											<label for="goodsInfo">상품 메인 이미지</label>
 											<div class="form-group">
 												<input class="form-control" type="file" id="uploadfilef"
-													name="gimgf1" ><span id="upfMessage"
+													onchange="checkFile(this)" name="gimgf1" ><span id="upfMessage"
 													style="color: red;"></span>
 											</div>
 										</div>
 
-										<div class="col-md-12">
+										<div class="col-md-10 col-xs-12">
 											<label for="goodsInfo">상품 상세 설명 이미지</label>
 											<div class="form-group">
 												<input class="form-control" type="file" id="uploadfilef2"
-													name="gimgf2" ><span id="upfMessage2"
+													onchange="checkFile(this)" name="gimgf2" ><span id="upfMessage2"
 													style="color: red;"></span>
 											</div>
 										</div>
