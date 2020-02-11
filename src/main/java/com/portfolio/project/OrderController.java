@@ -100,8 +100,6 @@ public class OrderController {//주문성공 페이지
 		log.info("주문할 장바구니 받아오기 성공 !");
 		ArrayList<OrderVO> olist = new ArrayList<OrderVO>();
 		log.info("장바구니 에서 주문목록으로 옮길 List생성");
-		ArrayList<OrderVO> vertualList = new ArrayList<OrderVO>();
-		log.info("처리후 반환될 주문목록 받아올 가상List생성");
 		MemberVO logInUser = (MemberVO)request.getSession().getAttribute("logInUser");
 		log.info("세션 유저 불러오기성공");
 		if(mservice.login(logInUser).getmAddr1() == 0) {
@@ -128,15 +126,18 @@ public class OrderController {//주문성공 페이지
 		}
 		
 		int pnum = service.insertPayment(pvo);
-		for(OrderVO ovo : olist) {
-			ovo.setPayment_pNum(pnum);
+		for(int i = 0;i < olist.size();i++) {
+			olist.get(i).setPayment_pNum(pnum);
 		}
-		log.info("불러온 List 처리후 반환된객체 가상List 에 추가 성공");
-		request.getSession().setAttribute("vtList",vertualList);
-		request.getSession().setAttribute("listSize",vertualList.size());
-		request.getSession().setAttribute("orderInfo",vertualList.get(0));
-		log.info("가상 List Session에 추가성공");
-		log.info("가상리스트 출력");
+		log.info("모든 list에  pNum 부여성공");
+		service.insertOandD(olist);
+		log.info("모든 주문 각테이블로 전송 성공!");
+		pvo.setpNum(pnum);
+		request.getSession().setAttribute("paymentInfo",service.findPayment(pvo));
+		log.info("결재정보 불러오기 성공");
+		request.getSession().setAttribute("olist",olist);
+		request.getSession().setAttribute("dupInfo",olist.get(0));
+		log.info("주문테이블  Session에 추가성공");
 		logInUser.setmPoint(expectedPoint);
 		mservice.addPoint(logInUser);
 		request.getSession().setAttribute("Point", expectedPoint);

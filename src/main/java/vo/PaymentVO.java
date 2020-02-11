@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class PaymentVO {
 
+
 	private int pPrice;
 	private int pNum;
 	private Date pDate;
@@ -76,22 +77,17 @@ public class PaymentVO {
 				+ ", mPhone=" + mPhone + "]";
 	}
 	
-	
-	
-	
-
-
-	
+   
 
 
 
-//	public PaymentVO(int pPrice, int pNum, String pDate, String pPayment) {
-//		super();
-//		this.pPrice = pPrice;
-//		this.pNum = pNum;
-//		this.pDate = pDate;
-//		this.pPayment = pPayment;
-//	
-//	}
-	
+//   public PaymentVO(int pPrice, int pNum, String pDate, String pPayment) {
+//      super();
+//      this.pPrice = pPrice;
+//      this.pNum = pNum;
+//      this.pDate = pDate;
+//      this.pPayment = pPayment;
+//   
+//   }
+   
 }
