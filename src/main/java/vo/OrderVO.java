@@ -172,7 +172,7 @@ public class OrderVO {
 				+ dState + ", midPrice=" + midPrice + ", member_mId=" + member_mId + ", mPhone=" + mPhone
 				+ ", goods_gNum=" + goods_gNum + ", gName=" + gName + ", gImg1=" + gImg1 + ", sellerID=" + sellerID
 				+ ", payment_pNum=" + payment_pNum + ", pPayment=" + pPayment + "]";
+
 	}
-	
 	
 }

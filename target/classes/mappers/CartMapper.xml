@@ -22,10 +22,9 @@
 	</select>
 	<select id="purchaseList" resultType="vo.CartVO" parameterType="java.util.HashMap">
     select c.*,g.gnum,g.gname,g.gprice from cart c ,goods g where c.goods_gnum = g.gnum and c.member_mid ='${member_mId}' and
-                <foreach collection="cIdList" item="item" index="index" separator="or" open="(" close=")">
-                cId = ${item}       
+           <foreach collection="cIdList" item="item" index="index" separator="or" open="(" close=")">
+                cId = ${item}
            </foreach>
-          
 	</select>
 
 	<select id="selectReceivedOrderList" resultType="vo.CartVO">
