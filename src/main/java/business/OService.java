@@ -10,11 +10,13 @@ public interface OService {
 
 	int insertOandD(ArrayList olist);
 	
-	OrderVO findOrder(int oNum);
-	
 	int insertPayment(PaymentVO vo);
 	
 	PaymentVO findPayment(PaymentVO vo);
 	
+
 	ArrayList<OrderVO> oListInPnum(PaymentVO vo);
+
+	ArrayList<OrderVO> getOrderList(PaymentVO vo);
+
 }

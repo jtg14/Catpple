@@ -30,16 +30,18 @@ import vo.PaymentVO;
 		map.put("olist",olist);
 		return dao.insert(NS+"insertOandD",map);
 	}
-	public OrderVO findOrder(int oNum) {
-		return dao.selectOne(NS+"findOrder",oNum);
-	}
+
 	public PaymentVO findPayment(PaymentVO vo) {
 		return dao.selectOne(NS+"findPayment",vo);
 	}
+
 	
 	public ArrayList<OrderVO> oListInPnum(PaymentVO vo){
 		return (ArrayList)dao.selectList(NS+"oListInPnum", vo);
 	}
 	
-	
+	public ArrayList<OrderVO> getOrderList(PaymentVO vo) {
+		return (ArrayList)dao.selectList(NS+"getOrderList",vo);
+	}
+
 }

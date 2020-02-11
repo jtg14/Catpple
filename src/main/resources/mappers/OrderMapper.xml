@@ -5,17 +5,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="portfolio.mapper.OrderMapper">
-	<select id ="findOrder" parameterType="int" resultType="OrderVO">
-	select o.*,d.dInfo,d.dNum,p.pNum,p.ppayment,g.gName from corder o,payment p,
-	delivery d,goods g where o.oNum = ${value} and p.corder_oNum = ${value}
-	 and d.corder_oNum = ${value} and g.gnum = o.goods_gNum;
+	<select id="getOrderList" resultType="vo.OrderVO">
+		select o.*,g.gName,g.gImg1,g.member_mId sellerID from corder o,payment p,goods g where payment_pNum = #{pNum} and o.payment_pNum = p.pNum and o.goods_gNum = g.gNum
 	</select>
 	<select id="findPayment" resultType="vo.PaymentVO">
 	select * from payment where pNum = #{pNum}
 	</select>
 	<!-- 결재정보 추가 -->
 	<insert id="insertPayment">
-	insert  into payment (pNum,pPrice,pDate,pPayment) values ((select ifnull(max(pNum),0)+1 from payment as pNum),#{pPrice},default,'신용카드')
+	@paymentNumber:=(select ifnull(max(pNum),0)+1 from payment as pNum);
+	insert  into payment (pNum,pPrice,pDate,pPayment) values (,#{pPrice},default,'신용카드')
 	<selectKey keyProperty="pNum" resultType="int" order="AFTER">
 		SELECT LAST_INSERT_ID()
 	</selectKey>
@@ -24,11 +23,11 @@
 	<foreach collection="olist" item="item">
 	select @orderNumber:=(select ifnull(max(oNum),0)+1 from corder as onum);
 	insert into corder (oNum,oDate,oPrice,oStock,oAddr1,oAddr2,oAddr3,oAddr4,oStatus,oName,oPhone,member_mId,goods_gNum,payment_pNum) 
-	values (@orderNumber,default,#{item.oPrice},#{item.oStock},#{item.oAddr1},#{item.oAddr2},#{item.oAddr3},
-			#{item.oAddr4},'주문완료',#{item.oName},#{item.oPhone},#{item.member_mId},#{item.goods_gNum},#{item.payment_pNum});
+	values (@orderNumber,default,${item.oPrice},${item.oStock},${item.oAddr1},'${item.oAddr2}','${item.oAddr3}',
+			'${item.oAddr4}','주문완료','${item.oName}','${item.oPhone}','${item.member_mId}',${item.goods_gNum},${item.payment_pNum});
 	insert into delivery
-	value((select ifnull(max(DPK),0)+1 from delivery as dp),'배송준비중',#{item.oAddr1},
-	#{item.oAddr2},#{item.oAddr3},#{item.oAddr4},#{item.dInfo},LPAD((select ifnull(max(DPK),0)+1 from delivery as dp2),
+	value((select ifnull(max(DPK),0)+1 from delivery as dp),'배송준비중',${item.oAddr1},
+	'${item.oAddr2}','${item.oAddr3}','${item.oAddr4}','${item.dInfo}',LPAD((select ifnull(max(DPK),0)+1 from delivery as dp2),
 	12 ,concat(DATE_FORMAT(current_timestamp,'%Y%m%d'),'000')),default,@orderNumber);
 	</foreach>
 	</insert>

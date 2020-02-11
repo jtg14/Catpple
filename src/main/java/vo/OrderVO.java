@@ -16,9 +16,14 @@ public class OrderVO {
 	String oPhone;
 	String dNum;
 	String dInfo;
+	String dState;
+	int midPrice;
 	String member_mId;
+	String mPhone;
 	int goods_gNum;
 	String gName;
+	String gImg1;
+	String sellerID;
 	int payment_pNum;
 	String pPayment;
 	public int getoNum() {
@@ -99,11 +104,29 @@ public class OrderVO {
 	public void setdInfo(String dInfo) {
 		this.dInfo = dInfo;
 	}
+	public String getdState() {
+		return dState;
+	}
+	public void setdState(String dState) {
+		this.dState = dState;
+	}
+	public int getMidPrice() {
+		return midPrice;
+	}
+	public void setMidPrice(int midPrice) {
+		this.midPrice = midPrice;
+	}
 	public String getMember_mId() {
 		return member_mId;
 	}
 	public void setMember_mId(String member_mId) {
 		this.member_mId = member_mId;
+	}
+	public String getmPhone() {
+		return mPhone;
+	}
+	public void setmPhone(String mPhone) {
+		this.mPhone = mPhone;
 	}
 	public int getGoods_gNum() {
 		return goods_gNum;
@@ -116,6 +139,18 @@ public class OrderVO {
 	}
 	public void setgName(String gName) {
 		this.gName = gName;
+	}
+	public String getgImg1() {
+		return gImg1;
+	}
+	public void setgImg1(String gImg1) {
+		this.gImg1 = gImg1;
+	}
+	public String getSellerID() {
+		return sellerID;
+	}
+	public void setSellerID(String sellerID) {
+		this.sellerID = sellerID;
 	}
 	public int getPayment_pNum() {
 		return payment_pNum;
@@ -133,10 +168,11 @@ public class OrderVO {
 	public String toString() {
 		return "OrderVO [oNum=" + oNum + ", oDate=" + oDate + ", oPrice=" + oPrice + ", oStock=" + oStock + ", oAddr1="
 				+ oAddr1 + ", oAddr2=" + oAddr2 + ", oAddr3=" + oAddr3 + ", oAddr4=" + oAddr4 + ", oStatus=" + oStatus
-				+ ", oName=" + oName + ", oPhone=" + oPhone + ", dNum=" + dNum + ", dInfo=" + dInfo + ", member_mId="
-				+ member_mId + ", goods_gNum=" + goods_gNum + ", gName=" + gName + ", payment_pNum=" + payment_pNum
-				+ ", pPayment=" + pPayment + "]";
+				+ ", oName=" + oName + ", oPhone=" + oPhone + ", dNum=" + dNum + ", dInfo=" + dInfo + ", dState="
+				+ dState + ", midPrice=" + midPrice + ", member_mId=" + member_mId + ", mPhone=" + mPhone
+				+ ", goods_gNum=" + goods_gNum + ", gName=" + gName + ", gImg1=" + gImg1 + ", sellerID=" + sellerID
+				+ ", payment_pNum=" + payment_pNum + ", pPayment=" + pPayment + "]";
+
 	}
-	
 	
 }

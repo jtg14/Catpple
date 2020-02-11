@@ -19,10 +19,6 @@ public class OServiceImpl implements OService {
 		return dao.insertOandD(olist);
 	}
 	@Override
-	public OrderVO findOrder(int oNum) {
-		return dao.findOrder(oNum);
-	}
-	@Override
 	public int insertPayment(PaymentVO vo) {
 		return dao.insertPayment(vo);
 	}
@@ -31,9 +27,13 @@ public class OServiceImpl implements OService {
 		return dao.findPayment(vo);
 	}
 	@Override
+
 	public ArrayList<OrderVO> oListInPnum(PaymentVO vo) {
 		return dao.oListInPnum(vo);
 	}
 	
-	
+	public ArrayList<OrderVO> getOrderList(PaymentVO vo) {
+		return dao.getOrderList(vo);
+	}
+
 }
