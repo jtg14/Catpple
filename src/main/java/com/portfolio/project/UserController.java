@@ -161,7 +161,7 @@ public class UserController {
 		return model;
 	}
 
-	@RequestMapping(value ="/phoneCheck")//아이디 중복검사
+	@RequestMapping(value ="/phoneCheck")//연락처 중복검사
 	public ModelAndView phoneCheck(ModelAndView model,MemberVO vo ) {
 		if(service.phoneCheck(vo) == null) {
 			model.addObject("code",200);
