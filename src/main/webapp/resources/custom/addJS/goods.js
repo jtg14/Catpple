@@ -167,3 +167,16 @@ function changeSecondSelect() {
 	}
 
 }
+
+function checkFile(f){
+
+	var file = f.files;
+	if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)) {
+		alert('gif, jpg, png 파일만 선택해 주세요.');
+	} else if(/\[|\]/.test(file[0].name)){
+		alert('파일명은 한글, 영어, 숫자를 사용해주세요.');
+	} else {
+		return;
+	}
+	f.outerHTML = f.outerHTML;
+}
