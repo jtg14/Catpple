@@ -56,7 +56,7 @@ public class PaymentVO {
 		return member_mId;
 	}
 	public void setMember_mId(String member_mId) {
-		member_mId = member_mId;
+		this.member_mId = member_mId;
 	}
 	public int getgPrice() {
 		return gPrice;

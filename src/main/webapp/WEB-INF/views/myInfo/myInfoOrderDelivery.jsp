@@ -130,7 +130,7 @@
 							<div class="col-md-12 col-xs-12"
 								style="border: 5px solid crimson; border-radius: 10px; padding: 20px 10px; text-align: center;">
 								<label style="width: 100%;font-size:1.2em;">현재 적립예정포인트는 <b
-									style="color: crimson;">900점</b>입니다. 상품 평가 완료시 포인트가 적립 됩니다.<br>
+									style="color: crimson;">${logInUser.mPoint}점</b>입니다. 상품 평가 완료시 포인트가 적립 됩니다.<br>
 									주문 번호를 클릭하면 해당 주문 목록을 볼 수 있습니다.
 								</label>
 								<div class="col-md-12 col-xs-12"
@@ -148,38 +148,26 @@
 											<c:forEach var="plist" items="${plist}">
 											<tr>
 												<td>${plist.pDate}</td>
-												<td style=",max-width:35%;"><a href="oListInPnum?pNum=${plist.pNum}" data-toggle="collapse"
-													data-target="#demo">${plist.pNum}</a></td>
+												<td style=",max-width:35%;">
+												<a href="#" onclick="oplist(${plist.pNum},'${logInUser.mId}')">${plist.pNum}</a>
+											
+												</td>
 												<td>${plist.pPrice}원</td>
 												
 											</tr>
 											</c:forEach>
 										</tbody>
-										
+											
+													
+											
 									</table>
 									
 								</div>
 								<!--/border-top -->
-								<div class="btn btn-warning" style="">구매후기</div>
+									<div class="col-m-12" id="resultArea"></div>
 							</div>
 						</div>
-						<div id="demo" class="collapse">
-													<c:forEach var="plist2" items="${plist}">
-													<div class="col-md-12 col-xs-12"
-														style="padding-right: 0px; padding-left: 0px;">
-														<div class="col-md-3 col-xs-4"
-															style="padding-left: 0px; padding-right: 0px;">
-															<img src="resources/images/item1.jpg">
-														</div>
-														<div class="col-md-4 col-xs-8" style="padding-right: 0px;">${plist2.gName }</div>
-														<div class="col-md-2 col-xs-8">${plist2.gPrice}</div>
-														<div class="col-md-3 col-xs-8 text-center">
-															<h4>판매자:${plist2.member_mId}</h4>
-															<h6 style="color: lightgray;">(${plist2.mPhone})</h6>
-														</div>
-													</div>
-													</c:forEach>
-											</div>
+											
 				
 					</div>
 				</div>
@@ -191,7 +179,7 @@
 	</div>
 	<!-- /#wrapper -->
 
-
+	
 	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>
