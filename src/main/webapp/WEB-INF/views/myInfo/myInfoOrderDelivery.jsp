@@ -143,17 +143,21 @@
 												<td>결재금액</td>
 											</tr>
 										</thead>
+										
 										<tbody>
+											<c:forEach var="plist" items="${plist}">
 											<tr>
 												<td>${plist.pDate}</td>
 												<td style=",max-width:35%;"><a href="#" data-toggle="collapse"
 													data-target="#demo">${plist.pNum}</a></td>
 												<td>${plist.pPrice}원</td>
 											</tr>
-
+											</c:forEach>
 										</tbody>
+										
 									</table>
 									<div id="demo" class="collapse">
+										<c:forEach var="plist" items="${plist}">
 										<div class="col-md-12 col-xs-12"
 											style="padding-right: 0px; padding-left: 0px;">
 											<div class="col-md-3 col-xs-4"
@@ -163,23 +167,11 @@
 											<div class="col-md-4 col-xs-8" style="padding-right: 0px;">${plist.gName }</div>
 											<div class="col-md-2 col-xs-8">${plist.gPrice}</div>
 											<div class="col-md-3 col-xs-8 text-center">
-												<h4>판매자:${plist.Member_mId}</h4>
+												<h4>판매자:${plist.member_mId}</h4>
 												<h6 style="color: lightgray;">(${plist.mPhone})</h6>
 											</div>
 										</div>
-										<div class="col-md-12 col-xs-12"
-											style="padding-right: 0px; padding-left: 0px;">
-											<div class="col-md-3 col-xs-4"
-												style="padding-left: 0px; padding-right: 0px;">
-												<img src="resources/images/item2.jpg">
-											</div>
-											<div class="col-md-4 col-xs-8" style="padding-right: 0px;">메롱메롱메롱메롱메롱메롱메롱메롱메롱</div>
-											<div class="col-md-2 col-xs-8">600,000원</div>
-											<div class="col-md-3 col-xs-8 text-center">
-												<h4>판매자</h4>
-												<h6 style="color: lightgray;">(010-7777-7777)</h6>
-											</div>
-										</div>
+										</c:forEach>
 									</div>
 								</div>
 								<!--/border-top -->
