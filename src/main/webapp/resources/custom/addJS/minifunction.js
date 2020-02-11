@@ -314,3 +314,10 @@ function oplist(pNum, mId){
 	
 }
 
+//내 정보 수정 readonly풀기
+function ecBtn() {
+	document.getElementById('mEmail').readOnly = false;
+}
+function pcBtn() {
+	document.getElementById('mPhone').readOnly = false;
+}
