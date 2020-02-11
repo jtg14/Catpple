@@ -148,38 +148,39 @@
 											<c:forEach var="plist" items="${plist}">
 											<tr>
 												<td>${plist.pDate}</td>
-												<td style=",max-width:35%;"><a href="#" data-toggle="collapse"
+												<td style=",max-width:35%;"><a href="oListInPnum?pNum=${plist.pNum}" data-toggle="collapse"
 													data-target="#demo">${plist.pNum}</a></td>
 												<td>${plist.pPrice}원</td>
+												
 											</tr>
 											</c:forEach>
 										</tbody>
 										
 									</table>
-									<div id="demo" class="collapse">
-										<c:forEach var="plist" items="${plist}">
-										<div class="col-md-12 col-xs-12"
-											style="padding-right: 0px; padding-left: 0px;">
-											<div class="col-md-3 col-xs-4"
-												style="padding-left: 0px; padding-right: 0px;">
-												<img src="resources/images/item1.jpg">
-											</div>
-											<div class="col-md-4 col-xs-8" style="padding-right: 0px;">${plist.gName }</div>
-											<div class="col-md-2 col-xs-8">${plist.gPrice}</div>
-											<div class="col-md-3 col-xs-8 text-center">
-												<h4>판매자:${plist.member_mId}</h4>
-												<h6 style="color: lightgray;">(${plist.mPhone})</h6>
-											</div>
-										</div>
-										</c:forEach>
-									</div>
+									
 								</div>
 								<!--/border-top -->
 								<div class="btn btn-warning" style="">구매후기</div>
 							</div>
 						</div>
-
-
+						<div id="demo" class="collapse">
+													<c:forEach var="plist2" items="${plist}">
+													<div class="col-md-12 col-xs-12"
+														style="padding-right: 0px; padding-left: 0px;">
+														<div class="col-md-3 col-xs-4"
+															style="padding-left: 0px; padding-right: 0px;">
+															<img src="resources/images/item1.jpg">
+														</div>
+														<div class="col-md-4 col-xs-8" style="padding-right: 0px;">${plist2.gName }</div>
+														<div class="col-md-2 col-xs-8">${plist2.gPrice}</div>
+														<div class="col-md-3 col-xs-8 text-center">
+															<h4>판매자:${plist2.member_mId}</h4>
+															<h6 style="color: lightgray;">(${plist2.mPhone})</h6>
+														</div>
+													</div>
+													</c:forEach>
+											</div>
+				
 					</div>
 				</div>
 				<!-- /.row -->

@@ -204,4 +204,20 @@ public class OrderController {//주문성공 페이지
 	}
 	
 	
-}
+	
+	@RequestMapping(value = "/oListInPnum")
+	public ModelAndView oListInPnum(ModelAndView model, HttpServletRequest request, PaymentVO pvo) {
+		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+		pvo.setMember_mId(mvo.getmId());
+		
+		int pNum = Integer.parseInt(request.getParameter("pNum"));
+		pvo.setpNum(pNum);
+		
+		ArrayList<OrderVO> oplist = service.oListInPnum(pvo);
+		
+		model.setViewName("myInfo/myInfoOrderDelivery");
+		return model;
+	}
+	
+	
+}//class

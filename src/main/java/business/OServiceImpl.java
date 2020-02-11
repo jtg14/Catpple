@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.OrderDAO;
+import vo.GoodsVO;
 import vo.OrderVO;
 import vo.PaymentVO;
 @Service
@@ -26,7 +27,13 @@ public class OServiceImpl implements OService {
 		return dao.findPayment(vo);
 	}
 	@Override
+
+	public ArrayList<OrderVO> oListInPnum(PaymentVO vo) {
+		return dao.oListInPnum(vo);
+	}
+	
 	public ArrayList<OrderVO> getOrderList(PaymentVO vo) {
 		return dao.getOrderList(vo);
 	}
+
 }
