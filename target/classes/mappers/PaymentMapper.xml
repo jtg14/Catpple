@@ -7,7 +7,7 @@
 <mapper namespace="portfolio.mapper.PaymentMapper">
 
 <select id="paymentList" resultType="vo.PaymentVO">
-	select p.pNum,p.pDate,p.pPrice,g.gImg1,g.gName,g.Member_mId,g.gPrice,m.mPhone 
+	select p.pNum,p.pDate,p.pPrice,g.gImg1,g.gName,g.member_mId,g.gPrice,m.mPhone 
 	from payment as p, corder as o, goods as g, member as m 
 	where o.payment_pnum=p.pnum and o.goods_gnum=g.gnum and m.mid=g.member_mid
 	and o.member_mid = #{mId}

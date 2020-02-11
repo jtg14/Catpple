@@ -6,14 +6,14 @@ public class PaymentVO {
 
 	private int pPrice;
 	private int pNum;
-	private String pDate;
+	private Date pDate;
 	private String pPayment;
 
 	
 	private String gImg1;
 	private String gName;
-	private String Member_mId;
-	private int gPirce;
+	private String member_mId;
+	private int gPrice;
 	private String mPhone;
 	public int getpPrice() {
 		return pPrice;
@@ -27,10 +27,10 @@ public class PaymentVO {
 	public void setpNum(int pNum) {
 		this.pNum = pNum;
 	}
-	public String getpDate() {
+	public Date getpDate() {
 		return pDate;
 	}
-	public void setpDate(String pDate) {
+	public void setpDate(Date pDate) {
 		this.pDate = pDate;
 	}
 	public String getpPayment() {
@@ -52,16 +52,16 @@ public class PaymentVO {
 		this.gName = gName;
 	}
 	public String getMember_mId() {
-		return Member_mId;
+		return member_mId;
 	}
 	public void setMember_mId(String member_mId) {
-		Member_mId = member_mId;
+		member_mId = member_mId;
 	}
-	public int getgPirce() {
-		return gPirce;
+	public int getgPrice() {
+		return gPrice;
 	}
-	public void setgPirce(int gPirce) {
-		this.gPirce = gPirce;
+	public void setgPrice(int gPrice) {
+		this.gPrice = gPrice;
 	}
 	public String getmPhone() {
 		return mPhone;
@@ -72,7 +72,7 @@ public class PaymentVO {
 	@Override
 	public String toString() {
 		return "PaymentVO [pPrice=" + pPrice + ", pNum=" + pNum + ", pDate=" + pDate + ", pPayment=" + pPayment
-				+ ", gImg1=" + gImg1 + ", gName=" + gName + ", Member_mId=" + Member_mId + ", gPirce=" + gPirce
+				+ ", gImg1=" + gImg1 + ", gName=" + gName + ", member_mId=" + member_mId + ", gPrice=" + gPrice
 				+ ", mPhone=" + mPhone + "]";
 	}
 	
