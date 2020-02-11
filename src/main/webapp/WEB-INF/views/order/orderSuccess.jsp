@@ -102,7 +102,7 @@
 						</tr>
 						<tr>
 							<td class="table-head">결제 정보</td>
-							<td>거래수단 : ${paymentInfo.pPayment}<br> 결제번호 : ${dupInfo.pNum}<br>
+							<td>거래수단 : ${paymentInfo.pPayment}<br> 결제번호 : ${paymentInfo.pNum}<br>
 							</td>
 						</tr>
 						<tr>
@@ -119,29 +119,29 @@
 				  <div class="panel-footer text-right">(+)${paymentInfo.pPrice / 10}P</div>
 				</div>
 				<div class="col-md-12 col-sm-12 text-center" style="margin-top:30;">
-	            <button type="button" class="btn btn-primary btn-lg"style="font-size:1.4em;">쇼핑계속하기</button>
+	            <a href="home" type="button" class="btn btn-primary btn-lg"style="font-size:1.4em;">쇼핑계속하기</a>
        			 </div>
 				</div>
 			</div>
 			
 			<div class="col-sm-12 col-md-4 ">
-			<h2 class="text-center" style="color:crimson;">주문확인(<span id = "listSize">${listSize}</span>)</h2>
+			<h2 class="text-center" style="color:crimson;">주문확인(${fn:length(olist)})</h2>
 			</div>
 			<div class="col-sm-12 col-md-4 item-list"
 				style="padding-right: 0px; padding-left: 0px; max-height: 350px; position: relative; overflow: auto;">
-				<c:forEach var="list" items="${olist}" varStatus="status">
+				<c:forEach var="olist" items="${olist}" varStatus="status">
 					<div class="col-sm-12 col-md-4"
 						style="padding-right: 0px; padding-left: 0px; width: 100%; margin-top: 20px; border-top: 1px solid lightgray; padding-top: 10px; padding-bottom: 10px; min-height: 100;">
 						<div class="col-xs-3 col-md-3"
 							style="padding-right: 0px; padding-left: 0px;">
-							<img class="order-thumbnail" src="resources/images/stick1.jpg">
+							<img class="order-thumbnail" src="resources/sellerInfo/${olist.sellerID}/${olist.gImg1}">
 						</div>
 						<div class="col-xs-9 col-md-9"
 							style="padding-right: 0px; padding-left: 0px;">
-							<p>${list.gName}</p>
-							<p>선택 - 기본(<fmt:formatNumber value="${list.oPrice}" pattern="#,###" />원)</p>
-							<p>상품금액 : <fmt:formatNumber value="${list.oPrice}" pattern="#,###" />원</p>
-							<p>주문수량 : ${list.oStock}개</p>
+							<p>${olist.gName}</p>
+							<p>선택 - 기본(<fmt:formatNumber value="${olist.oPrice}" pattern="#,###" />원)</p>
+							<p>상품금액 : <fmt:formatNumber value="${olist.oPrice}" pattern="#,###" />원</p>
+							<p>주문수량 : ${olist.oStock}개</p>
 						</div>
 					</div>
 				</c:forEach>

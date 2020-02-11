@@ -18,15 +18,15 @@ public class OServiceImpl implements OService {
 		return dao.insertOandD(olist);
 	}
 	@Override
-	public OrderVO findOrder(int oNum) {
-		return dao.findOrder(oNum);
-	}
-	@Override
 	public int insertPayment(PaymentVO vo) {
 		return dao.insertPayment(vo);
 	}
 	@Override
 	public PaymentVO findPayment(PaymentVO vo) {
 		return dao.findPayment(vo);
+	}
+	@Override
+	public ArrayList<OrderVO> getOrderList(PaymentVO vo) {
+		return dao.getOrderList(vo);
 	}
 }
