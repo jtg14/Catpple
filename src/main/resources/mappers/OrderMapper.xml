@@ -19,6 +19,7 @@
 		SELECT LAST_INSERT_ID()
 	</selectKey>
 	</insert>
+	
 	<insert id="insertOandD" parameterType="java.util.HashMap">
 	<foreach collection="olist" item="item">
 	select @orderNumber:=(select ifnull(max(oNum),0)+1 from corder as onum);
@@ -31,11 +32,11 @@
 	12 ,concat(DATE_FORMAT(current_timestamp,'%Y%m%d'),'000')),default,@orderNumber);
 	</foreach>
 	</insert>
-	
+	<!-- 주문/배송조회 2-->
 	<select id="oListInPnum" resultType="vo.OrderVO">
 		select g.gimg1, g.gname, g.member_mid, g.gprice*g.gstock as midPrice , m.mphone, d.dstate, d.dnum
 		from goods as g, member as m, delivery as d, corder as o
-		where o.goods_gnum= g.gnum and d.corder_onum=o.onum and m.mid=g.member_mid and o.member_mid=#{mId} and o.payment_pnum=#{pNum}
+		where o.goods_gnum= g.gnum and d.corder_onum=o.onum and m.mid=g.member_mid and o.member_mid=#{member_mId} and o.payment_pnum=#{pNum}
 	</select>
 	
 </mapper>

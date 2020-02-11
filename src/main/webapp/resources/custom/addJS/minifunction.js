@@ -298,5 +298,19 @@ function chBox(frm,st,num) {
     }
  }
 
-
+function oplist(pNum, mId){
+	$.ajax({
+		type:'post',
+		url:'oListInPnum',
+		data:{
+			pNum:pNum,
+			mId:mId
+		},
+		success:function(result){
+			$('#resultArea').html(result);
+		}
+		
+	});//ajax
+	
+}
 

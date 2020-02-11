@@ -206,16 +206,22 @@ public class OrderController {//주문성공 페이지
 	
 	
 	@RequestMapping(value = "/oListInPnum")
-	public ModelAndView oListInPnum(ModelAndView model, HttpServletRequest request, PaymentVO pvo) {
-		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
-		pvo.setMember_mId(mvo.getmId());
+	public ModelAndView oListInPnum(ModelAndView model, HttpServletRequest request, MemberVO mvo, PaymentVO pvo) {
+		String mId = mvo.getmId();
+		pvo.setMember_mId(mId);
 		
 		int pNum = Integer.parseInt(request.getParameter("pNum"));
 		pvo.setpNum(pNum);
 		
 		ArrayList<OrderVO> oplist = service.oListInPnum(pvo);
-		
-		model.setViewName("myInfo/myInfoOrderDelivery");
+		if(oplist!=null) {
+			System.out.println("oplist(0)=>"+oplist.get(0));
+			model.addObject("oplist", oplist);
+			
+		}else {
+			
+		}
+		model.setViewName("myInfo/myInfoOrderDeliveryDetail");
 		return model;
 	}
 	
