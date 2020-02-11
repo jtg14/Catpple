@@ -108,23 +108,32 @@ public class OrderController {//주문성공 페이지
 			log.info("기본주소지 등록 완료!");
 		}
 		for(CartVO cvo : list) {
-			vo.setoPrice(cvo.getgPrice());
-			vo.setoStock(cvo.getcAmount());
-			vo.setMember_mId(logInUser.getmId());
-			vo.setGoods_gNum(cvo.getGoods_gNum());
-			vo.setdInfo(request.getParameter("dInfo"));
-			olist.add(vo);
+			OrderVO ov  = new OrderVO();
+			ov.setoPrice(cvo.getgPrice());
+			ov.setoStock(cvo.getcAmount());
+			ov.setMember_mId(logInUser.getmId());
+			ov.setGoods_gNum(cvo.getGoods_gNum());
+			ov.setdInfo(request.getParameter("dInfo"));
+			ov.setoAddr1(vo.getoAddr1());
+			ov.setoAddr2(vo.getoAddr2());
+			ov.setoAddr3(vo.getoAddr3());
+			ov.setoAddr4(vo.getoAddr4());
+			ov.setoName(vo.getoName());
+			ov.setoPhone(vo.getoPhone());
+			olist.add(ov);
+			System.out.println(ov);
 			cartService.deleteCart(cvo);
 		}
 		log.info("장바구니에서 불러온 목록 처리할 list로 옮기기 성공 !");
 		log.info("장바구니 모든항목 삭제 완료 !");
 		PaymentVO pvo = new PaymentVO();
-		pvo.setpPrice(0);
+		int allPrice = 0;
 		log.info("결체 정보 총가격 초기화");
 		for(OrderVO ovo : olist) {
-			pvo.setpPrice(pvo.getpPrice()+ovo.getoPrice());
+			allPrice += (ovo.getoPrice() * ovo.getoStock());
 		}
-		
+		log.info("총가격 계산 성공  : "+allPrice);
+		pvo.setpPrice(allPrice);
 		int pnum = service.insertPayment(pvo);
 		for(int i = 0;i < olist.size();i++) {
 			olist.get(i).setPayment_pNum(pnum);
@@ -133,17 +142,22 @@ public class OrderController {//주문성공 페이지
 		service.insertOandD(olist);
 		log.info("모든 주문 각테이블로 전송 성공!");
 		pvo.setpNum(pnum);
-		request.getSession().setAttribute("paymentInfo",service.findPayment(pvo));
+		pvo = service.findPayment(pvo);
+		model.addObject("paymentInfo",pvo);
 		log.info("결재정보 불러오기 성공");
-		request.getSession().setAttribute("olist",olist);
-		request.getSession().setAttribute("dupInfo",olist.get(0));
+		olist = service.getOrderList(pvo);
+		log.info("주문리스트 정보 불러오기 성공!");
+		model.addObject("olist",olist);
+		model.addObject("dupInfo",olist.get(0));
 		log.info("주문테이블  Session에 추가성공");
+		expectedPoint = pvo.getpPrice() / 10;
 		logInUser.setmPoint(expectedPoint);
 		mservice.addPoint(logInUser);
-		request.getSession().setAttribute("Point", expectedPoint);
 		log.info("포인트적립 성공 !");
+		request.getSession().setAttribute("cartRow",cartService.getCartRow(logInUser));
+		log.info("장바구니 갱신성공!");
 		log.info("-------------------주문 모든과정 성공-------------------");
-		model.setViewName("redirect:osuccess");
+		model.setViewName("order/orderSuccess");
 		return model;
 	}
 	@RequestMapping(value ="/pMYAddr")
