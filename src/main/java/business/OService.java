@@ -15,13 +15,16 @@ public interface OService {
 	int insertPayment(PaymentVO vo);
 	
 	PaymentVO findPayment(PaymentVO vo);
-	
 
 	ArrayList<OrderVO> oListInPnum(PaymentVO vo);
 
 	ArrayList<OrderVO> getOrderList(PaymentVO vo);
 	
+
 	ArrayList<OrderVO> selectReceivedOrderList(GoodsVO vo);
 
 	int changeDstate(List<Integer> list);
+
+	int changeStatus(OrderVO vo);
+
 }

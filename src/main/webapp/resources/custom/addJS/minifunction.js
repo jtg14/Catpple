@@ -339,3 +339,27 @@ function ecBtn() {
 function pcBtn() {
 	document.getElementById('mPhone').readOnly = false;
 }
+function justReqeust(number,status){
+	var statusName = (status == 'os4' ? '취소요청' : '반품요청');
+	if(confirm('해당 상품을 '+statusName+' 하시겠습니까?')){
+		$.ajax({
+			type:'Post',
+			url:'cStatus',
+			data:{
+				oNum:number,
+				oStatus:status
+			},
+			success:function(data){
+				if(data.code == '100'){
+					alert('정상적으로 '+statusName+' 되었습니다.')
+					location.href='mODelivery';
+				}else if(data.code == '101'){
+					alert('요청에 실패 하였습니다.')
+				}
+			}
+		});
+	}else{
+		alert('취소 되었습니다.');
+	}
+	
+}

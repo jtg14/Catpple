@@ -22,18 +22,20 @@
 	font-weight: bold;
 	color: crimson;
 }
-@media (min-width : 968px){
-	.img{
-		width:150px;
-		margin-left:50px;
+
+@media ( min-width : 968px) {
+	.img {
+		width: 150px;
+		margin-left: 50px;
 	}
-	.contentInfo{
-	margin-top:40px;
+	.contentInfo {
+		margin-top: 40px;
 	}
 }
-@media (max-width : 768px){
-	.img{
-		width:100%;
+
+@media ( max-width : 768px) {
+	.img {
+		width: 100%;
 	}
 }
 </style>
@@ -147,50 +149,108 @@
 				<!-- Page Heading -->
 				<div class="row" id="main"
 					style="min-height: 1000px; margin-top: 120px;">
-					<div class="col-md-6 col-xs-6"><span class="h2" id="opList">주문조회(${fn:length(oplist)})</span></div>
-					<div class="col-md-6 col-xs-6 text-center"><a class="btn btn-default btn-lg" style="margin-top:20px;" onclick = "javascript:history.back(1)">목록으로</a></div>
+					<div class="col-md-6 col-xs-6">
+						<span class="h2" id="opList">주문조회(${fn:length(oplist)})</span>
+					</div>
+					<div class="col-md-6 col-xs-6 text-center">
+						<a class="btn btn-default btn-lg" style="margin-top: 20px;"
+							onclick="javascript:history.back(1)">목록으로</a>
+					</div>
 					<div class="col-md-10 col-xs-12">
 						<c:forEach var="oplist" items="${oplist}" varStatus="status">
-							<div class="col-md-12 col-xs-12" style="border-top:2px solid lightgray;margin-top:20px;" 
-								style="padding-right: 0px; padding-left: 0px;">
+							<div class="col-md-12 col-xs-12"
+								style="border-top: 2px solid lightgray; margin-top: 20px;padding-right:0px;padding-left: 0px;">
 								<div class="col-md-3 col-xs-12"
 									style="padding-left: 0; padding-right: 0;">
-									<img class="img" src="resources/sellerInfo/${oplist.member_mId}/${oplist.gImg1}">
+									<img class="img"
+										src="resources/sellerInfo/${oplist.member_mId}/${oplist.gImg1}">
 								</div>
 								<div class="col-md-9 col-xs-12 contentInfo">
-									<div class="col-md-6 col-xs-12" style="padding-right: 0px;"><h3>${oplist.gName}</h3></div>
+									<div class="col-md-6 col-xs-12" style="padding-right: 0px;">
+										<h3>${oplist.gName}</h3>
+									</div>
 									<div class="col-md-6 col-xs-12">
-									<div class="col-md-6 col-xs-12 text-center">
-									<h3>
-										판매자:${oplist.member_mId}
-									</h3>
-										<h5 style="color: lightgray;">
-											(<span id="addHyphen${status.index}">${oplist.mPhone}</span>)
-										</h5>
+										<div class="col-md-6 col-xs-12 text-center">
+											<h3>판매자:${oplist.member_mId}</h3>
+											<h5 style="color: lightgray;">
+												(<span id="addHyphen${status.index}">${oplist.mPhone}</span>)
+											</h5>
+										</div>
+										<c:choose>
+											<c:when test="${oplist.dState=='a'}">
+												<div class="col-md-6 col-xs-12 text-center">
+													<font style="color: crimson;"> 배송준비 중</font> <br>송장번호:
+													${oplist.dNum}
+												</div>
+											</c:when>
+											<c:when test="${oplist.dState=='b'}">
+												<div class="col-md-6 col-xs-12 text-center">
+													<font style="color: #FF8C00;">배송 중</font> <br>송장번호:
+													${oplist.dNum}
+												</div>
+											</c:when>
+											<c:when test="${oplist.dState=='c'}">
+												<div class="col-md-6 col-xs-12 text-center">
+													<font style="color: green;"> 배송 완료 </font> <br>송장번호:
+													${oplist.dNum}
+												</div>
+											</c:when>
+											<c:when test="${oplist.dState=='d'}">
+												<div class="col-md-6 col-xs-12 text-center">
+													<font style="color: green;"> 배송 취소 </font> <br>송장번호:
+													${oplist.dNum}
+												</div>
+											</c:when>
+										</c:choose>
 									</div>
-									<c:choose>
-										<c:when test="${oplist.dState=='a'}">
-											<div class="col-md-6 col-xs-12 text-center">
-												<font style="color: crimson;"> 배송준비 중</font>
-												<br>송장번호: ${oplist.dNum}
-											</div>
-										</c:when>
-										<c:when test="${oplist.dState=='b'}">
-											<div class="col-md-6 col-xs-12 text-center">
-												<font style="color: #FF8C00;">배송 중</font>
-												<br>송장번호: ${oplist.dNum}
-											</div>
-										</c:when>
-										<c:when test="${oplist.dState=='c'}">
-											<div class="col-md-6 col-xs-12 text-center">
-												<font style="color: green;"> 배송 완료 </font>
-												<br>송장번호: ${oplist.dNum}
-											</div>
-										</c:when>
-									</c:choose>
-									</div>
-									<div class="col-md-6 col-xs-12 text-center">
-										<h4>결제 금액 : <fmt:formatNumber value="${oplist.midPrice}" pattern="#,###" /> 원 (${oplist.oStock}개)</h4>
+
+									<div class="col-md-12 col-xs-12 text-left">
+										<div class="col-md-6 col-xs-12">
+											<h4>
+												결제 금액 :
+												<fmt:formatNumber value="${oplist.midPrice}" pattern="#,###" />
+												원
+											</h4>
+										</div>
+										<c:choose>
+											<c:when test="${oplist.dState=='a'}"><!-- 배송준비중 -->
+												<c:if test="${oplist.oStatus eq 'os1'}"><!-- 주문취소 -->
+													<div class="col-md-3 col-md-offset-3 col-xs-12 text-center">
+														<button class="btn btn-danger disabled">취소완료</button>
+													</div>
+												</c:if>
+												<c:if test="${oplist.oStatus eq 'os3'}"><!-- 주문완료 -->
+													<div class="col-md-3 col-md-offset-3 col-xs-12 text-center">
+														<button class="btn btn-danger" onclick="justReqeust(${oplist.oNum},'os4')">취소요청</button>
+													</div>
+												</c:if>
+												<c:if test="${oplist.oStatus eq 'os4'}"><!-- 주문취소요청 -->
+													<div class="col-md-3 col-md-offset-3 col-xs-12 text-center">
+														<button class="btn btn-danger disabled">취소요청완료</button>
+													</div>
+												</c:if>
+											</c:when>
+
+
+											<c:when test="${oplist.dState=='b' || oplist.dState=='c'}"><!-- 배송중 or 배송완료 -->
+													<c:if test="${oplist.oStatus ne 'os2'}"><!-- 반품완료 -->
+														<div class="col-md-3 col-md-offset-3 col-xs-12 text-center">
+															<button class="btn btn-success disabled">반품완료</button>
+														</div>
+													</c:if>
+													<c:if test="${oplist.oStatus ne 'os3'}"><!-- 주문완료 -->
+														<div class="col-md-3 col-md-offset-3 col-xs-12 text-center">
+															<button class="btn btn-success" onclick="justReqeust(${oplist.oNum},'os5')">반품요청</button>
+														</div>
+													</c:if>
+													<c:if test="${oplist.oStatus eq 'os5'}"><!-- 주문반품요청 -->
+														<div class="col-md-3 col-md-offset-3 col-xs-12 text-center">
+															<button class="btn btn-success disabled">반품요청완료</button>
+														</div>
+													</c:if>
+											</c:when>
+										</c:choose>
+
 									</div>
 								</div>
 							</div>

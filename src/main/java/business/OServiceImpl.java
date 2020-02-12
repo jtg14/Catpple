@@ -36,6 +36,7 @@ public class OServiceImpl implements OService {
 	public ArrayList<OrderVO> getOrderList(PaymentVO vo) {
 		return dao.getOrderList(vo);
 	}
+
 	@Override
 	public ArrayList<OrderVO> selectReceivedOrderList(GoodsVO vo) {
 		return dao.selectReceivedOrderList(vo);
@@ -43,6 +44,11 @@ public class OServiceImpl implements OService {
 	@Override
 	public int changeDstate(List<Integer> list) {
 		return dao.changeDstate(list);
+	}
+
+	@Override
+	public int changeStatus(OrderVO vo) {
+		return dao.changeStatus(vo);
 	}
 
 }

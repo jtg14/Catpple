@@ -208,7 +208,7 @@ public class OrderController {//주문성공 페이지
 	
 	
 	
-	@RequestMapping(value = "/oListInPnum")
+	@RequestMapping(value = "/oListInPnum")//주문조회 -> 주문번호 클릭시 리스트
 	public ModelAndView oListInPnum(ModelAndView model, HttpServletRequest request, MemberVO mvo, PaymentVO pvo) {
 		String mId = mvo.getmId();
 		pvo.setMember_mId(mId);
@@ -223,5 +223,14 @@ public class OrderController {//주문성공 페이지
 		model.setViewName("myInfo/myInfoOrderDeliveryDetail");
 		return model;
 	}
-	
+	@RequestMapping(value = "cStatus")
+	public ModelAndView changeStatus(ModelAndView model,OrderVO vo) {
+		if(service.changeStatus(vo) > 0) {
+			model.addObject("code","100");
+		}else {
+			model.addObject("code","101");
+		}
+		model.setViewName("jsonView");
+		return model;
+	}
 }//class

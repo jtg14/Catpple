@@ -11,6 +11,13 @@
 	<select id="findPayment" resultType="vo.PaymentVO">
 	select * from payment where pNum = #{pNum}
 	</select>
+	<select id="canceledList" resultType="vo.OrderVO">
+	select DATE_FORMAT(o.oDate,'%Y-%m-%d %I:%i') oDate, o.oNum, o.oStock * o.oPrice as midPrice, o.oStatus, p.pPayment from corder o,payment p where o.payment_pNum = p.pNum and o.oStatus = 'os1' and o.member_mId = #{member_mId}
+	</select>
+	<select id="returnedList" resultType="vo.OrderVO">
+	select g.gName, o.oPrice, o.oStock, o.oStatus from goods g,corder o where o.goods_gNum = g.gNum and o.oStatus = 'os2' and o.member_mId = #{member_mId}
+	</select>
+	
 	<!-- 결재정보 추가 -->
 	<insert id="insertPayment">
 	insert  into payment (pPrice,pDate,pPayment) values (${pPrice},default,'신용카드')
@@ -24,7 +31,7 @@
 	select @orderNumber:=(select ifnull(max(oNum),0)+1 from corder as onum);
 	insert into corder (oNum,oDate,oPrice,oStock,oAddr1,oAddr2,oAddr3,oAddr4,oStatus,oName,oPhone,member_mId,goods_gNum,payment_pNum) 
 	values (@orderNumber,default,${item.oPrice},${item.oStock},${item.oAddr1},'${item.oAddr2}','${item.oAddr3}',
-			'${item.oAddr4}','주문완료','${item.oName}','${item.oPhone}','${item.member_mId}',${item.goods_gNum},${item.payment_pNum});
+			'${item.oAddr4}','os3','${item.oName}','${item.oPhone}','${item.member_mId}',${item.goods_gNum},${item.payment_pNum});
 	insert into delivery
 	value((select ifnull(max(DPK),0)+1 from delivery as dp),'a',${item.oAddr1},
 	'${item.oAddr2}','${item.oAddr3}','${item.oAddr4}','${item.dInfo}',LPAD((select ifnull(max(DPK),0)+1 from delivery as dp2),
@@ -33,10 +40,11 @@
 	</insert>
 	<!-- 주문/배송조회 2-->
 	<select id="oListInPnum" resultType="vo.OrderVO">
-		select g.gimg1, g.gname, g.member_mid, g.gprice*o.ostock as midPrice , m.mphone, d.dstate, d.dnum
+		select g.gimg1, g.gname, g.member_mid, g.gprice*o.ostock as midPrice, o.oNum, o.oStatus, m.mphone, d.dstate, d.dnum
 		from goods as g, member as m, delivery as d, corder as o
 		where o.goods_gnum= g.gnum and d.corder_onum=o.onum and m.mid=g.member_mid and o.member_mid=#{member_mId} and o.payment_pnum=#{pNum}
 	</select>
+
 	<!-- 판매자 받은 주문 목록 -->
 	<select id="selectReceivedOrderList" resultType="vo.OrderVO">
 		select g.gImg1, g.gStock, g.gName, g.gPrice, o.member_mid, o.oStock, o.oStatus,o.oDate, d.dState, d.dDate, d.dPk from goods as g, corder as o, delivery as d 
@@ -50,4 +58,9 @@
 		</foreach>
 	</update>
 	
+
+	<update id="changeStatus">
+	 update corder set oStatus = #{oStatus} where oNum = #{oNum}
+	</update>
+
 </mapper>
