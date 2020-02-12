@@ -150,18 +150,13 @@
 												<td>${plist.pDate}</td>
 												<td style=",max-width:35%;">
 												<a href="#" onclick="oplist(${plist.pNum},'${logInUser.mId}')">${plist.pNum}</a>
-											
 												</td>
 												<td>${plist.pPrice}원</td>
 												
 											</tr>
 											</c:forEach>
 										</tbody>
-											
-													
-											
 									</table>
-									
 								</div>
 								<!--/border-top -->
 									<div class="col-m-12" id="resultArea"></div>
