@@ -199,10 +199,21 @@ function purchase(grade,id,number){//상품 디테일에서구매
 		window.location.href = 'logInf';
 	}else if(grade == 'S'){
 		alert('판매자로 등록된 계정은 구매할수없습니다.');
-	}else {
+	}else if(confirm('정말 구매 하시 겠습니까?')){
 		$.ajax({
-			
+			 type:'Post',
+			 url:'cTOrder',
+			 data:{
+				 cAmount:$('#amount1').val(),
+				 member_mId:id,
+				 goods_gNum:number
+			 },
+			 success:function(data){
+				 location.href='oinfo';
+			 }
 		});
+	}else{
+		alert('구매가 취소되었습니다.');
 	}
 }
 function goCart(grade,id,number){

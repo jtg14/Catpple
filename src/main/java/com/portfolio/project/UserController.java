@@ -18,6 +18,7 @@ import business.CService;
 import business.GService;
 import business.MService;
 import vo.CartVO;
+import vo.GoodsVO;
 import vo.MemberVO;
 
 @Controller
@@ -300,12 +301,27 @@ public class UserController {
 	}//mConfirm2
 	
 	@RequestMapping(value="/cTOrder")
-	public ModelAndView cartToOrder(ModelAndView model,HttpServletRequest request,String[] arr) {
+	public ModelAndView cartToOrder(ModelAndView model,HttpServletRequest request,String[] arr,CartVO vo) {
+		ArrayList<CartVO> list = null;
+		if(vo.getGoods_gNum() != 0) {
+			log.info("바로 구매하기로 들어온 "+vo);
+			GoodsVO gvo = new GoodsVO();
+			gvo.setgNum(vo.getGoods_gNum());
+			gvo = gservice.goodsDetail(gvo);
+			log.info("찾아온 GOODS : "+gvo);
+			vo.setGoods_gNum(gvo.getgNum());
+			vo.setgName(gvo.getgName());
+			vo.setgPrice(gvo.getgPrice());
+			log.info("상품정보 할당성공 :"+vo);
+			list = new ArrayList<CartVO>();
+			list.add(vo);
+		}else {
 		int [] intArr = new int [arr.length];
 		for(int i = 0;i <intArr.length;i++) {
 			intArr[i] = Integer.parseInt(arr[i]);
 		}
-		ArrayList<CartVO> list = cartService.purchaseList(intArr,(String)request.getParameter("id"));
+		list = cartService.purchaseList(intArr,(String)request.getParameter("id"));
+		}
 		request.getSession().setAttribute("list",list);
 		model.setViewName("jsonView");
 		return model;
