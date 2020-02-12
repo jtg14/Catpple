@@ -22,7 +22,7 @@
 	</select>
 	<!-- mChange -->
 	<update id="mChange">
-		update member set mEmail=#{mEmail},mPhone=#{mPhone},mAddr1=#{mAddr1},mAddr2=#{mAddr2},mAddr3=#{mAddr3} where mId=#{mId}
+		update member set mEmail=#{mEmail},mPhone=#{mPhone},mAddr1=#{mAddr1},mAddr2=#{mAddr2},mAddr3=#{mAddr3},mAddr4=#{mAddr4} where mId=#{mId}
 	</update>
 	<update id="ChangePassword">
 		update member set mPw = #{mPw} where mid=#{mId}
