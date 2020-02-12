@@ -10,7 +10,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import vo.GoodsVO;
 import vo.OrderVO;
 import vo.PaymentVO;
 
@@ -21,8 +20,8 @@ import vo.PaymentVO;
 	private final static String NS ="portfolio.mapper.OrderMapper.";
 	
 	public int insertPayment(PaymentVO vo) {
-		int pNum = dao.insert(NS+"insertPayment",vo);
-		System.out.println("OrderDAO pNum: "+pNum);
+		dao.insert(NS+"insertPayment",vo);
+		int pNum = vo.getpNum();
 		return pNum;
 	}
 	public int insertOandD(ArrayList olist) {

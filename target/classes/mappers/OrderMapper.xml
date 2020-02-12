@@ -26,14 +26,14 @@
 	values (@orderNumber,default,${item.oPrice},${item.oStock},${item.oAddr1},'${item.oAddr2}','${item.oAddr3}',
 			'${item.oAddr4}','주문완료','${item.oName}','${item.oPhone}','${item.member_mId}',${item.goods_gNum},${item.payment_pNum});
 	insert into delivery
-	value((select ifnull(max(DPK),0)+1 from delivery as dp),'배송준비중',${item.oAddr1},
+	value((select ifnull(max(DPK),0)+1 from delivery as dp),'a',${item.oAddr1},
 	'${item.oAddr2}','${item.oAddr3}','${item.oAddr4}','${item.dInfo}',LPAD((select ifnull(max(DPK),0)+1 from delivery as dp2),
 	12 ,concat(DATE_FORMAT(current_timestamp,'%Y%m%d'),'000')),default,@orderNumber);
 	</foreach>
 	</insert>
 	<!-- 주문/배송조회 2-->
 	<select id="oListInPnum" resultType="vo.OrderVO">
-		select g.gimg1, g.gname, g.member_mid, g.gprice*g.gstock as midPrice , m.mphone, d.dstate, d.dnum
+		select g.gimg1, g.gname, g.member_mid, g.gprice*o.ostock as midPrice , m.mphone, d.dstate, d.dnum
 		from goods as g, member as m, delivery as d, corder as o
 		where o.goods_gnum= g.gnum and d.corder_onum=o.onum and m.mid=g.member_mid and o.member_mid=#{member_mId} and o.payment_pnum=#{pNum}
 	</select>

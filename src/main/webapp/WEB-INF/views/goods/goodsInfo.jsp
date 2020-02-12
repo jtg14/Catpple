@@ -82,9 +82,9 @@
 				<div class="row">
 					<div class="col-md-12 col-xs-12">
 						<div class="col-md-2 col-md-offset-4 col-xs-6">
-							<button type="submit" class="btn btn-danger btn-lg pull-right"
+							<button type="button" class="btn btn-danger btn-lg pull-right"
 								style="font-size: 1.4em;"
-								onclick="purchase('${logInUser.mGrade}')">구매하기</button>
+								onclick="purchase('${logInUser.mGrade}','${logInUser.mId}','${goods.gNum}')">구매하기</button>
 						</div>
 
 						<div class="col-md-2 col-xs-6">

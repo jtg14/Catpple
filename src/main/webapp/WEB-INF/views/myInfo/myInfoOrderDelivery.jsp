@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -150,18 +151,13 @@
 												<td>${plist.pDate}</td>
 												<td style=",max-width:35%;">
 												<a href="#" onclick="oplist(${plist.pNum},'${logInUser.mId}')">${plist.pNum}</a>
-											
 												</td>
-												<td>${plist.pPrice}원</td>
+												<td><fmt:formatNumber value="${plist.pPrice}" pattern="#,###" />원</td>
 												
 											</tr>
 											</c:forEach>
 										</tbody>
-											
-													
-											
 									</table>
-									
 								</div>
 								<!--/border-top -->
 									<div class="col-m-12" id="resultArea"></div>

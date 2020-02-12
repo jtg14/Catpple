@@ -23,7 +23,7 @@ public class Send {
     params.put("to", "01041382383");
     params.put("from", "01041382383");
     params.put("type", "SMS");
-    params.put("text", "(주)캣플 인증번호 ("+number+") 입니다. 감사합니다  -Catpple");
+    params.put("text", "(주)캣플 회원가입 인증번호 ("+number+") 입니다. 감사합니다  -Catpple");
     params.put("app_version", "test app 1.2"); // application name and version
 
     try {
