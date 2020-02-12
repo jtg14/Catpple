@@ -104,6 +104,7 @@ public class OrderController {//주문성공 페이지
 		log.info("세션 유저 불러오기성공");
 		if(mservice.login(logInUser).getmAddr1() == 0) {
 			log.info("현재 유저 첫주문 여부 확인!");
+			vo.setMember_mId(logInUser.getmId());
 			mservice.updateAddr(vo); //기본주소지 추가
 			log.info("기본주소지 등록 완료!");
 		}
@@ -138,6 +139,8 @@ public class OrderController {//주문성공 페이지
 		for(int i = 0;i < olist.size();i++) {
 			olist.get(i).setPayment_pNum(pnum);
 		}
+		pvo.setpNum(pnum);
+		log.info("들어간 걸럼 : "+service.findPayment(pvo).toString());
 		log.info("모든 list에  pNum 부여성공");
 		service.insertOandD(olist);
 		log.info("모든 주문 각테이블로 전송 성공!");

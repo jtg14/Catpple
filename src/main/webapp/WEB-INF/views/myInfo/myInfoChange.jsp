@@ -166,7 +166,7 @@
 								<div class="container"
 									style="border: 5px solid crimson; border-radius: 10px; padding: 20px;">
 
-									<form action="mchange" method="post">
+									<form action="#" method="post"><!-- mchange -->
 										<table class="table text-center">
 											<tr>
 												<td class="table-head"
@@ -180,11 +180,13 @@
 											</tr>
 											<tr>
 												<td class="table-head"
-													style="padding-left: 0px; padding-right: 0px;">비밀번호</td>
-												<td style="text-align: left;"><div
-														class="col-md-6 col-xs-12" style="padding-left: 0px;">
-														<a class="btn btn-primary" type="button" onclick="find()">비밀번호 변경하기</a>
-													</div></td>
+													style="padding-left: 0px; padding-right: 0px;">비밀번호
+												</td>
+												<td style="text-align: left;">
+												<div class="col-md-6 col-xs-12" style="padding-left: 0px;">
+													<a class="btn btn-primary" type="button" onclick="find()">비밀번호 변경하기</a>
+												</div>
+												</td>
 											</tr>
 											<tr>
 												<td class="table-head"
@@ -196,8 +198,7 @@
 															value="${logInUser.mEmail}" placeholder="이메일">
 													</div>
 													<div class="col-md-6 col-xs-6" style="margin-bottom: 8px;">
-														<button id="emailChangeBtn"
-															onclick="return emailChangeBtn()" class="btn btn-sm">이메일변경</button>
+														<button type="button" id="emailChangeBtn" onclick="ecBtn()" class="btn btn-sm">이메일변경</button>
 													</div>
 												</td>
 											</tr>
@@ -207,11 +208,11 @@
 												<td style="text-align: left;">
 													<div class="col-md-6 col-xs-12" style="padding-left: 0px;">
 														<input class="form-control input-sm" type="text"
-															readonly="readonly" name="mPhone"
+															readonly="readonly" name="mPhone" id="mPhone"
 															value="${logInUser.mPhone}" placeholder="휴대폰번호">
 													</div>
 													<div class="col-md-6 col-xs-6" style="margin-bottom: 8px;">
-														<button class="btn btn-sm">휴대폰변경</button>
+														<button type="button" onclick="pcBtn()" class="btn btn-sm">휴대폰변경</button>
 													</div>
 												</td>
 											</tr>
@@ -230,21 +231,36 @@
 														<td style="text-align: left;">
 															<div class="col-md-2 col-xs-6" style="padding-left: 0px;">
 																<input type="text" class="form-control input-sm"
-																	readonly="readonly" name="mAddr1"
+																	readonly="readonly" name="mAddr1" id="sample2_postcode"
 																	value="${logInUser.mAddr1}" style="margin-bottom: 8px;">
 															</div>
 															<div class="col-md-10 col-xs-6"
 																style="margin-bottom: 8px;">
-																<button class="btn btn-sm">주소 변경</button>
+																<input type="button" class="btn btn-sm" onclick="sample2_execDaumPostcode()" value="주소변경"/>
 															</div>
 															<div class="col-md-12 col-xs-12"
 																style="padding-left: 0px;">
 																<input type="text" class="form-control input-sm"
-																	readonly="readonly" name="mAddr2"
+																	readonly="readonly" name="mAddr2" id="sample2_address"
 																	value="${logInUser.mAddr2}" style="margin-bottom: 8px;">
-																<input type="text" readonly="readonly" name="mAddr3"
-																	value="${logInUser.mAddr3}"
-																	class="form-control input-sm">
+															</div>
+															<div class="col-md-6 col-xs-12" style="padding-left: 0px;">
+																<input type="text" name="mAddr3"
+																	value="${logInUser.mAddr3}" id="sample2_extraAddress"
+																	class="form-control input-sm" style="margin-bottom: 8px;">
+															</div>
+															<div class="col-md-6 col-xs-12" style="padding-left: 0px;">
+																<input type="text" name="mAddr3"
+																	value="${logInUser.mAddr4}" id="sample2_detailAddress"
+																	class="form-control input-sm" style="margin-bottom: 8px;">
+															</div>
+															<div id="layer"
+																style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+																<img
+																	src="//t1.daumcdn.net/postcode/resource/images/close.png"
+																	id="btnCloseLayer"
+																	style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
+																	onclick="closeDaumPostcode()" alt="닫기 버튼">
 															</div>
 														</td>
 													</tr>
@@ -304,11 +320,8 @@
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>
 	<script src="resources/custom/addJS/minifunction.js"></script>
-	<script type="text/javascript">
-	function emailChangeBtn() {
-		$('#mEmail').removeClass('readonly');
-	};
-</script>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="resources/custom/addJS/kakao.js"></script>
 </body>
 <footer>
 	<div class="article">
