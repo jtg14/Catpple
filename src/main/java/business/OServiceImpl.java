@@ -50,5 +50,10 @@ public class OServiceImpl implements OService {
 	public int changeStatus(OrderVO vo) {
 		return dao.changeStatus(vo);
 	}
+	@Override
+	public int changeDstateToD() {
+		return dao.changeDstateToD();
+	}
+	
 
 }

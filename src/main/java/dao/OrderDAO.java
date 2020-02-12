@@ -59,4 +59,8 @@ import vo.PaymentVO;
 		return dao.update(NS+"changeStatus",vo);
 	}
 
+	public int changeDstateToD() {
+		return dao.update(NS+"changeDstateToD");
+	}
+	
 }

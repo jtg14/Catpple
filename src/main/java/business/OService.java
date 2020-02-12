@@ -19,12 +19,13 @@ public interface OService {
 	ArrayList<OrderVO> oListInPnum(PaymentVO vo);
 
 	ArrayList<OrderVO> getOrderList(PaymentVO vo);
-	
 
 	ArrayList<OrderVO> selectReceivedOrderList(GoodsVO vo);
 
 	int changeDstate(List<Integer> list);
 
 	int changeStatus(OrderVO vo);
+	
+	int changeDstateToD();
 
 }
