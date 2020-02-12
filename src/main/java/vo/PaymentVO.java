@@ -81,13 +81,6 @@ public class PaymentVO {
 
 
 
-//   public PaymentVO(int pPrice, int pNum, String pDate, String pPayment) {
-//      super();
-//      this.pPrice = pPrice;
-//      this.pNum = pNum;
-//      this.pDate = pDate;
-//      this.pPayment = pPayment;
-//   
-//   }
+
    
 }

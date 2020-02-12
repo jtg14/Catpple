@@ -363,3 +363,31 @@ function justReqeust(number,status){
 	}
 	
 }
+
+function statusChangeButton(number,status){
+	var statusName = (status=='os4' ? '주문취소' : '반품');
+	var oStatus = (status=='os4' ? 'os1' : 'os2');
+	if(confirm('해당 상품을'+statusName+' 하시겠습니까?')){
+		$.ajax({
+			type:'post',
+			url:'oStatus',
+			data:{
+				oNum:number,
+				oStatus:oStatus
+			},
+			success:function(result){
+				if(result.code=='100'){
+					alert('정상적으로 '+statusName+" 처리 되었습니다");
+					window.location.reload();
+				}else if(result.code=='101'){
+					alert('처리에 실패하였습니다.');
+				}
+			}
+			
+			
+		})//ajax	
+	}
+	
+}//statusChangeButton
+
+

@@ -233,4 +233,18 @@ public class OrderController {//주문성공 페이지
 		model.setViewName("jsonView");
 		return model;
 	}
+	
+	@RequestMapping(value = "oStatus")//판매자메뉴->주문목록->주문취소요청/반품요청 받은 상품의 취소/반품 버튼 클릭시 
+	public ModelAndView changeOStatus(ModelAndView model, OrderVO vo) {
+		if(service.changeStatus(vo)>0) {
+			service.changeDstateToD();//oStatus가 'os1'(주문취소)일 때  dState를 'd'(배송취소)로 바꿔주는 쿼리문
+			model.addObject("code", "100");
+		}else {
+			model.addObject("code", "101");
+		}
+		model.setViewName("jsonView");
+		
+		return model;
+	}
+	
 }//class
