@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,7 +94,7 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
 		  <i class="glyphicon glyphicon-star"></i>
 		  <i class="glyphicon glyphicon-star half"></i>
 		</div>
-        <p style="color:cimson;font-size:1.5em;">${rl.gPrice}원</p>
+        <p style="color:cimson;font-size:1.5em;"><fmt:formatNumber value="${rl.gPrice}" pattern="#,###" />원</p>
       </div>
     </div>
   </div>
@@ -115,7 +116,7 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
 		  <i class="glyphicon glyphicon-star"></i>
 		  <i class="glyphicon glyphicon-star half"></i>
 		</div>
-        <p style="color:cimson;font-size:1.5em;">${gl.gPrice}원</p>
+        <p style="color:cimson;font-size:1.5em;"><fmt:formatNumber value="${gl.gPrice}" pattern="#,###" />원</p>
       </div>
     </div>
   </div>
