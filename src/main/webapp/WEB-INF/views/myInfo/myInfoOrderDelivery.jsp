@@ -159,8 +159,6 @@
 										</tbody>
 									</table>
 								</div>
-								<!--/border-top -->
-									<div class="col-m-12" id="resultArea"></div>
 							</div>
 						</div>
 											
@@ -174,8 +172,6 @@
 		<!-- /#page-wrapper -->
 	</div>
 	<!-- /#wrapper -->
-
-	
 	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>

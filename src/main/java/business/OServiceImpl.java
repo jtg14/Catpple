@@ -35,5 +35,9 @@ public class OServiceImpl implements OService {
 	public ArrayList<OrderVO> getOrderList(PaymentVO vo) {
 		return dao.getOrderList(vo);
 	}
-
+	
+	@Override
+	public int changeStatus(OrderVO vo) {
+		return dao.changeStatus(vo);
+	}
 }

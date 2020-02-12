@@ -42,5 +42,7 @@ import vo.PaymentVO;
 	public ArrayList<OrderVO> getOrderList(PaymentVO vo) {
 		return (ArrayList)dao.selectList(NS+"getOrderList",vo);
 	}
-
+	public int changeStatus(OrderVO vo) {
+		return dao.update(NS+"changeStatus",vo);
+	}
 }
