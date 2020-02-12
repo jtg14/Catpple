@@ -2,6 +2,7 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -146,10 +147,10 @@
 				<!-- Page Heading -->
 				<div class="row" id="main"
 					style="min-height: 1000px; margin-top: 120px;">
-					<div class="col-md-6 col-xs-6"><h2>주문조회</h2></div>
+					<div class="col-md-6 col-xs-6"><span class="h2" id="opList">주문조회(${fn:length(oplist)})</span></div>
 					<div class="col-md-6 col-xs-6 text-center"><a class="btn btn-default btn-lg" style="margin-top:20px;" onclick = "javascript:history.back(1)">목록으로</a></div>
 					<div class="col-md-10 col-xs-12">
-						<c:forEach var="oplist" items="${oplist}">
+						<c:forEach var="oplist" items="${oplist}" varStatus="status">
 							<div class="col-md-12 col-xs-12" style="border-top:2px solid lightgray;margin-top:20px;" 
 								style="padding-right: 0px; padding-left: 0px;">
 								<div class="col-md-3 col-xs-12"
@@ -164,7 +165,7 @@
 										판매자:${oplist.member_mId}
 									</h3>
 										<h5 style="color: lightgray;">
-											(<span id="addHyphen">${oplist.mPhone}</span>)
+											(<span id="addHyphen${status.index}">${oplist.mPhone}</span>)
 										</h5>
 									</div>
 									<c:choose>
