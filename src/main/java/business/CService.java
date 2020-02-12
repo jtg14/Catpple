@@ -20,7 +20,5 @@ public interface CService {
 	
 	ArrayList<CartVO> purchaseList(int [] arr,String memberid);
 	
-	ArrayList<CartVO> selectReceivedOrderList(GoodsVO vo);
 	
-	int changeDstate(List<Integer> list);
 }

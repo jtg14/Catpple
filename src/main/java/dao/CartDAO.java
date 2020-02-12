@@ -48,20 +48,9 @@ public class CartDAO {
 		return(ArrayList) dao.selectList(NS+"purchaseList",map);
 	}
 	
-	public ArrayList<CartVO> selectReceivedOrderList(GoodsVO vo) {
-		return (ArrayList)dao.selectList(NS+"selectReceivedOrderList",vo);
-	}
 	
-	public int changeDstate(List<Integer> list) {
-//		ArrayList<Integer> list = new ArrayList();
-//		for(int i=0;i<array.length;i++) {
-//			list.add(array[i]);
-//		}
-		
-		System.out.println("List in DAO=>"+list);
-		
-		return dao.update(NS+"changeDstate", list);
-	}
+	
+	
 	
 	
 	

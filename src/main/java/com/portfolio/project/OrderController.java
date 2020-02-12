@@ -64,13 +64,13 @@ public class OrderController {//주문성공 페이지
 		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 		GoodsVO gvo = new GoodsVO();
 		gvo.setMember_mId(mvo.getmId());
-		ArrayList<CartVO> list = cartService.selectReceivedOrderList(gvo);
+		ArrayList<OrderVO> list = service.selectReceivedOrderList(gvo);
 		
-		for(int i=0; i<list.size(); i++) {
-			String subDate = list.get(i).getdDate().substring(0,19);
-			list.get(i).setdDate(subDate);
-		}
-		
+//		for(int i=0; i<list.size(); i++) {
+//			String subDate = (list.get(i).getdDate()_.substring(0,19);
+//			list.get(i).setdDate(subDate);
+//		}
+		System.out.println(list.get(0));
 		
 		model.addObject("list",list);
 		model.setViewName("order/sellerOrderList");
@@ -184,8 +184,8 @@ public class OrderController {//주문성공 페이지
 		System.out.println("list=>"+dpkList);
 		
 
-		if(cartService.changeDstate(dpkList)>0) {
-			System.out.println("changeDstate처리후");
+		if(service.changeDstate(dpkList)>0) {
+			
 			model.addObject("code", "100");
 		}else {
 			model.addObject("code", "101");
