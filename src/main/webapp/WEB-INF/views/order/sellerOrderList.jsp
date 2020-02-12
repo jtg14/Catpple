@@ -187,7 +187,7 @@ padding-right: 0px;
 											<span class="pull-right">주문 수량 : </span>
 										</div>
 										<div class="col-md-3 col-xs-2">
-											<span class="pull-left">${list.gStock}</span>
+											<span class="pull-left">${list.oStock}</span>
 										</div>
 
 										<div class="col-md-6 col-xs-12 fourth-div"
@@ -212,10 +212,28 @@ padding-right: 0px;
 			                           	     	  </c:when>
 			                           	      </c:choose>
 		                           	      </span><br>
-		                           	      ${list.dDate}
+		                           	   	
 		                          	    </div>
-
-
+		                          	    
+		                          	    <c:choose>
+		                          	    <c:when test="${list.oStatus=='os4'}">
+		                          	    	<div class="col-md-6">
+		                          	    		<font>주문취소 요청 중</font>
+		                          	   		</div>
+		                          	   		<div>
+		                          	   			<button>주문취소완료</button>
+		                          	   		</div>
+	                          	   		</c:when>
+	                          	   		 <c:when test="${list.oStatus=='os5'}">
+		                          	    	<div class="col-md-6">
+		                          	    		<font>반품 요청 중</font>
+		                          	   		</div>
+		                          	   		<div>
+		                          	   			<button>반품완료</button>
+		                          	   		</div>
+	                          	   		</c:when>
+										</c:choose>
+									   주문날짜:${list.oDate}
 									</div>
 								</div>
 							</c:forEach>

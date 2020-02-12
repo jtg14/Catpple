@@ -1,6 +1,7 @@
 package business;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,14 @@ public class OServiceImpl implements OService {
 	
 	public ArrayList<OrderVO> getOrderList(PaymentVO vo) {
 		return dao.getOrderList(vo);
+	}
+	@Override
+	public ArrayList<OrderVO> selectReceivedOrderList(GoodsVO vo) {
+		return dao.selectReceivedOrderList(vo);
+	}
+	@Override
+	public int changeDstate(List<Integer> list) {
+		return dao.changeDstate(list);
 	}
 
 }

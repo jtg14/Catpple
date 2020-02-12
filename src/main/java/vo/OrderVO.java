@@ -26,6 +26,10 @@ public class OrderVO {
 	String sellerID;
 	int payment_pNum;
 	String pPayment;
+	int gStock;
+	int gPrice;
+	Date dDate;
+	int dPk;
 	public int getoNum() {
 		return oNum;
 	}
@@ -164,6 +168,30 @@ public class OrderVO {
 	public void setpPayment(String pPayment) {
 		this.pPayment = pPayment;
 	}
+	public int getgStock() {
+		return gStock;
+	}
+	public void setgStock(int gStock) {
+		this.gStock = gStock;
+	}
+	public int getgPrice() {
+		return gPrice;
+	}
+	public void setgPrice(int gPrice) {
+		this.gPrice = gPrice;
+	}
+	public Date getdDate() {
+		return dDate;
+	}
+	public void setdDate(Date dDate) {
+		this.dDate = dDate;
+	}
+	public int getdPk() {
+		return dPk;
+	}
+	public void setdPk(int dPk) {
+		this.dPk = dPk;
+	}
 	@Override
 	public String toString() {
 		return "OrderVO [oNum=" + oNum + ", oDate=" + oDate + ", oPrice=" + oPrice + ", oStock=" + oStock + ", oAddr1="
@@ -171,8 +199,12 @@ public class OrderVO {
 				+ ", oName=" + oName + ", oPhone=" + oPhone + ", dNum=" + dNum + ", dInfo=" + dInfo + ", dState="
 				+ dState + ", midPrice=" + midPrice + ", member_mId=" + member_mId + ", mPhone=" + mPhone
 				+ ", goods_gNum=" + goods_gNum + ", gName=" + gName + ", gImg1=" + gImg1 + ", sellerID=" + sellerID
-				+ ", payment_pNum=" + payment_pNum + ", pPayment=" + pPayment + "]";
-
+				+ ", payment_pNum=" + payment_pNum + ", pPayment=" + pPayment + ", gStock=" + gStock + ", gPrice="
+				+ gPrice + ", dDate=" + dDate + ", dPk=" + dPk + "]";
 	}
+	
+	
+	
+
 	
 }

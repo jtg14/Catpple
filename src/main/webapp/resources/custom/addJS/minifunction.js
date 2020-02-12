@@ -280,7 +280,6 @@ function purchaseOnCart(grade,id){
 	}
 
 function deliveryButton(){
-	alert('들어옴');
 	var dpkList = new Array();
 	$("input[name=box2]:checked").each(function(){
 		dpkList.push($(this).val());

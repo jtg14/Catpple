@@ -40,12 +40,6 @@ public class CServiceImpl implements CService {
 	public ArrayList<CartVO> purchaseList(int[] arr,String memberid) {
 		return dao.purchaseList(arr,memberid);
 	}
-	@Override
-	public ArrayList<CartVO> selectReceivedOrderList(GoodsVO vo) {
-		return dao.selectReceivedOrderList(vo);
-	}
-	@Override
-	public int changeDstate(List<Integer> list) {
-		return dao.changeDstate(list);
-	}
+	
+
 }

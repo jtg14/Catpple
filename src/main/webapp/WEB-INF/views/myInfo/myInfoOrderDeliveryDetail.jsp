@@ -190,7 +190,7 @@
 									</c:choose>
 									</div>
 									<div class="col-md-6 col-xs-12 text-center">
-										<h4>결제 금액 : <fmt:formatNumber value="${oplist.midPrice}" pattern="#,###" /> 원 </h4>
+										<h4>결제 금액 : <fmt:formatNumber value="${oplist.midPrice}" pattern="#,###" /> 원 (${oplist.oStock}개)</h4>
 									</div>
 								</div>
 							</div>

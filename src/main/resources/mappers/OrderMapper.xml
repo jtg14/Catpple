@@ -37,5 +37,17 @@
 		from goods as g, member as m, delivery as d, corder as o
 		where o.goods_gnum= g.gnum and d.corder_onum=o.onum and m.mid=g.member_mid and o.member_mid=#{member_mId} and o.payment_pnum=#{pNum}
 	</select>
+	<!-- 판매자 받은 주문 목록 -->
+	<select id="selectReceivedOrderList" resultType="vo.OrderVO">
+		select g.gImg1, g.gStock, g.gName, g.gPrice, o.member_mid, o.oStock, o.oStatus,o.oDate, d.dState, d.dDate, d.dPk from goods as g, corder as o, delivery as d 
+		where g.gnum=o.goods_gnum and o.onum=d.corder_onum and g.member_mId=#{member_mId} order by o.ostatus, d.dstate, o.oDate;
+	</select>
+	
+	<update id="changeDstate"  parameterType="java.util.List">
+		update delivery set dState='b', dDate=default where dPk in
+		<foreach collection="list" item="dpk" open="(" close=")" index="index" separator=",">
+			${dPk}
+		</foreach>
+	</update>
 	
 </mapper>
