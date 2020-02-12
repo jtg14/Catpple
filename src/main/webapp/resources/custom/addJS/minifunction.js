@@ -46,8 +46,24 @@ $(function() {
 			$('#total').html(addCommas(parseInt($('#price').html()) * $('#amount1').val())+' 원');
 		}
 	});
+	var phoneNumber = $('#addHyphen').html();
+	var number = null;
+	if(phoneNumber.length == 12) {
+		number = phoneNumber.substring(0,4)+"-"+
+				phoneNumber.substring(4,8)+"-"+
+				phoneNumber.substring(8,12);
+	}else if(phoneNumber.length == 11) {
+	number = phoneNumber.substring(0,3)+"-"+
+	phoneNumber.substring(3,7)+"-"+
+	phoneNumber.substring(7,11);
+	}else if(phoneNumber.length == 10) {
+	number = phoneNumber.substring(0,3)+"-"+
+			 phoneNumber.substring(3,6)+"-"+
+			 phoneNumber.substring(6,10);
+
 	
-	
+	}
+	$('#addHyphen').html(number);
 	
 }); //ready
 //3자리 단위마다 콤마 생성
@@ -203,6 +219,7 @@ function confirmButton(){//인증버튼 from searchIDAndPW.jsp
 		
 	});//ajax
 	
+
 }//confirmButton()
 
 
@@ -307,7 +324,7 @@ function oplist(pNum, mId){
 			mId:mId
 		},
 		success:function(result){
-			$('#resultArea').html(result);
+			location.href="oDetail";
 		}
 		
 	});//ajax
