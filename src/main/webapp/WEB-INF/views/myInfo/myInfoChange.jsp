@@ -166,7 +166,7 @@
 								<div class="container"
 									style="border: 5px solid crimson; border-radius: 10px; padding: 20px;">
 
-									<form action="#" method="post"><!-- mchange -->
+									<form action="mchange" method="post">
 										<table class="table text-center">
 											<tr>
 												<td class="table-head"
@@ -245,12 +245,12 @@
 																	value="${logInUser.mAddr2}" style="margin-bottom: 8px;">
 															</div>
 															<div class="col-md-6 col-xs-12" style="padding-left: 0px;">
-																<input type="text" name="mAddr3"
+																<input type="text" name="mAddr3" placeholder="상세주소"
 																	value="${logInUser.mAddr3}" id="sample2_extraAddress"
 																	class="form-control input-sm" style="margin-bottom: 8px;">
 															</div>
 															<div class="col-md-6 col-xs-12" style="padding-left: 0px;">
-																<input type="text" name="mAddr3"
+																<input type="text" name="mAddr3" name="mAddr4" placeholder="참고항목(상세주소에 더해집니다.)"
 																	value="${logInUser.mAddr4}" id="sample2_detailAddress"
 																	class="form-control input-sm" style="margin-bottom: 8px;">
 															</div>
