@@ -2,6 +2,7 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +27,24 @@ th, td {
 	  height:0px;
 	  font-size:0px;
 	  }
+	  .img {
+		width: 100%;
 	}
+	.content {
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+	}
+
+
+@media ( min-width : 968px) {
+	.img {
+		width: 70%;
+	}
+	.content {
+		margin-top: 5%;
+	}
+}
 </style>
 </head>
 <body class="font-Jua">
@@ -131,27 +149,43 @@ th, td {
 				<!-- Page Heading -->
 				<div class="row" id="main"
 					style="min-height: 1000px; margin-top: 120px;">
-					<div class="col-sm-12 col-md-12" id="content" style="background-color:white;">
+					<span class="h1" id="opList" style="color: crimson;">주문취소(${fn:length(canceledList)})</span>
+					<div class="col-sm-12 col-md-12" id="content" style="background-color:white;margin-top:30px;">
 						<!-- 메인공간 -->
-
+							
 						<div class="col-md-10 col-xs-12 text-center" style="padding-left:0px;padding-right:0px;">
-							<div class="col-md-2 col-xs-12" style="margin-bottom:30px;">
-								<span class="h1" style="color: crimson;">주문취소</span>
-							</div>
-							<div class="col-md-12 col-xs-12" style="padding: 0;">
-								<div class="col-md-3 col-xs-4">주문번호</div>
-								<div class="col-md-3 col-xs-4">진행상태</div>
-								<div class="col-md-3 hide-div">결제수단</div>
-								<div class="col-md-3 col-xs-4">결재금액</div>
-							</div>
-							<c:forEach var="cList" items="${canceledList}">
-								<div class="col-md-12 col-xs-12"
-									style="padding: 10px 0px; border-top: 1px solid lightgray;">
-									<div class="col-md-3 col-xs-4">${cList.oNum}</div>
-									<div class="col-md-3 col-xs-4">${cList.oStatus}</div>
-									<div class="col-md-3 hide-div">${cList.pPayment}</div>
-									<div class="col-md-2 col-xs-4 text-right" 
-									style="padding-left:0px;padding-right:0px;"><fmt:formatNumber value="${cList.midPrice}" pattern="#,###" />원</div>
+							<c:forEach var="cList" items="${canceledList}" varStatus="status">
+								<div class="container text-center"
+									style="border-top: 2px solid lightgray; padding-top: 10px; padding-bottom: 10px;">
+									<div class="col-md-3 col-xs-12" style="padding-top: 10px;">
+										<img class="img"
+											src="resources/sellerInfo/${cList.sellerID}/${cList.gImg1}">
+									</div>
+									<div class="col-md-4 col-xs-12 content">
+										<h4>${cList.gName}</h4>
+										<h3>${cList.sellerID}</h3>
+										<h3 style="color:lightgray;">(<span id="addHyphen${status.index}">${cList.mPhone}</span>)</h3>
+									</div>
+									<div class="col-md-2 col-xs-12 content">
+										<h4>가격 : <fmt:formatNumber value="${cList.midPrice}"
+												pattern="#,###" />원</h4>
+									</div>
+									<div class="col-md-2 col-xs-12 content">
+										<div class="col-md-12 col-xs-6"
+											style="padding-right: 0px; padding-left: 0px;">
+											<h4>결제수단: ${cList.pPayment}</h4>
+										</div>
+										<div class="col-md-12 col-xs-6"
+											style="margin-top: 10px; margin-bottom: 10px;">
+											<c:if test="${cList.oStatus eq '취소완료'}">
+												<span class="label label-default" style="font-size: 1.5em;">${cList.oStatus}</span>
+											</c:if>
+											<c:if test="${cList.oStatus eq '취소요청'}">
+												<span class="label label-danger" style="font-size: 1.5em;">${cList.oStatus}</span>
+											</c:if>
+										</div>
+
+									</div>
 								</div>
 							</c:forEach>
 						</div>
