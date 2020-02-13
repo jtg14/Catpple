@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
-<title>나에게 온  주문목록 | Catpple</title>
+<title>나에게 온  주문목록(배송완료) | Catpple</title>
 <style>
 @media (max-width : 768px) {
      .first-div{
@@ -156,7 +156,7 @@ padding-right: 0px;
 						<!-- 메인 공간 -->
 						<div class="col-md-12 col-xs-12">
 						<div class="col-md-6 col-xs-8">
-							<h2 style="color: crimson">받은 주문 목록</h2>  
+							<h2 style="color: crimson">배송 완료 목록</h2>  
 						</div>
 						<div class="col-md-6 col-xs-4 " style="margin-top:17px;"> 
 							<button onclick="deliveryButton()"  class="btn btn-danger pull-right" onclick="return confirm('배송하시겠습니까?')">배송하기</button>
@@ -164,7 +164,9 @@ padding-right: 0px;
 						</div>
 					
 						<div class="col-md-10 col-xs-12">
+						
 							<form>
+							
 							<c:forEach var="list" items="${list}" varStatus="vs">
 								<div id="" class="container text-center"
 									style="border-top: 2px solid lightgray;padding-top: 10px; padding-bottom: 10px;">
@@ -203,50 +205,42 @@ padding-right: 0px;
 
 		                           	      <span>
 			                           	      <c:choose> 
-			                           	    	  <c:when test="${list.dState=='a' and (list.oStatus=='os3' or list.oStatus=='os4')}">
-			                           	    	  <div class="col-md-3 col-xs-6" >
-			                           	     		<font style="color:crimson; font-weight: bold; font-size: large;"> 배송준비 중</font>
-			                           	     	  </div>
-			                           	     	  </c:when>
-			                           	     	  
-			                           	     	  <c:when test="${list.dState=='b'}">
+			                           	    	
+			                           	     	  <c:when test="${list.dState=='c' }">
 			                           	     	  <div class="col-md-3 col-xs-6" >
-			                           	     		 <font style="color:#FF8C00; font-weight: bold;font-size: large;">배송 중</font>
+			                           	     		<font style="color:green;font-weight: bold;font-size: large;"> 배송 완료 </font>
 			                           	     	  </div>
 			                           	     	  </c:when>
-			                           	     	  
-			                           	     	  <c:when test="${list.dState=='d'}">
-			                           	     	  <div class="col-md-3 col-xs-6" >
-			                           	     	  	<font style="color:#8A0886;font-weight: bold;font-size: large;"> 배송 취소 </font>
-			                           	     	  </div>
-			                           	     	  </c:when>
-			                           	     
+			                           	     	 
 			                           	      </c:choose>
 		                           	      </span><br>
-		                           
+		                           	   	
 		                          	    <c:choose>
-		                          	    <c:when test="${list.oStatus=='os1'}">
+		                  	    
+		                          	    <c:when test="${list.oStatus=='os2'}">
 		                          	    	<div class="col-md-3 col-xs-6">
-		                          	    		<font style="font-weight: bold; color:#2E2EFE;">주문취소 완료</font>
+		                          	    		<font style="font-weight: bold; color:#2E2EFE;">반품 완료</font>
 		                          	   		</div>
 		                          	    </c:when>
-		                        
-		                          	    <c:when test="${list.oStatus=='os4'}">
+		                          	
+	                          	   		 <c:when test="${list.oStatus=='os5'}">
 		                          	    	<div class="col-md-3 col-xs-6">
-		                          	    		<font style="font-weight: bold; color:#FF0000; text-decoration: underline; font-style: italic;">주문취소 요청 중</font>
+		                          	    		<font style="font-weight: bold; color:#FF0000; text-decoration: underline;font-style: italic;">반품 요청 중</font>
 		                          	   		</div>
+		                          	   		<c:if test="${list.dState=='c'}">
 		                          	   		<div class="col-md-3 col-xs-6 btn btn-primary" onclick="statusChangeButton(${list.oNum},'${list.oStatus}')">
-		                          	   			주문취소 완료
+		                          	   			반품 완료
 		                          	   		</div>
+		                          	   		</c:if>
 	                          	   		</c:when>
-	                          	   		
 										</c:choose>
 										
 									</div>
 								</div>
 							</c:forEach>
-						</form>
 							
+						</form>
+						
 						</div>
 					</div>
 				</div>

@@ -27,5 +27,6 @@ public interface OService {
 	int changeStatus(OrderVO vo);
 	
 	int changeDstateToD();
-
+	
+	ArrayList<OrderVO> selectDeliveryCompletionList(GoodsVO gvo);
 }

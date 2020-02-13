@@ -110,6 +110,8 @@
 									class="fa fa-angle-double-right"></i> 나의 상품</a></li>
 							<li><a href="sOList"><i
 									class="fa fa-angle-double-right"></i> 주문목록</a></li>
+							<li><a href="sDCList"><i
+									class="fa fa-angle-double-right"></i> 배송완료목록</a></li>
 						</ul></li>
 					</c:if>
 				</ul>
