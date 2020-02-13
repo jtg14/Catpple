@@ -91,51 +91,47 @@
 									class="fa fa-angle-double-right"></i> 회원탈퇴</a></li>
 						</ul></li>
 					<c:if test="${logInUser.mGrade!='S'}">
-						<li><h3>
-								<a href="#" data-toggle="collapse" data-target="#submenu-2"><i
-									class="fa fa-fw fa-star"></i> 주문배송 <i
-									class="fa fa-fw fa-angle-down pull-right"></i></a>
-							</h3>
-							<ul id="submenu-2" class="collapse">
-								<li><a href="mODelivery"><i
-										class="fa fa-angle-double-right"></i> 주문/배송조회</a></li>
-								<li><a href="mOCancel"><i
-										class="fa fa-angle-double-right"></i> 주문취소</a></li>
-								<li><a href="mRExchange"><i
-										class="fa fa-angle-double-right"></i> 반품/교환</a></li>
-								<li><a href="mCart"><i class="fa fa-angle-double-right"></i>
-										장바구니<span class="label label-danger">${cartRow}</span></a></li>
-							</ul></li>
-						<li><h3>
-								<a href="#" data-toggle="collapse" data-target="#submenu-3"><i
-									class="fa fa-fw fa-star"></i> 고객센터 <i
-									class="fa fa-fw fa-angle-down pull-right"></i></a>
-							</h3>
-							<ul id="submenu-3" class="collapse">
-								<li><a href="mCustomerInquiry"><i
-										class="fa fa-angle-double-right"></i> 1:1문의</a></li>
-								<li><a href="mFAQ"><i class="fa fa-angle-double-right"></i>
-										FAQ</a></li>
-								<li><a href="mSuggestions"><i
-										class="fa fa-angle-double-right"></i> 건의사항</a></li>
-								<li><a href="mWriting"><i
-										class="fa fa-angle-double-right"></i> 글쓰기 (모든글)</a></li>
-							</ul></li>
-					</c:if>
-					<c:if test="${logInUser.mGrade!='C'}">
-						<li><h3>
-								<a href="#" data-toggle="collapse" data-target="#submenu-5"><i
-									class="fa fa-fw fa-star"></i> 판매자 메뉴 <i
-									class="fa fa-fw fa-angle-down pull-right"></i></a>
-							</h3>
-							<ul id="submenu-5" class="collapse">
-								<li><a href="sGForm"><i
-										class="fa fa-angle-double-right"></i> 상품등록</a></li>
-								<li><a href="sRGoods"><i
-										class="fa fa-angle-double-right"></i> 나의 상품</a></li>
-								<li><a href="sOList"><i
-										class="fa fa-angle-double-right"></i> 주문목록</a></li>
-							</ul></li>
+					<li><h3><a href="#" data-toggle="collapse"
+						data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>
+							주문배송 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
+						<ul id="submenu-2" class="collapse">
+							<li><a href="mODelivery"><i
+									class="fa fa-angle-double-right"></i> 주문/배송조회</a></li>
+							<li><a href="mOCancel"><i
+									class="fa fa-angle-double-right"></i> 주문취소</a></li>
+							<li><a href="mRExchange"><i
+									class="fa fa-angle-double-right"></i> 반품/교환</a></li>
+							<li><a href="mCart"><i
+									class="fa fa-angle-double-right"></i> 장바구니<span class="label label-danger">${cartRow}</span></a></li>
+						</ul></li>
+					<li><h3><a href="#" data-toggle="collapse"
+						data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>
+							고객센터 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
+						<ul id="submenu-3" class="collapse">
+							<li><a href="mCustomerInquiry"><i
+									class="fa fa-angle-double-right"></i> 1:1문의</a></li>
+							<li><a href="mFAQ"><i
+									class="fa fa-angle-double-right"></i> FAQ</a></li>
+							<li><a href="mSuggestions"><i
+									class="fa fa-angle-double-right"></i> 건의사항</a></li>
+							<li><a href="mWriting"><i
+									class="fa fa-angle-double-right"></i> 글쓰기 (모든글)</a></li>
+						</ul></li>
+						</c:if>						
+						<c:if test="${logInUser.mGrade!='C'}">
+						<li><h3><a href="#" data-toggle="collapse"
+						data-target="#submenu-5"><i class="fa fa-fw fa-star"></i>
+							판매자 메뉴 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
+						<ul id="submenu-5" class="collapse">
+							<li><a href="sGForm"><i
+									class="fa fa-angle-double-right"></i> 상품등록</a></li>
+							<li><a href="sRGoods"><i
+									class="fa fa-angle-double-right"></i> 나의 상품</a></li>
+							<li><a href="sOList"><i
+									class="fa fa-angle-double-right"></i> 주문목록</a></li>
+							<li><a href="sDCList"><i
+									class="fa fa-angle-double-right"></i> 배송완료목록</a></li>
+						</ul></li>
 					</c:if>
 				</ul>
 			</div>

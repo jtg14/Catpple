@@ -33,5 +33,5 @@ public interface OService {
 	
 	ArrayList<OrderVO> returnedList(MemberVO vo);
 	
-	
+	ArrayList<OrderVO> selectDeliveryCompletionList(GoodsVO gvo);
 }

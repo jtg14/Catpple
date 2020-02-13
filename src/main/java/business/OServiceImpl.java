@@ -64,4 +64,9 @@ public class OServiceImpl implements OService {
 		return dao.returnedList(vo);
 	}
 
+	public ArrayList<OrderVO> selectDeliveryCompletionList(GoodsVO gvo) {
+		return dao.selectDeliveryCompletionList(gvo);
+	}
+	
+	
 }

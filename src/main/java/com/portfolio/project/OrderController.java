@@ -60,20 +60,26 @@ public class OrderController {//주문성공 페이지
 	
 	@RequestMapping(value ="/sOList")//주문 요청 목록
 	public ModelAndView sellerOrderList(ModelAndView model, HttpServletRequest request, MemberVO mvo) {
-		
+		String dCode = request.getParameter("dCode");
 		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 		GoodsVO gvo = new GoodsVO();
 		gvo.setMember_mId(mvo.getmId());
-		ArrayList<OrderVO> list = service.selectReceivedOrderList(gvo);
+		
 		
 //		for(int i=0; i<list.size(); i++) {
 //			String subDate = (list.get(i).getdDate()_.substring(0,19);
 //			list.get(i).setdDate(subDate);
 //		}
-		System.out.println(list.get(0));
 		
-		model.addObject("list",list);
-		model.setViewName("order/sellerOrderList");
+		if("C".equals(dCode)) {//판매자메뉴->배송완료목록
+			ArrayList<OrderVO> list = service.selectDeliveryCompletionList(gvo);
+			model.addObject("list",list);
+			model.setViewName("order/sellerDeliveryCompletionList");
+		}else {//판매자메뉴->주문목록
+			ArrayList<OrderVO> list = service.selectReceivedOrderList(gvo);
+			model.addObject("list",list);
+			model.setViewName("order/sellerOrderList");
+		}
 		return model;
 	}
 	@RequestMapping(value ="/ginfo")//상품정보
@@ -247,4 +253,8 @@ public class OrderController {//주문성공 페이지
 		return model;
 	}
 	
+//	@RequestMapping(value = "sDCList")
+//	public ModelAndView sellerDeliveryCompletionList(ModelAndView model) {
+//		
+//	}//sellerDeliveryCompletionList
 }//class
