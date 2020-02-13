@@ -42,7 +42,7 @@ padding-right: 0px;
 
 @media(max-width : 758px){
 .fourth-div{
-   margin-top:30px;
+ 
 }
 }
 
@@ -156,8 +156,8 @@ padding-right: 0px;
 						<div class="col-md-6 col-xs-8">
 							<h2 style="color: crimson">받은 주문 목록</h2>  
 						</div>
-						<div class="col-md-6 col-xs-4 pull-right" style="margin-top:17px;"> 
-							<button onclick="deliveryButton()" class="btn btn-danger pull-right" onclick="return confirm('배송하시겠습니까?')">배송하기</button>
+						<div class="col-md-6 col-xs-4 " style="margin-top:17px;"> 
+							<button onclick="deliveryButton()"  class="btn btn-danger pull-right" onclick="return confirm('배송하시겠습니까?')">배송하기</button>
 						</div>
 						</div>
 					
@@ -175,47 +175,95 @@ padding-right: 0px;
 										
 										<div class="col-md-6 col-xs-9 second-div">
 											<h4>${list.gName}</h4>
-											<label style="font-size: x-small;">재고 : ${list.gStock}</label>
+											
 										</div>
 
 									</div>
-									<div class="col-md-6 col-xs-12 third-div">
-										<div class="col-md-6 col-xs-6">
-											<span>${list.gPrice}원</span>
+									<div class="col-md-6 col-xs-12 third-div" style="text-align: left;">
+										<div class="col-md-6 col-xs-12">
+									  		 주문날짜:${list.oDate}
+									   	</div>
+									
+										<div class="col-md-6 col-xs-12 fourth-div">
+		                                	 <span>주문자ID : ${list.member_mId}</span>
+		                                </div>
+		                                
+		                                <div class="col-md-6 col-xs-6">
+											<span>단가:${list.gPrice}원</span>
 										</div>
-										<div class="col-md-3 col-xs-4" style="padding-right: 10px;">
-											<span class="pull-right">주문 수량 : </span>
+		                                
+										<div class="col-md-6 col-xs-12" style="padding-right: 10px;">
+											<span class="">주문 수량 : ${list.oStock}개 <label style="font-size: x-small;">(재고:${list.gStock}개) </label></span>
 										</div>
-										<div class="col-md-3 col-xs-2">
-											<span class="pull-left">${list.gStock}</span>
+										<div class="col-md-6 col-xs-12">
+											총가격:${list.gPrice*list.oStock}원
 										</div>
 
-										<div class="col-md-6 col-xs-12 fourth-div"
-		                                	 style="margin-top: 10px;">
-		                                	 <span>주문자ID : ${list.member_mId}</span>
-		                                	
-		                            	  </div>
+										
 		                              
-		                            	  <div class="col-md-5" >
+		                            	  
 		                           	      <span>
-			                           	      <c:choose>
-			                           	    	  <c:when test="${list.dState=='a'}">
-			                           	     		<font style="color:crimson;"> 배송준비 중</font>
+			                           	      <c:choose> 
+			                           	    	  <c:when test="${list.dState=='a' and (list.oStatus=='os3' or list.oStatus=='os4')}">
+			                           	    	  <div class="col-md-3 col-xs-6" >
+			                           	     		<font style="color:crimson; font-weight: bold; font-size: large;"> 배송준비 중</font>
+			                           	     	  </div>
 			                           	     	  </c:when>
 			                           	     	  
 			                           	     	  <c:when test="${list.dState=='b'}">
-			                           	     		 <font style="color:#FF8C00;">배송 중</font>
+			                           	     	  <div class="col-md-3 col-xs-6" >
+			                           	     		 <font style="color:#FF8C00; font-weight: bold;font-size: large;">배송 중</font>
+			                           	     	  </div>
 			                           	     	  </c:when>
 			                           	     	  
-			                           	     	  <c:when test="${list.dState=='c'}">
-			                           	     		<font style="color:green;"> 배송 완료 </font>
+			                           	     	  <c:when test="${list.dState=='c' }">
+			                           	     	  <div class="col-md-3 col-xs-6" >
+			                           	     		<font style="color:green;font-weight: bold;font-size: large;"> 배송 완료 </font>
+			                           	     	  </div>
 			                           	     	  </c:when>
+			                           	     	  
+			                           	     	  <c:when test="${list.dState=='d'}">
+			                           	     	  <div class="col-md-3 col-xs-6" >
+			                           	     	  	<font style="color:#8A0886;font-weight: bold;font-size: large;"> 배송 취소 </font>
+			                           	     	  </div>
+			                           	     	  </c:when>
+			                           	     
 			                           	      </c:choose>
 		                           	      </span><br>
-		                           	      ${list.dDate}
-		                          	    </div>
-
-
+		                           	   	
+		                          	    
+		                          	    
+		                          	    <c:choose>
+		                          	    <c:when test="${list.oStatus=='os1'}">
+		                          	    	<div class="col-md-3 col-xs-6">
+		                          	    		<font style="font-weight: bold; color:#2E2EFE;">주문취소 완료</font>
+		                          	   		</div>
+		                          	    </c:when>
+		                          	    
+		                          	    <c:when test="${list.oStatus=='os2'}">
+		                          	    	<div class="col-md-3 col-xs-6">
+		                          	    		<font style="font-weight: bold; color:#2E2EFE;">반품 완료</font>
+		                          	   		</div>
+		                          	    </c:when>
+		                          	    
+		                          	    <c:when test="${list.oStatus=='os4'}">
+		                          	    	<div class="col-md-3 col-xs-6">
+		                          	    		<font style="font-weight: bold; color:#FF0000; text-decoration: underline; font-style: italic;">주문취소 요청 중</font>
+		                          	   		</div>
+		                          	   		<div class="col-md-3 col-xs-6 btn btn-primary" onclick="statusChangeButton(${list.oNum},'${list.oStatus}')">
+		                          	   			주문취소 완료
+		                          	   		</div>
+	                          	   		</c:when>
+	                          	   		 <c:when test="${list.oStatus=='os5'}">
+		                          	    	<div class="col-md-3 col-xs-6">
+		                          	    		<font style="font-weight: bold; color:#FF0000; text-decoration: underline;font-style: italic;">반품 요청 중</font>
+		                          	   		</div>
+		                          	   		<div class="col-md-3 col-xs-6 btn btn-primary" onclick="statusChangeButton(${list.oNum},'${list.oStatus}')">
+		                          	   			반품 완료
+		                          	   		</div>
+	                          	   		</c:when>
+										</c:choose>
+										
 									</div>
 								</div>
 							</c:forEach>

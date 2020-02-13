@@ -203,6 +203,7 @@
 											</c:when>
 										</c:choose>
 									</div>
+
 									<div class="col-md-12 col-xs-12 text-left">
 										<div class="col-md-6 col-xs-12">
 											<h4>
@@ -249,6 +250,7 @@
 													</c:if>
 											</c:when>
 										</c:choose>
+
 									</div>
 								</div>
 							</div>

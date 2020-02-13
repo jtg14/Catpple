@@ -4,12 +4,15 @@ package dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import vo.CartVO;
+import vo.GoodsVO;
 import vo.OrderVO;
 import vo.PaymentVO;
 
@@ -42,7 +45,22 @@ import vo.PaymentVO;
 	public ArrayList<OrderVO> getOrderList(PaymentVO vo) {
 		return (ArrayList)dao.selectList(NS+"getOrderList",vo);
 	}
+
+	
+	public ArrayList<OrderVO> selectReceivedOrderList(GoodsVO vo) {
+		return (ArrayList)dao.selectList(NS+"selectReceivedOrderList",vo);
+	}
+	
+	public int changeDstate(List<Integer> list) {
+		return dao.update(NS+"changeDstate", list);
+	}
+
 	public int changeStatus(OrderVO vo) {
 		return dao.update(NS+"changeStatus",vo);
 	}
+
+	public int changeDstateToD() {
+		return dao.update(NS+"changeDstateToD");
+	}
+	
 }

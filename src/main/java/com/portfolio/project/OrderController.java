@@ -64,13 +64,13 @@ public class OrderController {//주문성공 페이지
 		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 		GoodsVO gvo = new GoodsVO();
 		gvo.setMember_mId(mvo.getmId());
-		ArrayList<CartVO> list = cartService.selectReceivedOrderList(gvo);
+		ArrayList<OrderVO> list = service.selectReceivedOrderList(gvo);
 		
-		for(int i=0; i<list.size(); i++) {
-			String subDate = list.get(i).getdDate().substring(0,19);
-			list.get(i).setdDate(subDate);
-		}
-		
+//		for(int i=0; i<list.size(); i++) {
+//			String subDate = (list.get(i).getdDate()_.substring(0,19);
+//			list.get(i).setdDate(subDate);
+//		}
+		System.out.println(list.get(0));
 		
 		model.addObject("list",list);
 		model.setViewName("order/sellerOrderList");
@@ -184,8 +184,8 @@ public class OrderController {//주문성공 페이지
 		System.out.println("list=>"+dpkList);
 		
 
-		if(cartService.changeDstate(dpkList)>0) {
-			System.out.println("changeDstate처리후");
+		if(service.changeDstate(dpkList)>0) {
+			
 			model.addObject("code", "100");
 		}else {
 			model.addObject("code", "101");
@@ -233,4 +233,18 @@ public class OrderController {//주문성공 페이지
 		model.setViewName("jsonView");
 		return model;
 	}
+	
+	@RequestMapping(value = "oStatus")//판매자메뉴->주문목록->주문취소요청/반품요청 받은 상품의 취소/반품 버튼 클릭시 
+	public ModelAndView changeOStatus(ModelAndView model, OrderVO vo) {
+		if(service.changeStatus(vo)>0) {
+			service.changeDstateToD();//oStatus가 'os1'(주문취소)일 때  dState를 'd'(배송취소)로 바꿔주는 쿼리문
+			model.addObject("code", "100");
+		}else {
+			model.addObject("code", "101");
+		}
+		model.setViewName("jsonView");
+		
+		return model;
+	}
+	
 }//class
