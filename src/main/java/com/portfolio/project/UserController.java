@@ -17,9 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 import business.CService;
 import business.GService;
 import business.MService;
+import business.OService;
 import vo.CartVO;
 import vo.GoodsVO;
 import vo.MemberVO;
+import vo.OrderVO;
 
 @Controller
 public class UserController {
@@ -29,6 +31,8 @@ public class UserController {
 	CService cartService;
 	@Autowired
 	GService gservice;
+	@Autowired
+	OService oservice;
 	@Autowired
 	BCryptPasswordEncoder passwordEncorder;
 	
@@ -52,11 +56,20 @@ public class UserController {
 	
 	@RequestMapping(value ="/mOCancel")//주문 취소
 	public ModelAndView myInfoOrderCancel(ModelAndView model,HttpServletRequest request) {
+		ArrayList<OrderVO> cList = oservice.canceledList((MemberVO)request.getSession().getAttribute("logInUser"));
+		model.addObject("canceledList",cList);
 		model.setViewName("myInfo/myInfoOrderCancel");
 		return model;
 	}
 	@RequestMapping(value ="/mRExchange")//반품/교환
 	public ModelAndView myInfoReturnExchange(ModelAndView model,HttpServletRequest request) {
+		MemberVO user = (MemberVO)request.getSession().getAttribute("logInUser");
+		System.out.println(user);
+		ArrayList<OrderVO> rList = oservice.returnedList(user);
+		for(OrderVO vo : rList){	
+			System.out.println(vo);
+		}
+		model.addObject("returnedList",rList);
 		model.setViewName("myInfo/myInfoReturnExchange");
 		return model;
 	}
