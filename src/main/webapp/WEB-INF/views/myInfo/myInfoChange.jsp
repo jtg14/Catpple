@@ -273,18 +273,37 @@
 															style="padding-left: 0px; padding-right: 0px;">주소</td>
 														<td style="text-align: left;">
 															<div class="col-md-2 col-xs-6" style="padding-left: 0px;">
-																<input type="text" class="form-control input-sm"
-																	name="mAddr1" value="0" style="margin-bottom: 8px;">
+																<input type="text" class="form-control input-sm" placeholder="우편번호"
+																	readonly="readonly" name="mAddr1" id="sample2_postcode"
+																	style="margin-bottom: 8px;">
 															</div>
 															<div class="col-md-10 col-xs-6"
 																style="margin-bottom: 8px;">
-																<button class="btn btn-sm">주소 찾기</button>
+																<input type="button" class="btn btn-sm" onclick="sample2_execDaumPostcode()" value="주소변경"/>
 															</div>
 															<div class="col-md-12 col-xs-12"
 																style="padding-left: 0px;">
-																<input type="text" class="form-control input-sm"
-																	name="mAddr2" style="margin-bottom: 8px;"> <input
-																	type="text" name="mAddr3" class="form-control input-sm">
+																<input type="text" class="form-control input-sm" placeholder="주소"
+																	readonly="readonly" name="mAddr2" id="sample2_address"
+																	style="margin-bottom: 8px;">
+															</div>
+															<div class="col-md-6 col-xs-12" style="padding-left: 0px;">
+																<input type="text" name="mAddr3" placeholder="상세주소"
+																	id="sample2_extraAddress"
+																	class="form-control input-sm" style="margin-bottom: 8px;">
+															</div>
+															<div class="col-md-6 col-xs-12" style="padding-left: 0px;">
+																<input type="text" name="mAddr4" placeholder="참고항목"
+																	id="sample2_detailAddress"
+																	class="form-control input-sm" style="margin-bottom: 8px;">
+															</div>
+															<div id="layer"
+																style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
+																<img
+																	src="//t1.daumcdn.net/postcode/resource/images/close.png"
+																	id="btnCloseLayer"
+																	style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
+																	onclick="closeDaumPostcode()" alt="닫기 버튼">
 															</div>
 														</td>
 													</tr>
