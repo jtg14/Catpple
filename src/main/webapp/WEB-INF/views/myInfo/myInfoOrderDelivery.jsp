@@ -126,15 +126,12 @@
 					style="min-height: 1000px; margin-top: 120px;">
 					<div class="col-sm-12 col-md-10" id="content" style="background-color:white;">
 						<!-- 메인 공간 -->
-
-
 						<div class="col-md-12 col-xs-12">
 							<h2>주문 /배송 조회</h2>
 							<div class="col-md-12 col-xs-12"
-								style="border: 5px solid crimson; border-radius: 10px; padding: 20px 10px; text-align: center;">
-								<label style="width: 100%;font-size:1.2em;">현재 적립예정포인트는 <b
-									style="color: crimson;">${logInUser.mPoint}점</b>입니다. 상품 평가 완료시 포인트가 적립 됩니다.<br>
-									주문 번호를 클릭하면 해당 주문 목록을 볼 수 있습니다.
+								style="border: 5px solid crimson; border-radius: 10px; padding: 20px 10px; text-align: center;min-height:800px;">
+								<label style="width: 100%;font-size:1.2em;">
+									<strong>주문 번호를 클릭하면 해당 주문 목록을 볼 수 있습니다.</strong>
 								</label>
 								<div class="col-md-12 col-xs-12"
 									style="border-top: 1px solid darkgray; padding-left: 0px; padding-right: 0px;">
@@ -161,6 +158,30 @@
 										</tbody>
 									</table>
 								</div>
+							</div>
+							<div class="col-md-12 col-xs-12 text-center">
+								<c:if test="${pageMaker.prev}">
+								  	<a href="listcri${pageMaker.makeSearch(1)}">First</a>
+									<a href="listcri${pageMaker.makeSearch(pageMaker.startPage-1)}">&laquo;</a>
+								  </c:if>
+								
+								  <c:forEach begin="${pageMaker.startPage}"
+										   end="${pageMaker.endPage}" var="idx">
+									<c:choose>
+								 		<c:when test="${pageMaker.cri.page==idx}">
+								 			<font size="5" color="Orange">${idx}</font>&nbsp;
+								 		</c:when>
+								 		<c:otherwise>
+								 			<a href="listcri${pageMaker.makeSearch(idx)}">${idx}</a>&nbsp;
+								 		</c:otherwise>
+								 	</c:choose>	   
+									<%-- <c:out value="${pageMaker.cri.page == idx ? 'class =active':''}"/> --%>
+								  </c:forEach>
+								
+								  <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+									<a href="listcri${pageMaker.makeSearch(pageMaker.endPage+1)}">&raquo;</a>
+									<a href="listcri${pageMaker.makeSearch(pageMaker.lastPage)}">Last</a>
+								 </c:if>
 							</div>
 						</div>
 											
