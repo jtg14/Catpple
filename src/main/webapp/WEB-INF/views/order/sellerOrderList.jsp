@@ -171,8 +171,11 @@ padding-right: 0px;
 									<div class="col-md-6 col-xs-12"
 										style="padding-top: 0px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px;">
 										<div class="col-md-6 col-xs-3" style="padding-left: 0px;">
-											<input name="box2" value="${list.dPk}" type="checkbox" onclick="chBox(this.form,'${list.dState}',${vs.index})"> <img class="img"
-												src="resources/sellerInfo/${logInUser.mId}/${list.gName}"/>
+											
+											<input name="box2" value="${list.dPk}" type="checkbox" onclick="chBox(this.form,'${list.dState}',${vs.index},${list.oStock},${list.gStock})"> <img class="img"
+                                 			   src="resources/sellerInfo/${logInUser.mId}/${list.gName}"/>
+											
+										
 										</div>
 										
 										<div class="col-md-6 col-xs-9 second-div">
@@ -247,6 +250,39 @@ padding-right: 0px;
 							</c:forEach>
 						</form>
 							
+						</div>
+						<!-- paging -->
+						<div class="col-md-10 col-xs-12 text-center">
+							<c:choose>
+								<c:when test="${currPage>1}">
+									<a href="sOList?currPage=1">First</a>&nbsp;
+									<a href="sOList?currPage=${currPage-1}">이전</a>&nbsp;&nbsp;
+								</c:when>
+								<c:otherwise>
+									<font color="gray">First&nbsp;이전&nbsp;&nbsp;</font>
+								</c:otherwise>
+							</c:choose>
+							
+							<c:forEach  var="i"  begin="${sPage}" end="${ePage}">
+								<c:choose>
+									<c:when test="${i==currPage}">
+										<font size="5" color="Orange">${i}&nbsp;</font>
+									</c:when>
+									<c:otherwise>
+										<a href="sOList?currPage=${i}">${i}&nbsp;</a>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							
+							<c:choose>
+								<c:when test="${currPage==totalPageNo}">
+									<font color="gray">&nbsp;&nbsp;다음&nbsp;Last</font>
+								</c:when>
+								<c:otherwise>
+									<a href="sOList?currPage=${currPage+1}">&nbsp;다음</a>&nbsp;
+									<a href="sOList?currPage=${totalPageNo}">Last</a>&nbsp;
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</div>

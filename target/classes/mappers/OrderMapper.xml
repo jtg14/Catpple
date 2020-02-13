@@ -47,11 +47,11 @@
 
 	<!-- 판매자 받은 주문 목록 -->
 	<select id="selectReceivedOrderList" resultType="vo.OrderVO">
-		select g.gImg1, g.gStock, g.gName, g.gPrice, o.member_mid, o.oStock, o.oNum, o.oStatus,o.oDate, d.dState, d.dDate, d.dPk from goods as g, corder as o, delivery as d where g.gnum=o.goods_gnum and o.onum=d.corder_onum and d.dstate!='c' and g.member_mId=#{member_mId} order by o.oStatus desc, d.dState, o.oDate;
+		select g.gImg1, g.gStock, g.gName, g.gPrice, o.member_mid, o.oStock, o.oNum, o.oStatus,o.oDate, d.dState, d.dDate, d.dPk from goods as g, corder as o, delivery as d where g.gnum=o.goods_gnum and o.onum=d.corder_onum and d.dstate!='c' and g.member_mId=#{member_mId} order by o.oStatus desc, d.dState, o.oDate limit #{sno}, #{perPage};
 	</select>
 	<!-- 판매자 배송완료 목록 -->
 	<select id="selectDeliveryCompletionList" resultType="vo.OrderVO">
-		 select g.gImg1, g.gStock, g.gName, g.gPrice, o.member_mid, o.oStock, o.oNum, o.oStatus,o.oDate, d.dState, d.dDate, d.dPk from goods as g, corder as o, delivery as d where g.gnum=o.goods_gnum and o.onum=d.corder_onum and d.dstate='c' and g.member_mId=#{member_mId} order by o.oStatus desc, d.dState, o.oDate;
+		 select g.gImg1, g.gStock, g.gName, g.gPrice, o.member_mid, o.oStock, o.oNum, o.oStatus,o.oDate, d.dState, d.dDate, d.dPk from goods as g, corder as o, delivery as d where g.gnum=o.goods_gnum and o.onum=d.corder_onum and d.dstate='c' and g.member_mId=#{member_mId} order by o.oStatus desc, d.dState, o.oDate limit #{sno}, #{perPage};
 	</select>
 	
 	<update id="changeDstate"  parameterType="java.util.List">
@@ -72,5 +72,11 @@
 		SET d.dState = 'd'
 		WHERE o.oStatus='os1';
 	</update>
+	
+	<!-- Total row count -->
+	<select id="">
+	
+	</select>
+	
 
 </mapper>

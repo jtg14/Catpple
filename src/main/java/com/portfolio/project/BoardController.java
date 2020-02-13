@@ -46,6 +46,8 @@ public class BoardController {
 	public ModelAndView mCustomerInquiry(ModelAndView model, HttpServletRequest request, BoardVO bvo, MemberVO mvo, PageVO pvo) {
 		HttpSession session = request.getSession();
 		mvo = (MemberVO)session.getAttribute("logInUser");
+		pvo.setPerPage(5);
+		pvo.setPerPageNo(3);
 		
 		if("C".equals(mvo.getmGrade())) {//member가 customer인 경우
 			//paging
@@ -136,7 +138,8 @@ public class BoardController {
 	public ModelAndView mSuggestions(ModelAndView model, HttpServletRequest request, BoardVO bvo, MemberVO mvo, PageVO pvo) {
 		HttpSession session = request.getSession();
 		mvo = (MemberVO)session.getAttribute("logInUser");
-		
+		pvo.setPerPage(5);
+		pvo.setPerPageNo(3);
 		if("C".equals(mvo.getmGrade())) {//member가 customer인 경우
 			//paging
 			//currPage설정
@@ -292,7 +295,7 @@ public class BoardController {
 	
 	@RequestMapping(value = "/boardUpdate")
 	public ModelAndView boardUpdate(ModelAndView model, BoardVO vo, HttpServletRequest request) {
-		System.out.println(service.boardUpdate(vo));
+		
 		if(service.boardUpdate(vo)>0) {
 			model.addObject("code","100");
 		}else {

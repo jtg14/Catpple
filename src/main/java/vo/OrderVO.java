@@ -2,7 +2,7 @@ package vo;
 
 import java.sql.Date;
 
-public class OrderVO {
+public class OrderVO extends PageVO {
 	int oNum;
 	Date oDate;
 	int oPrice;
