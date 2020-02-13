@@ -3,7 +3,8 @@ package business;
 import java.util.ArrayList;
 import java.util.List;
 
-import vo.CartVO;
+import criteria.Criteria;
+import criteria.SearchCriteria;
 import vo.GoodsVO;
 import vo.MemberVO;
 import vo.OrderVO;
@@ -34,4 +35,6 @@ public interface OService {
 	ArrayList<OrderVO> returnedList(MemberVO vo);
 	
 	ArrayList<OrderVO> selectDeliveryCompletionList(GoodsVO gvo);
+	
+	
 }

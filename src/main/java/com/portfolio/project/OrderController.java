@@ -20,11 +20,11 @@ import business.CService;
 import business.MService;
 import business.OService;
 import business.PService;
+import criteria.SearchCriteria;
 import vo.CartVO;
 import vo.GoodsVO;
 import vo.MemberVO;
 import vo.OrderVO;
-import vo.PageVO;
 import vo.PaymentVO;
 
 @Controller
@@ -60,26 +60,11 @@ public class OrderController {//주문성공 페이지
 	}
 	
 	@RequestMapping(value ="/sOList")//주문 요청 목록
-	public ModelAndView sellerOrderList(ModelAndView model, HttpServletRequest request, MemberVO mvo) {
+	public ModelAndView sellerOrderList(SearchCriteria cri, ModelAndView model, HttpServletRequest request, MemberVO mvo) {
 		String dCode = request.getParameter("dCode");
 		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 		GoodsVO gvo = new GoodsVO();
 		gvo.setMember_mId(mvo.getmId());
-		
-		//paging
-	    gvo.setPerPage(3);
-		gvo.setPerPageNo(3);
-		
-		int currPage=1;
-		if(gvo.getCurrPage()>1) {
-			currPage=gvo.getCurrPage();
-		}else {
-			gvo.setCurrPage(currPage);
-		}
-		
-		int startRno = ((currPage-1)*gvo.getPerPage());
-		gvo.setSno(startRno);
-		
 		
 		
 		
@@ -90,44 +75,44 @@ public class OrderController {//주문성공 페이지
 		
 		if("C".equals(dCode)) {//판매자메뉴->배송완료목록
 			
-			int totalPageNo = gvo.getTotalCount()/gvo.getPerPage();
-			if(gvo.getTotalCount()%gvo.getPerPage()>0) {
-				totalPageNo +=1;
-			}
-			int sPage=((currPage-1)/gvo.getPerPageNo())*gvo.getPerPageNo()+1;
-			System.out.println("gvo.getPerPageNo()=>"+gvo.getPerPageNo());
-			int ePage=sPage+gvo.getPerPageNo()-1;
-			if(ePage>totalPageNo) {
-				ePage=totalPageNo;
-			}
-			System.out.println(sPage);
-			System.out.println(ePage);
-			model.addObject("sPage", sPage);
-			model.addObject("ePage", ePage);
-			model.addObject("perPageNo", gvo.getPerPageNo());
-			model.addObject("totalPageNo", totalPageNo);
-			model.addObject("currPage", currPage);
+//			int totalPageNo = gvo.getTotalCount()/gvo.getPerPage();
+//			if(gvo.getTotalCount()%gvo.getPerPage()>0) {
+//				totalPageNo +=1;
+//			}
+//			int sPage=((currPage-1)/gvo.getPerPageNo())*gvo.getPerPageNo()+1;
+//			System.out.println("gvo.getPerPageNo()=>"+gvo.getPerPageNo());
+//			int ePage=sPage+gvo.getPerPageNo()-1;
+//			if(ePage>totalPageNo) {
+//				ePage=totalPageNo;
+//			}
+//			System.out.println(sPage);
+//			System.out.println(ePage);
+//			model.addObject("sPage", sPage);
+//			model.addObject("ePage", ePage);
+//			model.addObject("perPageNo", gvo.getPerPageNo());
+//			model.addObject("totalPageNo", totalPageNo);
+//			model.addObject("currPage", currPage);
 			
 			ArrayList<OrderVO> list = service.selectDeliveryCompletionList(gvo);
 			model.addObject("list",list);
 			model.setViewName("order/sellerDeliveryCompletionList");
 		}else {//판매자메뉴->주문목록
-			int totalPageNo = gvo.getTotalCount()/gvo.getPerPage();
-			if(gvo.getTotalCount()%gvo.getPerPage()>0) {
-				totalPageNo +=1;
-			}
-			int sPage=((currPage-1)/gvo.getPerPageNo())*gvo.getPerPageNo()+1;
-			int ePage=sPage+gvo.getPerPageNo()-1;
-			if(ePage>totalPageNo) {
-				ePage=totalPageNo;
-			}
-			System.out.println("sPage=>"+sPage);
-			System.out.println("ePage=>"+ePage);
-			model.addObject("sPage", sPage);
-			model.addObject("ePage", ePage);
-			model.addObject("perPageNo", gvo.getPerPageNo());
-			model.addObject("totalPageNo", totalPageNo);
-			model.addObject("currPage", currPage);
+//			int totalPageNo = gvo.getTotalCount()/gvo.getPerPage();
+//			if(gvo.getTotalCount()%gvo.getPerPage()>0) {
+//				totalPageNo +=1;
+//			}
+//			int sPage=((currPage-1)/gvo.getPerPageNo())*gvo.getPerPageNo()+1;
+//			int ePage=sPage+gvo.getPerPageNo()-1;
+//			if(ePage>totalPageNo) {
+//				ePage=totalPageNo;
+//			}
+//			System.out.println("sPage=>"+sPage);
+//			System.out.println("ePage=>"+ePage);
+//			model.addObject("sPage", sPage);
+//			model.addObject("ePage", ePage);
+//			model.addObject("perPageNo", gvo.getPerPageNo());
+//			model.addObject("totalPageNo", totalPageNo);
+//			model.addObject("currPage", currPage);
 			
 			ArrayList<OrderVO> list = service.selectReceivedOrderList(gvo);
 			model.addObject("list",list);

@@ -85,10 +85,7 @@
 		WHERE o.oStatus='os1';
 	</update>
 	
-	<!-- Total row count -->
-	<select id="">
 	
-	</select>
 	
 
 </mapper>
