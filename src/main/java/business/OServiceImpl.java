@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import dao.OrderDAO;
 import vo.GoodsVO;
+import vo.MemberVO;
 import vo.OrderVO;
 import vo.PaymentVO;
 @Service
@@ -55,6 +56,14 @@ public class OServiceImpl implements OService {
 		return dao.changeDstateToD();
 	}
 	@Override
+	public ArrayList<OrderVO> canceledList(MemberVO vo) {
+		return dao.canceledList(vo);
+	}
+	@Override
+	public ArrayList<OrderVO> returnedList(MemberVO vo) {
+		return dao.returnedList(vo);
+	}
+
 	public ArrayList<OrderVO> selectDeliveryCompletionList(GoodsVO gvo) {
 		return dao.selectDeliveryCompletionList(gvo);
 	}

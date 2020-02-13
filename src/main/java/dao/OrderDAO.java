@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import vo.CartVO;
 import vo.GoodsVO;
+import vo.MemberVO;
 import vo.OrderVO;
 import vo.PaymentVO;
 
@@ -66,7 +67,11 @@ import vo.PaymentVO;
 	public int changeDstateToD() {
 		return dao.update(NS+"changeDstateToD");
 	}
-	
-	
+	public ArrayList<OrderVO> canceledList(MemberVO vo) {
+		return (ArrayList)dao.selectList(NS+"canceledList",vo);
+	}
+	public ArrayList<OrderVO> returnedList(MemberVO vo){
+		return (ArrayList)dao.selectList(NS+"returnedList",vo);
+	}
 	
 }
