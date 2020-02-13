@@ -236,7 +236,7 @@
 												<li class="nav-item"><a
 													class="nav-link active second-class" href="mODelivery">주문/배송조회</a></li>
 												<li class="nav-item"><a class="nav-link second-class"
-													href="mODelivery">주문취소</a></li>
+													href="mOCancel">주문취소</a></li>
 												<li class="nav-item"><a class="nav-link second-class"
 													href="mRExchange">반품/교환</a></li>
 												<li class="nav-item"><a class="nav-link second-class"

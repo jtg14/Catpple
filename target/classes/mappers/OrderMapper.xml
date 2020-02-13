@@ -12,10 +12,22 @@
 	select * from payment where pNum = #{pNum}
 	</select>
 	<select id="canceledList" resultType="vo.OrderVO">
-	select DATE_FORMAT(o.oDate,'%Y-%m-%d %I:%i') oDate, o.oNum, o.oStock * o.oPrice as midPrice, o.oStatus, p.pPayment from corder o,payment p where o.payment_pNum = p.pNum and o.oStatus = 'os1' and o.member_mId = #{member_mId}
+	select DISTINCT (select DISTINCT gImg1 from goods where gNum = o.oNum) gImg1,
+	(select DISTINCT gname from goods where gNum = o.oNum) gName,g.member_mId sellerID,
+	(select DISTINCT mPhone from member where mId = g.member_mId) mPhone,o.oNum, o.oStock *
+	 o.oPrice as midPrice,case oStatus when 'os1' then '취소완료' 
+	when 'os4' then '취소요청' else '해당없음' end oStatus, p.pPayment from corder o,payment
+	 p,goods g where o.payment_pNum = p.pNum and o.oStatus = 'os1' or o.oStatus = 'os4' and
+	  o.member_mId = #{mId} order by oStatus desc
 	</select>
 	<select id="returnedList" resultType="vo.OrderVO">
-	select g.gName, o.oPrice, o.oStock, o.oStatus from goods g,corder o where o.goods_gNum = g.gNum and o.oStatus = 'os2' and o.member_mId = #{member_mId}
+	select DISTINCT (select DISTINCT gImg1 from goods where gNum = o.oNum) gImg1,o.oNum,
+	(select DISTINCT gname from goods where gNum = o.oNum) gName,g.member_mId sellerID,
+	(select DISTINCT mPhone from member where mId = g.member_mId) mPhone, o.oPrice,
+	 o.oStock,case oStatus when 'os2' then '반품완료'when 'os5' then '반품요청' else '해당없음'
+	  end oStatus,Date_format(oDate,'%y-%m-%d') oDate from goods g,corder o where
+	 o.goods_gNum = g.gNum and o.oStatus = 'os2' or o.oStatus = 'os5' and
+	  o.member_mId = #{mId} order by oStatus desc
 	</select>
 	
 	<!-- 결재정보 추가 -->
