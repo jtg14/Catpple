@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -141,13 +142,14 @@ th, td {
 								<div class="col-md-3 hide-div">결제수단</div>
 								<div class="col-md-3 col-xs-4">결재금액</div>
 							</div>
-							<c:forEach begin="1" end="5">
+							<c:forEach var="cList" items="${canceledList}">
 								<div class="col-md-12 col-xs-12"
 									style="padding: 10px 0px; border-top: 1px solid lightgray;">
-									<div class="col-md-3 col-xs-4">0000000000</div>
-									<div class="col-md-3 col-xs-4">주문취소요청</div>
-									<div class="col-md-3 hide-div">신용카드</div>
-									<div class="col-md-2 col-xs-4 text-right" style="padding-left:0px;padding-right:0px;">31,300 원</div>
+									<div class="col-md-3 col-xs-4">${cList.oNum}</div>
+									<div class="col-md-3 col-xs-4">${cList.oStatus}</div>
+									<div class="col-md-3 hide-div">${cList.pPayment}</div>
+									<div class="col-md-2 col-xs-4 text-right" 
+									style="padding-left:0px;padding-right:0px;"><fmt:formatNumber value="${cList.midPrice}" pattern="#,###" />원</div>
 								</div>
 							</c:forEach>
 						</div>

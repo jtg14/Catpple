@@ -5,6 +5,7 @@ import java.util.List;
 
 import vo.CartVO;
 import vo.GoodsVO;
+import vo.MemberVO;
 import vo.OrderVO;
 import vo.PaymentVO;
 
@@ -27,5 +28,10 @@ public interface OService {
 	int changeStatus(OrderVO vo);
 	
 	int changeDstateToD();
-
+	
+	ArrayList<OrderVO> canceledList(MemberVO vo);
+	
+	ArrayList<OrderVO> returnedList(MemberVO vo);
+	
+	
 }
