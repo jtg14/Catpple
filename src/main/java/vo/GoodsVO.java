@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class GoodsVO {
+public class GoodsVO extends PageVO {
 	private int gNum;
 	private int gStock;
 	private int gPrice;

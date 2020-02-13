@@ -252,7 +252,7 @@
 																	class="form-control input-sm" style="margin-bottom: 8px;">
 															</div>
 															<div class="col-md-6 col-xs-12" style="padding-left: 0px;">
-																<input type="text" name="mAddr3" name="mAddr4" placeholder="참고항목(상세주소에 더해집니다.)"
+																<input type="text" name="mAddr4" placeholder="참고항목"
 																	value="${logInUser.mAddr4}" id="sample2_detailAddress"
 																	class="form-control input-sm" style="margin-bottom: 8px;">
 															</div>

@@ -309,9 +309,13 @@ function deliveryButton(){
 }
 
 
-function chBox(frm,st,num) {
-    if (frm.box2[num].checked == true && st != "a") {
-       alert("배송준비중인 상품을 선택해주세요.");
+function chBox(frm,st,num,ostock,gstock) {
+    if (frm.box2[num].checked == true && st != 'a') {
+       alert('배송준비중인 상품을 선택해주세요.');
+       frm.box2[num].checked = false;
+    }
+    if(frm.box2[num].checked == true && (ostock>gstock)){
+       alert('재고량이 주문수량보다 적습니다.');
        frm.box2[num].checked = false;
     }
  }

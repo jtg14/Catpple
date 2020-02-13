@@ -49,6 +49,7 @@ import vo.PaymentVO;
 
 	
 	public ArrayList<OrderVO> selectReceivedOrderList(GoodsVO vo) {
+		//vo.setTotalCount(dao.selectOne(NS+""),vo);
 		return (ArrayList)dao.selectList(NS+"selectReceivedOrderList",vo);
 	}
 	
