@@ -13,7 +13,8 @@
 <link rel="stylesheet" href="resources/custom/addCSS/footer.css">
 <link rel="stylesheet" href="resources/custom/addCSS/star-rating.css">
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
-<link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
+<link
+	href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
 <style>
 #first-row, #second-row {
@@ -32,20 +33,22 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-ex1-collapse" >
+					data-target=".navbar-ex1-collapse">
 					<span class="sr-only">Toggle navigation</span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" style="margin-top: 0px;padding-top: 0px;" href="home">
-					<img src="resources/images/CatppleLogo.png" style="width:140px;">
+				<a class="navbar-brand logo"
+					style="margin-top: 0px; padding-top: 0px;" href="home"> <img
+					src="resources/images/CatppleLogo.png" style="width: 140px;">
 				</a>
 			</div>
 			<!-- Top Menu Items -->
 			<ul class="nav navbar-right top-nav">
-				<li>
-				<a href="#" data-placement="bottom" data-toggle="tooltip" href="#" data-original-title="Good">
-					<i class="fa fa-bar-chart-o"></i> </a></li>
+				<li><a href="#" data-placement="bottom" data-toggle="tooltip"
+					href="#" data-original-title="Good"> <i
+						class="fa fa-bar-chart-o"></i>
+				</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">나의메뉴 <b class="fa fa-angle-down"></b></a>
 					<ul class="dropdown-menu">
@@ -57,62 +60,72 @@
 					</ul></li>
 			</ul>
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse" style="max-height:700px;background-color:white;">
+			<div class="collapse navbar-collapse navbar-ex1-collapse"
+				style="max-height: 700px; background-color: white;">
 				<ul class="nav navbar-nav side-nav" style="height: 90%;">
-					<li><h3><a href="#" data-toggle="collapse"
-						data-target="#submenu-4"><i class="fa fa-fw fa-star"></i>
-							내정보 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
+					<li><h3>
+							<a href="#" data-toggle="collapse" data-target="#submenu-4"><i
+								class="fa fa-fw fa-star"></i> 내정보 <i
+								class="fa fa-fw fa-angle-down pull-right"></i></a>
+						</h3>
 						<ul id="submenu-4" class="collapse">
 							<c:if test="${logInUser.mGrade!='S'}">
-							<li><a href="mpoint" ><i
-									class="fa fa-angle-double-right"></i> 포인트</a></li></c:if>
+								<li><a href="mpoint"><i
+										class="fa fa-angle-double-right"></i> 포인트</a></li>
+							</c:if>
 							<li><a href="mChangef"><i
 									class="fa fa-angle-double-right"></i> 내정보변경</a></li>
 							<li><a href="mWdrawal"><i
 									class="fa fa-angle-double-right"></i> 회원탈퇴</a></li>
 						</ul></li>
 					<c:if test="${logInUser.mGrade!='S'}">
-					<li><h3><a href="#" data-toggle="collapse"
-						data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>
-							주문배송 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
-						<ul id="submenu-2" class="collapse">
-							<li><a href="mODelivery"><i
-									class="fa fa-angle-double-right"></i> 주문/배송조회</a></li>
-							<li><a href="mOCancel"><i
-									class="fa fa-angle-double-right"></i> 주문취소</a></li>
-							<li><a href="mRExchange"><i
-									class="fa fa-angle-double-right"></i> 반품/교환</a></li>
-							<li><a href="mCart"><i
-									class="fa fa-angle-double-right"></i> 장바구니<span class="label label-danger">${cartRow}</span></a></li>
-						</ul></li>
-					<li><h3><a href="#" data-toggle="collapse"
-						data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>
-							고객센터 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
-						<ul id="submenu-3" class="collapse">
-							<li><a href="mCustomerInquiry"><i
-									class="fa fa-angle-double-right"></i> 1:1문의</a></li>
-							<li><a href="mFAQ"><i
-									class="fa fa-angle-double-right"></i> FAQ</a></li>
-							<li><a href="mSuggestions"><i
-									class="fa fa-angle-double-right"></i> 건의사항</a></li>
-							<li><a href="mWriting"><i
-									class="fa fa-angle-double-right"></i> 글쓰기 (모든글)</a></li>
-						</ul></li>
-						</c:if>						
-						<c:if test="${logInUser.mGrade!='C'}">
-						<li><h3><a href="#" data-toggle="collapse"
-						data-target="#submenu-5"><i class="fa fa-fw fa-star"></i>
-							판매자 메뉴 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
-						<ul id="submenu-5" class="collapse">
-							<li><a href="sGForm"><i
-									class="fa fa-angle-double-right"></i> 상품등록</a></li>
-							<li><a href="sRGoods"><i
-									class="fa fa-angle-double-right"></i> 나의 상품</a></li>
-							<li><a href="sOList"><i
-									class="fa fa-angle-double-right"></i> 주문목록</a></li>
-							<li><a href="sDCList"><i
-									class="fa fa-angle-double-right"></i> 배송완료목록</a></li>
-						</ul></li>
+						<li><h3>
+								<a href="#" data-toggle="collapse" data-target="#submenu-2"><i
+									class="fa fa-fw fa-star"></i> 주문배송 <i
+									class="fa fa-fw fa-angle-down pull-right"></i></a>
+							</h3>
+							<ul id="submenu-2" class="collapse">
+								<li><a href="mODelivery"><i
+										class="fa fa-angle-double-right"></i> 주문/배송조회</a></li>
+								<li><a href="mOCancel"><i
+										class="fa fa-angle-double-right"></i> 주문취소</a></li>
+								<li><a href="mRExchange"><i
+										class="fa fa-angle-double-right"></i> 반품/교환</a></li>
+								<li><a href="mCart"><i class="fa fa-angle-double-right"></i>
+										장바구니<span class="label label-danger">${cartRow}</span></a></li>
+							</ul></li>
+						<li><h3>
+								<a href="#" data-toggle="collapse" data-target="#submenu-3"><i
+									class="fa fa-fw fa-star"></i> 고객센터 <i
+									class="fa fa-fw fa-angle-down pull-right"></i></a>
+							</h3>
+							<ul id="submenu-3" class="collapse">
+								<li><a href="mCustomerInquiry"><i
+										class="fa fa-angle-double-right"></i> 1:1문의</a></li>
+								<li><a href="mFAQ"><i class="fa fa-angle-double-right"></i>
+										FAQ</a></li>
+								<li><a href="mSuggestions"><i
+										class="fa fa-angle-double-right"></i> 건의사항</a></li>
+								<li><a href="mWriting"><i
+										class="fa fa-angle-double-right"></i> 글쓰기 (모든글)</a></li>
+							</ul></li>
+					</c:if>
+					<c:if test="${logInUser.mGrade!='C'}">
+						<li><h3>
+								<a href="#" data-toggle="collapse" data-target="#submenu-5"><i
+									class="fa fa-fw fa-star"></i> 판매자 메뉴 <i
+									class="fa fa-fw fa-angle-down pull-right"></i></a>
+							</h3>
+							<ul id="submenu-5" class="collapse">
+								<li><a href="sGForm"><i
+										class="fa fa-angle-double-right"></i> 상품등록</a></li>
+								<li><a href="sRGoods"><i
+										class="fa fa-angle-double-right"></i> 나의 상품</a></li>
+								<li><a href="sOList"><i
+										class="fa fa-angle-double-right"></i> 주문목록</a></li>
+								<li><a href="sDCList"><i
+										class="fa fa-angle-double-right"></i> 배송완료목록</a></li>
+							</ul></li>
 					</c:if>
 				</ul>
 			</div>
@@ -124,14 +137,15 @@
 				<!-- Page Heading -->
 				<div class="row" id="main"
 					style="min-height: 1000px; margin-top: 120px;">
-					<div class="col-sm-12 col-md-10" id="content" style="background-color:white;">
+					<div class="col-sm-12 col-md-10" id="content"
+						style="background-color: white;">
 						<!-- 메인 공간 -->
 						<div class="col-md-12 col-xs-12">
 							<h2>주문 /배송 조회</h2>
 							<div class="col-md-12 col-xs-12"
-								style="border: 5px solid crimson; border-radius: 10px; padding: 20px 10px; text-align: center;min-height:800px;">
-								<label style="width: 100%;font-size:1.2em;">
-									<strong>주문 번호를 클릭하면 해당 주문 목록을 볼 수 있습니다.</strong>
+								style="border: 5px solid crimson; border-radius: 10px; padding: 20px 10px; text-align: center; min-height: 800px;">
+								<label style="width: 100%; font-size: 1.2em;"> <strong>주문
+										번호를 클릭하면 해당 주문 목록을 볼 수 있습니다.</strong>
 								</label>
 								<div class="col-md-12 col-xs-12"
 									style="border-top: 1px solid darkgray; padding-left: 0px; padding-right: 0px;">
@@ -143,49 +157,45 @@
 												<td>결재금액</td>
 											</tr>
 										</thead>
-										
+
 										<tbody>
 											<c:forEach var="plist" items="${plist}">
-											<tr>
-												<td>${plist.pDate}</td>
-												<td style=",max-width:35%;">
-												<a href="#" onclick="oplist(${plist.pNum},'${logInUser.mId}')">${plist.pNum}</a>
-												</td>
-												<td><fmt:formatNumber value="${plist.pPrice}" pattern="#,###" />원</td>
-												
-											</tr>
+												<tr>
+													<td>${plist.pDate}</td>
+													<td style="max-width: 35%;"><a href="#"
+														onclick="oplist(${plist.pNum},'${logInUser.mId}')">${plist.pNum}</a>
+													</td>
+													<td><fmt:formatNumber value="${plist.pPrice}"
+															pattern="#,###" />원</td>
+
+												</tr>
 											</c:forEach>
 										</tbody>
 									</table>
 								</div>
 							</div>
 							<div class="col-md-12 col-xs-12 text-center">
-								<c:if test="${pageMaker.prev}">
-								  	<a href="listcri${pageMaker.makeSearch(1)}">First</a>
-									<a href="listcri${pageMaker.makeSearch(pageMaker.startPage-1)}">&laquo;</a>
-								  </c:if>
-								
-								  <c:forEach begin="${pageMaker.startPage}"
-										   end="${pageMaker.endPage}" var="idx">
-									<c:choose>
-								 		<c:when test="${pageMaker.cri.page==idx}">
-								 			<font size="5" color="Orange">${idx}</font>&nbsp;
-								 		</c:when>
-								 		<c:otherwise>
-								 			<a href="listcri${pageMaker.makeSearch(idx)}">${idx}</a>&nbsp;
-								 		</c:otherwise>
-								 	</c:choose>	   
-									<%-- <c:out value="${pageMaker.cri.page == idx ? 'class =active':''}"/> --%>
-								  </c:forEach>
-								
-								  <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-									<a href="listcri${pageMaker.makeSearch(pageMaker.endPage+1)}">&raquo;</a>
-									<a href="listcri${pageMaker.makeSearch(pageMaker.lastPage)}">Last</a>
-								 </c:if>
+								<ul class="btn-group pagination">
+									<c:if test="${pageMaker.prev }">
+										<li><a href='<c:url value="/myInfo/myInfoOrderDelivery?page=${pageMaker.startPage-1 }"/>'><i
+												class="fa fa-chevron-left"></i></a></li>
+									</c:if>
+									<c:forEach begin="${pageMaker.startPage }"
+										end="${pageMaker.endPage }" var="pageNum">
+										<li><a
+											href='<c:url value="/myInfo/myInfoOrderDelivery?page=${pageNum }"/>'><i
+												class="fa">${pageNum }</i></a></li>
+									</c:forEach>
+									<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+										<li><a
+											href='<c:url value="/myInfo/myInfoOrderDelivery?page=${pageMaker.endPage+1 }"/>'><i
+												class="fa fa-chevron-right"></i></a></li>
+									</c:if>
+								</ul>
 							</div>
 						</div>
-											
-				
+
+
 					</div>
 				</div>
 				<!-- /.row -->

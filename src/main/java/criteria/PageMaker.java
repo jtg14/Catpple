@@ -23,7 +23,7 @@ public class PageMaker {
 	
 	private int displayPageNum = 3; // View에 표시할 PageNo 갯수
 	
-	// private Criteria cri;
+	//private Criteria cri;
 	private SearchCriteria cri;
 	
 
