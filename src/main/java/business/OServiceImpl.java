@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import criteria.Criteria;
+import criteria.SearchCriteria;
 import dao.OrderDAO;
 import vo.GoodsVO;
 import vo.MemberVO;
@@ -67,6 +69,7 @@ public class OServiceImpl implements OService {
 	public ArrayList<OrderVO> selectDeliveryCompletionList(GoodsVO gvo) {
 		return dao.selectDeliveryCompletionList(gvo);
 	}
+	
 	
 	
 }

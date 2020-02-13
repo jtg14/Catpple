@@ -11,7 +11,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import vo.CartVO;
+import criteria.Criteria;
+import criteria.SearchCriteria;
 import vo.GoodsVO;
 import vo.MemberVO;
 import vo.OrderVO;
@@ -73,5 +74,7 @@ import vo.PaymentVO;
 	public ArrayList<OrderVO> returnedList(MemberVO vo){
 		return (ArrayList)dao.selectList(NS+"returnedList",vo);
 	}
+	
+	
 	
 }
