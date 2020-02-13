@@ -51,6 +51,9 @@ import vo.PaymentVO;
 		return (ArrayList)dao.selectList(NS+"selectReceivedOrderList",vo);
 	}
 	
+	public ArrayList<OrderVO> selectDeliveryCompletionList(GoodsVO gvo){
+		return (ArrayList)dao.selectList(NS+"selectDeliveryCompletionList",gvo);
+	}
 	public int changeDstate(List<Integer> list) {
 		return dao.update(NS+"changeDstate", list);
 	}
@@ -62,5 +65,7 @@ import vo.PaymentVO;
 	public int changeDstateToD() {
 		return dao.update(NS+"changeDstateToD");
 	}
+	
+	
 	
 }

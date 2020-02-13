@@ -54,6 +54,10 @@ public class OServiceImpl implements OService {
 	public int changeDstateToD() {
 		return dao.changeDstateToD();
 	}
+	@Override
+	public ArrayList<OrderVO> selectDeliveryCompletionList(GoodsVO gvo) {
+		return dao.selectDeliveryCompletionList(gvo);
+	}
 	
-
+	
 }
