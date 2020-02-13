@@ -2,6 +2,7 @@ package business;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import criteria.Criteria;
 import criteria.SearchCriteria;
@@ -35,6 +36,5 @@ public interface OService {
 	ArrayList<OrderVO> returnedList(MemberVO vo);
 	
 	ArrayList<OrderVO> selectDeliveryCompletionList(GoodsVO gvo);
-	
 	
 }
