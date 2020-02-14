@@ -1,14 +1,13 @@
 package business;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dao.CartDAO;
 import vo.CartVO;
-import vo.GoodsVO;
 import vo.MemberVO;
 
 @Service
@@ -25,8 +24,12 @@ public class CServiceImpl implements CService {
 		return dao.findDupGoods(vo);
 	}
 	@Override
-	public ArrayList<CartVO> cartList(MemberVO vo) {
-		return dao.cartList(vo);
+	public ArrayList<CartVO> cartList(Map<String,Object> map) {
+		return dao.cartList(map);
+	}
+	@Override
+	public int cartListCount(MemberVO vo) {
+		return dao.cartListCount(vo);
 	}
 	@Override
 	public int deleteCart(CartVO vo) {

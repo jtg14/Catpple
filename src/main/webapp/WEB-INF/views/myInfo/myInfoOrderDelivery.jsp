@@ -164,7 +164,7 @@
 						<div class="col-md-12 col-xs-12">
 							<h2>주문 /배송 조회</h2>
 							<div class="col-md-12 col-xs-12"
-								style="border: 5px solid crimson; border-radius: 10px; padding: 20px 10px; text-align: center; min-height: 600px;">
+								style="border: 5px solid crimson; border-radius: 10px; padding: 20px 10px; text-align: center; min-height: 620px;">
 								<label style="width: 100%; font-size: 1.2em;"> <strong>주문
 										번호를 클릭하면 해당 주문 목록을 볼 수 있습니다.</strong>
 								</label>
@@ -204,9 +204,18 @@
 							  </c:if>
 							  <c:forEach begin="${pageMaker.startPage}"
 									   end="${pageMaker.endPage}" var="idx">
-								 		<li>
+									   <c:choose>
+									   <c:when test="${pageMaker.cri.page==idx}">
+								  		 <li>
+							 			<a class="btn btn-danger disabled" style="color:white;">${idx}</a>
+							 			</li>
+							 		</c:when>
+							 		<c:otherwise>
+							 		<li>
 							 			<a href="mODelivery${pageMaker.makeSearch(idx)}">${idx}</a>
 							 		</li> 
+							 		</c:otherwise>
+							 		</c:choose>
 								<%-- <c:out value="${pageMaker.cri.page == idx ? 'class =active':''}"/> --%>
 							  </c:forEach>
 							
@@ -216,7 +225,7 @@
 							  	</li>
 							  </c:if>
 								
-						</ul>
+							</ul>
 							</div>
 						</div>
 

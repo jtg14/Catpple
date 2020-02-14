@@ -67,8 +67,12 @@ public class OServiceImpl implements OService {
 		return dao.canceledListCount(vo);
 	}
 	@Override
-	public ArrayList<OrderVO> returnedList(MemberVO vo) {
-		return dao.returnedList(vo);
+	public ArrayList<OrderVO> returnedList(Map<String,Object> map) {
+		return dao.returnedList(map);
+	}
+	@Override
+	public int returnedListCount(MemberVO vo) {
+		return dao.returnedListCount(vo);
 	}
 	@Override
 	public ArrayList<OrderVO> selectDeliveryCompletionList(GoodsVO gvo) {
