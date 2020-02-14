@@ -28,8 +28,11 @@ public class CartDAO {
 	public CartVO findDupGoods(CartVO vo) {
 		return dao.selectOne(NS+"findDupGoods",vo);
 	}
-	public ArrayList<CartVO> cartList(MemberVO vo){
-		return (ArrayList)dao.selectList(NS+"cartList",vo);
+	public ArrayList<CartVO> cartList(Map<String,Object> map){
+		return (ArrayList)dao.selectList(NS+"cartList",map);
+	}
+	public int cartListCount(MemberVO vo) {
+		return dao.selectOne(NS+"cartListCount",vo);
 	}
 	public int deleteCart(CartVO vo) {
 		return dao.delete(NS+"deleteCart",vo);
