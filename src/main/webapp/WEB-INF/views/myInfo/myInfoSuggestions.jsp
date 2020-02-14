@@ -140,6 +140,34 @@ th, td {
 							<div class="col-md-12 col-xs-12">
 								<h2>건의사항</h2>
 							</div>
+							<div id="searchBar" class="col-md-12 col-xs-12">
+							<div class="col-md-12 col-xs-12 form-group"style="float:right;">
+								<div style="width:10%; float:right;">						
+									<button class="btn btn-primary" id='searchBtn' style="float:right;">Search</button>
+								</div>
+								<div style="width:25%; float:right;">								
+									<input type="text" name='keyword' id="keywordInput" class="form-control "
+									value='${pageMaker.cri.keyword}' style="float:right;">	
+								</div>	
+								<div style="width:25%; float:right;" >
+									<select name="searchType" class="form-control" style="float:right; display:inline-block;" >
+										<option value="n"
+											<c:out value="${pageMaker.cri.searchType == null?'selected':''}"/>>
+											---</option>
+										<option value="t"
+											<c:out value="${pageMaker.cri.searchType eq 't'?'selected':''}"/>>
+											제목</option>
+										<option value="c"
+											<c:out value="${pageMaker.cri.searchType eq 'c'?'selected':''}"/>>
+											내용</option>
+										<option value="tc"
+											<c:out value="${pageMaker.cri.searchType eq 'tc'?'selected':''}"/>>
+											제목과 내용</option>
+									</select>	
+								</div>	
+								<div style="width:5%; float:right; padding-top:8px;" >검색:</div>
+								</div>	
+							</div>
 							<table class="table">
 								<thead>
 									<tr>
@@ -193,42 +221,36 @@ th, td {
 							</table>
 						</div>
 
-						<!-- paging -->
-						<div class="col-md-10 col-xs-12 text-center">
-							<c:choose>
-								<c:when test="${currPage>1}">
-									<a href="mSuggestions?currPage=1">First</a>&nbsp;
-									<a href="mSuggestions?currPage=${currPage-1}">이전</a>&nbsp;&nbsp;
-								</c:when>
-								<c:otherwise>
-									<font color="gray">First&nbsp;이전&nbsp;&nbsp;</font>
-								</c:otherwise>
-							</c:choose>
-							
-							<c:forEach  var="i"  begin="${sPage}" end="${ePage}">
-								<c:choose>
-									<c:when test="${i==currPage}">
-										<font size="5" color="Orange">${i}&nbsp;</font>
-									</c:when>
-									<c:otherwise>
-										<a href="mSuggestions?currPage=${i}">${i}&nbsp;</a>
-									</c:otherwise>	
-								</c:choose>
-							</c:forEach>
-							
-							<c:choose>
-								<c:when test="${currPage==totalPageNo}">
-									<font color="gray">&nbsp;&nbsp;다음&nbsp;Last</font>
-								</c:when>
-								<c:otherwise>
-									<a href="mSuggestions?currPage=${currPage+1}">&nbsp;다음</a>&nbsp;
-									<a href="mSuggestions?currPage=${totalPageNo}">Last</a>&nbsp;
-								</c:otherwise>
-							</c:choose>
-						</div>
-
-
 					</div>
+					
+					<!--  PagingCri Code 추가   --> 
+					<div align="center"> 
+					
+						  <c:if test="${pageMaker.prev}">
+						  	<a href="mSuggestions${pageMaker.makeSearch(1)}">First</a>
+							<a href="mSuggestions${pageMaker.makeSearch(pageMaker.startPage-1)}">&laquo;</a>
+						  </c:if>
+					
+						  <c:forEach begin="${pageMaker.startPage}"
+								   end="${pageMaker.endPage}" var="idx">
+							<c:choose>
+						 		<c:when test="${pageMaker.cri.page==idx}">
+						 			<font size="5" color="Orange">${idx}</font>&nbsp;
+						 		</c:when>
+						 		<c:otherwise>
+						 			<a href="mSuggestions${pageMaker.makeSearch(idx)}">${idx}</a>&nbsp;
+						 		</c:otherwise>
+						 	</c:choose>	   
+							<%-- <c:out value="${pageMaker.cri.page == idx ? 'class =active':''}"/> --%>
+						  </c:forEach>
+					
+						  <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+							<a href="mSuggestions${pageMaker.makeSearch(pageMaker.endPage+1)}">&raquo;</a>
+							<a href="mSuggestions${pageMaker.makeSearch(pageMaker.lastPage)}">Last</a>
+						  </c:if>
+					</div> 
+					
+					
 				</div>
 				<!-- /.row -->
 			</div>
@@ -242,6 +264,19 @@ th, td {
 	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>
+	<script>
+$(function(){
+$('#searchBtn').on(
+		"click",
+		function(event) {
+		self.location = "mSuggestions"
+				+ '${pageMaker.makeQuery(1)}'
+				+ "&searchType="
+				+ $("select option:selected").val()
+				+ "&keyword=" + $('#keywordInput').val();
+		}); // on
+}); // ready
+</script>
 </body>
 <footer>
 	<div class="article">

@@ -83,6 +83,26 @@ public class BServiceImpl implements BService {
 	public int searchCriCountForManager(SearchCriteria cri) {
 		return dao.searchCriCountForManager(cri);
 	}
+
+	@Override
+	public ArrayList<BoardVO> suggestionSearchCriListForManager(SearchCriteria cri) {
+		return dao.suggestionSearchCriListForManager(cri);
+	}
+
+	@Override
+	public int suggestionSearchCriCountForManager(SearchCriteria cri) {
+		return dao.suggestionSearchCriCountForManager(cri);
+	}
+
+	@Override
+	public ArrayList<BoardVO> suggestionSearchCriList(SearchCriteria cri) {
+		return dao.suggestionSearchCriListForManager(cri);
+	}
+
+	@Override
+	public int suggestionSearchCriCount(SearchCriteria cri) {
+		return dao.suggestionSearchCriCountForManager(cri);
+	}
 	
 	
 	

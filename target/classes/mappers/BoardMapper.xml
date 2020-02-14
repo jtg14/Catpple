@@ -52,25 +52,7 @@
 	<select id="suggestionTotalRowCountForManager"
 		resultType="integer">select count(*) from board where bReply='0' </select>
 
-	<!-- inquirySelectPageListForManager -->
-	<select id="inquirySelectPageListForManager"
-		resultType="vo.BoardVO">select b.* from (select * from board where bReply!='0') AS
-		b order by b.bNum desc limit #{sno}, 5 </select>
 
-	<!-- inquirySelectPageList -->
-	<select id="inquirySelectPageList" resultType="vo.BoardVO">select b.* from
-		(select * from board where bReply!='0' and member_mId=#{member_mId})
-		 order by bNum desc limit #{sno}, 5 </select>
-
-	<!-- suggestionSelectPageListForManager -->
-	<select id="suggestionSelectPageListForManager"
-		resultType="vo.BoardVO">select b.* from (select * from board where bReply='0') AS b
-		order by b.bNum desc limit #{sno}, 5 </select>
-
-	<!-- suggestionSelectPageList -->
-	<select id="suggestionSelectPageList" resultType="vo.BoardVO">select b.* from
-		(select * from board where bReply='0' and member_mId=#{member_mId}) AS
-		b order by b.bNum desc limit #{sno}, 5 </select>
 
 	<!-- boardDelete -->
 	<delete id="boardDelete">delete from board where bNum=#{bNum} </delete>
@@ -93,33 +75,58 @@
 				and (bTitle like CONCAT('%', #{keyword}, '%')
 				     OR bContent like CONCAT('%', #{keyword}, '%')))
 			</when>
+			
 			<otherwise>)</otherwise>
 		</choose>
 	</sql>
-	<!-- searchCriList -->
+	<!-- searchCriList(일반접속자 1대1문의사항) -->
 	<select id="searchCriList" resultType="vo.BoardVO">
 		(select * from board where bReply!='0' and member_mId=#{member_mId}
 		<include refid="search"></include>
 		order by bNum desc limit #{sno}, #{perPageNum}
 	</select>
-	<!-- searchCriCount -->
-	<select id="searchCriCount" resultType="int">
-		(select count(*)
-		from board where bReply!='0' and member_mId=#{member_mId}
- 		<include refid="search"></include>
-	</select>
-	<!-- searchCriListForManager -->
+	<!-- searchCriListForManager(관리자 1대1문의사항) -->
 	<select id="searchCriListForManager" resultType="vo.BoardVO">
 		select b.* from (select * from board where bReply!='0'
 		<include refid="search"></include>
 		 AS b order by b.bNum desc limit #{sno}, #{perPageNum} 
 	</select>
-	<!-- searchCriCountForManager -->
+	<!-- searchCriCount(일반접속자 1대1문의사항 row count) -->
+	<select id="searchCriCount" resultType="int">
+		(select count(*)
+		from board where bReply!='0' and member_mId=#{member_mId}
+ 		<include refid="search"></include>
+	</select>
+	<!-- searchCriCountForManager (관리자 1대1문의사항 row count)-->
 	<select id="searchCriCountForManager" resultType="int">
 		(select count(*) 
 		from board where bReply!='0'
 		<include refid="search"></include>
 	</select>
+	<!-- suggestionSearchCriList(일반접속자 건의사항)  -->
+	<select id="suggestionSearchCriList" resultType="vo.BoardVO">
+		(select * from board where bReply='0' and member_mId=#{member_mId}
+		<include refid="search"></include>
+		 AS b order by b.bNum desc limit #{sno}, #{perPageNum}
+	</select>
+	<!-- suggestionSearchCriListForManager(관리자 건의사항) -->
+	<select id="suggestionSearchCriListForManager" resultType="vo.BoardVO">
+		select b.* from (select * from board where bReply='0' 
+		<include refid="search"></include>
+		AS b order by b.bNum desc limit #{sno}, #{perPageNum} 
+	</select>
+	<!-- suggestionSearchCriCount(일반접속자 건의사항 row count) -->
+	<select id="suggestionSearchCriCount" resultType="int">
+		(select count(*)
+		from board where bReply='0'and member_mId=#{member_mId}
+		<include refid="search"></include>
+	</select>
+	<!-- suggestionSearchCriCountForManager(관리자 건의사항 row count) -->
+	<select id="suggestionSearchCriCountForManager" resultType="int">
+		(select count(*) from board where bReply='0' 
+		<include refid="search"></include>
+	</select>
+	<!--  -->
 	
 	
 	

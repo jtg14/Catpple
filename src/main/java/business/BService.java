@@ -34,4 +34,12 @@ public interface BService {
 	public ArrayList<BoardVO> searchCriListForManager(SearchCriteria cri);
 	
 	public int searchCriCountForManager(SearchCriteria cri);
+	
+	public ArrayList<BoardVO> suggestionSearchCriListForManager(SearchCriteria cri);
+	
+	public int suggestionSearchCriCountForManager(SearchCriteria cri);
+	
+	public ArrayList<BoardVO> suggestionSearchCriList(SearchCriteria cri);
+	
+	public int suggestionSearchCriCount(SearchCriteria cri);
 }
