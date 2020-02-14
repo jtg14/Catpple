@@ -21,7 +21,7 @@ public class PageMaker {
 	private boolean prev;  // 이전 Page블럭 으로
 	private boolean next;  // 다음 Page블럭 으로
 	
-	private int displayPageNum = 3; // View에 표시할 PageNo 갯수
+	private int displayPageNum = 10; // View에 표시할 PageNo 갯수
 	
 	private Criteria cri;
 	//private SearchCriteria cri;
