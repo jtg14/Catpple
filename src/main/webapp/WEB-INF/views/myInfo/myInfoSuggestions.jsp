@@ -143,13 +143,13 @@ th, td {
 							<div id="searchBar" class="col-md-12 col-xs-12">
 							<div class="col-md-12 col-xs-12 form-group"style="float:right;">
 								<div style="width:10%; float:right;">						
-									<button class="btn btn-primary" id='searchBtn' style="float:right;">Search</button>
+									<button class="btn btn-success" id='searchBtn' style="float:right;">Search</button>
 								</div>
-								<div style="width:25%; float:right;">								
+								<div style="width:15%; float:right;">								
 									<input type="text" name='keyword' id="keywordInput" class="form-control "
 									value='${pageMaker.cri.keyword}' style="float:right;">	
 								</div>	
-								<div style="width:25%; float:right;" >
+								<div style="width:15%; float:right;" >
 									<select name="searchType" class="form-control" style="float:right; display:inline-block;" >
 										<option value="n"
 											<c:out value="${pageMaker.cri.searchType == null?'selected':''}"/>>

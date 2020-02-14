@@ -35,29 +35,7 @@ public class BoardDAO {
 		return dao.insert(NS+"bReplyUpdate",vo);
 	}
 	
-	public PageVO inquirySelectPageList(PageVO pvo) {
-		pvo.setTotalCount(dao.selectOne(NS+"inquiryTotalRowCount",pvo));
-		pvo.setList((ArrayList)dao.selectList(NS+"inquirySelectPageList",pvo));
-		return pvo;
-	}
 	
-	public PageVO suggestionSelectPageList(PageVO pvo) {
-		pvo.setTotalCount(dao.selectOne(NS+"suggestionTotalRowCount",pvo));
-		pvo.setList((ArrayList)dao.selectList(NS+"suggestionSelectPageList",pvo));
-		return pvo;
-	}
-	
-	public PageVO inquirySelectPageListForManager(PageVO pvo) {
-		pvo.setTotalCount(dao.selectOne(NS+"inquiryTotalRowCountForManager",pvo));
-		pvo.setList((ArrayList)dao.selectList(NS+"inquirySelectPageListForManager",pvo));
-		return pvo;
-	}
-	
-	public PageVO suggestionSelectPageListForManager(PageVO pvo) {
-		pvo.setTotalCount(dao.selectOne(NS+"suggestionTotalRowCountForManager",pvo));
-		pvo.setList((ArrayList)dao.selectList(NS+"suggestionSelectPageListForManager",pvo));
-		return pvo;
-	}
 	
 	public int boardDelete(BoardVO vo) {
 		return dao.delete(NS+"boardDelete",vo);

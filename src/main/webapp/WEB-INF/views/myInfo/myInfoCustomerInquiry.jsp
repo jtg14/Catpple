@@ -145,13 +145,13 @@ th, td {
 							<div id="searchBar" class="col-md-12 col-xs-12">
 							<div class="col-md-12 col-xs-12 form-group"style="float:right;">
 								<div style="width:10%; float:right;">						
-									<button class="btn btn-primary" id='searchBtn' style="float:right;">Search</button>
+									<button class="btn btn-success" id='searchBtn' style="float:right;">Search</button>
 								</div>
-								<div style="width:25%; float:right;">								
+								<div style="width:15%; float:right;">								
 									<input type="text" name='keyword' id="keywordInput" class="form-control "
 									value='${pageMaker.cri.keyword}' style="float:right;">	
 								</div>	
-								<div style="width:25%; float:right;" >
+								<div style="width:15%; float:right;" >
 									<select name="searchType" class="form-control" style="float:right;" >
 										<option value="n"
 											<c:out value="${pageMaker.cri.searchType == null?'selected':''}"/>>
@@ -279,31 +279,36 @@ th, td {
 					</div>
 					
 					<!--  PagingCri Code 추가   --> 
-					<div align="center"> 
 					
-						  <c:if test="${pageMaker.prev}">
-						  	<a href="mCustomerInquiry${pageMaker.makeSearch(1)}">First</a>
-							<a href="mCustomerInquiry${pageMaker.makeSearch(pageMaker.startPage-1)}">&laquo;</a>
-						  </c:if>
+					<div style="text-align: center;">
+                       <ul class="pagination">
+                         <c:if test="${pageMaker.prev}">
+                         	<li><a href="mCustomerInquiry${pageMaker.makeSearch(1)}" style="color:black;">First</a></li>
+                            <li><a href="mCustomerInquiry${pageMaker.makeQuery(pageMaker.startPage - 1)}" style="color:black;">이전</a></li>
+                         </c:if> 
+                     
+                         <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+                            <c:choose>
+                               <c:when test="${pageMaker.cri.page==idx}">
+                                  <li class="active"><a href="mCustomerInquiry${pageMaker.makeQuery(idx)}" style="background-color: Crimson; border-color: Crimson;">${idx}</a></li>
+                               </c:when>
+                               <c:otherwise>
+                                  <li><a href="mCustomerInquiry${pageMaker.makeQuery(idx)}" style="color: black;">${idx}</a></li>
+                               </c:otherwise>
+                            </c:choose>
+                         </c:forEach>
+                     
+                         <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+                            <li><a href="mCustomerInquiry${pageMaker.makeQuery(pageMaker.endPage + 1)}" style="color:black;">다음</a></li>
+                            <li><a href="mCustomerInquiry${pageMaker.makeSearch(pageMaker.lastPage)}" style="color:black;">Last</a></li>
+                         </c:if> 
+                       </ul>
+                     </div>
 					
-						  <c:forEach begin="${pageMaker.startPage}"
-								   end="${pageMaker.endPage}" var="idx">
-							<c:choose>
-						 		<c:when test="${pageMaker.cri.page==idx}">
-						 			<font size="5" color="Orange">${idx}</font>&nbsp;
-						 		</c:when>
-						 		<c:otherwise>
-						 			<a href="mCustomerInquiry${pageMaker.makeSearch(idx)}">${idx}</a>&nbsp;
-						 		</c:otherwise>
-						 	</c:choose>	   
-							<%-- <c:out value="${pageMaker.cri.page == idx ? 'class =active':''}"/> --%>
-						  </c:forEach>
 					
-						  <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-							<a href="mCustomerInquiry${pageMaker.makeSearch(pageMaker.endPage+1)}">&raquo;</a>
-							<a href="mCustomerInquiry${pageMaker.makeSearch(pageMaker.lastPage)}">Last</a>
-						  </c:if>
-					</div> 
+					
+					
+					
 				</div>
 				
 				<!-- /.row -->
