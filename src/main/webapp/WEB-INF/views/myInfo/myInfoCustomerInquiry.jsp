@@ -142,25 +142,33 @@ th, td {
 							<div class="col-md-12 col-xs-12">
 								<h2>1:1 문의 내역</h2>
 							</div>
-							<div id='searchBar'>
-								통합검색 : 
-								<select name="searchType">
-									<option value="n"
-										<c:out value="${pageMaker.cri.searchType == null?'selected':''}"/>>
-										---</option>
-									<option value="t"
-										<c:out value="${pageMaker.cri.searchType eq 't'?'selected':''}"/>>
-										제목</option>
-									<option value="c"
-										<c:out value="${pageMaker.cri.searchType eq 'c'?'selected':''}"/>>
-										내용</option>
-									<option value="tc"
-										<c:out value="${pageMaker.cri.searchType eq 'tc'?'selected':''}"/>>
-										제목과 내용</option>
-								</select> 
-								<input type="text" name='keyword' id="keywordInput" 
-									value='${pageMaker.cri.keyword}'>
-								<button id='searchBtn'>Search</button>
+							<div id="searchBar" class="col-md-12 col-xs-12">
+							<div class="col-md-12 col-xs-12 form-group"style="float:right;">
+								<div style="width:10%; float:right;">						
+									<button class="btn btn-primary" id='searchBtn' style="float:right;">Search</button>
+								</div>
+								<div style="width:25%; float:right;">								
+									<input type="text" name='keyword' id="keywordInput" class="form-control "
+									value='${pageMaker.cri.keyword}' style="float:right;">	
+								</div>	
+								<div style="width:25%; float:right;" >
+									<select name="searchType" class="form-control" style="float:right;" >
+										<option value="n"
+											<c:out value="${pageMaker.cri.searchType == null?'selected':''}"/>>
+											---</option>
+										<option value="t"
+											<c:out value="${pageMaker.cri.searchType eq 't'?'selected':''}"/>>
+											제목</option>
+										<option value="c"
+											<c:out value="${pageMaker.cri.searchType eq 'c'?'selected':''}"/>>
+											내용</option>
+										<option value="tc"
+											<c:out value="${pageMaker.cri.searchType eq 'tc'?'selected':''}"/>>
+											제목과 내용</option>
+									</select>	
+								</div>	
+								<div style="width:5%; float:right; padding-top:8px;" >검색:</div>
+								</div>	
 							</div>
 							<table class="table">
 								<thead>

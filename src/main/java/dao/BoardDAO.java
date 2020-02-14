@@ -87,4 +87,14 @@ public class BoardDAO {
 		return dao.selectOne(NS+"searchCriCountForManager", cri);
 	}
 	
+	public ArrayList<BoardVO> suggestionSearchCriListForManager(SearchCriteria cri){
+		return (ArrayList)dao.selectList(NS+"suggestionSearchCriListForManager",cri);
+	}
+	
+	public int suggestionSearchCriCountForManager(SearchCriteria cri) {
+		return dao.selectOne(NS+"suggestionSearchCriCountForManager",cri);
+	}
+	
+	
+	
 }//class
