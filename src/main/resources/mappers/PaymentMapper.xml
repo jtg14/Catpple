@@ -38,7 +38,7 @@
 		<![CDATA[
 		select distinct p.* from payment p, corder o  where
 		 o.payment_pnum=p.pnum and o.member_mid=#{userID} order by p.pdate desc
-		limit #{pageStart} , #{perPageNum}   ]]>
+		limit #{sno} , #{perPageNum}   ]]>
 </select>
 <select id="paymentListCount" resultType="integer">
 	<![CDATA[

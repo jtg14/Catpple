@@ -25,7 +25,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.portfolio.project,business,dao,vo,sendmessage" />
+	<context:component-scan base-package="com.portfolio.project,business,dao,vo,sendmessage,criteria" />
 	<!-- JSON -->
 	<beans:bean id ="jsonView" class="net.sf.json.spring.web.servlet.view.JsonView"/>
 	<beans:bean id="viewResolver"
