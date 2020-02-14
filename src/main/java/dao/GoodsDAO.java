@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import criteria.Criteria;
 import vo.GoodsVO;
 
 @Repository
@@ -35,5 +36,15 @@ public class GoodsDAO {
 	}
 	public ArrayList<GoodsVO> homeRecomList(){
 		return (ArrayList)dao.selectList(NS+"homeRecomList");
+	}
+	
+	//게시글 갯수
+	public int listCount() {
+		return dao.selectOne(NS+"listCount");
+	}
+	
+	//내가 등록한 상품
+	public ArrayList<GoodsVO> goodsMyListCri(Criteria cri) {
+		return (ArrayList)dao.selectList(NS+"goodsMyListCri", cri);
 	}
 }
