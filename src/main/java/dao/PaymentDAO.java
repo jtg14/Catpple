@@ -22,10 +22,10 @@ public class PaymentDAO {
 	
 	@SuppressWarnings("unchecked")
 	public ArrayList<PaymentVO> paymentList(Map<String,Object> map){
-		return (ArrayList)dao.selectList(NS+"paymentListCount",map);
+		return (ArrayList)dao.selectList(NS+"paymentList",map);
 	}
 	public int paymentListCount(MemberVO vo) {
-		return (Integer) dao.selectOne("paymentListCount",vo);
+		return (Integer) dao.selectOne(NS+"paymentListCount",vo);
 	}
 	
 }

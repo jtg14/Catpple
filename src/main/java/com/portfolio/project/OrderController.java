@@ -245,18 +245,17 @@ public class OrderController {//주문성공 페이지
 	
 	
 	@RequestMapping(value ="/mODelivery")//주문/배송 조회
-	public ModelAndView myInfoOrderDelivery(ModelAndView model,HttpServletRequest request,SearchCriteria cri) {
+	public ModelAndView myInfoOrderDelivery(ModelAndView model,HttpServletRequest request,Criteria cri) {
 		log.info("딜리버리셋뷰");
 		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 	    Map<String,Object> map = new HashMap<String,Object>();
 	    PageMaker pageMaker = new PageMaker();
 	    pageMaker.setCri(cri);
 	    pageMaker.setTotalCount(pservice.paymentListCount(mvo));
-	    map.put("pageStart",cri.getPageStart());
+	    map.put("sno",cri.getSno());
 	    map.put("perPageNum",cri.getPerPageNum());
 	    map.put("userID",mvo.getmId());
 	    ArrayList<PaymentVO> list = pservice.paymentList(map);
-	    System.out.println("list size : "+list.size());
 	    for(PaymentVO vo : list) {
 	    	System.out.println(vo);
 	    }
@@ -266,27 +265,23 @@ public class OrderController {//주문성공 페이지
 		return model;
 	}
 	
-	@RequestMapping(value="/myInfo/myInfoOrderDelivery")
-	public ModelAndView openMyOrderList(SearchCriteria cri,HttpServletRequest request) throws Exception {
-		log.info("딜리버리 노셋뷰");
-	    MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
-	    ModelAndView model = new ModelAndView("/myInfo/myInfoOrderDelivery");
-	    Map<String,Object> map = new HashMap<String,Object>();
-	    PageMaker pageMaker = new PageMaker();
-	    pageMaker.setCri(cri);
-	    pageMaker.setTotalCount(pservice.paymentListCount(mvo));
-	    map.put("cri",cri);
-	    map.put("user",mvo);
-	    ArrayList<PaymentVO> list = pservice.paymentList(map);
-	    for(PaymentVO vo : list) {
-	    	System.out.println(vo);
-	    }
-	    model.addObject("plist", list);
-	    model.addObject("pageMaker", pageMaker);
-	        
-	    return model;
-	        
-	}
+	/*
+	 * @RequestMapping(value="/myInfo/myInfoOrderDelivery") public ModelAndView
+	 * openMyOrderList(SearchCriteria cri,HttpServletRequest request) throws
+	 * Exception { log.info("딜리버리 노셋뷰"); MemberVO mvo =
+	 * (MemberVO)request.getSession().getAttribute("logInUser"); ModelAndView model
+	 * = new ModelAndView("/myInfo/myInfoOrderDelivery"); Map<String,Object> map =
+	 * new HashMap<String,Object>(); PageMaker pageMaker = new PageMaker();
+	 * pageMaker.setCri(cri);
+	 * pageMaker.setTotalCount(pservice.paymentListCount(mvo)); map.put("cri",cri);
+	 * map.put("user",mvo); ArrayList<PaymentVO> list = pservice.paymentList(map);
+	 * for(PaymentVO vo : list) { System.out.println(vo); } model.addObject("plist",
+	 * list); model.addObject("pageMaker", pageMaker);
+	 * 
+	 * return model;
+	 * 
+	 * }
+	 */
 
 	
 	
