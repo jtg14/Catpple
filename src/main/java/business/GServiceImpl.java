@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import criteria.Criteria;
 import dao.GoodsDAO;
 import vo.GoodsVO;
 
@@ -43,4 +44,18 @@ public class GServiceImpl implements GService {
 	public ArrayList<GoodsVO> homeRecomList() {
 		return dao.homeRecomList();
 	}
+	
+	//게시글의 개수
+	@Override
+	public int listCount() {
+		return dao.listCount();
+	}
+	
+	//내가 등록한 상품
+	@Override
+	public ArrayList<GoodsVO> goodsMyListCri(Criteria cri) {
+		return dao.goodsMyListCri(cri);
+	}
+	
+	
 }
