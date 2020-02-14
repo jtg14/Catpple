@@ -1,6 +1,7 @@
 package criteria;
 
 public class Criteria {
+
 	private int page;	// 현재 출력 PageNo
 	private int perPageNum; // page 당 출력 row 갯수
 	private int sno ; // start rownum
@@ -42,9 +43,9 @@ public class Criteria {
 	}	
 	
 	//method for MySQL Mapper - startRowNum
-	//public int getPageStart() {
-	//	return (this.page -1)* perPageNum;
-	//}
+	public int getPageStart() {
+		return (this.page -1)* perPageNum;
+	}
 	
 	//method for MyBatis SQL Mapper 
 	public int getPerPageNum(){
@@ -55,6 +56,4 @@ public class Criteria {
 	public String toString() {
 		return "Criteria [page="+page+", perPageNum="+perPageNum+", sno="+sno+", eno="+eno+"]";
 	}
-	
-	
-}//class
+} // class

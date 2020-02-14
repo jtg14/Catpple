@@ -3,7 +3,9 @@ package com.portfolio.project;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +22,8 @@ import business.CService;
 import business.MService;
 import business.OService;
 import business.PService;
+import criteria.Criteria;
+import criteria.PageMaker;
 import criteria.SearchCriteria;
 import vo.CartVO;
 import vo.GoodsVO;
@@ -241,15 +245,45 @@ public class OrderController {//주문성공 페이지
 	
 	
 	@RequestMapping(value ="/mODelivery")//주문/배송 조회
-	public ModelAndView myInfoOrderDelivery(ModelAndView model,HttpServletRequest request) {
-		MemberVO mvo =(MemberVO)request.getSession().getAttribute("logInUser");
-		ArrayList<PaymentVO> plist = pservice.paymentList(mvo);
-		model.addObject("plist", plist);
-		
+	public ModelAndView myInfoOrderDelivery(ModelAndView model,HttpServletRequest request,Criteria cri) {
+		log.info("딜리버리셋뷰");
+		cri.setSnoEno();
+		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+	    Map<String,Object> map = new HashMap<String,Object>();
+	    PageMaker pageMaker = new PageMaker();
+	    pageMaker.setCri(cri);
+	    pageMaker.setTotalCount(pservice.paymentListCount(mvo));
+	    map.put("sno",cri.getSno());
+	    map.put("perPageNum",cri.getPerPageNum());
+	    map.put("userID",mvo.getmId());
+	    ArrayList<PaymentVO> list = pservice.paymentList(map);
+	    for(PaymentVO vo : list) {
+	    	System.out.println(vo);
+	    }
+	    model.addObject("plist", list);
+	    model.addObject("pageMaker", pageMaker);
 		model.setViewName("myInfo/myInfoOrderDelivery");
 		return model;
 	}
 	
+	/*
+	 * @RequestMapping(value="/myInfo/myInfoOrderDelivery") public ModelAndView
+	 * openMyOrderList(SearchCriteria cri,HttpServletRequest request) throws
+	 * Exception { log.info("딜리버리 노셋뷰"); MemberVO mvo =
+	 * (MemberVO)request.getSession().getAttribute("logInUser"); ModelAndView model
+	 * = new ModelAndView("/myInfo/myInfoOrderDelivery"); Map<String,Object> map =
+	 * new HashMap<String,Object>(); PageMaker pageMaker = new PageMaker();
+	 * pageMaker.setCri(cri);
+	 * pageMaker.setTotalCount(pservice.paymentListCount(mvo)); map.put("cri",cri);
+	 * map.put("user",mvo); ArrayList<PaymentVO> list = pservice.paymentList(map);
+	 * for(PaymentVO vo : list) { System.out.println(vo); } model.addObject("plist",
+	 * list); model.addObject("pageMaker", pageMaker);
+	 * 
+	 * return model;
+	 * 
+	 * }
+	 */
+
 	
 	
 	@RequestMapping(value = "/oListInPnum")//주문조회 -> 주문번호 클릭시 리스트

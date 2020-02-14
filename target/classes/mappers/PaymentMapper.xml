@@ -7,9 +7,42 @@
 <mapper namespace="portfolio.mapper.PaymentMapper">
 
 
-<select id="paymentList" resultType="vo.PaymentVO">
-	select distinct p.* from payment p, corder o  where o.payment_pnum=p.pnum and o.member_mid=#{mId} order by p.pdate desc; 
-
-	</select>
-	
+<sql id="search">
+	<choose>
+		<when test="searchType == 't'.toString()"> 
+			and title like CONCAT(CONCAT('%', #{keyword}), '%'))
+		</when>
+		<when test="searchType == 'c'.toString()"> 
+			and content like CONCAT(CONCAT('%', #{keyword}), '%'))
+		</when>
+		<when test="searchType == 'w'.toString()">
+			and id like CONCAT(CONCAT('%', #{keyword}), '%'))
+		</when>
+		<when test="searchType == 'tc'.toString()">
+			and ( title like CONCAT(CONCAT('%', #{keyword}), '%') 
+			      OR content like CONCAT(CONCAT('%', #{keyword}), '%')))
+		</when>
+		<when test="searchType == 'cw'.toString()">
+			and ( content like CONCAT(CONCAT('%', #{keyword}), '%') 
+			      OR id like CONCAT(CONCAT('%', #{keyword}), '%')))
+		</when>
+		<when test="searchType == 'tcw'.toString()">
+			and ( title like CONCAT(CONCAT('%', #{keyword}), '%')
+			      OR content like CONCAT(CONCAT('%', #{keyword}), '%')
+			      OR id like CONCAT(CONCAT('%', #{keyword}), '%'))) 
+		</when>
+		<otherwise> ) </otherwise>
+	</choose>
+</sql>
+<select id="paymentList" resultType="PaymentVO" parameterType="java.util.HashMap">
+		<![CDATA[
+		select distinct p.* from payment p, corder o  where
+		 o.payment_pnum=p.pnum and o.member_mid=#{userID} order by p.pdate desc
+		limit #{sno} , #{perPageNum}   ]]>
+</select>
+<select id="paymentListCount" resultType="integer">
+	<![CDATA[
+	select  count(distinct p.pPrice ) total from payment p, corder o  where
+		 o.payment_pnum=p.pnum and o.member_mid=#{mId} ]]>
+</select>	
 </mapper>

@@ -2,6 +2,7 @@ package business;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,11 +66,10 @@ public class OServiceImpl implements OService {
 	public ArrayList<OrderVO> returnedList(MemberVO vo) {
 		return dao.returnedList(vo);
 	}
-
+	@Override
 	public ArrayList<OrderVO> selectDeliveryCompletionList(GoodsVO gvo) {
 		return dao.selectDeliveryCompletionList(gvo);
 	}
-	
 	
 	
 }
