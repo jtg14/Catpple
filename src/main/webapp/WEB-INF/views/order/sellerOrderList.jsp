@@ -220,10 +220,9 @@ padding-right: 0px;
 			                           	     	  
 			                           	     	  <c:when test="${list.dState=='d'}">
 			                           	     	  <div class="col-md-3 col-xs-6" >
-			                           	     	  	<font style="color:#8A0886;font-weight: bold;font-size: large;"> 배송 취소 </font>
+			                           	     	  	<font style="color:#8A0886; font-weight: bold;font-size: large;"> 배송 취소 </font>
 			                           	     	  </div>
 			                           	     	  </c:when>
-			                           	     
 			                           	      </c:choose>
 		                           	      </span><br>
 		                           
