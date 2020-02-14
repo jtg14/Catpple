@@ -182,7 +182,28 @@ padding-right: 0px;
 									</div>
 								</div>
 							</c:forEach>
-
+							<div style="text-align: center;">
+							  <ul class="pagination">
+							    <c:if test="${pageMaker.prev}">
+							    	<li><a href="sRGoods${pageMaker.makeQuery(pageMaker.startPage - 1)}" style="color: black;">이전</a></li>
+							    </c:if> 
+							
+							    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+							    	<c:choose>
+							    		<c:when test="${pageMaker.cri.page==idx}">
+							    			<li class="active"><a href="sRGoods${pageMaker.makeQuery(idx)}" style="background-color: Crimson; border-color: Crimson;">${idx}</a></li>
+							    		</c:when>
+							    		<c:otherwise>
+									    	<li><a href="sRGoods${pageMaker.makeQuery(idx)}" style="color: black;">${idx}</a></li>
+							    		</c:otherwise>
+							    	</c:choose>
+							    </c:forEach>
+							
+							    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+							    	<li><a href="sRGoods${pageMaker.makeQuery(pageMaker.endPage + 1)}" style="color: black;">다음</a></li>
+							    </c:if> 
+							  </ul>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -198,7 +219,6 @@ padding-right: 0px;
 	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>
-
 </body>
 <footer>
 	<div class="article">

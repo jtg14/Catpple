@@ -4,8 +4,17 @@ public class Criteria {
 
 	private int page;	// 현재 출력 PageNo
 	private int perPageNum; // page 당 출력 row 갯수
-	private int sno ; // start rownum
-	private int eno ; // end rownum
+	private int sno; // start rownum
+	private int eno; // end rownum
+	private String member_mId;
+	
+	public String getMember_mId() {
+		return member_mId;
+	}
+	
+	public void setMember_mId(String member_mId) {
+		this.member_mId = member_mId;
+	}
 	
 // 생성자로 초기화
 	public Criteria(){

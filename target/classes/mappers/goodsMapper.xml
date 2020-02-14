@@ -31,4 +31,17 @@
 	<select id="homeRecomList" resultType="vo.GoodsVO">
 		select * from goods order by gprice desc limit 0, 12
 	</select>
+	<!-- 게시글 총 갯수 -->
+	<select id="listCount" resultType="int">
+	<![CDATA[
+		SELECT COUNT(GNUM)
+		FROM GOODS
+		WHERE GNUM>0
+	]]>
+	</select>
+	<!-- 내가 등록한 상품 -->
+	<select id="goodsMyListCri" resultType="vo.GoodsVO" parameterType="criteria.Criteria">
+		select * from goods where member_mId=#{member_mId} 
+		order by gdate desc limit #{sno}, #{perPageNum}
+	</select>
 </mapper>

@@ -149,8 +149,10 @@ th, td {
 				<!-- Page Heading -->
 				<div class="row" id="main"
 					style="min-height: 1000px; margin-top: 120px;">
+					<div class="col-md-12 col-xs-12">
 					<span class="h1" id="opList" style="color: crimson;">주문취소(${fn:length(canceledList)})</span>
-					<div class="col-sm-12 col-md-12" id="content" style="background-color:white;margin-top:30px;">
+					</div>
+					<div class="col-xs-12 col-md-12" id="content" style="background-color:white;margin-top:30px;">
 						<!-- 메인공간 -->
 							
 						<div class="col-md-10 col-xs-12 text-center" style="padding-left:0px;padding-right:0px;">
@@ -167,7 +169,7 @@ th, td {
 										<h3 style="color:lightgray;">(<span id="addHyphen${status.index}">${cList.mPhone}</span>)</h3>
 									</div>
 									<div class="col-md-2 col-xs-12 content">
-										<h4>가격 : <fmt:formatNumber value="${cList.midPrice}"
+										<h4>총금액 : <fmt:formatNumber value="${cList.midPrice}"
 												pattern="#,###" />원</h4>
 									</div>
 									<div class="col-md-2 col-xs-12 content">
@@ -178,10 +180,10 @@ th, td {
 										<div class="col-md-12 col-xs-6"
 											style="margin-top: 10px; margin-bottom: 10px;">
 											<c:if test="${cList.oStatus eq '취소완료'}">
-												<span class="label label-default" style="font-size: 1.5em;">${cList.oStatus}</span>
+												<span class="label label-default" style="font-size: 1.5em;">상태 : ${cList.oStatus}</span>
 											</c:if>
 											<c:if test="${cList.oStatus eq '취소요청'}">
-												<span class="label label-danger" style="font-size: 1.5em;">${cList.oStatus}</span>
+												<span class="label label-danger" style="font-size: 1.5em;">상태 : ${cList.oStatus}</span>
 											</c:if>
 										</div>
 
@@ -189,7 +191,29 @@ th, td {
 								</div>
 							</c:forEach>
 						</div>
-
+							<div class="col-md-10 col-xs-12 text-center">
+								<ul class="btn-group pagination">
+									<c:if test="${pageMaker.prev}">
+										<li>
+										<a aria-label="Previous" href="mOCancel${pageMaker.makeSearch(pageMaker.startPage-1)}"><span aria-hidden="true">&laquo;</span></a>
+									  	</li>
+									  </c:if>
+									  <c:forEach begin="${pageMaker.startPage}"
+											   end="${pageMaker.endPage}" var="idx">
+										 		<li>
+									 			<a href="mOCancel${pageMaker.makeSearch(idx)}">${idx}</a>
+									 			</li> 
+										<%-- <c:out value="${pageMaker.cri.page == idx ? 'class =active':''}"/> --%>
+									  </c:forEach>
+									
+									  <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+										<li>
+										<a href="mOCancel${pageMaker.makeSearch(pageMaker.endPage+1)}"><span aria-hidden="true">&raquo;</span></a>
+									  	</li>
+									  </c:if>
+										
+								</ul>
+							</div>
 
 					</div>
 				</div>

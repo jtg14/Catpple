@@ -31,10 +31,13 @@ public interface OService {
 	
 	int changeDstateToD();
 	
-	ArrayList<OrderVO> canceledList(MemberVO vo);
+	int canceledListCount(MemberVO vo);
+	
+	ArrayList<OrderVO> canceledList(Map<String,Object>map);
 	
 	ArrayList<OrderVO> returnedList(MemberVO vo);
 	
 	ArrayList<OrderVO> selectDeliveryCompletionList(GoodsVO gvo);
+	
 	
 }
