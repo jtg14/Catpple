@@ -247,6 +247,7 @@ public class OrderController {//주문성공 페이지
 	@RequestMapping(value ="/mODelivery")//주문/배송 조회
 	public ModelAndView myInfoOrderDelivery(ModelAndView model,HttpServletRequest request,Criteria cri) {
 		log.info("딜리버리셋뷰");
+		cri.setSnoEno();
 		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 	    Map<String,Object> map = new HashMap<String,Object>();
 	    PageMaker pageMaker = new PageMaker();
