@@ -14,14 +14,6 @@ public interface BService {
     public BoardVO selectOne(BoardVO vo);
     
     public int bReplyUpdate(BoardVO vo);
-    
-	public PageVO inquirySelectPageList(PageVO pvo);
-	
-	public PageVO inquirySelectPageListForManager(PageVO pvo);
-	
-	public PageVO suggestionSelectPageList(PageVO pvo);
-	
-	public PageVO suggestionSelectPageListForManager(PageVO pvo);
 	
 	public int boardDelete(BoardVO vo);
 	

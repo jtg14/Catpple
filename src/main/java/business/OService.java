@@ -39,5 +39,11 @@ public interface OService {
 	
 	ArrayList<OrderVO> selectDeliveryCompletionList(GoodsVO gvo);
 	
+	ArrayList<OrderVO> criDeliveryCompletionList(SearchCriteria cri);
 	
+	ArrayList<OrderVO> criSelectReceivedOrderList(SearchCriteria cri);
+	
+	int criSelectReceivedOrderCount(SearchCriteria cri);
+	
+	int criDeliveryCompletionCount(SearchCriteria cri);
 }

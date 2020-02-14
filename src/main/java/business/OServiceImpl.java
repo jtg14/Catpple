@@ -74,6 +74,22 @@ public class OServiceImpl implements OService {
 	public ArrayList<OrderVO> selectDeliveryCompletionList(GoodsVO gvo) {
 		return dao.selectDeliveryCompletionList(gvo);
 	}
+	@Override
+	public ArrayList<OrderVO> criDeliveryCompletionList(SearchCriteria cri) {
+		return dao.criDeliveryCompletionList(cri);
+	}
+	@Override
+	public ArrayList<OrderVO> criSelectReceivedOrderList(SearchCriteria cri) {
+		return dao.criSelectReceivedOrderList(cri);
+	}
+	@Override
+	public int criSelectReceivedOrderCount(SearchCriteria cri) {
+		return dao.criSelectReceivedOrderCount(cri);
+	}
+	@Override
+	public int criDeliveryCompletionCount(SearchCriteria cri) {
+		return dao.criDeliveryCompletionCount(cri);
+	}
 	
 	
 }

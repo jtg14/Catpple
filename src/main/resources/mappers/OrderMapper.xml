@@ -61,14 +61,40 @@
 		where o.goods_gnum= g.gnum and d.corder_onum=o.onum and m.mid=g.member_mid and o.member_mid=#{member_mId} and o.payment_pnum=#{pNum}
 	</select>
 
+	
+	
 	<!-- 판매자 받은 주문 목록 -->
-	<select id="selectReceivedOrderList" resultType="vo.OrderVO">
-		select g.gImg1, g.gStock, g.gName, g.gPrice, o.member_mid, o.oStock, o.oNum, o.oStatus,o.oDate, d.dState, d.dDate, d.dPk from goods as g, corder as o, delivery as d where g.gnum=o.goods_gnum and o.onum=d.corder_onum and d.dstate!='c' and g.member_mId=#{member_mId} order by o.oStatus desc, d.dState, o.oDate limit #{sno}, #{perPage};
+	<select id="criSelectReceivedOrderList" resultType="vo.OrderVO" parameterType="criteria.SearchCriteria">
+		select g.gImg1, g.gStock, g.gName, g.gPrice, o.member_mid, o.oStock, o.oNum, o.oStatus,o.oDate, d.dState, d.dDate, d.dPk 
+		from goods as g, corder as o, delivery as d 
+		where g.gnum=o.goods_gnum and o.onum=d.corder_onum and d.dstate!='c' and g.member_mId=#{member_mId} 
+		order by o.oStatus desc, d.dState, o.oDate limit #{sno}, #{perPageNum};
 	</select>
+	
 	<!-- 판매자 배송완료 목록 -->
-	<select id="selectDeliveryCompletionList" resultType="vo.OrderVO">
-		 select g.gImg1, g.gStock, g.gName, g.gPrice, o.member_mid, o.oStock, o.oNum, o.oStatus,o.oDate, d.dState, d.dDate, d.dPk from goods as g, corder as o, delivery as d where g.gnum=o.goods_gnum and o.onum=d.corder_onum and d.dstate='c' and g.member_mId=#{member_mId} order by o.oStatus desc, d.dState, o.oDate limit #{sno}, #{perPage};
+	<select id="criDeliveryCompletionList" resultType="vo.OrderVO" parameterType="criteria.SearchCriteria">
+		 select g.gImg1, g.gStock, g.gName, g.gPrice, o.member_mid, o.oStock, o.oNum,
+		  o.oStatus,o.oDate, d.dState, d.dDate, d.dPk from goods as g, corder as o,
+		   delivery as d where g.gnum=o.goods_gnum and o.onum=d.corder_onum and d.dstate='c' and g.member_mId=#{member_mId} 
+		   order by o.oStatus desc, d.dState, o.oDate limit #{sno}, #{perPageNum};
 	</select>
+	
+	<!-- 판매자 받은 주문목록 row Count -->
+	<select id="criSelectReceivedOrderCount" resultType="int">
+		select count(*)
+		from goods as g, corder as o, delivery as d 
+		where g.gnum=o.goods_gnum and o.onum=d.corder_onum and d.dstate!='c' and g.member_mId=#{member_mId} 
+		order by o.oStatus desc, d.dState, o.oDate limit #{sno}, #{perPageNum};
+	</select>
+	
+	<!-- 판매자 배송완료 row Count -->
+	<select id="criDeliveryCompletionCount" resultType="int">
+		 select count(*)
+		 from goods as g, corder as o, delivery as d
+		  where g.gnum=o.goods_gnum and o.onum=d.corder_onum and d.dstate='c' and g.member_mId=#{member_mId} 
+		  order by o.oStatus desc, d.dState, o.oDate limit #{sno}, #{perPageNum};
+	</select>
+	
 	
 	<update id="changeDstate"  parameterType="java.util.List">
 		update delivery set dState='b', dDate=default where dPk in
