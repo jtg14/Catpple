@@ -76,7 +76,7 @@
 						style="margin-top: 6px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;border-top-width: 0px;border-bottom-width: 0px;">
 						<div class="form-group">
 							<input type="text" name="search" class="form-control input-lg"
-								placeholder="원하시는 상품명"
+								placeholder="원하시는 상품명" 
 								style="border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-color: crimson;">
 						</div>
 					</form>
@@ -191,15 +191,14 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-center custom-nav">
-					<form class="navbar-form" method="post" action="gSResult"
-						style="margin-top: 0px; margin-left: 0px; margin-right: 0px;">
+					<form class="navbar-form" method="post" action="gSResult" style="margin-top: 0px; margin-left: 0px; margin-right: 0px;">
 						<div class="form-group">
 							<input type="text" name="search" class="form-control input-lg"
-								placeholder="원하시는 상품명"
+								placeholder="원하시는 상품명" 
 								style="border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-color: crimson;">
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-danger btn-lg"
+							<button type="submit" class="btn btn-danger btn-lg" 
 								style="width: 100%">검색</button>
 						</div>
 					</form>
