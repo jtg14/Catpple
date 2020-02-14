@@ -46,6 +46,9 @@ $(function() {
 			$('#total').html(addCommas(parseInt($('#price').html()) * $('#amount1').val())+' 원');
 		}
 	});
+	
+
+	
 	var opListLength =  $('#opList').html().substring(5,$('#opList').html().length-1);
 	for(var i = 0; i < opListLength ; i++){
 	var phoneNumber = $('#addHyphen'+i).html();
@@ -66,7 +69,13 @@ $(function() {
 	
 	}
 	$('#addHyphen'+i).html(number);
-	}
+	};
+	
+	
+
+
+	
+	
 }); //ready
 //3자리 단위마다 콤마 생성
 function addCommas(x) {
@@ -355,7 +364,7 @@ function justReqeust(number,status){
 			},
 			success:function(data){
 				if(data.code == '100'){
-					alert('정상적으로 '+statusName+' 되었습니다.')
+					alert('정상적으로 '+statusName+' 되었습니다.');
 					location.href='mODelivery';
 				}else if(data.code == '101'){
 					alert('요청에 실패 하였습니다.')
@@ -394,4 +403,7 @@ function statusChangeButton(number,status){
 	
 }//statusChangeButton
 
+
+
+	
 

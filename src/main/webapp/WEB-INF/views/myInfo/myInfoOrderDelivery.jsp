@@ -21,6 +21,27 @@
 	font-weight: bold;
 	color: crimson;
 }
+@media (max-width : 768px) {
+	.table-font{
+	font-size:1em;
+	}
+	.responsiveTd{
+		width:30%;
+	}
+	.row{
+		margin-top:120px;
+	}
+}
+
+
+@media ( min-width : 968px) {
+	.table-font{
+	font-size:1.5em;
+	}
+	.responsiveTd{
+		width:50%;
+	}
+}
 </style>
 </head>
 <body class="font-Jua">
@@ -133,17 +154,17 @@
 		</nav>
 
 		<div id="page-wrapper">
-			<div class="container-fluid">
+			<div class="container">
 				<!-- Page Heading -->
 				<div class="row" id="main"
-					style="min-height: 1000px; margin-top: 120px;">
+					style="min-height: 1000px;"	>
 					<div class="col-sm-12 col-md-10" id="content"
 						style="background-color: white;">
 						<!-- 메인 공간 -->
 						<div class="col-md-12 col-xs-12">
 							<h2>주문 /배송 조회</h2>
 							<div class="col-md-12 col-xs-12"
-								style="border: 5px solid crimson; border-radius: 10px; padding: 20px 10px; text-align: center; min-height: 800px;">
+								style="border: 5px solid crimson; border-radius: 10px; padding: 20px 10px; text-align: center; min-height: 600px;">
 								<label style="width: 100%; font-size: 1.2em;"> <strong>주문
 										번호를 클릭하면 해당 주문 목록을 볼 수 있습니다.</strong>
 								</label>
@@ -153,12 +174,12 @@
 										<thead>
 											<tr id="first-row">
 												<td>주문일</td>
-												<td>주문번호</td>
+												<td class="responsiveTd">주문번호</td>
 												<td>결재금액</td>
 											</tr>
 										</thead>
 
-										<tbody>
+										<tbody class="table-font">
 											<c:forEach var="plist" items="${plist}">
 												<tr>
 													<td>${plist.pDate}</td>
@@ -174,23 +195,28 @@
 									</table>
 								</div>
 							</div>
-							<div class="col-md-12 col-xs-12 text-center">
-								<ul class="btn-group pagination">
-									<c:if test="${pageMaker.prev }">
-										<li><a href='<c:url value="/myInfo/myInfoOrderDelivery?page=${pageMaker.startPage-1 }"/>'><i
-												class="fa fa-chevron-left"></i></a></li>
-									</c:if>
-									<c:forEach begin="${pageMaker.startPage }"
-										end="${pageMaker.endPage }" var="pageNum">
-										<li><a href='<c:url value="mODelivery?page=${pageNum }"/>'><i
-												class="fa">${pageNum }</i></a></li>
-									</c:forEach>
-									<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
-										<li><a
-											href='<c:url value="mODelivery?page=${pageMaker.endPage+1 }"/>'><i
-												class="fa fa-chevron-right"></i></a></li>
-									</c:if>
-								</ul>
+						<div class="col-md-12 col-xs-12 text-center">
+						<ul class="btn-group pagination">
+							<c:if test="${pageMaker.prev}">
+								<li>
+								<a aria-label="Previous" href="mODelivery${pageMaker.makeSearch(pageMaker.startPage-1)}"><span aria-hidden="true">&laquo;</span></a>
+							  	</li>
+							  </c:if>
+							  <c:forEach begin="${pageMaker.startPage}"
+									   end="${pageMaker.endPage}" var="idx">
+								 		<li>
+							 			<a href="mODelivery${pageMaker.makeSearch(idx)}">${idx}</a>
+							 		</li> 
+								<%-- <c:out value="${pageMaker.cri.page == idx ? 'class =active':''}"/> --%>
+							  </c:forEach>
+							
+							  <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+								<li>
+								<a href="mODelivery${pageMaker.makeSearch(pageMaker.endPage+1)}"><span aria-hidden="true">&raquo;</span></a>
+							  	</li>
+							  </c:if>
+								
+						</ul>
 							</div>
 						</div>
 

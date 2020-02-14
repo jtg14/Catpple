@@ -2,6 +2,8 @@ package com.portfolio.project;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,10 +20,14 @@ import business.CService;
 import business.GService;
 import business.MService;
 import business.OService;
+import business.PService;
+import criteria.Criteria;
+import criteria.PageMaker;
 import vo.CartVO;
 import vo.GoodsVO;
 import vo.MemberVO;
 import vo.OrderVO;
+import vo.PaymentVO;
 
 @Controller
 public class UserController {
@@ -33,6 +39,8 @@ public class UserController {
 	GService gservice;
 	@Autowired
 	OService oservice;
+	@Autowired
+	PService pservice;
 	@Autowired
 	BCryptPasswordEncoder passwordEncorder;
 	
@@ -55,8 +63,19 @@ public class UserController {
 	}
 	
 	@RequestMapping(value ="/mOCancel")//주문 취소
-	public ModelAndView myInfoOrderCancel(ModelAndView model,HttpServletRequest request) {
-		ArrayList<OrderVO> cList = oservice.canceledList((MemberVO)request.getSession().getAttribute("logInUser"));
+	public ModelAndView myInfoOrderCancel(ModelAndView model,HttpServletRequest request,Criteria cri) {
+		cri.setSnoEno();
+		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+	    Map<String,Object> map = new HashMap<String,Object>();
+	    PageMaker pageMaker = new PageMaker();
+	    pageMaker.setCri(cri);
+	    pageMaker.setTotalCount(oservice.canceledListCount(mvo));
+	    System.out.println("totalCount : "+oservice.canceledListCount(mvo));
+	    map.put("sno",cri.getSno());
+	    map.put("perPageNum",cri.getPerPageNum());
+	    map.put("userID",mvo.getmId());
+		ArrayList<OrderVO> cList = oservice.canceledList(map);
+	    model.addObject("pageMaker", pageMaker);
 		model.addObject("canceledList",cList);
 		model.setViewName("myInfo/myInfoOrderCancel");
 		return model;

@@ -68,8 +68,11 @@ import vo.PaymentVO;
 	public int changeDstateToD() {
 		return dao.update(NS+"changeDstateToD");
 	}
-	public ArrayList<OrderVO> canceledList(MemberVO vo) {
-		return (ArrayList)dao.selectList(NS+"canceledList",vo);
+	public ArrayList<OrderVO> canceledList(Map<String,Object> map) {
+		return (ArrayList)dao.selectList(NS+"canceledList",map);
+	}
+	public int canceledListCount(MemberVO vo) {
+		return dao.selectOne(NS+"canceledListCount",vo);
 	}
 	public ArrayList<OrderVO> returnedList(MemberVO vo){
 		return (ArrayList)dao.selectList(NS+"returnedList",vo);
