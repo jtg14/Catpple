@@ -1,7 +1,5 @@
 package com.portfolio.project;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import business.BService;
+import criteria.PageMaker;
+import criteria.SearchCriteria;
 import vo.BoardVO;
 import vo.MemberVO;
 import vo.PageVO;
@@ -43,87 +43,34 @@ public class BoardController {
 	}//mBDetail
 	
 	@RequestMapping(value = "/mCustomerInquiry")//1대1문의
-	public ModelAndView mCustomerInquiry(ModelAndView model, HttpServletRequest request, BoardVO bvo, MemberVO mvo, PageVO pvo) {
+	public ModelAndView mCustomerInquiry(SearchCriteria cri, ModelAndView model, HttpServletRequest request, BoardVO bvo, MemberVO mvo, PageVO pvo) {
+		
+		
 		HttpSession session = request.getSession();
 		mvo = (MemberVO)session.getAttribute("logInUser");
-		pvo.setPerPage(5);
-		pvo.setPerPageNo(3);
+		cri.setMember_mId(mvo.getmId());
 		
 		if("C".equals(mvo.getmGrade())) {//member가 customer인 경우
-			//paging
-			//currPage설정
-			int currPage=1;
-			if(pvo.getCurrPage()>1){ 
-				currPage=pvo.getCurrPage();	
-			}else{ 
-				pvo.setCurrPage(currPage);
-			}
+			cri.setSnoEno();
+			model.addObject("list", service.searchCriList(cri));
 			
-			//페이지 첫row와 마지막row설정
-			int startRno=((currPage-1)*pvo.getPerPage());
-				
-			pvo.setSno(startRno);
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(cri);
+			pageMaker.setTotalCount(service.searchCriCount(cri));
+			model.addObject("pageMaker", pageMaker);
 			
-			
-			pvo.setMember_mId(mvo.getmId());//mid를 pageVO member_mid에 저장
-			pvo = service.inquirySelectPageList(pvo);
-			
-			
-			int totalPageNo = pvo.getTotalCount()/pvo.getPerPage();
-			if (pvo.getTotalCount()%pvo.getPerPage()>0) {
-				totalPageNo +=1;
-				}
-			int sPage=((currPage-1)/pvo.getPerPageNo())*pvo.getPerPageNo() + 1 ;
-			int ePage=sPage+pvo.getPerPageNo()-1; 
-			
-			if (ePage>totalPageNo) {
-				ePage=totalPageNo;
-			}
-			
-			model.addObject("sPage",sPage);
-			model.addObject("ePage",ePage);
-			model.addObject("perPageNo",pvo.getPerPageNo());
-			// Paging1
-			model.addObject("totalPageNo",totalPageNo);
-			model.addObject("currPage",currPage);
-			model.addObject("list", pvo.getList());
 			model.setViewName("myInfo/myInfoCustomerInquiry");
 
 			return model;
 		}else if("A".equals(mvo.getmGrade())) {//member가 관리자인 경우
-			//paging
-			//currPage설정
-			int currPage=1;
-			if(pvo.getCurrPage()>1){ 
-				currPage=pvo.getCurrPage();	
-			}else{ 
-				pvo.setCurrPage(currPage);
-			}
+			cri.setSnoEno();
+			model.addObject("listForManager", service.searchCriListForManager(cri));
 			
-			//페이지 첫row와 마지막row설정
-			int startRno=((currPage-1)*pvo.getPerPage());	
-			pvo.setSno(startRno);
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(cri);
+			pageMaker.setTotalCount(service.searchCriCountForManager(cri));
+			model.addObject("pageMaker", pageMaker);
 			
-			
-			pvo = service.inquirySelectPageListForManager(pvo);
-			
-			int totalPageNo = pvo.getTotalCount()/pvo.getPerPage();
-			if (pvo.getTotalCount()%pvo.getPerPage()>0)
-				totalPageNo +=1;
-			
-			int sPage=((currPage-1)/pvo.getPerPageNo())*pvo.getPerPageNo() + 1 ;
-			int ePage=sPage+pvo.getPerPageNo()-1; 
-			
-			if (ePage>totalPageNo) ePage=totalPageNo;
-			
-			
-			model.addObject("sPage",sPage);
-			model.addObject("ePage",ePage);
-			model.addObject("perPageNo",pvo.getPerPageNo());
-			// Paging1
-			model.addObject("totalPageNo",totalPageNo);
-			model.addObject("currPage",currPage);
-			model.addObject("listForManager", pvo.getList());
 			model.setViewName("myInfo/myInfoCustomerInquiry");
 			return model;
 		}else {//예외처리

@@ -46,6 +46,9 @@ $(function() {
 			$('#total').html(addCommas(parseInt($('#price').html()) * $('#amount1').val())+' 원');
 		}
 	});
+	
+
+	
 	var opListLength =  $('#opList').html().substring(5,$('#opList').html().length-1);
 	for(var i = 0; i < opListLength ; i++){
 	var phoneNumber = $('#addHyphen'+i).html();
@@ -66,7 +69,13 @@ $(function() {
 	
 	}
 	$('#addHyphen'+i).html(number);
-	}
+	};
+	
+	
+
+
+	
+	
 }); //ready
 //3자리 단위마다 콤마 생성
 function addCommas(x) {
@@ -394,4 +403,7 @@ function statusChangeButton(number,status){
 	
 }//statusChangeButton
 
+
+
+	
 

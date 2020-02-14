@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import criteria.SearchCriteria;
 import vo.BoardVO;
 import vo.PageVO;
 
@@ -68,6 +69,22 @@ public class BoardDAO {
 	
 	public int boardUpdate(BoardVO vo) {
 		return dao.update(NS+"boardUpdate",vo);
+	}
+	
+	public ArrayList<BoardVO> searchCriList(SearchCriteria cri) {
+		return (ArrayList)dao.selectList(NS+"searchCriList", cri);
+	}
+	
+	public int searchCriCount(SearchCriteria cri) {
+		return dao.selectOne(NS+"searchCriCount",cri);
+	}
+	
+	public ArrayList<BoardVO> searchCriListForManager(SearchCriteria cri){
+		return (ArrayList)dao.selectList(NS+"searchCriListForManager", cri);
+	}
+	
+	public int searchCriCountForManager(SearchCriteria cri) {
+		return dao.selectOne(NS+"searchCriCountForManager", cri);
 	}
 	
 }//class

@@ -2,6 +2,7 @@ package business;
 
 import java.util.ArrayList;
 
+import criteria.SearchCriteria;
 import vo.BoardVO;
 import vo.PageVO;
 
@@ -26,6 +27,11 @@ public interface BService {
 	
 	public int boardUpdate(BoardVO vo);
 	
-
+	public ArrayList<BoardVO> searchCriList(SearchCriteria cri);
 	
+	public int searchCriCount(SearchCriteria cri);
+	
+	public ArrayList<BoardVO> searchCriListForManager(SearchCriteria cri);
+	
+	public int searchCriCountForManager(SearchCriteria cri);
 }

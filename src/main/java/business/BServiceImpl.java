@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import criteria.SearchCriteria;
 import dao.BoardDAO;
 import vo.BoardVO;
 import vo.PageVO;
@@ -63,6 +64,26 @@ public class BServiceImpl implements BService {
 		return dao.boardUpdate(vo);
 	}
 
+	@Override
+	public ArrayList<BoardVO> searchCriList(SearchCriteria cri) {
+		return dao.searchCriList(cri);
+	}
+
+	@Override
+	public int searchCriCount(SearchCriteria cri) {
+		return dao.searchCriCount(cri);
+	}
+
+	@Override
+	public ArrayList<BoardVO> searchCriListForManager(SearchCriteria cri) {
+		return dao.searchCriListForManager(cri);
+	}
+
+	@Override
+	public int searchCriCountForManager(SearchCriteria cri) {
+		return dao.searchCriCountForManager(cri);
+	}
+	
 	
 	
 	
