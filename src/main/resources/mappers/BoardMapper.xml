@@ -37,64 +37,90 @@
 	</update>
 
 	<!-- inquiryTotalRowCount -->
-
-
 	<select id="inquiryTotalRowCount" resultType="integer">select count(*)
 		from board where bReply!='0' and member_mId=#{member_mId} </select>
 
 	<!-- suggestionTotalRowCount -->
-
-
 	<select id="suggestionTotalRowCount" resultType="integer">select count(*)
 		from board where bReply='0'and member_mId=#{member_mId} </select>
 
 	<!-- inquiryTotalRowCountForManager -->
-
-
 	<select id="inquiryTotalRowCountForManager" resultType="integer">select
 		count(*) from board where bReply!='0' </select>
 
 	<!-- suggestionTotalRowCountForManager -->
-
-
 	<select id="suggestionTotalRowCountForManager"
 		resultType="integer">select count(*) from board where bReply='0' </select>
 
 	<!-- inquirySelectPageListForManager -->
-
-
 	<select id="inquirySelectPageListForManager"
 		resultType="vo.BoardVO">select b.* from (select * from board where bReply!='0') AS
 		b order by b.bNum desc limit #{sno}, 5 </select>
 
 	<!-- inquirySelectPageList -->
-
-
 	<select id="inquirySelectPageList" resultType="vo.BoardVO">select b.* from
 		(select * from board where bReply!='0' and member_mId=#{member_mId})
-		AS b order by b.bNum desc limit #{sno}, 5 </select>
+		 order by bNum desc limit #{sno}, 5 </select>
 
 	<!-- suggestionSelectPageListForManager -->
-
-
 	<select id="suggestionSelectPageListForManager"
 		resultType="vo.BoardVO">select b.* from (select * from board where bReply='0') AS b
 		order by b.bNum desc limit #{sno}, 5 </select>
 
 	<!-- suggestionSelectPageList -->
-
-
 	<select id="suggestionSelectPageList" resultType="vo.BoardVO">select b.* from
 		(select * from board where bReply='0' and member_mId=#{member_mId}) AS
 		b order by b.bNum desc limit #{sno}, 5 </select>
 
 	<!-- boardDelete -->
-
 	<delete id="boardDelete">delete from board where bNum=#{bNum} </delete>
 
 	<!-- boardUpdate -->
-
 	<update id="boardUpdate" >
 		update board set bTitle=#{bTitle}, bContent=#{bContent} where bNum=#{bNum}
 	</update>
+	
+	<!-- search 기능 -->
+	<sql id="search">
+		<choose>
+			<when test="searchType=='t'.toString()">
+				and bTitle like CONCAT('%', #{keyword}, '%'))
+			</when>
+			<when test="searchType=='c'.toString()">
+				and bContent like CONCAT('%', #{keyword}, '%'))
+			</when>
+			<when test="searchType=='tc'.toString()">
+				and (bTitle like CONCAT('%', #{keyword}, '%')
+				     OR bContent like CONCAT('%', #{keyword}, '%')))
+			</when>
+			<otherwise>)</otherwise>
+		</choose>
+	</sql>
+	<!-- searchCriList -->
+	<select id="searchCriList" resultType="vo.BoardVO">
+		(select * from board where bReply!='0' and member_mId=#{member_mId}
+		<include refid="search"></include>
+		order by bNum desc limit #{sno}, #{perPageNum}
+	</select>
+	<!-- searchCriCount -->
+	<select id="searchCriCount" resultType="int">
+		(select count(*)
+		from board where bReply!='0' and member_mId=#{member_mId}
+ 		<include refid="search"></include>
+	</select>
+	<!-- searchCriListForManager -->
+	<select id="searchCriListForManager" resultType="vo.BoardVO">
+		select b.* from (select * from board where bReply!='0'
+		<include refid="search"></include>
+		 AS b order by b.bNum desc limit #{sno}, #{perPageNum} 
+	</select>
+	<!-- searchCriCountForManager -->
+	<select id="searchCriCountForManager" resultType="int">
+		(select count(*) 
+		from board where bReply!='0'
+		<include refid="search"></include>
+	</select>
+	
+	
+	
 </mapper>

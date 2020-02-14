@@ -4,7 +4,14 @@ public class SearchCriteria extends Criteria{
 
 	private String searchType;
 	private String keyword;
+	private String member_mId;
 	
+	public void setMember_mId(String member_mId) {
+		this.member_mId = member_mId;
+	}
+	public String getMember_mId() {
+		return member_mId;
+	}
 	public String getSearchType() {
 		return searchType;
 	}

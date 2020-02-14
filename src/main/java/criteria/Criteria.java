@@ -9,13 +9,13 @@ public class Criteria {
 // 생성자로 초기화
 	public Criteria(){
 		this.page = 1;  
-		this.perPageNum = 5; 
+		this.perPageNum = 10; 
 	}
 	
 	public void setSnoEno(){
-		if (sno<1) sno=1 ;
-		this.sno=((page-1)*perPageNum)+1 ; // - startRowNum 계산
-		this.eno=(sno+perPageNum)-1 ; // - endRowNum 계산 
+		if (sno<1) sno=0 ;
+		this.sno=((page-1)*perPageNum) ; // - startRowNum 계산
+		this.eno=(sno+perPageNum) ; // - endRowNum 계산 
 	}
 	
 	public int getSno() {  
