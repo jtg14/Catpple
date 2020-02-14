@@ -195,7 +195,7 @@
 									</table>
 								</div>
 							</div>
-							<div class="col-md-12 col-xs-12 text-center">
+						<div class="col-md-12 col-xs-12 text-center">
 						<ul class="btn-group pagination">
 							<c:if test="${pageMaker.prev}">
 								<li>

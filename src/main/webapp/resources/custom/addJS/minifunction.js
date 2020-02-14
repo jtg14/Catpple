@@ -355,7 +355,7 @@ function justReqeust(number,status){
 			},
 			success:function(data){
 				if(data.code == '100'){
-					alert('정상적으로 '+statusName+' 되었습니다.')
+					alert('정상적으로 '+statusName+' 되었습니다.');
 					location.href='mODelivery';
 				}else if(data.code == '101'){
 					alert('요청에 실패 하였습니다.')
