@@ -81,22 +81,35 @@ public class UserController {
 		return model;
 	}
 	@RequestMapping(value ="/mRExchange")//반품/교환
-	public ModelAndView myInfoReturnExchange(ModelAndView model,HttpServletRequest request) {
-		MemberVO user = (MemberVO)request.getSession().getAttribute("logInUser");
-		System.out.println(user);
-		ArrayList<OrderVO> rList = oservice.returnedList(user);
-		for(OrderVO vo : rList){	
-			System.out.println(vo);
-		}
-		model.addObject("returnedList",rList);
+	public ModelAndView myInfoReturnExchange(ModelAndView model,HttpServletRequest request,Criteria cri) {
+		cri.setSnoEno();
+		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+	    Map<String,Object> map = new HashMap<String,Object>();
+	    PageMaker pageMaker = new PageMaker();
+	    pageMaker.setCri(cri);
+	    pageMaker.setTotalCount(oservice.returnedListCount(mvo));
+	    map.put("sno",cri.getSno());
+	    map.put("perPageNum",cri.getPerPageNum());
+	    map.put("userID",mvo.getmId());
+		ArrayList<OrderVO> cList = oservice.returnedList(map);
+	    model.addObject("pageMaker", pageMaker);
+		model.addObject("returnedList",cList);
 		model.setViewName("myInfo/myInfoReturnExchange");
 		return model;
 	}
 	@RequestMapping(value ="/mCart")//장바구니
-	public ModelAndView myInfoCart(ModelAndView model,HttpServletRequest request) {
-		MemberVO vo =(MemberVO) request.getSession().getAttribute("logInUser");
-		ArrayList<CartVO> list = cartService.cartList(vo);
-		
+	public ModelAndView myInfoCart(ModelAndView model,HttpServletRequest request,Criteria cri) {
+		cri.setSnoEno();
+		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+	    Map<String,Object> map = new HashMap<String,Object>();
+	    PageMaker pageMaker = new PageMaker();
+	    pageMaker.setCri(cri);
+	    pageMaker.setTotalCount(cartService.cartListCount(mvo));
+	    map.put("sno",cri.getSno());
+	    map.put("perPageNum",cri.getPerPageNum());
+	    map.put("userID",mvo.getmId());
+		ArrayList<CartVO> list = cartService.cartList(map);
+	    model.addObject("pageMaker", pageMaker);
 		model.addObject("list",list);
 		
 		model.setViewName("myInfo/myInfoCart");

@@ -11,8 +11,12 @@
 	select * from Cart where member_mid = #{member_mId} and goods_gnum = ${goods_gNum}
 	</select>
 	<select id="cartList" resultType="vo.CartVO">
+	<![CDATA[
 	 	select c.cId,c.cAmount,c.member_mId,c.goods_gNum,g.gName,g.gPrice,g.member_mId sellerID,
-	 	g.gImg1 from Cart c,Goods g where c.goods_gNum = g.gNum and c.member_mId=#{mId}
+	 	g.gImg1 from Cart c,Goods g where c.goods_gNum = g.gNum and c.member_mId=#{userID} limit #{sno} , #{perPageNum}   ]]>
+	</select>
+	<select id="cartListCount" resultType="integer">
+		select count(*) from cart where member_mId = #{mId};
 	</select>
 	<delete id="deleteCart">
 		delete from cart where cid = #{cId}

@@ -40,8 +40,8 @@
 						<strong class="discount-persentage">0<span>% Off</span></strong>
 						<div class="price_inner">
 							<del>
-								<span class="before-price">${goods.gPrice}</span><span
-									class="before-price">원</span>
+								<span class="before-price">${goods.gPrice}</span>
+								<span class="before-price">원</span>
 							</del>
 							<strong id="price">${goods.gPrice}</strong><strong><span>원</span></strong>
 						</div>
@@ -50,11 +50,11 @@
 					<div class="col-md-3 col-xs-6" style="margin-top: 60px;">
 						<div class="input-group">
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="button" id="btn-minus">-</button>
+								<button class="btn btn-default" type="button" onclick="minusAmount()">-</button>
 							</span> <input type="text" class="form-control amount_bar" maxlength="4"
 								value="1" numberOnly id="amount1"> <span
 								class="input-group-btn">
-								<button class="btn btn-default" type="button" id="btn-plus">+</button>
+								<button class="btn btn-default" type="button" onclick="plusAmount()">+</button>
 							</span>
 						</div>
 					</div>

@@ -33,9 +33,11 @@ public interface OService {
 	
 	int canceledListCount(MemberVO vo);
 	
-	ArrayList<OrderVO> canceledList(Map<String,Object>map);
+	int returnedListCount(MemberVO vo);
 	
-	ArrayList<OrderVO> returnedList(MemberVO vo);
+	ArrayList<OrderVO> canceledList(Map<String,Object> map);
+	
+	ArrayList<OrderVO> returnedList(Map<String,Object> map);
 	
 	ArrayList<OrderVO> selectDeliveryCompletionList(GoodsVO gvo);
 	
