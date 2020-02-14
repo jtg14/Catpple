@@ -11,14 +11,18 @@
 	<select id="findPayment" resultType="vo.PaymentVO">
 	select * from payment where pNum = #{pNum}
 	</select>
-	<select id="canceledList" resultType="vo.OrderVO">
-	select DISTINCT (select DISTINCT gImg1 from goods where gNum = o.oNum) gImg1,
-	(select DISTINCT gname from goods where gNum = o.oNum) gName,g.member_mId sellerID,
+	<select id="canceledList" resultType="OrderVO" parameterType="java.util.HashMap">
+	<![CDATA[
+	select DISTINCT (select DISTINCT gImg1 from goods where gNum = o.goods_gNum) gImg1,
+	(select DISTINCT gname from goods where gNum = o.goods_gNum) gName,g.member_mId sellerID,
 	(select DISTINCT mPhone from member where mId = g.member_mId) mPhone,o.oNum, o.oStock *
 	 o.oPrice as midPrice,case oStatus when 'os1' then '취소완료' 
 	when 'os4' then '취소요청' else '해당없음' end oStatus, p.pPayment from corder o,payment
 	 p,goods g where o.payment_pNum = p.pNum and o.oStatus = 'os1' or o.oStatus = 'os4' and
-	  o.member_mId = #{mId} order by oStatus desc
+	  o.member_mId = #{userID} order by oStatus desc limit #{sno} , #{perPageNum}   ]]>
+	</select>
+	<select id="canceledListCount" resultType="integer">
+	 select count(*) from corder where oStatus = 'os1' or oStatus =  'os4' and member_mid = #{mId};
 	</select>
 	<select id="returnedList" resultType="vo.OrderVO">
 	select DISTINCT (select DISTINCT gImg1 from goods where gNum = o.oNum) gImg1,o.oNum,
