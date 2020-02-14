@@ -175,7 +175,7 @@ function deleteCart(cid){
 			success:function(data){
 				if(data.code == 300){
 					alert('성공적으로 삭제했습니다.');
-					location.reload();
+					location.href="mCart";
 				}else if (data.code == 301){
 					alert('삭제에 실패 하였습니다.');
 				}

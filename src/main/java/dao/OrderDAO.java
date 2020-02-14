@@ -74,10 +74,12 @@ import vo.PaymentVO;
 	public int canceledListCount(MemberVO vo) {
 		return dao.selectOne(NS+"canceledListCount",vo);
 	}
-	public ArrayList<OrderVO> returnedList(MemberVO vo){
-		return (ArrayList)dao.selectList(NS+"returnedList",vo);
+	public ArrayList<OrderVO> returnedList(Map<String,Object> map){
+		return (ArrayList)dao.selectList(NS+"returnedList",map);
 	}
-	
+	public int returnedListCount(MemberVO vo) {
+		return dao.selectOne(NS+"returnedListCount",vo);
+	}
 	
 	
 }

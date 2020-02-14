@@ -235,12 +235,12 @@
 
 
 											<c:when test="${oplist.dState=='c'}"><!-- 배송중 or 배송완료 -->
-													<c:if test="${oplist.oStatus ne 'os2'}"><!-- 반품완료 -->
+													<c:if test="${oplist.oStatus eq 'os2'}"><!-- 반품완료 -->
 														<div class="col-md-3 col-md-offset-3 col-xs-12 text-center">
 															<button class="btn btn-success disabled">반품완료</button>
 														</div>
 													</c:if>
-													<c:if test="${oplist.oStatus ne 'os3'}"><!-- 주문완료 -->
+													<c:if test="${oplist.oStatus eq 'os3'}"><!-- 주문완료 -->
 														<div class="col-md-3 col-md-offset-3 col-xs-12 text-center">
 															<button class="btn btn-success" onclick="justReqeust(${oplist.oNum},'os5')">반품요청</button>
 														</div>

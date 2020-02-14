@@ -203,7 +203,37 @@
 							</c:forEach>
 
 						</div>
-
+						<div class="col-md-10 col-xs-12 text-center">
+								<ul class="btn-group pagination">
+									<c:if test="${pageMaker.prev}">
+										<li>
+										<a aria-label="Previous" href="mRExchange${pageMaker.makeSearch(pageMaker.startPage-1)}"><span aria-hidden="true">&laquo;</span></a>
+									  	</li>
+									  </c:if>
+									  
+									  <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+								 		<c:choose>
+										<c:when test="${pageMaker.cri.page==idx}">
+									  		 <li>
+								 			<a class="btn btn-danger disabled" style="color:white;">${idx}</a>
+								 			</li>
+								 		</c:when>
+								 		<c:otherwise>
+											 		<li>
+										 			<a href="mRExchange${pageMaker.makeSearch(idx)}">${idx}</a>
+										 			</li> 
+											<%-- <c:out value="${pageMaker.cri.page == idx ? 'class =active':''}"/> --%>
+										</c:otherwise>
+										</c:choose>
+									  </c:forEach>
+									  <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+										<li>
+										<a href="mRExchange${pageMaker.makeSearch(pageMaker.endPage+1)}"><span aria-hidden="true">&raquo;</span></a>
+									  	</li>
+									  </c:if>
+										
+								</ul>
+							</div>	
 
 					</div>
 				</div>

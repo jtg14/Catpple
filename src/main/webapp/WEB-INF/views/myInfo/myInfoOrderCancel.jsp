@@ -200,9 +200,18 @@ th, td {
 									  </c:if>
 									  <c:forEach begin="${pageMaker.startPage}"
 											   end="${pageMaker.endPage}" var="idx">
+											   <c:choose>
+											   <c:when test="${pageMaker.cri.page==idx}">
+										  		 <li>
+									 			<a class="btn btn-danger disabled" style="color:white;">${idx}</a>
+									 			</li>
+										 		</c:when>
+										 		<c:otherwise>
 										 		<li>
 									 			<a href="mOCancel${pageMaker.makeSearch(idx)}">${idx}</a>
 									 			</li> 
+									 			</c:otherwise>
+									 			</c:choose>
 										<%-- <c:out value="${pageMaker.cri.page == idx ? 'class =active':''}"/> --%>
 									  </c:forEach>
 									
