@@ -64,66 +64,95 @@ public class OrderController {//주문성공 페이지
 	}
 	
 	@RequestMapping(value ="/sOList")//주문 요청 목록
-	public ModelAndView sellerOrderList(SearchCriteria cri, ModelAndView model, HttpServletRequest request, MemberVO mvo) {
-		String dCode = request.getParameter("dCode");
-		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
-		GoodsVO gvo = new GoodsVO();
-		gvo.setMember_mId(mvo.getmId());
-		
-		
-		
-//		for(int i=0; i<list.size(); i++) {
-//			String subDate = (list.get(i).getdDate()_.substring(0,19);
-//			list.get(i).setdDate(subDate);
+	   public ModelAndView sellerOrderList(SearchCriteria cri, ModelAndView model, HttpServletRequest request, OrderVO vo) {
+	      cri.setSnoEno();
+	      String dCode = request.getParameter("dCode");
+	      MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+	      cri.setMember_mId(mvo.getmId());
+	      if("C".equals(dCode)) {
+	         ArrayList<OrderVO> list = service.criDeliveryCompletionList(cri);
+	         model.addObject("list", list);
+	         PageMaker pageMaker = new PageMaker();
+	         pageMaker.setCri(cri);
+	         pageMaker.setTotalCount(service.criDeliveryCompletionCount(cri));
+	         model.addObject("pageMaker", pageMaker);
+	         model.setViewName("order/sellerDeliveryCompletionList");
+	      } else {
+	         ArrayList<OrderVO> list = service.criSelectReceivedOrderList(cri);
+	         model.addObject("list", list);
+	         PageMaker pageMaker = new PageMaker();
+	         pageMaker.setCri(cri);
+	         pageMaker.setTotalCount(service.criSelectReceivedOrderCount(cri));
+	         model.addObject("pageMaker", pageMaker);
+	         model.setViewName("order/sellerOrderList");
+	      }
+	      return model;
+	   }
+	
+	
+//	@RequestMapping(value ="/sOList")//주문 요청 목록
+//	public ModelAndView sellerOrderList(SearchCriteria cri, ModelAndView model, HttpServletRequest request, MemberVO mvo) {
+//		String dCode = request.getParameter("dCode");
+//		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+//		GoodsVO gvo = new GoodsVO();
+//		gvo.setMember_mId(mvo.getmId());
+//		
+//		
+//		
+////		for(int i=0; i<list.size(); i++) {
+////			String subDate = (list.get(i).getdDate()_.substring(0,19);
+////			list.get(i).setdDate(subDate);
+////		}
+//		
+//		if("C".equals(dCode)) {//판매자메뉴->배송완료목록
+//			
+////			int totalPageNo = gvo.getTotalCount()/gvo.getPerPage();
+////			if(gvo.getTotalCount()%gvo.getPerPage()>0) {
+////				totalPageNo +=1;
+////			}
+////			int sPage=((currPage-1)/gvo.getPerPageNo())*gvo.getPerPageNo()+1;
+////			System.out.println("gvo.getPerPageNo()=>"+gvo.getPerPageNo());
+////			int ePage=sPage+gvo.getPerPageNo()-1;
+////			if(ePage>totalPageNo) {
+////				ePage=totalPageNo;
+////			}
+////			System.out.println(sPage);
+////			System.out.println(ePage);
+////			model.addObject("sPage", sPage);
+////			model.addObject("ePage", ePage);
+////			model.addObject("perPageNo", gvo.getPerPageNo());
+////			model.addObject("totalPageNo", totalPageNo);
+////			model.addObject("currPage", currPage);
+//			
+//			ArrayList<OrderVO> list = service.selectDeliveryCompletionList(gvo);
+//			model.addObject("list",list);
+//			model.setViewName("order/sellerDeliveryCompletionList");
+//		}else {//판매자메뉴->주문목록
+////			int totalPageNo = gvo.getTotalCount()/gvo.getPerPage();
+////			if(gvo.getTotalCount()%gvo.getPerPage()>0) {
+////				totalPageNo +=1;
+////			}
+////			int sPage=((currPage-1)/gvo.getPerPageNo())*gvo.getPerPageNo()+1;
+////			int ePage=sPage+gvo.getPerPageNo()-1;
+////			if(ePage>totalPageNo) {
+////				ePage=totalPageNo;
+////			}
+////			System.out.println("sPage=>"+sPage);
+////			System.out.println("ePage=>"+ePage);
+////			model.addObject("sPage", sPage);
+////			model.addObject("ePage", ePage);
+////			model.addObject("perPageNo", gvo.getPerPageNo());
+////			model.addObject("totalPageNo", totalPageNo);
+////			model.addObject("currPage", currPage);
+//			
+//			ArrayList<OrderVO> list = service.selectReceivedOrderList(gvo);
+//			model.addObject("list",list);
+//			model.setViewName("order/sellerOrderList");
 //		}
-		
-		if("C".equals(dCode)) {//판매자메뉴->배송완료목록
-			
-//			int totalPageNo = gvo.getTotalCount()/gvo.getPerPage();
-//			if(gvo.getTotalCount()%gvo.getPerPage()>0) {
-//				totalPageNo +=1;
-//			}
-//			int sPage=((currPage-1)/gvo.getPerPageNo())*gvo.getPerPageNo()+1;
-//			System.out.println("gvo.getPerPageNo()=>"+gvo.getPerPageNo());
-//			int ePage=sPage+gvo.getPerPageNo()-1;
-//			if(ePage>totalPageNo) {
-//				ePage=totalPageNo;
-//			}
-//			System.out.println(sPage);
-//			System.out.println(ePage);
-//			model.addObject("sPage", sPage);
-//			model.addObject("ePage", ePage);
-//			model.addObject("perPageNo", gvo.getPerPageNo());
-//			model.addObject("totalPageNo", totalPageNo);
-//			model.addObject("currPage", currPage);
-			
-			ArrayList<OrderVO> list = service.selectDeliveryCompletionList(gvo);
-			model.addObject("list",list);
-			model.setViewName("order/sellerDeliveryCompletionList");
-		}else {//판매자메뉴->주문목록
-//			int totalPageNo = gvo.getTotalCount()/gvo.getPerPage();
-//			if(gvo.getTotalCount()%gvo.getPerPage()>0) {
-//				totalPageNo +=1;
-//			}
-//			int sPage=((currPage-1)/gvo.getPerPageNo())*gvo.getPerPageNo()+1;
-//			int ePage=sPage+gvo.getPerPageNo()-1;
-//			if(ePage>totalPageNo) {
-//				ePage=totalPageNo;
-//			}
-//			System.out.println("sPage=>"+sPage);
-//			System.out.println("ePage=>"+ePage);
-//			model.addObject("sPage", sPage);
-//			model.addObject("ePage", ePage);
-//			model.addObject("perPageNo", gvo.getPerPageNo());
-//			model.addObject("totalPageNo", totalPageNo);
-//			model.addObject("currPage", currPage);
-			
-			ArrayList<OrderVO> list = service.selectReceivedOrderList(gvo);
-			model.addObject("list",list);
-			model.setViewName("order/sellerOrderList");
-		}
-		return model;
-	}
+//		return model;
+//	}
+	
+	
 	@RequestMapping(value ="/ginfo")//상품정보
 	public ModelAndView goodsInfo(ModelAndView model) {
 		model.setViewName("goods/goodsInfo");

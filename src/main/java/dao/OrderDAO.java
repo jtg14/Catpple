@@ -80,6 +80,24 @@ import vo.PaymentVO;
 	public int returnedListCount(MemberVO vo) {
 		return dao.selectOne(NS+"returnedListCount",vo);
 	}
+
 	
+	public ArrayList<OrderVO> criDeliveryCompletionList(SearchCriteria cri){
+		return (ArrayList)dao.selectList(NS+"criDeliveryCompletionList", cri);
+	}
+	
+	public ArrayList<OrderVO> criSelectReceivedOrderList(SearchCriteria cri){
+		return (ArrayList)dao.selectList(NS+"criSelectReceivedOrderList", cri);
+	}
+	
+	public int criSelectReceivedOrderCount(SearchCriteria cri) {
+		return dao.selectOne(NS+"criSelectReceivedOrderCount", cri);
+	}
+	
+	public int criDeliveryCompletionCount(SearchCriteria cri) {
+		return dao.selectOne(NS+"criDeliveryCompletionCount", cri);
+	}
+	
+
 	
 }

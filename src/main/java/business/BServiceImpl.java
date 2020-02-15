@@ -35,26 +35,6 @@ public class BServiceImpl implements BService {
 	}
 
 	@Override
-	public PageVO inquirySelectPageList(PageVO pvo) {
-		return dao.inquirySelectPageList(pvo);
-	}
-
-	@Override
-	public PageVO inquirySelectPageListForManager(PageVO pvo) {
-		return dao.inquirySelectPageListForManager(pvo);
-	}
-
-	@Override
-	public PageVO suggestionSelectPageList(PageVO pvo) {
-		return dao.suggestionSelectPageList(pvo);
-	}
-
-	@Override
-	public PageVO suggestionSelectPageListForManager(PageVO pvo) {
-		return dao.suggestionSelectPageListForManager(pvo);
-	}
-
-	@Override
 	public int boardDelete(BoardVO vo) {
 		return dao.boardDelete(vo);
 	}
