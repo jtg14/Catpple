@@ -234,15 +234,15 @@ $(function(){
 												<textarea class="form-control noresize" name="bContent"
 													id="bContent" style="height: 140px;"></textarea>
 											</div>
-											<div class="col-md-12 col-xs-12" style="margin-top: 20px;">
-												<div>
+											<div class="col-md-4 col-md-offset-8  col-xs-12" style="margin-top: 20px;">
+												<div class="col-md-6 col-xs-6">
 													<input 
 														class="btn btn-success btn-lg pull-right" type="submit"
 														value="문의하기" onclick="return bOnCheck()" >
 												</div>
-												<form action=" mCustomerInquiry" method="post">
-													<input class="btn btn-success btn-lg pull-right" type="submit" value="목록보기">												
-												</form>
+												<div class="col-md-6 col-xs-6">
+													<a class="btn btn-success btn-lg pull-right" type="button" href="mCustomerInquiry">목록보기</a>
+												</div>												
 											</div>
 
 										</form>
@@ -276,7 +276,7 @@ $(function(){
 											<div class="col-md-12 col-xs-12" style="margin-top: 20px;">
 												<input 
 													class="btn btn-success btn-lg pull-right" type="submit"
-													value="문의하기">
+													value="문의하기" onclick="return bOnCheck()">
 											</div>
 										</form>
 									</div>
