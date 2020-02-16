@@ -28,7 +28,11 @@
 		padding-right: 0px;
 		padding-left: 0px;
 	}
+	.row{
+		margin-top:120px;
+	}
 }
+	
 
 @media ( min-width : 968px) {
 	.img {

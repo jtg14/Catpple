@@ -54,6 +54,9 @@
 	.first-div {
 		border-top: 1px solid lightgray;
 	}
+	.row{
+		margin-top:120px;
+	}
 }
 </style>
 </head>

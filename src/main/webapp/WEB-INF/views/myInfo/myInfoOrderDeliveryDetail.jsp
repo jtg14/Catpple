@@ -37,7 +37,11 @@
 	.img {
 		width: 100%;
 	}
+	.row{
+		margin-top:120px;
+	}
 }
+
 </style>
 </head>
 <body class="font-Jua">

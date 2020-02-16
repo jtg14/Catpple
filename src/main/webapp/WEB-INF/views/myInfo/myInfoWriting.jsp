@@ -45,6 +45,17 @@ th, td {
 		font-size:1em;	
 	}
 }
+@media (max-width : 768px) {
+	.table-font{
+	font-size:1em;
+	}
+	.responsiveTd{
+		width:30%;
+	}
+	.row{
+		margin-top:120px;
+	}
+}
 </style>
 <script type="text/javascript">
 $(function(){
