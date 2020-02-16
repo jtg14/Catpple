@@ -69,7 +69,8 @@ th, td {
 	<div id="noty-holder"></div>
 	<div id="wrapper">
 		<!-- Navigation -->
-		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<nav class="navbar navbar-default navbar-fixed-top"
+			style="background-color: white;" role="navigation">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -104,9 +105,6 @@ th, td {
 						data-target="#submenu-4"><i class="fa fa-fw fa-star"></i>
 							내정보 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
 						<ul id="submenu-4" class="collapse">
-							<c:if test="${logInUser.mGrade!='S'}">
-							<li><a href="mpoint" ><i
-									class="fa fa-angle-double-right"></i> 포인트</a></li></c:if>
 							<li><a href="mChangef"><i
 									class="fa fa-angle-double-right"></i> 내정보변경</a></li>
 							<li><a href="mWdrawal"><i
