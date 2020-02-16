@@ -178,14 +178,14 @@
 										</div>
 										<div class="col-md-9 col-xs-8">
 											<span>수량 <input class="form-group input-sm"
-												type="number" value="${list.cAmount}"
+												type="number" value="${list.cAmount}" id="cAmountValue${vs.index}"
 												style="width: 60px; margin-bottom: 5px;"></span> <a
 												class="btn btn-default pull-right" type="button"
 												onclick="deleteCart('${list.cId}')">삭제</a>
 										</div>
 										<div class="col-md-3 col-md-offset-6 col-xs-4 col-xs-offset-6 text-center">
-											<button id="amount"
-												class="btn btn-primary btn-xs amount_modification">수 정</button>
+											<button id="amount" onclick="updateCartAmount(${list.goods_gNum},'${logInUser.mId}',cAmountValue${vs.index})"
+											 	class="btn btn-primary btn-xs amount_modification">수 정</button>
 										</div>
 									</div>
 								</div>

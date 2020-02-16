@@ -23,11 +23,11 @@ import business.OService;
 import business.PService;
 import criteria.Criteria;
 import criteria.PageMaker;
+import sendmessage.Send;
 import vo.CartVO;
 import vo.GoodsVO;
 import vo.MemberVO;
 import vo.OrderVO;
-import vo.PaymentVO;
 
 @Controller
 public class UserController {
@@ -44,6 +44,8 @@ public class UserController {
 	@Autowired
 	BCryptPasswordEncoder passwordEncorder;
 	
+
+	Send send = new Send();
 	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 	
 	@RequestMapping(value ="/signupf")//회원가입
@@ -53,10 +55,13 @@ public class UserController {
 	}
 	@RequestMapping(value ="/mroom")//마이룸 메인
 	public ModelAndView myRoom(ModelAndView model,HttpServletRequest request) {
+		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+		model.addObject("aCount",oservice.successOrderCount(mvo));
+		model.addObject("bCount",oservice.deliveringOrderCount(mvo));
+		model.addObject("cCount",oservice.deliveriedOrderCount(mvo));
 		model.setViewName("myInfo/myroom");
 		return model;
 	}
-
 	@RequestMapping(value ="/mOCancel")//주문 취소
 	public ModelAndView myInfoOrderCancel(ModelAndView model,HttpServletRequest request,Criteria cri) {
 		cri.setSnoEno();
@@ -122,7 +127,7 @@ public class UserController {
 		return model;
 	}
 	@RequestMapping(value ="/mWdrawal")//회원탈퇴
-	public ModelAndView myInfoWithdrawal(ModelAndView model,HttpServletRequest request) {
+	public ModelAndView myInfoWithdrawal(ModelAndView model,HttpServletRequest request){
 		
 		model.setViewName("myInfo/myInfoWithdrawal");
 		return model;
@@ -204,10 +209,25 @@ public class UserController {
 
 	@RequestMapping(value ="/phoneCheck")//연락처 중복검사
 	public ModelAndView phoneCheck(ModelAndView model,MemberVO vo ) {
+		String verifyPhoneNumber = vo.getmPhone();
+		System.out.println("보낼 연락처 : "+verifyPhoneNumber);
 		if(service.phoneCheck(vo) == null) {
 			model.addObject("code",200);
+			send.getVerifyNumber(verifyPhoneNumber);
 		}else {
 			model.addObject("code",201);
+		}
+		model.setViewName("jsonView");
+		return model;
+	}
+	@RequestMapping(value = "/vPhone")
+	public ModelAndView verifyPhone(ModelAndView model,HttpServletRequest request) {
+		String vNumber = request.getParameter("verifyNumber");
+		System.out.println("들어온 인증번호 : "+vNumber);
+		if(send.confirmNumber(vNumber)) {
+			model.addObject("code","100");
+		}else {
+			model.addObject("code","101");
 		}
 		model.setViewName("jsonView");
 		return model;

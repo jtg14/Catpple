@@ -334,4 +334,17 @@ public class OrderController {//주문성공 페이지
 //	public ModelAndView sellerDeliveryCompletionList(ModelAndView model) {
 //		
 //	}//sellerDeliveryCompletionList
+	
+	@RequestMapping(value = "updateCartAmount")
+	public ModelAndView updateCartAmount(ModelAndView mv, CartVO vo) {
+		int gAmount = cartService.checkCartAmount(vo);
+		if(gAmount>vo.getcAmount()) {
+			cartService.updateCartAmount(vo);
+			mv.addObject("code","100");
+		} else {
+			mv.addObject("code", "101");
+		}
+		mv.setViewName("jsonView");
+		return mv;
+	}
 }//class

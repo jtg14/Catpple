@@ -23,5 +23,7 @@ public interface CService {
 	
 	ArrayList<CartVO> purchaseList(int [] arr,String memberid);
 	
+	int checkCartAmount(CartVO vo);
 	
+	int updateCartAmount(CartVO vo);
 }

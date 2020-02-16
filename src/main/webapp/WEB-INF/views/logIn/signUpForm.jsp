@@ -49,7 +49,7 @@
 							</div>
 							<span class="help-block" id="error"></span>
 						</div>
-
+						
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">
@@ -68,7 +68,20 @@
 								<input id="phone" type="text" class="form-control"name="phone"
 									placeholder="연락처 ( ' - ' 제외)" maxlength="13">
 								<span class="input-group-btn">
-									<button class="btn btn-default" type="button" id="phoneCheck">휴대폰인증</button>
+									<button class="btn btn-default" type="button" id="phoneCheck">인증번호발송</button>
+								</span>
+							</div>
+							<span class="help-block" id="error"></span>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">
+									<span class="glyphicon glyphicon-earphone"></span>
+								</div>
+								<input id="phoneVerify" type="text" class="form-control"
+									placeholder="인증번호 입력" maxlength="6">
+								<span class="input-group-btn">
+									<button class="btn btn-default disabled"  type="button" id="verifyBtn">인증</button>
 								</span>
 							</div>
 							<span class="help-block" id="error"></span>

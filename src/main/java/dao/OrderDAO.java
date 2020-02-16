@@ -34,7 +34,18 @@ import vo.PaymentVO;
 		map.put("olist",olist);
 		return dao.insert(NS+"insertOandD",map);
 	}
-
+	public int successOrderCount(MemberVO vo) {
+		int count = dao.selectOne(NS+"successOrderCount",vo);
+		return count;
+	}
+	public int deliveringOrderCount(MemberVO vo) {
+		int count = dao.selectOne(NS+"deliveringOrderCount",vo);
+		return count;
+	}
+	public int deliveriedOrderCount(MemberVO vo) {
+		int count = dao.selectOne(NS+"deliveriedOrderCount",vo);
+		return count;
+	}
 	public PaymentVO findPayment(PaymentVO vo) {
 		return dao.selectOne(NS+"findPayment",vo);
 	}
