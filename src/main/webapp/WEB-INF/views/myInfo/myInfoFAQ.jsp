@@ -139,16 +139,25 @@
 											</thead>
 											<tbody>
 												<tr>
-													<td>1</td>
-													<td><a href="#"
-														style="color: black; text-decoration: none;">간편결제는
-															지원안하나요?</a></td>
-												</tr>
-												<tr>
 													<td>주문/결제/배송</td>
 													<td><a href="#"
 														style="color: black; text-decoration: none;">해외카드도 결제가
 															가능한가요?</a></td>
+												</tr>
+												<tr>
+													<td>취소/교환/반품</td>
+													<td><a href="#"
+														style="color: black; text-decoration: none;">취소/교환/반품 문의</a></td>
+												</tr>
+												<tr>
+													<td>회원가입/정보</td>
+													<td><a href="#"
+														style="color: black; text-decoration: none;">회원가입/정보 문의</a></td>
+												</tr>
+												<tr>
+													<td>포인트/적립금</td>
+													<td><a href="#"
+														style="color: black; text-decoration: none;">포인트/적립금 문의</a></td>
 												</tr>
 											</tbody>
 										</table>
@@ -164,16 +173,9 @@
 											</thead>
 											<tbody>
 												<tr>
-													<td>2</td>
-													<td><a href="#"
-														style="color: black; text-decoration: none;">간편결제는
-															지원안하나요?</a></td>
-												</tr>
-												<tr>
 													<td>주문/결제/배송</td>
 													<td><a href="#"
-														style="color: black; text-decoration: none;">해외카드도 결제가
-															가능한가요?</a></td>
+														style="color: black; text-decoration: none;">주문/결제/배송 문의</a></td>
 												</tr>
 											</tbody>
 										</table>
@@ -189,16 +191,9 @@
 											</thead>
 											<tbody>
 												<tr>
-													<td>3</td>
+													<td>취소/교환/반품</td>
 													<td><a href="#"
-														style="color: black; text-decoration: none;">간편결제는
-															지원안하나요?</a></td>
-												</tr>
-												<tr>
-													<td>주문/결제/배송</td>
-													<td><a href="#"
-														style="color: black; text-decoration: none;">해외카드도 결제가
-															가능한가요?</a></td>
+														style="color: black; text-decoration: none;">취소/교환/반품 문의</a></td>
 												</tr>
 											</tbody>
 										</table>
@@ -214,16 +209,9 @@
 											</thead>
 											<tbody>
 												<tr>
-													<td>4</td>
+													<td>회원가입/정보</td>
 													<td><a href="#"
-														style="color: black; text-decoration: none;">간편결제는
-															지원안하나요?</a></td>
-												</tr>
-												<tr>
-													<td>주문/결제/배송</td>
-													<td><a href="#"
-														style="color: black; text-decoration: none;">해외카드도 결제가
-															가능한가요?</a></td>
+														style="color: black; text-decoration: none;">회원가입/정보 문의</a></td>
 												</tr>
 											</tbody>
 										</table>
@@ -239,16 +227,9 @@
 											</thead>
 											<tbody>
 												<tr>
-													<td>5</td>
+													<td>포인트/적립금</td>
 													<td><a href="#"
-														style="color: black; text-decoration: none;">간편결제는
-															지원안하나요?</a></td>
-												</tr>
-												<tr>
-													<td>주문/결제/배송</td>
-													<td><a href="#"
-														style="color: black; text-decoration: none;">it's the
-															empire from a new city.보여주지 다른 도시의 vibe ride with it</a></td>
+														style="color: black; text-decoration: none;">포인트/적립금 문의</a></td>
 												</tr>
 											</tbody>
 										</table>
