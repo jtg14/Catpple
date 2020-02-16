@@ -34,7 +34,21 @@ import vo.PaymentVO;
 		map.put("olist",olist);
 		return dao.insert(NS+"insertOandD",map);
 	}
-
+	public int successOrderCount(MemberVO vo) {
+		int count = dao.selectOne(NS+"successOrderCount",vo);
+		System.out.println("주문완료 및 배송준비중 : "+count );
+		return count;
+	}
+	public int deliveringOrderCount(MemberVO vo) {
+		int count = dao.selectOne(NS+"deliveringOrderCount",vo);
+		System.out.println("주문완료 및 배송중 : "+count );
+		return count;
+	}
+	public int deliveriedOrderCount(MemberVO vo) {
+		int count = dao.selectOne(NS+"deliveriedOrderCount",vo);
+		System.out.println("주문완료 및 배송완료 : "+count );
+		return count;
+	}
 	public PaymentVO findPayment(PaymentVO vo) {
 		return dao.selectOne(NS+"findPayment",vo);
 	}

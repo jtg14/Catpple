@@ -53,6 +53,10 @@ public class UserController {
 	}
 	@RequestMapping(value ="/mroom")//마이룸 메인
 	public ModelAndView myRoom(ModelAndView model,HttpServletRequest request) {
+		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+		model.addObject("aCount",oservice.successOrderCount(mvo));
+		model.addObject("bCount",oservice.deliveringOrderCount(mvo));
+		model.addObject("cCount",oservice.deliveriedOrderCount(mvo));
 		model.setViewName("myInfo/myroom");
 		return model;
 	}
@@ -122,7 +126,7 @@ public class UserController {
 		return model;
 	}
 	@RequestMapping(value ="/mWdrawal")//회원탈퇴
-	public ModelAndView myInfoWithdrawal(ModelAndView model,HttpServletRequest request) {
+	public ModelAndView myInfoWithdrawal(ModelAndView model,HttpServletRequest request){
 		
 		model.setViewName("myInfo/myInfoWithdrawal");
 		return model;
