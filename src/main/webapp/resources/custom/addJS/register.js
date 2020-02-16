@@ -112,6 +112,7 @@ $(function()
      },
      
      submitHandler: function(form) {
+    	 alert('회원가입에 성공하였습니다');
     	 form.submit();
                 }
      }); 
@@ -142,7 +143,6 @@ $(function()
    	});
 	   }
    });//end of idcheck
-   var phoneCheck = false;
    $('#phoneCheck').click(function(){
 	   var checkPhone = $('#phone').val();
 	   if(checkPhone == ''){
@@ -158,8 +158,7 @@ $(function()
    		success:function(data){
    			if(data.code == 200){
    				alert('인증번호가 발송되었습니다. !');
-   				phoneCheck =true;
-   				$('#name').focus();
+   				$('#verifyBtn').removeClass('disabled');
    			}else if(data.code == 201){
    				alert('올바른 정보를 입력해주세요!');
    			}
@@ -167,7 +166,32 @@ $(function()
    	});
 	   }
    });//end of phonecheck
-   
+   var phoneVerifyCheck = false;
+   $('#verifyBtn').click(function(){
+		var verifyNumber = $('#phoneVerify').val();
+		$('#phoneCheck').addClass('disabled');
+		$.ajax({
+				type:'Post',
+				data:{
+					verifyNumber:verifyNumber
+				},
+				url:'vPhone',
+				success:function(data){
+					if(data.code == '100'){
+						alert('인증 되었습니다.');
+						phoneVerifyCheck = true;
+					}else if(data.code == '101'){
+						if(confirm('인증번호가 일치하지않습니다. 다시하시겠습니까?')){
+							$('#phoneCheck').removeClass('disabled');
+			   				$('#phoneVerify').removeClass('disabled');
+						}else{
+							alert('취소 되었습니다.');
+						}
+					}
+				}
+		});
+		
+	});
    
    $('#id').focus(function(){
 		$('#signUpbtn').addClass('disabled');
@@ -182,12 +206,11 @@ function signUpGo(){
 	   }else if($('input:radio[name=options]').is(':checked') == false){
 		   alert('구매자 및 판매자 항목을 선택해주셔야합니다.');
 		   return false;
-	   }else if(phoneCheck == false){
+	   }else if(phoneVerifyCheck == false){
 	   alert('휴대폰 인증을 하셔야 가입이 가능합니다.');
 	   return false;
 	   }else if($('#id').val() != null && $('#name').val() != null && $('#email').val() != null && 
 			   $('#phone').val() != null && $('#password').val() != null){
-		   alert('회원가입이 완료되었습니다.');
 		   return true;
 	   }
 }
