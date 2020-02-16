@@ -357,6 +357,7 @@ th, td {
 	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>
+	<script src="resources/custom/addJS/minifunction.js"></script>
 	<script>
 	function updateReply(number){
 		var bReply = $('#replyText').val();
