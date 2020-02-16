@@ -63,8 +63,18 @@
 		from goods as g, member as m, delivery as d, corder as o
 		where o.goods_gnum= g.gnum and d.corder_onum=o.onum and m.mid=g.member_mid and o.member_mid=#{member_mId} and o.payment_pnum=#{pNum}
 	</select>
-
-	
+	<select id="successOrderCount" resultType="integer">
+	select count(*) from delivery d,corder o where o.oNum = d.corder_oNum and d.dState = 'a'
+	 and o.oStatus='os3' and o.member_mId= #{mId} and o.oDate > date_add(now(),interval -21 day)
+	</select>
+	<select id="deliveringOrderCount" resultType="integer">
+	select count(*) from delivery d,corder o where o.oNum = d.corder_oNum and d.dState = 'b'
+	 and o.oStatus='os3' and o.member_mId= #{mId} and o.oDate > date_add(now(),interval -21 day)
+	</select>
+	<select id="deliveriedOrderCount" resultType="integer">
+	select count(*) from delivery d,corder o where o.oNum = d.corder_oNum and d.dState = 'c'
+	 and o.oStatus='os3' and o.member_mId= #{mId} and o.oDate > date_add(now(),interval -21 day); 
+	</select>
 	
 	<!-- 판매자 받은 주문 목록 -->
 	<select id="criSelectReceivedOrderList" resultType="vo.OrderVO" parameterType="criteria.SearchCriteria">

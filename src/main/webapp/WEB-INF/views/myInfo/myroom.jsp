@@ -130,12 +130,29 @@
 				<!-- Page Heading -->
 				<div class="row" id="main"
 					style="min-height: 1000px;">
-					<div class="col-sm-10 col-md-12" id="content">
+					<div class="col-xs-10 col-md-12" id="content">
 						<h1 style="color:crimson;">마이룸</h1>
 					</div>
-					<div class="col-sm-10 col-md-12" style="margin-top: 120px;">
-						<span class="h2">진행중인 주문</span>
-						
+					<div class="col-xs-12 col-md-10 text-center" style="margin-top: 120px;">
+						<span class="h2">진행중인 주문 | 최근 3주 </span>
+						<div class="col-md-12 col-xs-12" style="border:2px lightgray solid;border-radius:10px; margin-top:30px;">
+						<div class="col-md-3 col-xs-12">
+						<h3>결제완료</h3>
+						<h1><a href="mODelivery" style="color:red;">${aCount}</a></h1>
+						</div>
+						<div class="col-md-3 col-xs-12">
+						<h3>배송준비중</h3>
+						<h1><a href="mODelivery"  style="color:red;">${aCount}</a></h1>
+						</div>
+						<div class="col-md-3 col-xs-12">
+						<h3>배송중</h3>
+						<h1><a href="mODelivery" style="color:red;">${bCount}</a></h1>
+						</div>
+						<div class="col-md-3 col-xs-12">
+						<h3>배송완료</h3>
+						<h1><a href="mODelivery" style="color:red;">${cCount}</a></h1>
+						</div>
+						</div>
 					</div>
 				</div>
 				<!-- /.row -->
