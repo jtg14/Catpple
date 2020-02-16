@@ -408,6 +408,20 @@ function statusChangeButton(number,status){
 	
 }//statusChangeButton
 
+function bOnCheck(){
+	alert('들어옴');
+	var btLength=$('#bTitle').val();
+	var bcLength=$('#bContent').val();
+	
+	if(!btLength=='' || !bcLength==''){
+		return true;
+	} else {
+		alert('제목과 내용을 입력해주세요.');
+		return false;
+	}
+	
+	
+}
 
 
 	
