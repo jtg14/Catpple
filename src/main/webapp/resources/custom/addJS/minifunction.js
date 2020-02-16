@@ -404,6 +404,23 @@ function statusChangeButton(number,status){
 	
 }//statusChangeButton
 
+
+function bOnCheck(){
+	alert('들어옴');
+	var btLength=$('#bTitle').val();
+	var bcLength=$('#bContent').val();
+	
+	if(!btLength=='' || !bcLength==''){
+		return true;
+	} else {
+		alert('제목과 내용을 입력해주세요.');
+		return false;
+	}
+	
+	
+}
+
+
 function updateCartAmount(gNum,mId,cAmountValue){
 	var cAmount = $(cAmountValue).val();
 	if(confirm("수정하시겠습니까??") == true){
@@ -432,6 +449,7 @@ function updateCartAmount(gNum,mId,cAmountValue){
 		return;
 	}
 }
+
 
 	
 

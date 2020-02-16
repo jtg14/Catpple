@@ -235,36 +235,48 @@ th, td {
 									
 								</tbody>
 							</table>
+							<!--  PagingCri Code 추가   -->
+
+						<div  class="container" style="text-align: center;">
+							<ul class="pagination">
+								<c:if test="${pageMaker.prev}">
+									<li><a href="mCustomerInquiry${pageMaker.makeSearch(1)}"
+										style="color: black;">First</a></li>
+									<li><a
+										href="mCustomerInquiry${pageMaker.makeQuery(pageMaker.startPage - 1)}"
+										style="color: black;">이전</a></li>
+								</c:if>
+
+								<c:forEach begin="${pageMaker.startPage}"
+									end="${pageMaker.endPage}" var="idx">
+									<c:choose>
+										<c:when test="${pageMaker.cri.page==idx}">
+											<li class="active"><a
+												href="mCustomerInquiry${pageMaker.makeQuery(idx)}"
+												style="background-color: Crimson; border-color: Crimson;">${idx}</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a
+												href="mCustomerInquiry${pageMaker.makeQuery(idx)}"
+												style="color: black;">${idx}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+
+								<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+									<li><a
+										href="mCustomerInquiry${pageMaker.makeQuery(pageMaker.endPage + 1)}"
+										style="color: black;">다음</a></li>
+									<li><a
+										href="mCustomerInquiry${pageMaker.makeSearch(pageMaker.lastPage)}"
+										style="color: black;">Last</a></li>
+								</c:if>
+							</ul>
+						</div>
 							</div>	
 					</div>
 					
-					<!--  PagingCri Code 추가   --> 
-					<div align="center"> 
-					
-						  <c:if test="${pageMaker.prev}">
-						  	<a href="mSuggestions${pageMaker.makeSearch(1)}">First</a>
-							<a href="mSuggestions${pageMaker.makeSearch(pageMaker.startPage-1)}">&laquo;</a>
-						  </c:if>
-					
-						  <c:forEach begin="${pageMaker.startPage}"
-								   end="${pageMaker.endPage}" var="idx">
-							<c:choose>
-						 		<c:when test="${pageMaker.cri.page==idx}">
-						 			<font size="5" color="Orange">${idx}</font>&nbsp;
-						 		</c:when>
-						 		<c:otherwise>
-						 			<a href="mSuggestions${pageMaker.makeSearch(idx)}">${idx}</a>&nbsp;
-						 		</c:otherwise>
-						 	</c:choose>	   
-							<%-- <c:out value="${pageMaker.cri.page == idx ? 'class =active':''}"/> --%>
-						  </c:forEach>
-					
-						  <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-							<a href="mSuggestions${pageMaker.makeSearch(pageMaker.endPage+1)}">&raquo;</a>
-							<a href="mSuggestions${pageMaker.makeSearch(pageMaker.lastPage)}">Last</a>
-						  </c:if>
-					</div> 
-					
+				 
 					
 				</div>
 				<!-- /.row -->

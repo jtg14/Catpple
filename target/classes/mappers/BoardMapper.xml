@@ -9,19 +9,19 @@
 	<!-- inquiryInsert() -->
 
 
-	<insert id="bInquiryInsert">insert into board (bnum, mname, btitle, bcontent,
-		bdate, breply, member_mid, separation) values((select
-		ifnull(max(bnum),0)+1 from board as
-		bNum),#{mName},#{bTitle},#{bContent},default,1,#{member_mId},#{bSeparation})
+	<insert id="bInquiryInsert">insert into board (bnum, btitle, bcontent,
+		bdate, breply, member_mid, bseparation) values((select
+		ifnull(max(bnum),0)+1 from board as 
+		bNum),#{bTitle},#{bContent},default,1,#{member_mId},#{bSeparation})
 	</insert>
 
 	<!-- suggestionInsert -->
 
 
-	<insert id="bSuggestionInsert">insert into board (bnum, mname, btitle, bcontent,
-		bdate, breply, member_mid, separation) values((select
-		ifnull(max(bnum),0)+1 from board as
-		bNum),#{mName},#{bTitle},#{bContent},default,0,#{member_mId},#{bSeparation})
+	<insert id="bSuggestionInsert">insert into board (bnum, btitle, bcontent,
+		bdate, breply, member_mid, bseparation) values((select
+		ifnull(max(bnum),0)+1 from board as 
+		bNum),#{bTitle},#{bContent},default,0,#{member_mId},#{bSeparation})
 	</insert>
 
 	<!-- selectOne -->

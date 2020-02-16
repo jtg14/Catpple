@@ -149,7 +149,7 @@ th, td {
 			<div class="container-fluid">
 				<!-- Page Heading -->
 				<div class="row" id="main"
-					style="min-height: 1000px; margin-top: 120px;">
+					style="min-height: 1000px; margin-top: 10px;">
 					<div class="col-sm-12 col-md-12" id="content">
 						<!-- 메인공간 -->
 
@@ -296,16 +296,10 @@ th, td {
 										</c:choose>
 									</tbody>
 								</table>
-							</div>
-
-
-
-
-
-
+								
 						<!--  PagingCri Code 추가   -->
 
-						<div style="text-align: center;">
+						<div  class="container" style="text-align: center;">
 							<ul class="pagination">
 								<c:if test="${pageMaker.prev}">
 									<li><a href="mCustomerInquiry${pageMaker.makeSearch(1)}"
@@ -341,6 +335,14 @@ th, td {
 								</c:if>
 							</ul>
 						</div>
+								
+							</div>
+
+
+
+
+
+
 
 
 

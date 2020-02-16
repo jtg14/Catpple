@@ -167,7 +167,7 @@ th, td {
 			<div class="container-fluid">
 				<!-- Page Heading -->
 				<div class="row" id="main"
-					style="min-height: 1000px; margin-top: 120px;">
+					style="min-height: 1000px; margin-top: 10px;">
 					<div class="col-sm-12 col-md-12" id="content">
 					<c:if test="${pageCode=='I'}">
 					<!-- 메인내용 들어갈 공간 -->
@@ -265,16 +265,29 @@ th, td {
 									</div> 
 									
 								</div>
+						
+						</div>
+						<div class="container">
 							<c:choose>	
 								<c:when test="${logInUser.mGrade=='C'}">
+									<form method="post" action="mCustomerInquiry">
+										<input class="btn btn-success pull-right" type="submit" value="목록보기" style="margin-top:10px;">
+									</form>
 									<c:if test="${one.bReply=='0' or one.bReply=='1'}">
-										 <input type="button"  class="btn btn-primary pull-right" onclick="deleteButton('I')" value="삭제하기"/>
-										 <input type="button" id="btn1" class="btn btn-primary pull-right" style="display:inline-block;"onclick="updateButton1()" value="수정하기"/>
-										 <input type="button" id="btn2" class="btn btn-primary pull-right" style="display:none;" onclick="updateButton2()" value="수정완료"/>
+										
+										 <input type="button"  class="btn btn-success pull-right" onclick="deleteButton('I')" value="삭제하기" style="margin-top:10px;"/>
+										 <input type="button" id="btn1" class="btn btn-success pull-right" style="display:inline-block; margin-top:10px;"onclick="updateButton1()" value="수정하기" />
+										 <input type="button" id="btn2" class="btn btn-success pull-right" style="display:none; margin-top:10px;" onclick="updateButton2()" value="수정완료" />
 									</c:if>
 								</c:when>	
 								<c:when test="${logInUser.mGrade=='A'}">
-									<input type="button" class="btn btn-primary pull-right" style="margin-top:10px;" onclick="updateReply(${one.bNum})" value="답변하기"/>
+									 <input type="button"  class="btn btn-success pull-right" onclick="deleteButton('I')" value="삭제하기" style="margin-top:10px;"/>
+									<form method="post" action="mCustomerInquiry">
+										<input class="btn btn-success pull-right" type="submit"value="목록보기" style="margin-top:10px;">
+									</form>
+									<c:if test="${one.bReply=='1'}">
+										<input type="button" class="btn btn-success pull-right" style="margin-top:10px;" onclick="updateReply(${one.bNum})" value="답변하기"/>
+									</c:if>
 								</c:when>
 							</c:choose>
 						</div>
@@ -303,21 +316,27 @@ th, td {
 								</div>
 								</div>
 								<div class="col-md-12 col-xs-12 detail"
-									style="min-height: 250px; font-size: 1.2em; max-height: 400px; overflow: auto; padding-top: 15px;">
+									style="min-height: 250px; font-size: 1.2em; max-height: 350px; overflow: auto; padding-top: 15px;">
 									<div class="col-md-2 col-xs-12 text-left content" style="color:crimson;"><h4>건의내용</h4>
 									</div>
 									<div class="col-md-8 col-xs-12">
 											${one.bContent}
 									</div>
 								</div>
-								 
+						 
 							
+						 
+					
+						</div>
+						<div class="container">
+							<form method="post" action="mSuggestions">
+								<input class="btn btn-success pull-right" type="submit" value="목록보기" style="margin-top:10px;">
+							</form>
 							<c:choose>	
-								<c:when test="${logInUser.mGrade=='C'}">
-									 <input type="button"  class="btn btn-primary pull-right" onclick="deleteButton('S')" value="삭제하기"/>
+								<c:when test="${logInUser.mGrade=='C' or logInUser.mGrade=='A'}">
+									 <input type="button"  class="btn btn-success pull-right" onclick="deleteButton('S')" style="margin-top:10px;"value="삭제하기"/>
 								</c:when>
 							</c:choose>
-						
 						</div>
 					</c:if>
 						

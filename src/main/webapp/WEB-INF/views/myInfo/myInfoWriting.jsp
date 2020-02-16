@@ -56,6 +56,10 @@ th, td {
 		margin-top:120px;
 	}
 }
+.btnA{
+text-decoration: none;
+
+}
 </style>
 <script type="text/javascript">
 $(function(){
@@ -190,46 +194,55 @@ $(function(){
 										<h4 style="color: darkgray;">문의 해주시면 친절히 답변해 드리 겠습니다.</h4>
 									</div>
 									<div class="container">
-										<form action="inquiryInsert" method="post">
-											<div class="col-md-12 col-xs-12">
-												<h3>
-													작성자<span>${logInUser.mName}</span>
-												</h3>
-											</div>
-											<div class="col-md-1 col-xs-4">
-												<h3>분류</h3>
-											</div>
-											<div class="col-md-2 col-xs-6">
-												<div class="form-group" style="margin-top: 15px;">
-													<select class="form-control" id="separation" name="separation">
-														<option value="1">[구매 관련]</option>
-														<option value="2">[배송 관련]</option>
-														<option value="3">[결제 문의]</option>
-														<option value="4">[기타]</option>
-													</select>
+										<form action="inquiryInsert" method="post" >
+											<div class="col-md-12 col-xs-12" >
+												<div class="col-md-1 col-xs-4" style="padding-left:0px;" >
+													<h3 style="display:inline-block;">
+														작성자:
+													</h3>
+												</div>
+												<div class="col-md-2 col-xs-8">
+													<span><h3>${logInUser.mId}</h3></span>
 												</div>
 											</div>
 											<div class="col-md-12 col-xs-12">
-												<h3>제목</h3>
+												<div class="col-md-1 col-xs-4" style="padding-left:0px;">
+													<h3>분류:</h3>
+												</div>
+												<div class="col-md-2 col-xs-8">
+													<div class="form-group" style="margin-top: 15px;">
+														<select class="form-control" id="separation" name="separation">
+															<option value="1">[구매 관련]</option>
+															<option value="2">[배송 관련]</option>
+															<option value="3">[결제 문의]</option>
+															<option value="4">[기타]</option>
+														</select>
+													</div>
+												</div>
 											</div>
 											<div class="col-md-12 col-xs-12">
-												
+												<h3>제목:</h3>
+											</div>
+											<div class="col-md-12 col-xs-12">
 												<input class="form-control input-sm" name="bTitle"
 													id="bTitle">
-												
-												
 											</div>
 											<div class="col-md-12 col-xs-12">
-												<h3>내용</h3>
+												<h3>내용:</h3> 
 											</div>
 											<div class="col-md-12 col-xs-12">										  
 												<textarea class="form-control noresize" name="bContent"
 													id="bContent" style="height: 140px;"></textarea>
 											</div>
 											<div class="col-md-12 col-xs-12" style="margin-top: 20px;">
-												<input 
-													class="btn btn-primary btn-lg pull-right" type="submit"
-													value="문의하기">
+												<div>
+													<input 
+														class="btn btn-success btn-lg pull-right" type="submit"
+														value="문의하기" onclick="return bOnCheck()" >
+												</div>
+												<form action=" mCustomerInquiry" method="post">
+													<input class="btn btn-success btn-lg pull-right" type="submit" value="목록보기">												
+												</form>
 											</div>
 
 										</form>
@@ -262,7 +275,7 @@ $(function(){
 											</div>
 											<div class="col-md-12 col-xs-12" style="margin-top: 20px;">
 												<input 
-													class="btn btn-primary btn-lg pull-right" type="submit"
+													class="btn btn-success btn-lg pull-right" type="submit"
 													value="문의하기">
 											</div>
 										</form>
@@ -286,6 +299,8 @@ $(function(){
 	<script src="resources/bootstrap/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>
+	<script src="resources/custom/addJS/minifunction.js"></script>
+	
 </body>
 <footer>
 	<div class="article">

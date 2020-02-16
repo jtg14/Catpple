@@ -44,7 +44,7 @@ public class BoardController {
 	
 	@RequestMapping(value = "/mCustomerInquiry")//1대1문의
 	public ModelAndView mCustomerInquiry(SearchCriteria cri, ModelAndView model, HttpServletRequest request, BoardVO bvo, MemberVO mvo, PageVO pvo) {
-		
+		System.out.println("들어옴");
 		HttpSession session = request.getSession();
 		mvo = (MemberVO)session.getAttribute("logInUser");
 		cri.setMember_mId(mvo.getmId());
@@ -62,6 +62,7 @@ public class BoardController {
 
 			return model;
 		}else if("A".equals(mvo.getmGrade())) {//member가 관리자인 경우
+			System.out.println("관리자쪽 들어옴");
 			cri.setSnoEno();
 			model.addObject("listForManager", service.searchCriListForManager(cri));
 			
