@@ -134,6 +134,7 @@
 						<h1 style="color:crimson;">마이룸</h1>
 					</div>
 					<div class="col-xs-12 col-md-10 text-center" style="margin-top: 120px;">
+					<c:if test="${logInUser.mGrade eq 'C'}">
 						<span class="h2">진행중인 주문 | 최근 3주 </span>
 						<div class="col-md-12 col-xs-12" style="border:2px lightgray solid;border-radius:10px; margin-top:30px;">
 						<div class="col-md-3 col-xs-12">
@@ -153,6 +154,10 @@
 						<h1><a href="mODelivery" style="color:red;">${cCount}</a></h1>
 						</div>
 						</div>
+						</c:if>
+						<c:if test="${logInUser.mGrade eq 'S'}">
+							<h1>환영합니다 판매자  ${logInUser.mName} 님</h1>
+						</c:if>
 					</div>
 				</div>
 				<!-- /.row -->
