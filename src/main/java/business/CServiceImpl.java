@@ -44,5 +44,13 @@ public class CServiceImpl implements CService {
 		return dao.purchaseList(arr,memberid);
 	}
 	
-
+	@Override
+	public int checkCartAmount(CartVO vo) {
+		return dao.checkCartAmount(vo);
+	}
+	
+	@Override
+	public int updateCartAmount(CartVO vo) {
+		return dao.updateCartAmount(vo);
+	}
 }
