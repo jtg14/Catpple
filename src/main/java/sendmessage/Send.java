@@ -12,28 +12,33 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
  * @brief This sample code demonstrate how to send sms through CoolSMS Rest API PHP
  */
 public class Send {
-	
-  public static void main(String[] args) {
-    String api_key = "NCSB3G8DCSUDW2HM";
-    String api_secret = "M2B9UISVKQ3MUBWNAFENPVPZHCIVRTLF";
-    Message coolsms = new Message(api_key, api_secret);
-    String number = numberGen(6,1);
-    // 4 params(to, from, type, text) are mandatory. must be filled
-    HashMap<String, String> params = new HashMap<String, String>();
-    params.put("to", "01041382383");
-    params.put("from", "01041382383");
-    params.put("type", "SMS");
-    params.put("text", "(주)캣플 회원가입 인증번호 ("+number+") 입니다. 감사합니다  -Catpple");
-    params.put("app_version", "test app 1.2"); // application name and version
+	private static String verifyNumber;
+	public void getVerifyNumber(String phoneNumber) {
+		System.out.println("들어온 연락처 : "+phoneNumber);
+		 String api_key = "NCSB3G8DCSUDW2HM";
+		    String api_secret = "M2B9UISVKQ3MUBWNAFENPVPZHCIVRTLF";
+		    Message coolsms = new Message(api_key, api_secret);
+		    String number = numberGen(6,1);
+		    // 4 params(to, from, type, text) are mandatory. must be filled
+		    HashMap<String, String> params = new HashMap<String, String>();
+		    params.put("to",phoneNumber);
+		    params.put("from", "01041382383");
+		    params.put("type", "SMS");
+		    params.put("text", "(주)캣플 회원가입 인증번호 ("+number+") 입니다. 감사합니다  -Catpple");
+		    params.put("app_version", "test app 1.2"); // application name and version
 
-    try {
-      JSONObject obj = (JSONObject) coolsms.send(params);
-      System.out.println(obj.toString());
-    } catch (CoolsmsException e) {
-      System.out.println(e.getMessage());
-      System.out.println(e.getCode());
-    }
-  }
+		    try {
+		      JSONObject obj = (JSONObject) coolsms.send(params);
+		      System.out.println(obj.toString());
+		    } catch (CoolsmsException e) {
+		      System.out.println(e.getMessage());
+		      System.out.println(e.getCode());
+		    }
+		    verifyNumber = number;
+	}
+	public boolean confirmNumber(String number) {
+		return verifyNumber.equals(number) ? true : false;
+	}
   public static String numberGen(int len, int dupCd ) {
       
       Random rand = new Random();
