@@ -9,57 +9,57 @@
 	<!-- inquiryInsert() -->
 
 
-	<insert id="bInquiryInsert">insert into board (bnum, btitle, bcontent,
+	<insert id="bInquiryInsert">insert into BOARD (bnum, btitle, bcontent,
 		bdate, breply, member_mid, bseparation) values((select
-		ifnull(max(bnum),0)+1 from board as 
+		ifnull(max(bnum),0)+1 from BOARD as 
 		bNum),#{bTitle},#{bContent},default,1,#{member_mId},#{bSeparation})
 	</insert>
 
 	<!-- suggestionInsert -->
 
 
-	<insert id="bSuggestionInsert">insert into board (bnum, btitle, bcontent,
+	<insert id="bSuggestionInsert">insert into BOARD (bnum, btitle, bcontent,
 		bdate, breply, member_mid, bseparation) values((select
-		ifnull(max(bnum),0)+1 from board as 
+		ifnull(max(bnum),0)+1 from BOARD as 
 		bNum),#{bTitle},#{bContent},default,0,#{member_mId},#{bSeparation})
 	</insert>
 
 	<!-- selectOne -->
 
 
-	<select id="selectOne" resultType="vo.BoardVO">select * from board where
+	<select id="selectOne" resultType="vo.BoardVO">select * from BOARD where
 		bnum=#{bNum} </select>
 
 	<!-- bReplyUpdate -->
 
 
-	<update id="bReplyUpdate">update board set bReply=#{bReply} where bNum=#{bNum}
+	<update id="bReplyUpdate">update BOARD set bReply=#{bReply} where bNum=#{bNum}
 	</update>
 
 	<!-- inquiryTotalRowCount -->
 	<select id="inquiryTotalRowCount" resultType="integer">select count(*)
-		from board where bReply!='0' and member_mId=#{member_mId} </select>
+		from BOARD where bReply!='0' and member_mId=#{member_mId} </select>
 
 	<!-- suggestionTotalRowCount -->
 	<select id="suggestionTotalRowCount" resultType="integer">select count(*)
-		from board where bReply='0'and member_mId=#{member_mId} </select>
+		from BOARD where bReply='0'and member_mId=#{member_mId} </select>
 
 	<!-- inquiryTotalRowCountForManager -->
 	<select id="inquiryTotalRowCountForManager" resultType="integer">select
-		count(*) from board where bReply!='0' </select>
+		count(*) from BOARD where bReply!='0' </select>
 
 	<!-- suggestionTotalRowCountForManager -->
 	<select id="suggestionTotalRowCountForManager"
-		resultType="integer">select count(*) from board where bReply='0' </select>
+		resultType="integer">select count(*) from BOARD where bReply='0' </select>
 
 
 
 	<!-- boardDelete -->
-	<delete id="boardDelete">delete from board where bNum=#{bNum} </delete>
+	<delete id="boardDelete">delete from BOARD where bNum=#{bNum} </delete>
 
 	<!-- boardUpdate -->
 	<update id="boardUpdate" >
-		update board set bTitle=#{bTitle}, bContent=#{bContent} where bNum=#{bNum}
+		update BOARD set bTitle=#{bTitle}, bContent=#{bContent} where bNum=#{bNum}
 	</update>
 	
 	<!-- search 기능 -->
@@ -81,37 +81,37 @@
 	</sql>
 	<!-- searchCriList(일반접속자 1대1문의사항) -->
 	<select id="searchCriList" resultType="vo.BoardVO">
-		(select * from board where bReply!='0' and member_mId=#{member_mId}
+		(select * from BOARD where bReply!='0' and member_mId=#{member_mId}
 		<include refid="search"></include>
 		order by bNum desc limit #{sno}, #{perPageNum}
 	</select>
 	<!-- searchCriListForManager(관리자 1대1문의사항) -->
 	<select id="searchCriListForManager" resultType="vo.BoardVO">
-		select b.* from (select * from board where bReply!='0'
+		select b.* from (select * from BOARD where bReply!='0'
 		<include refid="search"></include>
 		 AS b order by b.bNum desc limit #{sno}, #{perPageNum} 
 	</select>
 	<!-- searchCriCount(일반접속자 1대1문의사항 row count) -->
 	<select id="searchCriCount" resultType="int">
 		(select count(*)
-		from board where bReply!='0' and member_mId=#{member_mId}
+		from BOARD where bReply!='0' and member_mId=#{member_mId}
  		<include refid="search"></include>
 	</select>
 	<!-- searchCriCountForManager (관리자 1대1문의사항 row count)-->
 	<select id="searchCriCountForManager" resultType="int">
 		(select count(*) 
-		from board where bReply!='0'
+		from BOARD where bReply!='0'
 		<include refid="search"></include>
 	</select>
 	<!-- suggestionSearchCriList(일반접속자 건의사항)  -->
 	<select id="suggestionSearchCriList" resultType="vo.BoardVO">
-		(select * from board where bReply='0' and member_mId=#{member_mId}
+		(select * from BOARD where bReply='0' and member_mId=#{member_mId}
 		<include refid="search"></include>
 		 AS b order by b.bNum desc limit #{sno}, #{perPageNum}
 	</select>
 	<!-- suggestionSearchCriListForManager(관리자 건의사항) -->
 	<select id="suggestionSearchCriListForManager" resultType="vo.BoardVO">
-		select b.* from (select * from board where bReply='0' 
+		select b.* from (select * from BOARD where bReply='0' 
 		<include refid="search"></include>
 		AS b order by b.bNum desc limit #{sno}, #{perPageNum} 
 	</select>
@@ -123,7 +123,7 @@
 	</select>
 	<!-- suggestionSearchCriCountForManager(관리자 건의사항 row count) -->
 	<select id="suggestionSearchCriCountForManager" resultType="int">
-		(select count(*) from board where bReply='0' 
+		(select count(*) from BOARD where bReply='0' 
 		<include refid="search"></include>
 	</select>
 	<!--  -->

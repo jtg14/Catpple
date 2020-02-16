@@ -36,13 +36,13 @@
 </sql>
 <select id="paymentList" resultType="PaymentVO" parameterType="java.util.HashMap">
 		<![CDATA[
-		select distinct p.* from payment p, corder o  where
+		select distinct p.* from PAYMENT p, CORDER o  where
 		 o.payment_pnum=p.pnum and o.member_mid=#{userID} order by p.pdate desc
 		limit #{sno} , #{perPageNum}   ]]>
 </select>
 <select id="paymentListCount" resultType="integer">
 	<![CDATA[
-	select  count(distinct p.pPrice ) total from payment p, corder o  where
+	select  count(distinct p.pPrice ) total from PAYMENT p, CORDER o  where
 		 o.payment_pnum=p.pnum and o.member_mid=#{mId} ]]>
 </select>	
 </mapper>
