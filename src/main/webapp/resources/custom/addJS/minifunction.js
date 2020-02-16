@@ -59,10 +59,6 @@ $(function() {
 	};
 	
 	
-
-
-	
-	
 }); //ready
 function minusAmount(){
 	var amountNum  = parseInt($('#amount1').val());
@@ -408,7 +404,34 @@ function statusChangeButton(number,status){
 	
 }//statusChangeButton
 
-
+function updateCartAmount(gNum,mId,cAmountValue){
+	var cAmount = $(cAmountValue).val();
+	if(confirm("수정하시겠습니까??") == true){
+		if(/\-||0/.test(cAmount)){
+			alert('수량은 0이하가 될 수 없습니다!')
+			$(cAmountValue).val(1);
+		} else{
+	$.ajax({
+		type:'post',
+		url:'updateCartAmount',
+		data:{
+			cAmount:cAmount,
+			goods_gNum:gNum,
+			member_mId:mId,
+		},
+		success:function(result){
+			if(result.code=='100'){
+				alert('수정하였습니다.');
+			} else {
+				alert('재고가 주문수량보다 적습니다.');
+			}
+		}
+	});//ajax
+		}
+	} else {
+		return;
+	}
+}
 
 	
 

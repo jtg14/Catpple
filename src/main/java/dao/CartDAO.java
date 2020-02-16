@@ -50,8 +50,13 @@ public class CartDAO {
 		map.put("cIdList",checkedCId);
 		return(ArrayList) dao.selectList(NS+"purchaseList",map);
 	}
+	public int checkCartAmount(CartVO vo) {
+		return dao.selectOne(NS+"checkCartAmount", vo);
+	}
 	
-	
+	public int updateCartAmount(CartVO vo) {
+		return dao.update(NS+"updateCartAmount", vo);
+	}
 	
 	
 	

@@ -30,8 +30,12 @@
                 cId = ${item}
            </foreach>
 	</select>
-
-	
+	<select id="checkCartAmount" resultType="integer">
+		select g.gStock from goods as g, cart as c where c.goods_gnum=g.gnum and c.member_mid=#{member_mId} and c.goods_gnum=#{goods_gNum}
+	</select>
+	<update id="updateCartAmount">
+		update cart set cAmount=#{cAmount} where member_mid=#{member_mId} and goods_gnum=#{goods_gNum}
+	</update>
 	
 	
 
