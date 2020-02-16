@@ -15,6 +15,20 @@
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
+	
+<style>
+@media (max-width : 768px) {
+	.table-font{
+	font-size:1em;
+	}
+	.responsiveTd{
+		width:30%;
+	}
+	.row{
+		margin-top:120px;
+	}
+}
+</style>	
 </head>
 <body class="font-Jua">
 
@@ -22,7 +36,8 @@
 	<div id="noty-holder"></div>
 	<div id="wrapper">
 		<!-- Navigation -->
-		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<nav class="navbar navbar-default navbar-fixed-top"
+			style="background-color: white;" role="navigation">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -57,9 +72,6 @@
 						data-target="#submenu-4"><i class="fa fa-fw fa-star"></i>
 							내정보 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
 						<ul id="submenu-4" class="collapse">
-							<c:if test="${logInUser.mGrade!='S'}">
-							<li><a href="mpoint" ><i
-									class="fa fa-angle-double-right"></i> 포인트</a></li></c:if>
 							<li><a href="mChangef"><i
 									class="fa fa-angle-double-right"></i> 내정보변경</a></li>
 							<li><a href="mWdrawal"><i
@@ -117,9 +129,13 @@
 			<div class="container-fluid">
 				<!-- Page Heading -->
 				<div class="row" id="main"
-					style="min-height: 1000px; margin-top: 120px;">
-					<div class="col-sm-12 col-md-12 well" id="content">
-						<h2>메인 내용 들어갈 공간</h2>
+					style="min-height: 1000px;">
+					<div class="col-sm-10 col-md-12" id="content">
+						<h1 style="color:crimson;">마이룸</h1>
+					</div>
+					<div class="col-sm-10 col-md-12" style="margin-top: 120px;">
+						<span class="h2">진행중인 주문</span>
+						
 					</div>
 				</div>
 				<!-- /.row -->

@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <html>
 <head>
-<title>주문완료 | Catpple</title>
+<title>주문/결제 | Catpple</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.css">
@@ -166,7 +166,7 @@
 				style="padding-top: 15px; padding-bottom: 20px;">
 				<div class="col-md-3 col-xs-6" style="margin-top: 5px;">포인트사용</div>
 				<div class="col-md-4 col-xs-6">
-					<input class="form-control text-cente input-sm"
+					<input class="form-control text-cente input-sm" readonly="readonly" value="0"
 						style="width: 100; display: inline-block" type="number">
 				</div>
 				<div class="col-md-5 col-xs-12" style="margin-top: 5px;">
@@ -253,7 +253,7 @@
 												class="form-control input-sm" value="부재시 문앞에 놔주세요." maxlength="49">
 										</div>
 										<div class="col-md-3 col-xs-12">
-											<span id="currentLength">0</span>/50<span
+											<span id="currentLength">13</span>/50<span
 												style="marin-left: 10px;">최대 50자</span>
 										</div>
 									</td>

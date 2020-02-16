@@ -29,6 +29,18 @@ th, td {
 		font-size: 18px;
 	}
 }
+	
+@media (max-width : 768px) {
+	.table-font{
+	font-size:1em;
+	}
+	.responsiveTd{
+		width:30%;
+	}
+	.row{
+		margin-top:120px;
+	}
+}
 </style>
 </head>
 <body class="font-Jua">
@@ -37,7 +49,8 @@ th, td {
 	<div id="noty-holder"></div>
 	<div id="wrapper">
 		<!-- Navigation -->
-		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<nav class="navbar navbar-default navbar-fixed-top"
+			style="background-color: white;" role="navigation">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -72,9 +85,6 @@ th, td {
 						data-target="#submenu-4"><i class="fa fa-fw fa-star"></i>
 							내정보 <i class="fa fa-fw fa-angle-down pull-right"></i></a></h3>
 						<ul id="submenu-4" class="collapse">
-							<c:if test="${logInUser.mGrade!='S'}">
-							<li><a href="mpoint" ><i
-									class="fa fa-angle-double-right"></i> 포인트</a></li></c:if>
 							<li><a href="mChangef"><i
 									class="fa fa-angle-double-right"></i> 내정보변경</a></li>
 							<li><a href="mWdrawal"><i
@@ -140,34 +150,40 @@ th, td {
 							<div class="col-md-12 col-xs-12">
 								<h2>건의사항</h2>
 							</div>
-							<div id="searchBar" class="col-md-12 col-xs-12">
-							<div class="col-md-12 col-xs-12 form-group"style="float:right;">
-								<div style="width:10%; float:right;">						
-									<button class="btn btn-success" id='searchBtn' style="float:right;">Search</button>
+							<div id="searchBar" class="col-md-12 col-xs-12"
+								style="padding-left: 0px; padding-right: 0px;">
+								<div class="col-md-12 col-xs-12 form-group"
+									style="padding-right: 0px; padding-left: 0px;">
+									<div class="col-md-1 col-md-offset-7 col-xs-3"
+										style="padding-right: 0px; padding-left: 0px;">
+										<select name="searchType" class="form-control"
+											style="float: right;">
+											<option value="n"
+												<c:out value="${pageMaker.cri.searchType == null?'selected':''}"/>>
+												---</option>
+											<option value="t"
+												<c:out value="${pageMaker.cri.searchType eq 't'?'selected':''}"/>>
+												제목</option>
+											<option value="c"
+												<c:out value="${pageMaker.cri.searchType eq 'c'?'selected':''}"/>>
+												내용</option>
+											<option value="tc"
+												<c:out value="${pageMaker.cri.searchType eq 'tc'?'selected':''}"/>>
+												제목과 내용</option>
+										</select>
+									</div>
+									<div class="col-md-3 col-xs-6">
+										<input type="text" name='keyword' id="keywordInput"
+											class="form-control " value='${pageMaker.cri.keyword}'>
+									</div>
+									<div class="col-md-1 col-xs-3 text-center" 
+										style="padding-right: 0px; padding-left: 0px;">
+										<a class="btn btn-success btn-block" id="searchBtn">Search</a>
+									</div>
 								</div>
-								<div style="width:15%; float:right;">								
-									<input type="text" name='keyword' id="keywordInput" class="form-control "
-									value='${pageMaker.cri.keyword}' style="float:right;">	
-								</div>	
-								<div style="width:15%; float:right;" >
-									<select name="searchType" class="form-control" style="float:right; display:inline-block;" >
-										<option value="n"
-											<c:out value="${pageMaker.cri.searchType == null?'selected':''}"/>>
-											---</option>
-										<option value="t"
-											<c:out value="${pageMaker.cri.searchType eq 't'?'selected':''}"/>>
-											제목</option>
-										<option value="c"
-											<c:out value="${pageMaker.cri.searchType eq 'c'?'selected':''}"/>>
-											내용</option>
-										<option value="tc"
-											<c:out value="${pageMaker.cri.searchType eq 'tc'?'selected':''}"/>>
-											제목과 내용</option>
-									</select>	
-								</div>	
-								<div style="width:5%; float:right; padding-top:8px;" >검색:</div>
-								</div>	
 							</div>
+						</div>
+						<div class="col-md-10 col-xs-12">	
 							<table class="table">
 								<thead>
 									<tr>
@@ -219,8 +235,7 @@ th, td {
 									
 								</tbody>
 							</table>
-						</div>
-
+							</div>	
 					</div>
 					
 					<!--  PagingCri Code 추가   --> 

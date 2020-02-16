@@ -56,12 +56,7 @@ public class UserController {
 		model.setViewName("myInfo/myroom");
 		return model;
 	}
-	@RequestMapping(value ="/mpoint")//포인트
-	public ModelAndView myInfoPoint(ModelAndView model,HttpServletRequest request) {
-		model.setViewName("myInfo/myInfoPoint");
-		return model;
-	}
-	
+
 	@RequestMapping(value ="/mOCancel")//주문 취소
 	public ModelAndView myInfoOrderCancel(ModelAndView model,HttpServletRequest request,Criteria cri) {
 		cri.setSnoEno();
