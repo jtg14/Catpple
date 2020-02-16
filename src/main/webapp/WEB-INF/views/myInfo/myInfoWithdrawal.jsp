@@ -14,6 +14,20 @@
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
 	<title>회원탈퇴 | Catpple</title>
+		
+<style>
+@media (max-width : 768px) {
+	.table-font{
+	font-size:1em;
+	}
+	.responsiveTd{
+		width:30%;
+	}
+	.row{
+		margin-top:120px;
+	}
+}
+</style>	
 </head>
 
 <body>

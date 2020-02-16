@@ -15,6 +15,20 @@
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
+	
+<style>
+@media (max-width : 768px) {
+	.table-font{
+	font-size:1em;
+	}
+	.responsiveTd{
+		width:30%;
+	}
+	.row{
+		margin-top:120px;
+	}
+}
+</style>	
 </head>
 <body class="font-Jua">
 
@@ -115,9 +129,13 @@
 			<div class="container-fluid">
 				<!-- Page Heading -->
 				<div class="row" id="main"
-					style="min-height: 1000px; margin-top: 120px;">
-					<div class="col-sm-12 col-md-12 well" id="content">
-						<h2>메인 내용 들어갈 공간</h2>
+					style="min-height: 1000px;">
+					<div class="col-sm-10 col-md-12" id="content">
+						<h1 style="color:crimson;">마이룸</h1>
+					</div>
+					<div class="col-sm-10 col-md-12" style="margin-top: 120px;">
+						<span class="h2">진행중인 주문</span>
+						
 					</div>
 				</div>
 				<!-- /.row -->
