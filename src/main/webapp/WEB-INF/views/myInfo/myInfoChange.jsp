@@ -315,7 +315,6 @@
 												<td class="table-head"
 													style="padding-left: 0px; padding-right: 0px;">포인트</td>
 												<td style="text-align: left;"><div
-														class="col-md-6 col-xs-12">0</div></td>
 														class="col-md-6 col-xs-12">${logInUser.mPoint}</div></td>
 											</tr>
 										</table>
