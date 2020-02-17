@@ -63,6 +63,7 @@ $(function() {
 function minusAmount(){
 	var amountNum  = parseInt($('#amount1').val());
 	$('#amount1').val(amountNum-1);
+	$('#total').html(addCommas(parseInt($('#price').html()) * $('#amount1').val())+' 원');
 	if($('#amount1').val()==0){
 		$('#amount1').val('1');
 		$('#total').html(addCommas(parseInt($('#price').html()) * $('#amount1').val())+' 원');
@@ -72,6 +73,7 @@ function minusAmount(){
 function plusAmount(){
 	var amountNum  = parseInt($('#amount1').val());
 	$('#amount1').val(amountNum+1);
+	$('#total').html(addCommas(parseInt($('#price').html()) * $('#amount1').val())+' 원');
 	if($('#amount1').val()>parseInt($('#stock').html().substring(5,$('#stock').html().length-10))){
 		alert('최대 갯수는 '+$('#stock').html().substring(5,$('#stock').html().length-10)+' 개 입니다.');
 		$('#amount1').val('1');
