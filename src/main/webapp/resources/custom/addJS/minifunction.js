@@ -460,33 +460,34 @@ function bOnCheck(){
 }
 
 function updateCartAmount(gNum,mId,cAmountValue){
-	var cAmount = $(cAmountValue).val();
-	if(confirm("수정하시겠습니까??") == true){
-		if(/\-||0/.test(cAmount)){
-			alert('수량은 0이하가 될 수 없습니다!')
-			$(cAmountValue).val(1);
-		} else{
-	$.ajax({
-		type:'post',
-		url:'updateCartAmount',
-		data:{
-			cAmount:cAmount,
-			goods_gNum:gNum,
-			member_mId:mId,
-		},
-		success:function(result){
-			if(result.code=='100'){
-				alert('수정하였습니다.');
-			} else {
-				alert('재고가 주문수량보다 적습니다.');
+	var cAmount = document.getElementById(cAmountValue).value;
+	if(confirm("수정하시겠습니까??") == true) {
+		if(cAmount<=0){
+			alert('수량은 0이하가 될 수 없습니다!');
+			document.getElementById(cAmountValue).value=1;
+		} else {
+		$.ajax({
+			type:'post',
+			url:'updateCartAmount',
+			data:{
+				cAmount:cAmount,
+				goods_gNum:gNum,
+				member_mId:mId,
+			},
+			success:function(result){
+				if(result.code=='100'){
+					alert('수정하였습니다.');
+				} else {
+					alert('재고가 주문수량보다 적습니다.');
+				}
 			}
-		}
-	});//ajax
+		});//ajax
 		}
 	} else {
 		return;
 	}
 }
+
 
 
 	
