@@ -170,8 +170,8 @@ padding-right: 0px;
 										style="padding-top: 0px; padding-bottom: 0px; padding-right: 0px; padding-left: 0px;">
 										<div class="col-md-6 col-xs-3" style="padding-left: 0px;">
 											
-											<input name="box2" value="${list.dPk}" type="checkbox" onclick="chBox(this.form,'${list.dState}',${vs.index},${list.oStock},${list.gStock})"> <img class="img"
-                                 			   src="resources/sellerInfo/${logInUser.mId}/${list.gName}"/>
+											<input name="box2" value="${list.dPk}" type="checkbox" onclick="chBox(this.form,'${list.dState}',${vs.index},${list.oStock},${list.gStock})"> 
+											<img class="img" src="resources/sellerInfo/${logInUser.mId}/${list.gImg1}"/>
 											
 										
 										</div>
