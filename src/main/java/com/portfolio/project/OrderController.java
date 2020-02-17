@@ -107,6 +107,8 @@ public class OrderController {//주문성공 페이지
 	}
 	@RequestMapping(value="/order")
 	public ModelAndView order(ModelAndView model,OrderVO vo,HttpServletRequest request) {
+		log.info("상품 재고확인 -----");
+		
 		int expectedPoint = 0;
 		log.info("-------------------주문 접수시작-------------------");
 		ArrayList<CartVO> list = (ArrayList)request.getSession().getAttribute("list");//받아올 장바구니리스트

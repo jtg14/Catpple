@@ -8,6 +8,10 @@
 	<select id="getOrderList" resultType="vo.OrderVO">
 		select o.*,g.gName,g.gImg1,g.member_mId sellerID from CORDER o,PAYMENT p,Goods g where payment_pNum = #{pNum} and o.payment_pNum = p.pNum and o.goods_gNum = g.gNum
 	</select>
+	<select id ="confirmGStock">
+	select gStock from Goods where gNum = #{gNum}
+	
+	</select>
 	<select id="findPayment" resultType="vo.PaymentVO">
 	select * from PAYMENT where pNum = #{pNum}
 	</select>
