@@ -20,10 +20,7 @@
 		select * from Goods where member_mid = #{member_mId} order by gdate desc
 	</select>
 	<update id="goodsUpdate">
-		update Goods set 
-		gcategory=#{gCategory}, gcategory2=#{gCategory2}, 
-		gname=#{gName}, gprice=#{gPrice}, gstock=#{gStock}, gimg1=#{gImg1}, gimg2=#{gImg2} 
-		where gnum=#{gNum}
+		update Goods set  gprice=#{gPrice}, gstock=#{gStock} where gnum=#{gNum}
 	</update>
 	<select id="homeGoodsList" resultType="vo.GoodsVO">
 		select * from Goods order by gdate desc limit 0, 12

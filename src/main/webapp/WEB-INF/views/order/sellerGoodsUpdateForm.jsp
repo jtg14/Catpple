@@ -122,7 +122,7 @@
 						<div class="col-md-8 col-md-offset-1 col-xs-12"
 							style="border: 5px solid crimson; border-radius: 10px; padding-bottom: 10px;">
 							<h2 style="margin-top: 5%;">상품 수정 </h2>
-							<form action="gupdate" method="post" enctype="multipart/form-data">
+							
 								<div style="margin: 10px 30px;">
 							
 									<!-- Row1 아이디/이름-->
@@ -202,7 +202,7 @@
 											<!-- Material input -->
 											<div class="form-group">
 												<div class="input-group">
-													<input type="number" class="form-control" id="goodsPrice" name="gPrice"
+													<input type="number" class="form-control" id="goodsPrice" 
 														placeholder="0" value="${ginfo.gPrice}"> <span class="input-group-addon">원</span>
 												</div>
 											</div>
@@ -213,7 +213,7 @@
 											<!-- Material input -->
 											<div class="form-group">
 												<div class="input-group">
-													<input type="number" class="form-control" id="goodsAmount" name="gStock"
+													<input type="number" class="form-control" id="goodsAmount" 
 														placeholder="0" value="${ginfo.gStock}"> <span class="input-group-addon">개</span>
 												</div>
 											</div>
@@ -223,10 +223,10 @@
 									<!-- row6 상품 이미지 -->
 									<!-- /row6 -->
 									<div class="col-md-12 col-xs-12 text-center">
-										<a type="submit" class="btn btn-primary btn-lg" onclick="checkUpdateFile()">수정</a>
+										<a type="button" class="btn btn-primary btn-lg" onclick="checkUpdateFile('${ginfo.gNum}')">수정</a>
 									</div>
 								</div>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -235,7 +235,6 @@
 			<!-- /.container-fluid -->
 		</div>
 		<!-- /#page-wrapper -->
-	</div>
 	<!-- /#wrapper -->
 
 

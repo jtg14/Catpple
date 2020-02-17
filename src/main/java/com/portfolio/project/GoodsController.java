@@ -119,41 +119,12 @@ public class GoodsController {
 	}
 	@RequestMapping(value = "gupdate")
 	public ModelAndView gupdate(ModelAndView mv, HttpServletRequest request, GoodsVO vo) {
-		MemberVO mvo = new MemberVO();
-		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
-		String status="["+request.getRemoteAddr()+"]["+systemTime+"] GoodsInsert Status ("+mvo.getmName()+" 님): ";
-		log.info("------------- 상품 업데이트 시작 -------------");
-		vo.setMember_mId(mvo.getmId());
-		String uploadPath ="/prokofieff/tomcat/webapps/ROOT/resources/sellerInfo/"+vo.getMember_mId();
-		log.info(status+"저장 경로 설정 성공");
-		File file1 = new File(uploadPath,vo.getGimgf1().getOriginalFilename());
-		File file2 = new File(uploadPath,vo.getGimgf2().getOriginalFilename());
-		vo.setgImg1(vo.getGimgf1().getOriginalFilename());
-		vo.setgImg2(vo.getGimgf2().getOriginalFilename());
-		log.info(status+"상품 메인 이미지 [ "+vo.getgImg1()+" ] 등록성공");
-		log.info(status+"상품 상세 이미지 [ "+vo.getgImg2()+" ] 등록성공");
-		GoodsVO vo2 = service.goodsDetail(vo);
-		int cnt = service.goodsUpdate(vo);
-		if(cnt>0) {
-			log.info(status+"상품 업데이트 성공");
-			if(!vo.getGimgf1().isEmpty() && !vo.getGimgf2().isEmpty()) {
-				try {
-					//기존파일삭제
-					new File(uploadPath+"\\"+vo2.getgImg1()).delete();
-					log.info(status+"기존 상품 메인 이미지 삭제성공");		
-					new File(uploadPath+"\\"+vo2.getgImg2()).delete();
-					log.info(status+"기존 상품 상세 이미지 삭제성공");		
-					vo.getGimgf1().transferTo(file1);
-					log.info(status+"업데이트한 상품 메인 이미지 지정경로 저장 성공");		
-					vo.getGimgf2().transferTo(file2);
-					log.info(status+"업데이트한 상품 상세 이미지 지정경로 저장 성공");		
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
-			}
+		if(service.goodsUpdate(vo)>0) {
+			mv.addObject("code","100");
+		}else {
+			mv.addObject("code","101");
 		}
-		log.info("------------- 상품 업데이트 모든 과정 성공 -------------");
-		mv.setViewName("redirect:sRGoods");
+		mv.setViewName("jsonView");
 		return mv;
 	}
 
