@@ -5,7 +5,7 @@
 <mapper namespace = "portfolio.mapper.CartMapper">
 
 	<insert id="infoToCart" >
-	insert into CART (CID,CAMOUNT,MEMBER_MID,GOODS_GNUM) values((select ifnull(max(cId),0)+1 from cart as cId),#{cAmount},#{member_mId},#{goods_gNum})
+	insert into CART (CID,CAMOUNT,MEMBER_MID,GOODS_GNUM) values((select ifnull(max(cId),0)+1 from CART as cId),#{cAmount},#{member_mId},#{goods_gNum})
 	</insert>
 	<select id="findDupGoods" resultType="vo.CartVO">
 	select * from CART where member_mid = #{member_mId} and goods_gnum = ${goods_gNum}

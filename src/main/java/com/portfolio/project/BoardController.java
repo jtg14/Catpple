@@ -44,7 +44,6 @@ public class BoardController {
 	
 	@RequestMapping(value = "/mCustomerInquiry")//1대1문의
 	public ModelAndView mCustomerInquiry(SearchCriteria cri, ModelAndView model, HttpServletRequest request, BoardVO bvo, MemberVO mvo, PageVO pvo) {
-		System.out.println("들어옴");
 		HttpSession session = request.getSession();
 		mvo = (MemberVO)session.getAttribute("logInUser");
 		cri.setMember_mId(mvo.getmId());
@@ -117,37 +116,35 @@ public class BoardController {
 	
 	
 	@RequestMapping(value = "/inquiryInsert")
-	public ModelAndView inquiryInsert(ModelAndView model, BoardVO vo1, MemberVO vo2, HttpServletRequest request) {
+	public ModelAndView inquiryInsert(ModelAndView model, BoardVO vo, HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		vo2 = (MemberVO)session.getAttribute("logInUser");
-		vo1.setmName(vo2.getmName());
-		vo1.setMember_mId(vo2.getmId());
+		MemberVO mvo = (MemberVO)session.getAttribute("logInUser");
+		vo.setMember_mId(mvo.getmId());
 		
-		if(service.inquiryInsert(vo1)>0) {
-			model.setViewName("redirect:mCustomerInquiry");
-			return model;
+		if(service.inquiryInsert(vo)>0) {
+			model.addObject("code","100");
 		}else {
-			model.setViewName("redirect:mCustomerInquiry");
-			return model;
+			model.addObject("code","101");
 		}	
+		model.setViewName("jsonView");
+		return model;
 		
 	}//inquiryInsert
 	
 	
 	@RequestMapping(value = "/suggestionInsert")
-	public ModelAndView suggestionInsert(ModelAndView model, BoardVO vo1, MemberVO vo2, HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		vo2 = (MemberVO)session.getAttribute("logInUser");
-		vo1.setmName(vo2.getmName());
-		vo1.setMember_mId(vo2.getmId());
-		
-		if(service.suggestionInsert(vo1)>0) {
-			model.setViewName("redirect:mSuggestions");
-			return model;
+	public ModelAndView suggestionInsert(ModelAndView model, BoardVO vo, HttpServletRequest request) {
+		System.out.println("서제스션 인설트 들어옴");
+		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
+		vo.setMember_mId(mvo.getmId());
+		System.out.println(vo);
+		if(service.suggestionInsert(vo)>0) {
+			model.addObject("code","100");
 		}else {
-			model.setViewName("redirect:mSuggestions");
-			return model;
+			model.addObject("code","101");
 		}	
+		model.setViewName("jsonView");
+		return model;
 		
 	}//suggestionInsert
 	
