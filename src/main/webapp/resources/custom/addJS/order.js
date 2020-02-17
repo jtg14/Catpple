@@ -59,6 +59,7 @@ function goPurchase(){
  		return false;
  	}else if($('input:checkbox[name="agreeforOrder"]').is(':checked') == false){
  		alert('주문 상품 정보에 동의를 안하시면 구매하실수 없습니다.');
+ 		return false;
  	}else if($("#phoneNumber").val().test(/^01(?:0|1|[6-9]&\d{7}|\d{8})+$/)){
  		alert('올바른 연락처를 입력해주세요.');
  		return false;
