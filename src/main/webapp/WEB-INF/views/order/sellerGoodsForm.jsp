@@ -109,7 +109,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 									class="fa fa-angle-double-right"></i> 나의 상품</a></li>
 							<li><a href="sOList"><i
 									class="fa fa-angle-double-right"></i> 주문목록</a></li>
-							<li><a href="sDCList"><i
+							<li><a href="sOList?dCode=C"><i
 									class="fa fa-angle-double-right"></i> 배송완료목록</a></li>
 						</ul></li>
 					</c:if>

@@ -74,7 +74,7 @@ height:100px;
                  <div class="goods-title"><a href="gDetail?number=${list.gNum}"> ${list.gName}</a></div>
                   <div>
                      <font style="color: crimson; font-weight: bold; font-size: large;">${list.gPrice}원</font><br>
-                     <span>(할인여부등)<br></span> <span
+                      <span
                         style="width: 87.5%; overflow: hidden; color: gold;"><i class="fas fa-star"></i>
                         <i class="glyphicon glyphicon-star"></i>
                         <i class="glyphicon glyphicon-star"></i>
