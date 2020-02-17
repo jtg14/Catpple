@@ -81,10 +81,10 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
 
 <c:forEach var="rl" items="${RecomList}">
   <div class="col-xs-12 col-md-3">
-    <div class="thumbnail text-center">
+    <div class="thumbnail text-center" style="border:1px crimson solid;border-radius:10px;">
       <a href="gDetail?number=${rl.gNum}"><img src="resources/sellerInfo/${rl.member_mId}/${rl.gImg1}" style="width:200px;"></a>
       <div class="caption">
-      <div class="col-xs-12 col-md-12" style="min-height:130px;">
+      <div class="col-xs-12 col-md-12" style="min-height:150px;">
         <h3><a href="gDetail?number=${rl.gNum}">${rl.gName}</a></h3>
         </div>
         <div class="rating">
@@ -103,10 +103,10 @@ alert('해당 페이지는 조별 과제 portfolio 를위한 웹 사이트 입�
   
 <c:forEach var="gl" items="${goodsHomeList}">
   <div class="col-xs-12 col-md-3">
-    <div class="thumbnail text-center">
+    <div class="thumbnail text-center" style="border:1px crimson solid;border-radius:10px;">
       <a href="gDetail?number=${gl.gNum}"><img src="resources/sellerInfo/${gl.member_mId}/${gl.gImg1}" style="width:200px;"></a>
       <div class="caption">
-      <div class="col-xs-12 col-md-12 " style="min-height:130px;">
+      <div class="col-xs-12 col-md-12 " style="min-height:150px;">
         <h3><a href="gDetail?number=${gl.gNum}">${gl.gName}</a></h3>
        </div>
         <div class="rating">
