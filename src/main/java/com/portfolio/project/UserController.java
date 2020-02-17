@@ -320,7 +320,8 @@ public class UserController {
 
 	@RequestMapping(value="/searchID")//아이디찾기 minifunction.js에서 들어옴
 	public ModelAndView searchID(ModelAndView model, MemberVO vo) {
-		if(service.searchID(vo)!=null){
+		vo=service.searchID(vo);
+		if(vo!=null){
 			model.addObject("searchedID",vo.getmId());
 			model.addObject("code", "50");
 		}else if(vo == null){

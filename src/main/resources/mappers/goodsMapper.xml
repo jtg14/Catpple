@@ -7,41 +7,41 @@
 	<!-- goodsInsert -->
 	<insert id="goodsInsert">
 		insert into 
-		goods(gnum, gstock, gprice, gname, gimg1, gimg2, gpoint, gcategory, gcategory2, member_mid) 
-		values((select ifnull(max(gnum),0)+1 from goods as gnum), #{gStock}, #{gPrice}, #{gName},#{gImg1},#{gImg2}, 0, #{gCategory}, #{gCategory2}, #{member_mId})
+		Goods(gnum, gstock, gprice, gname, gimg1, gimg2, gpoint, gcategory, gcategory2, member_mid) 
+		values((select ifnull(max(gnum),0)+1 from Goods as gnum), #{gStock}, #{gPrice}, #{gName},#{gImg1},#{gImg2}, 0, #{gCategory}, #{gCategory2}, #{member_mId})
 	</insert>
 	<select id="goodsSearch" parameterType="String" resultType="vo.GoodsVO">
-	select * from goods where gname like '${value}%' or gname like '%${value}%' or gname like '%${value}' or gcategory like '${value}%' or gcategory like '%${value}%' or gcategory like '%${value}' or gcategory2 like '${value}%' or gcategory2 like '%${value}%' or gcategory2 like '%${value}'
+	select * from Goods where gname like '${value}%' or gname like '%${value}%' or gname like '%${value}' or gcategory like '${value}%' or gcategory like '%${value}%' or gcategory like '%${value}' or gcategory2 like '${value}%' or gcategory2 like '%${value}%' or gcategory2 like '%${value}'
 	</select>
 	<select id ="goodsDetail" resultType="vo.GoodsVO">
-	select g.gnum,g.gstock,g.gprice,g.gname,g.gdate,g.gimg1,g.gimg2,g.gpoint,g.gcategory,g.gcategory2,g.member_mid,m.mname company from goods g,member m where g.member_mid = m.mid and gnum = #{gNum};
+	select g.gnum,g.gstock,g.gprice,g.gname,g.gdate,g.gimg1,g.gimg2,g.gpoint,g.gcategory,g.gcategory2,g.member_mid,m.mname company from Goods g,Member m where g.member_mid = m.mid and gnum = #{gNum};
 	</select>
 	<select id = "myGoodsList" resultType="vo.GoodsVO">
-		select * from goods where member_mid = #{member_mId} order by gdate desc
+		select * from Goods where member_mid = #{member_mId} order by gdate desc
 	</select>
 	<update id="goodsUpdate">
-		update goods set 
+		update Goods set 
 		gcategory=#{gCategory}, gcategory2=#{gCategory2}, 
 		gname=#{gName}, gprice=#{gPrice}, gstock=#{gStock}, gimg1=#{gImg1}, gimg2=#{gImg2} 
 		where gnum=#{gNum}
 	</update>
 	<select id="homeGoodsList" resultType="vo.GoodsVO">
-		select * from goods order by gdate desc limit 0, 12
+		select * from Goods order by gdate desc limit 0, 12
 	</select>
 	<select id="homeRecomList" resultType="vo.GoodsVO">
-		select * from goods order by gprice desc limit 0, 12
+		select * from Goods order by gprice desc limit 0, 12
 	</select>
 	<!-- 게시글 총 갯수 -->
 	<select id="listCount" resultType="int">
 	<![CDATA[
 		SELECT COUNT(GNUM)
-		FROM GOODS
+		FROM Goods
 		WHERE GNUM>0
 	]]>
 	</select>
 	<!-- 내가 등록한 상품 -->
 	<select id="goodsMyListCri" resultType="vo.GoodsVO" parameterType="criteria.Criteria">
-		select * from goods where member_mId=#{member_mId} 
+		select * from Goods where member_mId=#{member_mId} 
 		order by gdate desc limit #{sno}, #{perPageNum}
 	</select>
 </mapper>

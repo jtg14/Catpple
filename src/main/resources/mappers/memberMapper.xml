@@ -6,7 +6,7 @@
 
 	<!-- memberJoin() -->
 	<insert id="join" >
-		insert into member (mId,mPw,mEmail,mPhone,mname,maddr1,maddr2,maddr3,mpoint,mgrade,mstatus) values (#{mId},#{mPw},#{mEmail},#{mPhone},#{mName},0,null,null,0,#{mGrade},default)
+		insert into Member (mId,mPw,mEmail,mPhone,mname,maddr1,maddr2,maddr3,mpoint,mgrade,mstatus) values (#{mId},#{mPw},#{mEmail},#{mPhone},#{mName},0,null,null,0,#{mGrade},default)
 	</insert>
 	<select id="idcheck" resultType="vo.MemberVO">
 	select * from Member where mid=#{mId}
@@ -18,33 +18,33 @@
 	select * from Member where mId = #{mId} and mstatus='F'
 	</select>
 	<select id="findCompany" resultType="vo.MemberVO">
-	select mid,mname from member where mid = #{mId}
+	select mid,mname from Member where mid = #{mId}
 	</select>
 	<!-- mChange -->
 	<update id="mChange">
-		update member set mEmail=#{mEmail},mPhone=#{mPhone},mAddr1=#{mAddr1},mAddr2=#{mAddr2},mAddr3=#{mAddr3},mAddr4=#{mAddr4} where mId=#{mId}
+		update Member set mEmail=#{mEmail},mPhone=#{mPhone},mAddr1=#{mAddr1},mAddr2=#{mAddr2},mAddr3=#{mAddr3},mAddr4=#{mAddr4} where mId=#{mId}
 	</update>
 	<update id="ChangePassword">
-		update member set mPw = #{mPw} where mid=#{mId}
+		update Member set mPw = #{mPw} where mid=#{mId}
 	</update>
 	<!-- mdelete -->
 	<update id="mdelete">
-		update member set mstatus='T' where mid=#{mId}
+		update Member set mstatus='T' where mid=#{mId}
 	</update>
 	<update id = "updateAddr" parameterType="OrderVO">
-	update member set mAddr1 = ${oAddr1} , mAddr2 = #{oAddr2} , mAddr3 = #{oAddr3} , mAddr4 = #{oAddr4} where mId= #{member_mId}
+	update Member set mAddr1 = ${oAddr1} , mAddr2 = #{oAddr2} , mAddr3 = #{oAddr3} , mAddr4 = #{oAddr4} where mId= #{member_mId}
 	</update>
 	<update id = "addPoint">
-	update member set mPoint = mPoint + #{mPoint} where mid = #{mId};
+	update Member set mPoint = mPoint + #{mPoint} where mid = #{mId};
 	</update>
 	<!-- searchID -->
 	<select id="searchID" resultType="vo.MemberVO">
-		select * from member where mName = #{mName} and mPhone = #{mPhone}
+		select * from Member where mName = #{mName} and mPhone = #{mPhone}
 	</select>
 	
 	<!-- searchPW -->
 	<select id="searchPW" resultType="vo.MemberVO">
-		select * from member where mId = #{mId} and mPhone = #{mPhone}
+		select * from Member where mId = #{mId} and mPhone = #{mPhone}
 	</select>
 	
 </mapper>

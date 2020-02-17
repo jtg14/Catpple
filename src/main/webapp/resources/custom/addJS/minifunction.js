@@ -192,6 +192,7 @@ function deleteCart(cid){
 function searchIDButton(){//아이디찾기
 	var mName = $('#searchName').val();
 	var mPhone = $('#searchPhone').val();
+	alert(mName+mPhone);
 	$.ajax({
 		type:'post',
 		url:'searchID',//UserController

@@ -47,7 +47,8 @@ public class MemberDAO {
 	}
 
 	public MemberVO searchID(MemberVO vo) {
-		return dao.selectOne(NS + "searchID", vo);
+		return 	dao.selectOne(NS + "searchID", vo);
+		
 	}
 
 	public MemberVO searchPW(MemberVO vo) {
