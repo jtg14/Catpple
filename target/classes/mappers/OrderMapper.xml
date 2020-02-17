@@ -97,7 +97,7 @@
 		select count(*)
 		from Goods as g, CORDER as o, DELIVERY as d 
 		where g.gnum=o.goods_gnum and o.onum=d.corder_onum and d.dstate!='c' and g.member_mId=#{member_mId} 
-		order by o.oStatus desc, d.dState, o.oDate limit #{sno}, #{perPageNum};
+		
 	</select>
 	
 	<!-- 판매자 배송완료 row Count -->
@@ -105,13 +105,12 @@
 		 select count(*)
 		 from Goods as g, CORDER as o, DELIVERY as d
 		  where g.gnum=o.goods_gnum and o.onum=d.corder_onum and d.dstate='c' and g.member_mId=#{member_mId} 
-		  order by o.oStatus desc, d.dState, o.oDate limit #{sno}, #{perPageNum};
 	</select>
 	
 	
 	<update id="changeDstate"  parameterType="java.util.List">
 		update DELIVERY set dState='b', dDate=default where dPk in
-		<foreach collection="list" item="dpk" open="(" close=")" index="index" separator=",">
+		<foreach collection="list" item="dPk" open="(" close=")" index="index" separator=",">
 			${dPk}
 		</foreach>
 	</update>

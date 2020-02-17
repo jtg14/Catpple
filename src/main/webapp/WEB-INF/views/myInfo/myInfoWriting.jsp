@@ -188,7 +188,7 @@ text-decoration: none;
 													</h3>
 												</div>
 												<div class="col-md-2 col-xs-8">
-													<span><h3>${logInUser.mId}</h3></span>
+													<h3>${logInUser.mId}</h3>
 												</div>
 											</div>
 											<div class="col-md-12 col-xs-12">
@@ -210,7 +210,7 @@ text-decoration: none;
 												<h3>제목:</h3>
 											</div>
 											<div class="col-md-12 col-xs-12">
-												<input class="form-control input-sm" 
+												<input class="form-control input-sm" style="font-size:1.3em;"
 													id="inquiryTitle">
 											</div>
 											<div class="col-md-12 col-xs-12">
@@ -218,7 +218,7 @@ text-decoration: none;
 											</div>
 											<div class="col-md-12 col-xs-12">										  
 												<textarea class="form-control noresize" 
-													id="inquiryContent" style="height: 140px;"></textarea>
+													id="inquiryContent" style="height: 140px;font-size:1.3em;"></textarea>
 											</div>
 											<div class="col-md-4 col-md-offset-8  col-xs-12" style="margin-top: 20px;">
 												<div class="col-md-6 col-xs-6">
@@ -246,7 +246,7 @@ text-decoration: none;
 												<h3>제목</h3>
 											</div>
 											<div class="col-md-12 col-xs-12">
-												<input class="form-control input-sm" 
+												<input class="form-control input-sm" style="font-size:1.3em;"
 													id="suggestionsTitle">
 											</div>
 											<div class="col-md-12 col-xs-12">
@@ -254,7 +254,7 @@ text-decoration: none;
 											</div>
 											<div class="col-md-12 col-xs-12">
 												<textarea class="form-control noresize" id="suggestionsContent"
-													id="bContent" style="height: 140px;"></textarea>
+													id="bContent" style="height: 140px;font-size:1.3em;"></textarea>
 											</div>
 											<div class="col-md-12 col-xs-12" style="margin-top: 20px;">
 												<a 

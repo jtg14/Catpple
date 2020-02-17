@@ -283,6 +283,9 @@
 													href="sRGoods">나의 상품</a></li>
 												<li class="nav-item"><a class="nav-link second-class"
 													href="sOList">주문목록</a></li>
+												<li class="nav-item"><a class="nav-link second-class"
+													href="sOList?dCode=C">배송완료목록</a></li>
+													
 											</ul>
 										</div>
 										</c:if>

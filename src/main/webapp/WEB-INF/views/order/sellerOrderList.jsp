@@ -250,36 +250,40 @@ padding-right: 0px;
 						</div>
 						<!-- paging -->
 						<div class="col-md-10 col-xs-12 text-center">
-							<c:choose>
-								<c:when test="${currPage>1}">
-									<a href="sOList?currPage=1">First</a>&nbsp;
-									<a href="sOList?currPage=${currPage-1}">이전</a>&nbsp;&nbsp;
-								</c:when>
-								<c:otherwise>
-									<font color="gray">First&nbsp;이전&nbsp;&nbsp;</font>
-								</c:otherwise>
-							</c:choose>
-							
-							<c:forEach  var="i"  begin="${sPage}" end="${ePage}">
-								<c:choose>
-									<c:when test="${i==currPage}">
-										<font size="5" color="Orange">${i}&nbsp;</font>
-									</c:when>
-									<c:otherwise>
-										<a href="sOList?currPage=${i}">${i}&nbsp;</a>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-							
-							<c:choose>
-								<c:when test="${currPage==totalPageNo}">
-									<font color="gray">&nbsp;&nbsp;다음&nbsp;Last</font>
-								</c:when>
-								<c:otherwise>
-									<a href="sOList?currPage=${currPage+1}">&nbsp;다음</a>&nbsp;
-									<a href="sOList?currPage=${totalPageNo}">Last</a>&nbsp;
-								</c:otherwise>
-							</c:choose>
+							<ul class="pagination">
+                        <c:if test="${pageMaker.prev}">
+                           <li><a href="sOList${pageMaker.makeSearch(1)}"
+                              style="color: black;">First</a></li>
+                           <li><a
+                              href="sOList${pageMaker.makeQuery(pageMaker.startPage - 1)}"
+                              style="color: black;">이전</a></li>
+                        </c:if>
+
+                        <c:forEach begin="${pageMaker.startPage}"
+                           end="${pageMaker.endPage}" var="idx">
+                           <c:choose>
+                              <c:when test="${pageMaker.cri.page==idx}">
+                                 <li class="active"><a
+                                    href="sOList${pageMaker.makeQuery(idx)}"
+                                    style="background-color: Crimson; border-color: Crimson;">${idx}</a></li>
+                              </c:when>
+                              <c:otherwise>
+                                 <li><a
+                                    href="sOList${pageMaker.makeQuery(idx)}"
+                                    style="color: black;">${idx}</a></li>
+                              </c:otherwise>
+                           </c:choose>
+                        </c:forEach>
+
+                        <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+                           <li><a
+                              href="sOList${pageMaker.makeQuery(pageMaker.endPage + 1)}"
+                              style="color: black;">다음</a></li>
+                           <li><a
+                              href="sOList${pageMaker.makeSearch(pageMaker.lastPage)}"
+                              style="color: black;">Last</a></li>
+                        </c:if>
+                     </ul>
 						</div>
 					</div>
 				</div>
