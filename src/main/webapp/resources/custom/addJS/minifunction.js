@@ -63,6 +63,7 @@ $(function() {
 function minusAmount(){
 	var amountNum  = parseInt($('#amount1').val());
 	$('#amount1').val(amountNum-1);
+	$('#total').html(addCommas(parseInt($('#price').html()) * $('#amount1').val())+' 원');
 	if($('#amount1').val()==0){
 		$('#amount1').val('1');
 		$('#total').html(addCommas(parseInt($('#price').html()) * $('#amount1').val())+' 원');
@@ -72,6 +73,7 @@ function minusAmount(){
 function plusAmount(){
 	var amountNum  = parseInt($('#amount1').val());
 	$('#amount1').val(amountNum+1);
+	$('#total').html(addCommas(parseInt($('#price').html()) * $('#amount1').val())+' 원');
 	if($('#amount1').val()>parseInt($('#stock').html().substring(5,$('#stock').html().length-10))){
 		alert('최대 갯수는 '+$('#stock').html().substring(5,$('#stock').html().length-10)+' 개 입니다.');
 		$('#amount1').val('1');
@@ -460,33 +462,34 @@ function bOnCheck(){
 }
 
 function updateCartAmount(gNum,mId,cAmountValue){
-	var cAmount = $(cAmountValue).val();
-	if(confirm("수정하시겠습니까??") == true){
-		if(/\-||0/.test(cAmount)){
-			alert('수량은 0이하가 될 수 없습니다!')
-			$(cAmountValue).val(1);
-		} else{
-	$.ajax({
-		type:'post',
-		url:'updateCartAmount',
-		data:{
-			cAmount:cAmount,
-			goods_gNum:gNum,
-			member_mId:mId,
-		},
-		success:function(result){
-			if(result.code=='100'){
-				alert('수정하였습니다.');
-			} else {
-				alert('재고가 주문수량보다 적습니다.');
+	var cAmount = document.getElementById(cAmountValue).value;
+	if(confirm("수정하시겠습니까??") == true) {
+		if(cAmount<=0){
+			alert('수량은 0이하가 될 수 없습니다!');
+			document.getElementById(cAmountValue).value=1;
+		} else {
+		$.ajax({
+			type:'post',
+			url:'updateCartAmount',
+			data:{
+				cAmount:cAmount,
+				goods_gNum:gNum,
+				member_mId:mId,
+			},
+			success:function(result){
+				if(result.code=='100'){
+					alert('수정하였습니다.');
+				} else {
+					alert('재고가 주문수량보다 적습니다.');
+				}
 			}
-		}
-	});//ajax
+		});//ajax
 		}
 	} else {
 		return;
 	}
 }
+
 
 
 	

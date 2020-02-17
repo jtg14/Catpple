@@ -184,7 +184,7 @@
 												onclick="deleteCart('${list.cId}')">삭제</a>
 										</div>
 										<div class="col-md-3 col-md-offset-6 col-xs-4 col-xs-offset-6 text-center">
-											<button id="amount" onclick="updateCartAmount(${list.goods_gNum},'${logInUser.mId}',cAmountValue${vs.index})"
+											<button id="amount" onclick="updateCartAmount(${list.goods_gNum},'${logInUser.mId}','cAmountValue${vs.index}')"
 											 	class="btn btn-primary btn-xs amount_modification">수 정</button>
 										</div>
 									</div>
