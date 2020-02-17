@@ -38,5 +38,6 @@
 		src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
 	<script src="resources/custom/addJS/minifunction.js"></script>
+	
 </body>
 </html>

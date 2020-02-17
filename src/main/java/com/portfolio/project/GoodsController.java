@@ -36,8 +36,9 @@ public class GoodsController {
 	SimpleDateFormat dayTime = new SimpleDateFormat("yyy-MM-dd hh:mm:ss");
 
 	String systemTime = dayTime.format(new Date(time));
+	
 
-	@RequestMapping(value = "goodsInsert", method = RequestMethod.POST)
+	@RequestMapping(value = "/goodsInsert", method = RequestMethod.POST)
 	public ModelAndView goodsInsert(HttpServletRequest request, ModelAndView mv, GoodsVO vo) {
 		MemberVO mvo = new MemberVO();
 		mvo = (MemberVO)request.getSession().getAttribute("logInUser");
@@ -109,7 +110,9 @@ public class GoodsController {
 	}
 	@RequestMapping(value ="/sGUForm")//상품등록 수정
 	public ModelAndView sellerGoodsUpdateForm(ModelAndView mv, HttpServletRequest request, GoodsVO vo) {
+		System.out.println(vo);
 		vo = service.goodsDetail(vo);
+		System.out.println(vo);
 		mv.addObject("goodsDetail", vo);
 		mv.setViewName("order/sellerGoodsUpdateForm");
 		return mv;
@@ -121,7 +124,7 @@ public class GoodsController {
 		String status="["+request.getRemoteAddr()+"]["+systemTime+"] GoodsInsert Status ("+mvo.getmName()+" 님): ";
 		log.info("------------- 상품 업데이트 시작 -------------");
 		vo.setMember_mId(mvo.getmId());
-		String uploadPath = "C:\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getMember_mId();
+		String uploadPath ="/prokofieff/tomcat/webapps/ROOT/resources/sellerInfo/"+vo.getMember_mId();
 		log.info(status+"저장 경로 설정 성공");
 		File file1 = new File(uploadPath,vo.getGimgf1().getOriginalFilename());
 		File file2 = new File(uploadPath,vo.getGimgf2().getOriginalFilename());

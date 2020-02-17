@@ -101,7 +101,7 @@
 									class="fa fa-angle-double-right"></i> 나의 상품</a></li>
 							<li><a href="sOList"><i
 									class="fa fa-angle-double-right"></i> 주문목록</a></li>
-							<li><a href="sDCList"><i
+							<li><a href="sOList?dCode=C"><i
 									class="fa fa-angle-double-right"></i> 배송완료목록</a></li>
 						</ul></li>
 					</c:if>
@@ -132,7 +132,7 @@
 										<div class="col-md-3 col-xs-6">
 											<!-- Material input -->
 											<div class="form-group">
-												<label for="memberID">ID</label> <input type="text" value="${ginfo.member_mid}"
+												<label for="memberID">ID</label> <input type="text" value="${ginfo.member_mId}"
 													class="form-control" id="memberID" placeholder="ID"
 													readonly="readonly">
 											</div>

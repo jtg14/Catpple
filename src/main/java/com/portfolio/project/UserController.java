@@ -128,7 +128,6 @@ public class UserController {
 	}
 	@RequestMapping(value ="/mWdrawal")//회원탈퇴
 	public ModelAndView myInfoWithdrawal(ModelAndView model,HttpServletRequest request){
-		
 		model.setViewName("myInfo/myInfoWithdrawal");
 		return model;
 	}
@@ -146,9 +145,6 @@ public class UserController {
 	}
 	@RequestMapping(value ="/changePwf")//비밀번호변경
 	public ModelAndView changePwf(ModelAndView model,MemberVO vo,HttpServletRequest request) {
-		String mId = request.getParameter("mId");
-		vo.setmId(mId);
-		model.addObject("logInUser",vo);
 		model.setViewName("logIn/changePw");
 		return model;
 	}
@@ -237,6 +233,7 @@ public class UserController {
 		HttpSession session = request.getSession();
 		String password = vo.getmPw();
 		vo = service.login(vo);
+		
 		if(vo == null) {//없는 아이디일때
 			model.addObject("logIn","failed");
 		}else if(passwordEncorder.matches(password,vo.getmPw())) {
@@ -337,7 +334,7 @@ public class UserController {
 		vo = service.searchPW(vo);
 		if(vo!=null) {//아이디와 전화번호 제대로 입력
 			//여기서 코드 발송해주기
-			
+			send.getVerifyNumber(vo.getmPhone());//인증번호 생성
 			model.addObject("code", "200");
 			model.setViewName("jsonView");
 		}else {//아이디 전화번호와 매칭되는 자료 없음
@@ -352,7 +349,8 @@ public class UserController {
 	@RequestMapping(value="/mConfirm2")
 	public ModelAndView mConfirm(ModelAndView model, MemberVO vo, HttpServletRequest request) {
 		String mCertification = request.getParameter("mCertification");
-			if(mCertification.equals("123")) {//발송된 코드 제대로 입력
+		
+			if(send.confirmNumber(mCertification)) {//발송된 코드 제대로 입력
 				model.addObject("code","200");
 			}else {//발송된 코드 잘못입력했을시
 				model.addObject("code","202");

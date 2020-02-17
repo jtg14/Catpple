@@ -192,7 +192,6 @@ function deleteCart(cid){
 function searchIDButton(){//아이디찾기
 	var mName = $('#searchName').val();
 	var mPhone = $('#searchPhone').val();
-	alert(mName+mPhone);
 	$.ajax({
 		type:'post',
 		url:'searchID',//UserController
@@ -406,20 +405,60 @@ function statusChangeButton(number,status){
 }//statusChangeButton
 
 
-function bOnCheck(){
-	var btLength=$('#bTitle').val();
-	var bcLength=$('#bContent').val();
-	
-	if(btLength=='' || bcLength==''){
+function cOnCheck(){
+	var title = $('#inquiryTitle').val();
+	var content = $('#inquiryContent').val();
+	var separation = $('#separation').val();
+	if(title =='' || content==''){
 		alert('제목과 내용을 입력해주세요.');
 		return false;
 	}else {
+		$.ajax({
+			type:'Post',
+			url:'inquiryInsert',
+			data:{
+				bTitle:title,
+				bContent:content,
+				bSeparation:separation
+			},
+			success:function(data){
+				if(data.code == '100'){
+					alert('성공적으로 작성 하였습니다.');
+					location.href='mCustomerInquiry';
+				}else if (data.code == '101'){
+					alert('글작성에 실패 하였습니다.');
+				}
+			}
+		});
 		return true;
 	}
-	
-	
 }
-
+function bOnCheck(){
+	alert('비온체크들어옴');
+	var title = $('#suggestionsTitle').val();
+	var content = $('#suggestionsContent').val();
+	if(title =='' || content==''){
+		alert('제목과 내용을 입력해주세요.');
+		return false;
+	}else {
+		$.ajax({
+			type:'Post',
+			url:'suggestionInsert',
+			data:{
+				bTitle:title,
+				bContent:content,
+			},
+			success:function(data){
+				if(data.code == '100'){
+					alert('성공적으로 작성 하였습니다.');
+					location.href='mSuggestions';
+				}else if (data.code == '101'){
+					alert('글작성에 실패 하였습니다.');
+				}
+			}
+		});
+	}
+}
 
 function updateCartAmount(gNum,mId,cAmountValue){
 	var cAmount = $(cAmountValue).val();
