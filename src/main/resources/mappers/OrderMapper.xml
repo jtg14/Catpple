@@ -47,12 +47,12 @@
 	
 	<insert id="insertOandD" parameterType="java.util.HashMap">
 	<foreach collection="olist" item="item">
-	select @orderNumber:=(select ifnull(max(oNum),0)+1 from corder as onum);
+	select @orderNumber:=(select ifnull(max(oNum),0)+1 from CORDER as onum);
 	insert into CORDER (oNum,oDate,oPrice,oStock,oAddr1,oAddr2,oAddr3,oAddr4,oStatus,oName,oPhone,member_mId,goods_gNum,payment_pNum) 
 	values (@orderNumber,default,${item.oPrice},${item.oStock},${item.oAddr1},'${item.oAddr2}','${item.oAddr3}',
 			'${item.oAddr4}','os3','${item.oName}','${item.oPhone}','${item.member_mId}',${item.goods_gNum},${item.payment_pNum});
 	insert into DELIVERY
-	value((select ifnull(max(DPK),0)+1 from delivery as dp),'a',${item.oAddr1},
+	value((select ifnull(max(DPK),0)+1 from DELIVERY as dp),'a',${item.oAddr1},
 	'${item.oAddr2}','${item.oAddr3}','${item.oAddr4}','${item.dInfo}',LPAD((select ifnull(max(DPK),0)+1 from DELIVERY as dp2),
 	12 ,concat(DATE_FORMAT(current_timestamp,'%Y%m%d'),'000')),default,@orderNumber);
 	</foreach>

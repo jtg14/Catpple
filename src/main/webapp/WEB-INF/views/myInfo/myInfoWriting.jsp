@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="resources/custom/addCSS/checkbox.css">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
-<script src="resources/custom/addJS/myroom.js"></script>
 <title>글쓰기 | Catpple</title>
 <style>
 .item-size {
@@ -61,19 +60,7 @@ text-decoration: none;
 
 }
 </style>
-<script type="text/javascript">
-$(function(){
-	if($('#sel1>option').val()=='1'){
-		
-	}
-	
-	
-	
-})//ready
-
-
-
-</script>
+ 
 </head>
 <body class="font-Jua">
 
@@ -194,7 +181,6 @@ $(function(){
 										<h4 style="color: darkgray;">문의 해주시면 친절히 답변해 드리 겠습니다.</h4>
 									</div>
 									<div class="container">
-										<form action="inquiryInsert" method="post" >
 											<div class="col-md-12 col-xs-12" >
 												<div class="col-md-1 col-xs-4" style="padding-left:0px;" >
 													<h3 style="display:inline-block;">
@@ -224,28 +210,26 @@ $(function(){
 												<h3>제목:</h3>
 											</div>
 											<div class="col-md-12 col-xs-12">
-												<input class="form-control input-sm" name="bTitle"
-													id="bTitle">
+												<input class="form-control input-sm" 
+													id="inquiryTitle">
 											</div>
 											<div class="col-md-12 col-xs-12">
 												<h3>내용:</h3> 
 											</div>
 											<div class="col-md-12 col-xs-12">										  
-												<textarea class="form-control noresize" name="bContent"
-													id="bContent" style="height: 140px;"></textarea>
+												<textarea class="form-control noresize" 
+													id="inquiryContent" style="height: 140px;"></textarea>
 											</div>
 											<div class="col-md-4 col-md-offset-8  col-xs-12" style="margin-top: 20px;">
 												<div class="col-md-6 col-xs-6">
-													<input 
-														class="btn btn-success btn-lg pull-right" type="submit"
-														value="문의하기" onclick="return bOnCheck()" >
+													<a class="btn btn-success btn-lg pull-right" 
+														 onclick="cOnCheck()" >문의 하기</a>
 												</div>
 												<div class="col-md-6 col-xs-6">
 													<a class="btn btn-success btn-lg pull-right" type="button" href="mCustomerInquiry">목록보기</a>
 												</div>												
 											</div>
 
-										</form>
 									</div>
 								</div>
 								<!-- end of goodsDetail -->
@@ -258,27 +242,25 @@ $(function(){
 										<h4 style="color: darkgray;">고객님의 의견을 적극 반영 하겠습니다!</h4>
 									</div>
 									<div class="container">
-										<form id="form-customerSuggestion" action="suggestionInsert" method="post">
 											<div class="col-md-12 col-xs-12">
 												<h3>제목</h3>
 											</div>
 											<div class="col-md-12 col-xs-12">
-												<input class="form-control input-sm" name="bTitle"
-													id="bTitle">
+												<input class="form-control input-sm" 
+													id="suggestionsTitle">
 											</div>
 											<div class="col-md-12 col-xs-12">
 												<h3>내용</h3>
 											</div>
 											<div class="col-md-12 col-xs-12">
-												<textarea class="form-control noresize" name="bContent"
+												<textarea class="form-control noresize" id="suggestionsContent"
 													id="bContent" style="height: 140px;"></textarea>
 											</div>
 											<div class="col-md-12 col-xs-12" style="margin-top: 20px;">
-												<input 
-													class="btn btn-success btn-lg pull-right" type="submit"
-													value="문의하기" onclick="return bOnCheck()">
+												<a 
+													class="btn btn-success btn-lg pull-right"
+													onclick="bOnCheck()">문의하기</a>
 											</div>
-										</form>
 									</div>
 								</div>
 								<!-- end of change -->
@@ -300,6 +282,7 @@ $(function(){
 	<script src="resources/bootstrap/js/bootstrap.js"></script>
 	<script src="resources/custom/addJS/myroom.js"></script>
 	<script src="resources/custom/addJS/minifunction.js"></script>
+	<script src="resources/custom/addJS/myroom.js"></script>
 	
 </body>
 <footer>
