@@ -46,7 +46,7 @@ public class GoodsController {
 		vo.setMember_mId(mvo.getmId());
 
 		log.info(status+"현재 상품 등록 유저("+vo.getMember_mId()+") 로 상품에 등록 완료");
-		String uploadPath = "C:\\Catpple\\src\\main\\webapp\\resources\\sellerInfo\\"+vo.getMember_mId();
+		String uploadPath = "/prokofieff/tomcat/webapps/ROOT/resources/sellerInfo/"+vo.getMember_mId();
 		log.info(status+"파일 설치위치("+uploadPath+") 경로 지정성공");
 		MultipartFile multipartFile1 = vo.getGimgf1();
 		MultipartFile multipartFile2 = vo.getGimgf2();
