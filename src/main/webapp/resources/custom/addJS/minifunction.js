@@ -434,7 +434,6 @@ function cOnCheck(){
 	}
 }
 function bOnCheck(){
-	alert('비온체크들어옴');
 	var title = $('#suggestionsTitle').val();
 	var content = $('#suggestionsContent').val();
 	if(title =='' || content==''){

@@ -149,7 +149,7 @@ th, td {
 			<div class="container-fluid">
 				<!-- Page Heading -->
 				<div class="row" id="main"
-					style="min-height: 1000px; margin-top: 10px;">
+					style="min-height: 1000px;">
 					<div class="col-sm-12 col-md-12" id="content">
 						<!-- 메인공간 -->
 
@@ -356,6 +356,8 @@ th, td {
 			</div>
 			<!-- /#page-wrapper -->
 		</div>
+		</div>
+		
 		<!-- /#wrapper -->
 
 
