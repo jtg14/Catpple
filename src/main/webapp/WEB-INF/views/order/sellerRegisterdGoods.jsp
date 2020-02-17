@@ -183,7 +183,7 @@
 											가격 : ${gl.gPrice}원</div>
 										<div class="col-md-4 col-xs-6">재고 : ${gl.gStock}개</div>
 										<div class="col-md-4 col-xs-12">
-											<a href="sGUForm?gnum=${gl.gNum}" class="btn btn-danger">편집하기</a>
+											<a href="sGUForm?gNum=${gl.gNum}" class="btn btn-danger">편집하기</a>
 										</div>
 									</div>
 								</div>

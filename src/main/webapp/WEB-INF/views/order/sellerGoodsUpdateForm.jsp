@@ -132,7 +132,7 @@
 										<div class="col-md-3 col-xs-6">
 											<!-- Material input -->
 											<div class="form-group">
-												<label for="memberID">ID</label> <input type="text" value="${ginfo.member_mid}"
+												<label for="memberID">ID</label> <input type="text" value="${ginfo.member_mId}"
 													class="form-control" id="memberID" placeholder="ID"
 													readonly="readonly">
 											</div>

@@ -8,7 +8,7 @@
 	<insert id="goodsInsert">
 		insert into 
 		Goods(gnum, gstock, gprice, gname, gimg1, gimg2, gpoint, gcategory, gcategory2, member_mid) 
-		values((select ifnull(max(gnum),0)+1 from goods as gnum), #{gStock}, #{gPrice}, #{gName},#{gImg1},#{gImg2}, 0, #{gCategory}, #{gCategory2}, #{member_mId})
+		values((select ifnull(max(gnum),0)+1 from Goods as gnum), #{gStock}, #{gPrice}, #{gName},#{gImg1},#{gImg2}, 0, #{gCategory}, #{gCategory2}, #{member_mId})
 	</insert>
 	<select id="goodsSearch" parameterType="String" resultType="vo.GoodsVO">
 	select * from Goods where gname like '${value}%' or gname like '%${value}%' or gname like '%${value}' or gcategory like '${value}%' or gcategory like '%${value}%' or gcategory like '%${value}' or gcategory2 like '${value}%' or gcategory2 like '%${value}%' or gcategory2 like '%${value}'
