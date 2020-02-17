@@ -121,7 +121,7 @@
 						<c:set var="ginfo" value="${goodsDetail}"/>
 						<div class="col-md-8 col-md-offset-1 col-xs-12"
 							style="border: 5px solid crimson; border-radius: 10px; padding-bottom: 10px;">
-							<h2 style="margin-top: 5%;">상품 수정 및 삭제</h2>
+							<h2 style="margin-top: 5%;">상품 수정 </h2>
 							<form action="gupdate" method="post" enctype="multipart/form-data">
 								<div style="margin: 10px 30px;">
 							
@@ -168,22 +168,6 @@
 													readonly="readonly">
 											</div>
 										</div>
-										<!-- Grid column  -->
-										<div style="margin-top: 35px;">
-										<div class="col-md-3 col-xs-12">
-											<select id="sidoSelect" class="form-control" name="gCategory"
-												onChange="changeSidoSelect();">
-												<option value="">대분류</option>
-											</select>
-  										</div>
-  										<div class="col-md-3 col-xs-12">
-    										<select id="gugunSelect" class="form-control"
-												name="gCategory2" onChange="changeSecondSelect();">
-												<option value="">소분류</option>
-											</select>
-										</div>
-										</div>
-										<!-- Grid column -->
 									</div>
 									<!-- row3 상품이름 -->
 									<div class="row">
@@ -192,7 +176,7 @@
 											<!-- Material input -->
 											<div class="form-group">
 												<label for="goodsName">상품 이름</label> <input type="text" name="gName"
-													class="form-control" id="goodsName" value="${ginfo.gName}">
+													class="form-control" readOnly ="readOnly" id="goodsName" value="${ginfo.gName}">
 
 											</div>
 										</div>
@@ -236,36 +220,14 @@
 										</div>
 									</div>
 									<!-- /row4 -->
-
 									<!-- row6 상품 이미지 -->
-									<div class="row">
-										<div class="col-md-6 col-xs-12">
-											<label for="goodsInfo">상품 메인이미지</label>
-											<div class="form-group">
-												<input class="form-control" type="file" id="uploadfilef"
-													name="gimgf1">
-
-											</div>
-										</div>
-
-										<div class="col-md-6 col-xs-12">
-											<label for="goodsInfo">상품 상세이미지</label>
-											<div class="form-group">
-												<input class="form-control" type="file" id="uploadfilef2"
-													name="gimgf2" >
-											</div>
-										</div>
-									</div>
 									<!-- /row6 -->
-									<div class="col-md-3 col-md-offset-5 col-xs-8 col-xs-offset-3">
-										<button type="submit" class="btn btn-primary btn-md" onclick="checkUpdateFile()">수정</button>
-										<button type="button" class="btn btn-primary btn-md">삭제</button>
+									<div class="col-md-12 col-xs-12 text-center">
+										<a type="submit" class="btn btn-primary btn-lg" onclick="checkUpdateFile()">수정</a>
 									</div>
 								</div>
 							</form>
 						</div>
-
-
 					</div>
 				</div>
 				<!-- /.row -->
