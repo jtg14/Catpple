@@ -68,31 +68,31 @@ function checkfile() {
 	}
 
 }
-function checkUpdateFile(){
-	var img1 = $('#uploadfilef').val().substring(
-			$('#uploadfilef').val().lastIndexOf('.'),
-			$('#uploadfilef').val().length);
-	var img2 = $('#uploadfilef2').val().substring(
-			$('#uploadfilef2').val().lastIndexOf('.'),
-			$('#uploadfilef2').val().length);
-	
-	if (img1 != '.jpg' && img1 != '.png' && img2 != '.jpg' && img2 != '.png' && img1 == '' && img2 == '' ) {
-		alert('대표이미지와 상품이미지는 jpg 파일 또는 png 파일만 가능합니다.');
-		return false;
-	}else if($('#gugunSelect').val() == ''){
-		alert('중분류및 소분류를 선택해주세요.');
-		return false;
-	}else if($('#uploadfilef').val() === $('#uploadfilef2').val()){
-		alert('같은 파일은 등록할수없습니다.');
-		return false;
-	}else if($('#goodsName').val() == ''){
-		alert('상품이름은 필수입력 사항입니다.');
-		return false;
-	}else if($('#gprice').val() == '' || $('#goodsAmount').val() == '' ){
+function checkUpdateFile(number){
+	if($('#gprice').val() == '' || $('#goodsAmount').val() == '' ){
 		alert('상품 가격 및 갯수는 필수 입력 사항 입니다. ');
-		return false;
 	}else{
-		return true
+		if(confirm('정말 수정하시겠습니까?')){
+			$.ajax({
+				type:'Post',
+				url:'gupdate',
+				data:{
+					gNum:number,
+					gStock:$('#goodsPrice').val(),
+					gPrice:$('#goodsAmount').val()
+				},
+				success:function(data){
+					if(data.code == '100'){
+						alert('정상적으로 수정되었습니다.');
+						location.href='sRGoods';
+					}else if (data.code == '101'){
+						alert('수정에 실패하였습니다.');
+					}
+				}
+			});
+		}else{
+			alert('취소 되었습니다.');
+		}
 	}
 }
 function changeSidoSelect() {
