@@ -193,35 +193,39 @@
 
 						</div>
 						<div class="col-md-10 col-xs-12 text-center">
-						<ul class="btn-group pagination">
-							<c:if test="${pageMaker.prev}">
-								<li>
-								<a aria-label="Previous" href="mCart${pageMaker.makeSearch(pageMaker.startPage-1)}"><span aria-hidden="true">&laquo;</span></a>
-							  	</li>
-							  </c:if>
-							  <c:forEach begin="${pageMaker.startPage}"
-									   end="${pageMaker.endPage}" var="idx">
-									   <c:choose>
-									   <c:when test="${pageMaker.cri.page==idx}">
-								  		 <li>
-							 			<a class="btn btn-danger disabled" style="color:white;">${idx}</a>
-							 			</li>
-							 		</c:when>
-							 		<c:otherwise>
-							 		<li>
-							 			<a href="mCart${pageMaker.makeSearch(idx)}">${idx}</a>
-							 		</li> 
-							 		</c:otherwise>
-							 		</c:choose>
-								<%-- <c:out value="${pageMaker.cri.page == idx ? 'class =active':''}"/> --%>
-							  </c:forEach>
-							
-							  <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<li>
-								<a href="mCart${pageMaker.makeSearch(pageMaker.endPage+1)}"><span aria-hidden="true">&raquo;</span></a>
-							  	</li>
-							  </c:if>
-								
+						<ul class="pagination">
+								<c:if test="${pageMaker.prev}">
+									<li><a href="mCart${pageMaker.makeSearch(1)}"
+										style="color: black;">First</a></li>
+									<li><a
+										href="mCart${pageMaker.makeQuery(pageMaker.startPage - 1)}"
+										style="color: black;">이전</a></li>
+								</c:if>
+
+								<c:forEach begin="${pageMaker.startPage}"
+									end="${pageMaker.endPage}" var="idx">
+									<c:choose>
+										<c:when test="${pageMaker.cri.page==idx}">
+											<li class="active"><a
+												href="mCart${pageMaker.makeQuery(idx)}"
+												style="background-color: Crimson; border-color: Crimson;">${idx}</a></li>
+										</c:when>
+										<c:otherwise>
+											<li><a
+												href="mCart${pageMaker.makeQuery(idx)}"
+												style="color: black;">${idx}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+
+								<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+									<li><a
+										href="mCart${pageMaker.makeQuery(pageMaker.endPage + 1)}"
+										style="color: black;">다음</a></li>
+									<li><a
+										href="mCart${pageMaker.makeSearch(pageMaker.lastPage)}"
+										style="color: black;">Last</a></li>
+								</c:if>
 							</ul>
 							</div>
 						<c:if test="${cartRow != 0}">

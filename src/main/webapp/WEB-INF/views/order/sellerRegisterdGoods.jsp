@@ -188,36 +188,45 @@
 									</div>
 								</div>
 							</c:forEach>
-							<div style="text-align: center;">
-								<ul class="pagination">
-									<c:if test="${pageMaker.prev}">
-										<li><a
-											href="sRGoods${pageMaker.makeQuery(pageMaker.startPage - 1)}"
-											style="color: black;">이전</a></li>
-									</c:if>
+						
+						
+						</div>
+							<!-- paging -->
+						<div class="col-md-10 col-xs-12 text-center">
+							<ul class="pagination">
+                        <c:if test="${pageMaker.prev}">
+                           <li><a href="sRGoods${pageMaker.makeSearch(1)}"
+                              style="color: black;">First</a></li>
+                           <li><a
+                              href="sRGoods${pageMaker.makeQuery(pageMaker.startPage - 1)}"
+                              style="color: black;">이전</a></li>
+                        </c:if>
 
-									<c:forEach begin="${pageMaker.startPage}"
-										end="${pageMaker.endPage}" var="idx">
-										<c:choose>
-											<c:when test="${pageMaker.cri.page==idx}">
-												<li class="active"><a
-													href="sRGoods${pageMaker.makeQuery(idx)}"
-													style="background-color: Crimson; border-color: Crimson;">${idx}</a></li>
-											</c:when>
-											<c:otherwise>
-												<li><a href="sRGoods${pageMaker.makeQuery(idx)}"
-													style="color: black;">${idx}</a></li>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
+                        <c:forEach begin="${pageMaker.startPage}"
+                           end="${pageMaker.endPage}" var="idx">
+                           <c:choose>
+                              <c:when test="${pageMaker.cri.page==idx}">
+                                 <li class="active"><a
+                                    href="sRGoods${pageMaker.makeQuery(idx)}"
+                                    style="background-color: Crimson; border-color: Crimson;">${idx}</a></li>
+                              </c:when>
+                              <c:otherwise>
+                                 <li><a
+                                    href="sRGoods${pageMaker.makeQuery(idx)}"
+                                    style="color: black;">${idx}</a></li>
+                              </c:otherwise>
+                           </c:choose>
+                        </c:forEach>
 
-									<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-										<li><a
-											href="sRGoods${pageMaker.makeQuery(pageMaker.endPage + 1)}"
-											style="color: black;">다음</a></li>
-									</c:if>
-								</ul>
-							</div>
+                        <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+                           <li><a
+                              href="sRGoods${pageMaker.makeQuery(pageMaker.endPage + 1)}"
+                              style="color: black;">다음</a></li>
+                           <li><a
+                              href="sRGoods${pageMaker.makeSearch(pageMaker.lastPage)}"
+                              style="color: black;">Last</a></li>
+                        </c:if>
+                     </ul>
 						</div>
 					</div>
 				</div>
