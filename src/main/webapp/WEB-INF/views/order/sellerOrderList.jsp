@@ -152,13 +152,11 @@ padding-right: 0px;
 					style="min-height: 1000px; margin-top: 120px;">
 					<div class="col-sm-12 col-md-12" id="content">
 						<!-- 메인 공간 -->
-						<div class="col-md-12 col-xs-12">
 						<div class="col-md-6 col-xs-8">
 							<h2 style="color: crimson">받은 주문 목록</h2>  
 						</div>
 						<div class="col-md-6 col-xs-4 " style="margin-top:17px;"> 
 							<button onclick="deliveryButton()"  class="btn btn-danger pull-right" onclick="return confirm('배송하시겠습니까?')">배송하기</button>
-						</div>
 						</div>
 					
 						<div class="col-md-10 col-xs-12">
@@ -171,7 +169,7 @@ padding-right: 0px;
 										<div class="col-md-6 col-xs-3" style="padding-left: 0px;">
 											
 											<input name="box2" value="${list.dPk}" type="checkbox" onclick="chBox(this.form,'${list.dState}',${vs.index},${list.oStock},${list.gStock})"> 
-											<img class="img" src="resources/sellerInfo/${logInUser.mId}/${list.gImg1}"/>
+											<img class="img" src="resources/sellerInfo/${logInUser.mId}/${list.gImg1}" width="100px;" height="100px"/>
 											
 										
 										</div>
