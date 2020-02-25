@@ -240,10 +240,10 @@ th, td {
 						<div  class="container" style="text-align: center;">
 							<ul class="pagination">
 								<c:if test="${pageMaker.prev}">
-									<li><a href="mCustomerInquiry${pageMaker.makeSearch(1)}"
+									<li><a href="mSuggestions${pageMaker.makeSearch(1)}"
 										style="color: black;">First</a></li>
 									<li><a
-										href="mCustomerInquiry${pageMaker.makeQuery(pageMaker.startPage - 1)}"
+										href="mSuggestions${pageMaker.makeSearch(pageMaker.startPage - 1)}"
 										style="color: black;">이전</a></li>
 								</c:if>
 
@@ -252,12 +252,12 @@ th, td {
 									<c:choose>
 										<c:when test="${pageMaker.cri.page==idx}">
 											<li class="active"><a
-												href="mCustomerInquiry${pageMaker.makeQuery(idx)}"
+												href="mSuggestions${pageMaker.makeSearch(idx)}"
 												style="background-color: Crimson; border-color: Crimson;">${idx}</a></li>
 										</c:when>
 										<c:otherwise>
 											<li><a
-												href="mCustomerInquiry${pageMaker.makeQuery(idx)}"
+												href="mSuggestions${pageMaker.makeSearch(idx)}"
 												style="color: black;">${idx}</a></li>
 										</c:otherwise>
 									</c:choose>
@@ -265,10 +265,10 @@ th, td {
 
 								<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 									<li><a
-										href="mCustomerInquiry${pageMaker.makeQuery(pageMaker.endPage + 1)}"
+										href="mSuggestions${pageMaker.makeSearch(pageMaker.endPage + 1)}"
 										style="color: black;">다음</a></li>
 									<li><a
-										href="mCustomerInquiry${pageMaker.makeSearch(pageMaker.lastPage)}"
+										href="mSuggestions${pageMaker.makeSearch(pageMaker.lastPage)}"
 										style="color: black;">Last</a></li>
 								</c:if>
 							</ul>
