@@ -22,11 +22,9 @@ import business.CService;
 import business.MService;
 import business.OService;
 import business.PService;
-import criteria.Criteria;
 import criteria.PageMaker;
 import criteria.SearchCriteria;
 import vo.CartVO;
-import vo.GoodsVO;
 import vo.MemberVO;
 import vo.OrderVO;
 import vo.PaymentVO;
@@ -209,7 +207,7 @@ public class OrderController {//주문성공 페이지
 	
 	
 	@RequestMapping(value ="/mODelivery")//주문/배송 조회
-	public ModelAndView myInfoOrderDelivery(ModelAndView model,HttpServletRequest request,Criteria cri) {
+	public ModelAndView myInfoOrderDelivery(ModelAndView model,HttpServletRequest request,SearchCriteria cri) {
 		cri.setSnoEno();
 		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 	    Map<String,Object> map = new HashMap<String,Object>();

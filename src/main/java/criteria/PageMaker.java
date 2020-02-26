@@ -23,11 +23,11 @@ public class PageMaker {
 	
 	private int displayPageNum = 5; // View에 표시할 PageNo 갯수
 	
-	private Criteria cri;
+	private SearchCriteria cri;
 	//private SearchCriteria cri;
 	
 
-	public void setCri(Criteria cri) {
+	public void setCri(SearchCriteria cri) {
 		this.cri = cri;
 	}
 
@@ -87,7 +87,7 @@ public class PageMaker {
 		return displayPageNum;
 	}
 
-	public Criteria getCri() {
+	public SearchCriteria getCri() {
 		return cri;
 	}
 	
@@ -114,8 +114,8 @@ public class PageMaker {
 	            UriComponentsBuilder.newInstance()
 	            .queryParam("page", page)
 	            .queryParam("perPageNum", cri.getPerPageNum())
-// 	            .queryParam("searchType", cri.getSearchType())
-// 	            .queryParam("keyword", cri.getKeyword())
+ 	            .queryParam("searchType", cri.getSearchType())
+ 	            .queryParam("keyword", cri.getKeyword())
 	            .build();	
 		
 		//.queryParam("searchType", ((SearchCriteria)cri).getSearchType())

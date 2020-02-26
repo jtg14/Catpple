@@ -21,8 +21,8 @@ import business.GService;
 import business.MService;
 import business.OService;
 import business.PService;
-import criteria.Criteria;
 import criteria.PageMaker;
+import criteria.SearchCriteria;
 import sendmessage.Send;
 import vo.CartVO;
 import vo.GoodsVO;
@@ -63,7 +63,7 @@ public class UserController {
 		return model;
 	}
 	@RequestMapping(value ="/mOCancel")//주문 취소
-	public ModelAndView myInfoOrderCancel(ModelAndView model,HttpServletRequest request,Criteria cri) {
+	public ModelAndView myInfoOrderCancel(ModelAndView model,HttpServletRequest request,SearchCriteria cri) {
 		cri.setSnoEno();
 		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 	    Map<String,Object> map = new HashMap<String,Object>();
@@ -81,7 +81,7 @@ public class UserController {
 		return model;
 	}
 	@RequestMapping(value ="/mRExchange")//반품/교환
-	public ModelAndView myInfoReturnExchange(ModelAndView model,HttpServletRequest request,Criteria cri) {
+	public ModelAndView myInfoReturnExchange(ModelAndView model,HttpServletRequest request,SearchCriteria cri) {
 		cri.setSnoEno();
 		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 	    Map<String,Object> map = new HashMap<String,Object>();
@@ -98,7 +98,7 @@ public class UserController {
 		return model;
 	}
 	@RequestMapping(value ="/mCart")//장바구니
-	public ModelAndView myInfoCart(ModelAndView model,HttpServletRequest request,Criteria cri) {
+	public ModelAndView myInfoCart(ModelAndView model,HttpServletRequest request,SearchCriteria cri) {
 		cri.setSnoEno();
 		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 	    Map<String,Object> map = new HashMap<String,Object>();

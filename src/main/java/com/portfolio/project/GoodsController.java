@@ -18,8 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import business.GService;
 import business.MService;
-import criteria.Criteria;
 import criteria.PageMaker;
+import criteria.SearchCriteria;
 import vo.GoodsVO;
 import vo.MemberVO;
 
@@ -95,7 +95,7 @@ public class GoodsController {
 		return model;
 	}
 	@RequestMapping(value ="/sRGoods")//내가 등록한 상품
-	public ModelAndView sellerRegisterdGoods(ModelAndView mv, HttpServletRequest request, GoodsVO vo, Criteria cri) {
+	public ModelAndView sellerRegisterdGoods(ModelAndView mv, HttpServletRequest request, GoodsVO vo, SearchCriteria cri) {
 		cri.setSnoEno();
 		MemberVO mvo = (MemberVO)request.getSession().getAttribute("logInUser");
 		cri.setMember_mId(mvo.getmId());
